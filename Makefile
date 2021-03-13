@@ -1,9 +1,14 @@
 
-pdf: BSc.tex
+pdf: BSc.pdf
+
+BSc.pdf: BSc.tex BSc.bbl
 	pdflatex BSc.tex
 
 doc: pdf
 	cp -f BSc.pdf Doc.pdf
 
+BSc.bbl: BSc.tex References.bib
+	biber BSc
+
 clean:
-	rm -f BSc.aux BSc.toc BSc.log BSc.run.xml BSc.bcf
+	rm -rf BSc.aux BSc.toc BSc.log BSc.run.xml BSc.bcf _region_* BSc.blg BSc.bbl prv_BSc.log
