@@ -23,11 +23,28 @@ DATE
 \cleardoublepage{}
 \tableofcontents{}
 \section{Introduction}
-The standard model of particle is very successful at describing the fundamental building blocks of our universe. It has been corroborated by numerous experiments, but to further test the theory physicists collide particles together at high energy to probe the produced debris from the collision, hoping to discover new physics. A particle of particular interest is the top quark, which is the heaviest known fundamental particle with a mass of $173.34 \pm 0.27 \pm 0.71 \mathrm{GeV/c^2}$, and its coupling strength to all the bosons are well predicted by the standard model. Because of this, measurements of the top quark's properties plays an important role in testing the Standard Model. Top quark production at LHC occurs via strong interactions, where they are produced in top, anti-top pairs. One test of the Standard Model, is the study of the $Wtb$ vertex Lorentz structure and coupling, which is studied by looking at the decay products of top quarks. The top quarks decay, with almost 100\% branching fraction, by weak interactions into $W$ bosons and bottom quarks $t \rightarrow W + b$. The W bosons decay, into either a charged lepton and neutrino; $W \rightarrow l + \nu_l$, or into a quark, anti-quark pair: $W \rightarrow q' + \bar{q}$.\\
+The standard model of particle is very successful at describing the fundamental
+building blocks of our universe. It has been corroborated by numerous
+experiments, but to further test the theory physicists collide particles
+together at high energy to probe the produced debris from the collision, hoping
+to discover new physics. A particle of particular interest is the top quark,
+which is the heaviest known fundamental particle with a mass of
+$173.34 \pm 0.27 \pm 0.71 \mathrm{GeV/c^2}$, and its coupling strength to all
+the bosons are well predicted by the standard model. Because of this,
+measurements of the top quark's properties plays an important role in testing
+the Standard Model. Top quark production at LHC occurs via strong interactions,
+where they are produced in top, anti-top pairs. One test of the Standard Model,
+is the study of the $Wtb$ vertex Lorentz structure and coupling, which is
+studied by looking at the decay products of top quarks. The top quarks decay,
+with almost 100\% branching fraction, by weak interactions into $W$ bosons and
+bottom quarks $t \rightarrow W + b$. The W bosons decay, into either a charged lepton and
+neutrino; $W \rightarrow l + \nu_l$, or into a quark, anti-quark pair: $W \rightarrow q' + \bar{q}$.\\
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{Placeholder_FeynmanDiagram.png}
-	\caption{The Feynman diagram shows one of the possible decays of the top quarks. For this single leptonic decay, we see from the figure that there are 4 quark jets as the end product.}
+	\caption{The Feynman diagram shows one of the possible decays of the top
+      quarks. For this single leptonic decay, we see from the figure that there
+      are 4 quark jets as the end product.}
 	\label{fig_feynmandiagram}
 \end{figure}
 
@@ -72,6 +89,21 @@ force. Bosons unlike fermions don't obey the Pauli exclusion principle.
 %symmetries and laws of conservation.
 
 \subsubsection{Quantum Chromo Dynamics}
+Quantum chromo dynamics (QCD), is the theory of the strong interaction, which
+binds the quarks together. In QCD, each quark is associated with a color charge,
+that color confines the quark via the strong interaction, to other quarks, to
+make up a total color charge of white. While the color charge isn't physically
+related to actual colors, the way they mix together, is analogous to the way we
+mix the colors green, red and blue, as well as their anti colors, magenta,
+yellow and cyan. Because of these properties, quarks can bind together in groups
+with odd number of quarks, with at least three, to form baryons, or an even
+number of at least two, to form mesons.\\
+
+If enough energy is added to stretch one of the quarks away from the rest, the
+gluon field breaks, and a new quark and anti quark pair is created. This process
+of creating new quark, anti quark pairs, by stretching the gluon field between
+them is the result of violent inelastic collisions, which creates these jets of
+quarks, anti quarks.
 
 \subsubsection{Symmetries and Laws of Conservation} Emmy Noether showed that any
 conservation law is associated with a continues symmetry of the Lagrangian. The
@@ -120,13 +152,12 @@ has both a vector and an axial part as in the case of weak interactions parity
 is violated while maximum parity violation occurs when both the contributions
 becomes equal magnitude.
 
-\subsection{Four-vector}
+\subsection{Four-momentum}
 The data collected in LHC collisions, allows us to reconstruct the 4-vector of
-the involved particles. The 4-vector is a four component tensor, made up of an
-ordinary 3-vector momentum $\vb p$, and the relativistic energy term, $E^2/c^2$,
-as its first component. Working in natural units, where we set $c=1$, our
-4-vector will be given as
-
+momentum for the involved particles. The 4-vector is a four component tensor,
+made up of an ordinary 3-vector for relativistic momentum $\vb p$, and the
+relativistic energy term, $E^2/c^2$, as its first component. Working in natural
+units, where we set $c=1$, our 4-vector will be given as
 \begin{equation}
 p = \left(\begin{matrix} E^2 \\ \vb p \end{matrix} \right).
 \end{equation}
@@ -135,7 +166,14 @@ The dot product of two 4-vectors is given by $p\cdot p' = E E' - \vb p \cdot \vb
 where $\vb p \cdot \vb{p'}$ is the ordinary dot product of two 3-vector momentum.
 From special relativity, we know that $E^2 - \abs{\vb p}^2 = m^2$, so from the
 dot product, we get that $p^2 = m^2$. Other vector operations on a 4-vector is
-similar to those same vector operations on a 3-vector.
+similar to those same vector operations on a 3-vector. The quantity
+\begin{equation}
+s = (p + p')^2 = (E + E')^2 - (\vb p + \vb p')^2
+\end{equation}
+
+is conserved, and is the centre-of-mass energy squared of the system. It is the
+energy available to create new particles, or probing the properties of
+particles.
 
 \subsection{Coupling of W$^+$bt}
 The $W$boson couples only to left-handed particles, which gives $Wtb$ vortex a
@@ -153,16 +191,18 @@ by studying the angular decay distribution of the leptonic decay products of the
 top quark. The angular distribution is given by:
 
 \begin{equation}
-\frac{1}{\Gamma}\dv{\Gamma}{\cos \theta^*} = \frac{3}{8}(1-\cos \theta^*)^2 F_L + \frac{3}{4}\sin^2 \theta^* F_0 + \frac{3}{8}(1+\cos \theta^*)^2 F_R.
+  \frac{1}{\Gamma}\dv{\Gamma}{\cos \theta^*} = \frac{3}{8}(1-\cos \theta^*)^2 F_L +
+  \frac{3}{4}\sin^2 \theta^* F_0 + \frac{3}{8}(1+\cos \theta^*)^2 F_R.
 \end{equation}
 
 Where $\theta^*$ is the helicity angle, which is defined as the angle between the
 decayed lepton momentum direction, and the reversible momentum direction of the
 $b$-quark decay from the same top quark, viewed from a reference frame with $W$
-at rest.
-
+at rest. From the 4-vectors of the lepton and $b$-jet, we can find the
+$\cos \theta^*$ from the following expression:
 \begin{equation}
-\cos \theta^* = \frac{p_e \cdot p_b - E_e E_b}{\abs{\vb{p_e}} \abs{\vb{p_b}}} \simeq \frac{2 M_{eb}^2}{m_t^2 - M_W^2} - 1,
+  \cos \theta^* = \frac{p_e \cdot p_b - E_e E_b}{\abs{\vb{p_e}} \abs{\vb{p_b}}} \simeq
+  \frac{2 M_{eb}^2}{m_t^2 - M_W^2} - 1,
 \end{equation}
 
 here $p_l$ and $p_b$ are the four momentum vectors of the lepton and the bottom
@@ -240,6 +280,8 @@ which a particle has been detected.
 
 % HLT = CPU farm but not trigger? data compiler?
 
+\section{Monte Carlo Simulation}
+
 \section{Data Analysis}
 
 \subsubsection{Single Lepton Channel}
@@ -247,8 +289,6 @@ which a particle has been detected.
 \subsection{The Code}
 
 \subsubsection{ROOT}
-
-\subsubsection{Optimization??}
 
 \subsection{Results}
 
