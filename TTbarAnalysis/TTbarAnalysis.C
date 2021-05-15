@@ -271,40 +271,13 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                   //                  bool i_is_bjet, j_is_bjet, k_
                   for (int i = 0; i < goodjet_n; ++i) {
                     // int bjet_matched = 0;
-                    int igji = goodjet_index[i];
-                    //                    for (int b_jet = 0; b_jet < goodbjet_n; b_jet++) {
-                    //                      if (igji == goodbjet_index[b_jet]) {
-                    //                        bjet_matched++;
-                    //                        bjet_jjj = b_jet;
-                    //                        break;
-                    //                      }
-                    //                    }
+                    int igji = goodjet_index[i];                 
 
                     for (int j = i + 1; j < goodjet_n; ++j) {
-                      int igjj = goodjet_index[j];
-
-                      //                      for (int b_jet = 0; b_jet < goodbjet_n; b_jet++) {
-                      //                        if (igjj == goodbjet_index[b_jet]) {
-                      //                          bjet_matched++;
-                      //                          bjet_jjj = b_jet;
-                      //                          break;
-                      //                        }
-                      //                      }
-
-                      // if (bjet_matched > 1) continue;
+                      int igjj = goodjet_index[j];                    
 
                       for (int k = j + 1; k < goodjet_n; ++k) {
                         int igjk = goodjet_index[k];
-
-                        //                        for (int b_jet = 0; b_jet < goodbjet_n; b_jet++) {
-                        //                          if (igjk == goodbjet_index[b_jet]) {
-                        //                            bjet_matched++;
-                        //                            bjet_jjj = b_jet;
-                        //                            break;
-                        //                          }
-                        //                        }
-                        //
-                        // if (bjet_matched != 1) continue;
 
                         int bjets_found = 0;
                         int bjet_used   = -1;
@@ -332,9 +305,9 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                           bjets_found++;
                           bjet_used = 1;
                         }
-                        if (!bjets_found) continue;
+                        //if (!bjets_found) continue;
 
-                        //if (bjets_found != 1) continue;
+                        if (bjets_found != 1) continue;
 
                         TLorentzVector jet1 = TLorentzVector();
                         jet1.SetPtEtaPhiE(jet_pt->at(igji), jet_eta->at(igji), jet_phi->at(igji), jet_E->at(igji));
