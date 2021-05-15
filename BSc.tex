@@ -321,8 +321,24 @@ simulations on top-quark-pair production was used alongside real data taken from
 the detector, to compare theory with real data.
 
 \section{Data Analysis}
-
-\subsubsection{Single Lepton Channel}
+% Definer Psuedorapidity \eta %
+% http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
+\subsection{Event Selection}
+In order to identify the top-quark-pair production, several cuts in the data were implemented. The criteria are as follows 
+\begin{itemize}
+	\item Only one electron or muon in the final state with $p_{T} > 30 \mathrm{GeV}$
+	\item Missing transverse momentum $E_{T}^{miss} > 30 \mathrm{GeV}$
+	\item Transverse mass of the W-boson $M_{T}^{W} > 30 \mathrm{GeV}$
+	\item At least four jets with $p_{T} > 30 \mathrm{GeV}$, with two of these being b-tagged
+	\item Electrons are required to have $|\eta| > 2.47$ aside from $1.37 < |\eta| < 1.52$
+	\item Muons are limited by $|\eta| > 2.50$
+\end{itemize}
+where $\eta$ describes angle between the particle and the beam axis given by 
+\begin{equation}
+	\eta = -\ln({\tan\left(\frac{\theta}{2}\right)})
+\end{equation}
+\subsubsection{B-tagging}
+%\subsubsection{Single Lepton Channel}
 
 \subsection{The Code}
 
