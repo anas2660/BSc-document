@@ -212,6 +212,30 @@ quark system.
 \section{Apparatus}
 
 \subsection{LHC}
+In the Large Hadron Collider (LHC), top quarks are mainly produced through
+violent collisions of protons, causing gluon-gluon fusion, which produces top,
+anti-top pairs $gg \rightarrow t\bar t$. The data used in this paper, is from the 2016 run
+at LHC, with a centre-of-mass energy of $\sqrt s = 13 \mathrm{TeV}$, which
+corresponds to an integrated luminosity of 10 $\mathrm{fb}^{-1}$. At these
+energies, the protons are accelerated close to the speed of light before their
+collisions in the ATLAS detector.\\
+
+This process starts, when protons are produced from hydrogen gas in a linear
+accelerator LINAC2 then gets injected into the LHC, through a series of smaller
+synchrotron accelerators, Proton Syncrotron Booster (PSB), Proton Syncrotron
+(PS) and Super Protron Synhrotron (SPS). The LHC receives bunches from another
+SPS, containing a lot of protons in each bunch, effectively increasing the
+cross-sectional area for collisions to occur. In order to prevent energy loss
+due to synchrotron radiation, the LHC was built to be the largest particle
+accelerator in the world, which has allowed it to reach higher energies than
+other accelerators. At these energies, more events happen inside the detector,
+described by the following equation:
+\begin{equation}
+  N = \sigma \int L \dd t,
+\end{equation}
+
+where $N$ is the number of expected events, $\sigma$ is the cross-sectional area of
+the events, and $\int L \dd t$ is the integrated luminosity.
 
 \subsection{ATLAS}
 % https://atlas.web.cern.ch/Atlas/TP/NEW/HTML/tp9new/tp9.html
@@ -281,10 +305,40 @@ which a particle has been detected.
 % HLT = CPU farm but not trigger? data compiler?
 
 \section{Monte Carlo Simulation}
+Monte Carlo (MC) simulation was used to model the signal and background
+processes expected at the LHC, for the 13 TeV Atlas Open Data used for this
+report. This process follows four steps, starting with an event generation which
+uses a MC generator to mimic the initial pp collision. In the second step,
+detector simulation, the geometry of the ATLAS detector and its material
+properties gets simulated. As part of the digitisation step, the previous step
+is followed by simulating the responding signals in read-out data written in a
+format compatible with real output of the detector. Finally these data can be
+used to reconstruct the collisions, particle trajectories and subsequent products.\\
+
+In The 13 TeV ATLAS Open Data set, there are several SM processes which are
+modelled using MC simulations. For the purpose of this report, the MC
+simulations on top-quark-pair production was used alongside real data taken from
+the detector, to compare theory with real data.
 
 \section{Data Analysis}
-
-\subsubsection{Single Lepton Channel}
+% Definer Psuedorapidity \eta %
+% http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
+\subsection{Event Selection}
+In order to identify the top-quark-pair production, several cuts in the data were implemented. The criteria are as follows 
+\begin{itemize}
+	\item Only one electron or muon in the final state with $p_{T} > 30 \mathrm{GeV}$
+	\item Missing transverse momentum $E_{T}^{miss} > 30 \mathrm{GeV}$
+	\item Transverse mass of the W-boson $M_{T}^{W} > 30 \mathrm{GeV}$
+	\item At least four jets with $p_{T} > 30 \mathrm{GeV}$, with two of these being b-tagged
+	\item Electrons are required to have $|\eta| > 2.47$ aside from $1.37 < |\eta| < 1.52$
+	\item Muons are limited by $|\eta| > 2.50$
+\end{itemize}
+where $\eta$ describes angle between the particle and the beam axis given by 
+\begin{equation}
+	\eta = -\ln({\tan\left(\frac{\theta}{2}\right)})
+\end{equation}
+\subsubsection{B-tagging}
+%\subsubsection{Single Lepton Channel}
 
 \subsection{The Code}
 
