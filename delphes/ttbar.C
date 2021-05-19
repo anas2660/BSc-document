@@ -26,7 +26,7 @@ R__LOAD_LIBRARY(libDelphes)
 
 //------------------------------------------------------------------------------
 
-void ttbar(const char *inputFile, TH1 *histsum, TH1 *hist) {
+void ttbar(const char *inputFile, TH1 *hist) {
 
   // Create chain of root trees
   TChain chain("Delphes");
@@ -166,17 +166,18 @@ void ttbar(const char *inputFile, TH1 *histsum, TH1 *hist) {
 
 
   // Show histograms
-  if (histsum != NULL) {
-    if (!strcmp(inputFile, "./delphes0.root"))
-      histCTStarGen->Scale(0.687);
-    if (!strcmp(inputFile, "./delphesL.root"))
-      histCTStarGen->Scale(0.311);
-    if (!strcmp(inputFile, "./delphesR.root"))
-      histCTStarGen->Scale(0.0017);
-    histsum->Add(histCTStarGen);
-    return;
-  }
+  //if (histsum != NULL) {
+  //  if (!strcmp(inputFile, "./delphes0.root"))
+  //    histCTStarGen->Scale(0.687);
+  //  if (!strcmp(inputFile, "./delphesL.root"))
+  //    histCTStarGen->Scale(0.311);
+  //  if (!strcmp(inputFile, "./delphesR.root"))
+  //    histCTStarGen->Scale(0.0017);
+  //  histsum->Add(histCTStarGen);
+  //  return;
+  //}
 
+  if (hist) return;
 
   TCanvas *c1 = new TCanvas("c1", "c1", 20, 20, 700, 700);
   c1->Divide(2, 2);
@@ -230,9 +231,9 @@ void costheta(){
   histCTStarGenR =
       new TH1F("CTStarGenR", "generated cos(theta*)", 40, -1., 1.);
 
-  ttbar("./delphes0.root", histCTStarGenSum, histCTStarGen0);
-  ttbar("./delphesL.root", histCTStarGenSum, histCTStarGenL);
-  ttbar("./delphesR.root", histCTStarGenSum, histCTStarGenR);
+  ttbar("./delphes0.root", histCTStarGen0);
+  ttbar("./delphesL.root", histCTStarGenL);
+  ttbar("./delphesR.root", histCTStarGenR);
 
   TFile* atlas_file = new TFile("data.root");
   TH1F* atlas_costheta = atlas_file->Get<TH1F>("hist_costheta");
@@ -241,11 +242,12 @@ void costheta(){
   func->SetParameters(1.0, 1.0, 1.0);
   func->SetParNames("F_0", "F_L", "F_R");
 
-
-  TFitResultPtr resultptr = atlas_costheta->Fit("fit");
+  //TFitResultPtr resultptr = atlas_costheta->Fit("fit");
   //TFitResult* result = resultptr.Get();
 
-
   TCanvas *c5 = new TCanvas("c5", "c5", 80, 80, 700, 700);
+  histCTStarGenSum->Add(histCTStarGen0);
+  histCTStarGenSum->Add(histCTStarGenL);
+  histCTStarGenSum->Add(histCTStarGenR);
   histCTStarGenSum->Draw();
 }
