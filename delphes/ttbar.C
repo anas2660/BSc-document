@@ -55,10 +55,10 @@ void ttbar(const char *inputFile, TH1 *hist) {
   TH1 *histNBTag  = new TH1F("NBTag", "number BTag", 5, 0., 5.);
 
   TH1 *histCTStarGen =
-      new TH1F("CTStarGen", "generated cos(theta*)", 40, -1., 1.);
+      new TH1F("CTStarGen", "generated cos(theta*)", 15, -1., 1.);
 
   TH1 *histCTStar =
-      new TH1F("CTStar", "new cos(theta*)", 40, -1., 1.);
+      new TH1F("CTStar", "new cos(theta*)", 15, -1., 1.);
 
   // Loop over all events
   for (int entry = 0; entry < numberOfEntries; ++entry) {
@@ -147,10 +147,11 @@ void ttbar(const char *inputFile, TH1 *hist) {
 
     // Take first four jet (they are ordered by pT)
     Jet *jet[4];
-    jet[0] = (Jet *)branchJet->At(0);
-    jet[1] = (Jet *)branchJet->At(1);
-    jet[2] = (Jet *)branchJet->At(2);
-    jet[3] = (Jet *)branchJet->At(3);
+    for (int i = 0; i < 4; i++)
+      jet[i] = (Jet *)branchJet->At(i);
+
+    // printf("a1: 0x%x, sizeof: %lu, a2: 0x%x\n", branchJet->At(0), sizeof(Jet), branchJet->At(1));
+
 
     // Plot jet transverse momentum
     histJet0PT->Fill(jet[0]->PT);
@@ -178,23 +179,17 @@ void ttbar(const char *inputFile, TH1 *hist) {
     TLorentzVector MeT;
     MeT.SetPtEtaPhiE(met->MET, 0, met->Phi, met->MET);
 
-    float mtw = sqrt(2.0f * plep.Pt() * MeT.Et() * (1.0f - cos(plep.DeltaPhi(MeT))));
-    if (mtw > 30000.0f) continue;
+    // float mtw = sqrt(2.0f * plep.Pt() * MeT.Et() * (1.0f - cos(plep.DeltaPhi(MeT))));
+    // if (mtw > 30000.0f) continue;
 
     // how do we select bjet????????
-
-
-    Jet* bjet = jet[goodbjet[1]];
-    TLorentzVector bjet_1;
-    // bjet_1.SetPtEtaPhiE(bjet->PT, bjet->Eta, bjet->Phi, bjet->e Double_t e);
-    bjet_1.SetPtEtaPhiM(bjet->PT, bjet->Eta, bjet->Phi, bjet->Mass);
-
+    TLorentzVector bjet_1 = jet[goodbjet[1]]->P4();
 
     float m_t = 172.8f;
     float M_W = 80.4f;
     float Meb = (plep + bjet_1).M();
     float costheta  = 2.0f * Meb * Meb / (m_t * m_t - M_W * M_W) - 1.0f;
-    printf("Meb : %f, \tcos theta : %f\n", Meb, costheta);
+    // printf("Meb : %f, \tcos theta : %f\n", Meb, costheta);
     histCTStar->Fill(costheta);
 
   }
