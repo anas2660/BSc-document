@@ -13,7 +13,10 @@ R__LOAD_LIBRARY(libDelphes)
 #include "external/ExRootAnalysis/ExRootTreeReader.h"
 
 #include <TH1F.h>
+#include <TCanvas.h>
 #include <TFile.h>
+#include <TF1.h>
+#include <TClonesArray.h>
 
 #include "TLorentzVector.h"
 
@@ -108,7 +111,7 @@ void ttbar(const char *inputFile, TH1 *hist) {
     double ctstarGen = 2. * Meb2 / (172.5 * 172.5 - 80.1 * 80.1) - 1.;
 
     histCTStarGen->Fill(ctstarGen);
-    if (hist) hist->Fill(ctstarGen);
+    //if (hist) hist->Fill(ctstarGen);
 
     // Turn to simulated events...
     int nelec   = branchElectron->GetEntries();
@@ -191,6 +194,7 @@ void ttbar(const char *inputFile, TH1 *hist) {
     float costheta  = 2.0f * Meb * Meb / (m_t * m_t - M_W * M_W) - 1.0f;
     // printf("Meb : %f, \tcos theta : %f\n", Meb, costheta);
     histCTStar->Fill(costheta);
+    if (hist) hist->Fill(costheta);
 
   }
     
@@ -250,18 +254,55 @@ double fitf(double *x, double *par) {
   return delphes_0*par[0] + delphes_L*par[1] + delphes_R*par[2];
 }
 
+double fitfunc(double* x, double* pars) {
+  // Here I just create the histograms I would like to fit with weights.
+  // You don't have to do this here, all that is needed is that the histograms
+  // are visible in this function.
+  /*
+  static bool initialized = false;
+  static TH1D h1("h1", "", 100, -10, 10);
+  static TH1D h2("h2", "", 100, -10, 10);
+  if (!initialized) {
+    int n = 100000;
+    for (int i=0; i<n; ++i) h1.Fill(gRandom->Gaus(-3));
+    for (int i=0; i<n; ++i) h2.Fill(gRandom->Gaus(+3));
+    h1.Scale(1./n);
+    h2.Scale(1./n);
+    initialized = true;
+  }
+  */
+
+  const double xx = x[0]; // use x[1] to get 2nd dimension, x[2] for 3rd ...
+  // the fit parameters, i.e. the histogram weights
+  const double w1 = pars[0];
+  const double w2 = pars[1];
+  const double w3 = pars[2];
+
+  // get content of the histograms for this point
+  const double y1 = histCTStarGen0->GetBinContent(histCTStarGen0->GetXaxis()->FindFixBin(xx));
+  const double y2 = histCTStarGenL->GetBinContent(histCTStarGenL->GetXaxis()->FindFixBin(xx));
+  const double y3 = histCTStarGenR->GetBinContent(histCTStarGenR->GetXaxis()->FindFixBin(xx));
+
+  return 4.0*w1*y1/3.0 + 8.0*w2*y2/3.0 + 8.0*w3*y3/3.0;
+}
+
+
+
 void costheta(){
+#ifdef __CLING__
   gSystem->Load("libDelphes");
+#endif
+
 
   TH1 *histCTStarGenSum =
-      new TH1F("CTStarGenSum", "generated sum cos(theta*)", 40, -1., 1.);
+      new TH1F("CTStarGenSum", "generated sum cos(theta*)", 15, -1., 1.);
 
   histCTStarGen0 =
-      new TH1F("CTStarGen0", "generated cos(theta*)", 40, -1., 1.);
+      new TH1F("CTStarGen0", "generated cos(theta*)", 15, -1., 1.);
   histCTStarGenL =
-      new TH1F("CTStarGenL", "generated cos(theta*)", 40, -1., 1.);
+      new TH1F("CTStarGenL", "generated cos(theta*)", 15, -1., 1.);
   histCTStarGenR =
-      new TH1F("CTStarGenR", "generated cos(theta*)", 40, -1., 1.);
+      new TH1F("CTStarGenR", "generated cos(theta*)", 15, -1., 1.);
 
   ttbar("./delphes0.root", histCTStarGen0);
   ttbar("./delphesL.root", histCTStarGenL);
@@ -269,17 +310,59 @@ void costheta(){
 
   TFile* atlas_file = new TFile("data.root");
   TH1F* atlas_costheta = atlas_file->Get<TH1F>("hist_costheta");
+  atlas_costheta->SetBinContent(atlas_costheta->GetXaxis()->GetNbins()+1, 0);
 
-  TF1 *func = new TF1("fit", fitf, -1, 1);
-  func->SetParameters(1.0, 1.0, 1.0);
-  func->SetParNames("F_0", "F_L", "F_R");
-
-  TFitResultPtr resultptr = atlas_costheta->Fit("fit");
-  //TFitResult* result = resultptr.Get();
+  histCTStarGen0->SetBinContent(histCTStarGen0->GetXaxis()->GetNbins()+1, 0);
+  histCTStarGenL->SetBinContent(histCTStarGenL->GetXaxis()->GetNbins()+1, 0);
+  histCTStarGenR->SetBinContent(histCTStarGenR->GetXaxis()->GetNbins()+1, 0);
 
   TCanvas *c5 = new TCanvas("c5", "c5", 80, 80, 700, 700);
-  histCTStarGenSum->Add(histCTStarGen0);
-  histCTStarGenSum->Add(histCTStarGenL);
-  histCTStarGenSum->Add(histCTStarGenR);
-  histCTStarGenSum->Draw();
+  TF1* f = new TF1("fitfunc", fitfunc, -1, 1, 3);
+  f->SetParNames("F_0", "F_L", "F_R");
+
+  //atlas_costheta->Scale(1.0f/128.460461f);
+
+  atlas_costheta->Fit(f, "L");
+  atlas_costheta->Draw();
+  TCanvas *c6 = new TCanvas("c6", "c6", 80, 80, 700, 700);
+  histCTStarGen0->Draw();
+  //c6->Divide(3);
+  //c6->cd(0);
+  ///c6->cd(1);
+  ///histCTStarGenL->Draw();
+  ///c6->cd(2);
+  ///histCTStarGenR->Draw();
+  //f->SetParameters(0.687, 0.311, 0.0017);
+//f->Draw();
+
+  //histCTStarGen0->Scale(0.687);
+  //histCTStarGenL->Scale(0.311);
+  //histCTStarGenR->Scale(0.0017);
+//
+//  histCTStarGenSum->Add(histCTStarGen0);
+//  histCTStarGenSum->Add(histCTStarGenL);
+//  histCTStarGenSum->Add(histCTStarGenR);
+//  histCTStarGenSum->Draw();
+
+
+  //TF1 *func = new TF1("fit", fitf, -1, 1);
+  //func->SetParameters(1.0, 1.0, 1.0);
+  //func->SetParNames("F_0", "F_L", "F_R");
+//
+//  TFitResultPtr resultptr = atlas_costheta->Fit("fit");
+//  //TFitResult* result = resultptr.Get();
+
+  //TF1* f = new TF1("fitfunc", fitfunc, -1, 1, 3);
+  //atlas_costheta->Fit(f, "L");
+
+  //TCanvas *c5 = new TCanvas("c5", "c5", 80, 80, 700, 700);
+  //histCTStarGenSum->Add(histCTStarGen0);
+  //histCTStarGenSum->Add(histCTStarGenL);
+  //histCTStarGenSum->Add(histCTStarGenR);
+  //histCTStarGenSum->Draw();
+}
+
+int main(int argc, char *argv[]) {
+  costheta();
+  return 0;
 }
