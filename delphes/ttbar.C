@@ -8,9 +8,9 @@ root -l examples/Example1.C'("delphes_output.root")'
 
 #ifdef __CLING__
 R__LOAD_LIBRARY(libDelphes)
+#endif
 #include "classes/DelphesClasses.h"
 #include "external/ExRootAnalysis/ExRootTreeReader.h"
-#endif
 
 #include <TH1F.h>
 #include <TFile.h>
@@ -43,6 +43,7 @@ void ttbar(const char *inputFile, TH1 *hist) {
   TClonesArray *branchJet         = treeReader->UseBranch("Jet");
   TClonesArray *branchElectron    = treeReader->UseBranch("Electron");
   TClonesArray *branchMuon        = treeReader->UseBranch("Muon");
+  //TClonesArray *branchPhoton      = treeReader->UseBranch("Photon");
 
   // Book histograms
   TH1 *histMissET = new TH1F("missET", "Missing E_{T}", 60, 0., 300.);
@@ -55,6 +56,9 @@ void ttbar(const char *inputFile, TH1 *hist) {
 
   TH1 *histCTStarGen =
       new TH1F("CTStarGen", "generated cos(theta*)", 40, -1., 1.);
+
+  TH1 *histCTStar =
+      new TH1F("CTStar", "new cos(theta*)", 40, -1., 1.);
 
   // Loop over all events
   for (int entry = 0; entry < numberOfEntries; ++entry) {
@@ -89,7 +93,7 @@ void ttbar(const char *inputFile, TH1 *hist) {
       }
 
       // When found what we came for, break out to save time
-      if (ibm >= 0 && ibp >= 0 && ilep >= 0) break; /////////////////////////////// >=  >
+      if (ibm >= 0 && ibp >= 0 && ilep >= 0) break;
     }
 
     // No lepton from W found!!! This should not happen. Skip event if it does!
@@ -160,11 +164,41 @@ void ttbar(const char *inputFile, TH1 *hist) {
     // printf("BTAG: %d, %d, %d, %d\n", jet[0]->BTag, jet[1]->BTag,
     // jet[2]->BTag, jet[3]->BTag );
 
-    int nBTag = jet[0]->BTag + jet[1]->BTag + jet[2]->BTag + jet[3]->BTag;
-    histNBTag->Fill(nBTag);
+    //int nBTag = jet[0]->BTag + jet[1]->BTag + jet[2]->BTag + jet[3]->BTag;
+    int ngoodbjets = 0;
+    int goodbjet[4];
+    for (int i = 0; i < 4; i++)
+      if (jet[i]->BTag) goodbjet[ngoodbjets++] = i;
+
+    histNBTag->Fill(ngoodbjets);
+
+    if (ngoodbjets != 2) continue;
+    //if (met->MET <= 30000.) continue;
+
+    TLorentzVector MeT;
+    MeT.SetPtEtaPhiE(met->MET, 0, met->Phi, met->MET);
+
+    float mtw = sqrt(2.0f * plep.Pt() * MeT.Et() * (1.0f - cos(plep.DeltaPhi(MeT))));
+    if (mtw > 30000.0f) continue;
+
+    // how do we select bjet????????
+
+
+    Jet* bjet = jet[goodbjet[1]];
+    TLorentzVector bjet_1;
+    // bjet_1.SetPtEtaPhiE(bjet->PT, bjet->Eta, bjet->Phi, bjet->e Double_t e);
+    bjet_1.SetPtEtaPhiM(bjet->PT, bjet->Eta, bjet->Phi, bjet->Mass);
+
+
+    float m_t = 172.8f;
+    float M_W = 80.4f;
+    float Meb = (plep + bjet_1).M();
+    float costheta  = 2.0f * Meb * Meb / (m_t * m_t - M_W * M_W) - 1.0f;
+    printf("Meb : %f, \tcos theta : %f\n", Meb, costheta);
+    histCTStar->Fill(costheta);
+
   }
-
-
+    
   // Show histograms
   //if (histsum != NULL) {
   //  if (!strcmp(inputFile, "./delphes0.root"))
@@ -202,6 +236,9 @@ void ttbar(const char *inputFile, TH1 *hist) {
 
   TCanvas *c4 = new TCanvas("c4", "c4", 80, 80, 700, 700);
   histCTStarGen->Draw();
+
+  TCanvas *c5 = new TCanvas("c5", "c5", 80, 80, 700, 700);
+  histCTStar->Draw();
 }
 
 
@@ -242,7 +279,7 @@ void costheta(){
   func->SetParameters(1.0, 1.0, 1.0);
   func->SetParNames("F_0", "F_L", "F_R");
 
-  //TFitResultPtr resultptr = atlas_costheta->Fit("fit");
+  TFitResultPtr resultptr = atlas_costheta->Fit("fit");
   //TFitResult* result = resultptr.Get();
 
   TCanvas *c5 = new TCanvas("c5", "c5", 80, 80, 700, 700);

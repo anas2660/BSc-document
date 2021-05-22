@@ -169,7 +169,7 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
             MeT.SetPtEtaPhiE(met_et, 0, met_phi, met_et);
 
             // Calculation of MTW
-            float mtw = sqrt(2 * Lepton_1.Pt() * MeT.Et() * (1 - cos(Lepton_1.DeltaPhi(MeT))));
+            float mtw = sqrt(2.0f * Lepton_1.Pt() * MeT.Et() * (1.0f - cos(Lepton_1.DeltaPhi(MeT))));
 
             // At least four good jets
             if (goodjet_n >= 4) {
@@ -356,7 +356,8 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
 
                   TLorentzVector bjet_1  = TLorentzVector();
                   int            bjet_lb = goodbjet_index[1 - bjet_jjj];
-                  bjet_1.SetPtEtaPhiE(jet_pt->at(bjet_lb), jet_eta->at(bjet_lb), jet_phi->at(bjet_lb), jet_E->at(bjet_lb));
+                  bjet_1.SetPtEtaPhiE(jet_pt->at(bjet_lb), jet_eta->at(bjet_lb),
+                                      jet_phi->at(bjet_lb), jet_E->at(bjet_lb));
 
 #define m_t 172.800f
 #define M_W 80.400f
