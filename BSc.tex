@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 
 \usepackage{amsmath}
 \usepackage{physics}
@@ -31,11 +31,11 @@ led to the construction of the large hadron collider (LHC), finished in 2008.
 Particles are collided together at high energy to probe the properties of the
 produced debris, hoping to discover new physics that deviates from the SM.\\
 
-The top quark was discovered in 1995, by experiments done by CDF and DØ. It is
-the heaviest known fundamental particle, with a mass of
-$173.34 \pm 0.27 \pm 0.71 \mathrm{GeV/c^2}$, and its coupling strength to all
-the bosons are well predicted by the standard model. Because of its heavy mass
-and consequently short lifetime, it doesn't have enough time to bind with
+The top quark was discovered in 1995, by experiments done by CDF\cite{Abe_1995}
+and DØ\cite{Abachi_1995}. It is the heaviest known fundamental particle, with a
+mass of $173.34 \pm 0.27 \pm 0.71 \mathrm{GeV/c^2}$, and its coupling strength
+to all the bosons are well predicted by the standard model. Because of its heavy
+mass and consequently short lifetime, it doesn't have enough time to bind with
 lighter quarks and form hadrons before it decays, which means that it
 effectively decays, to a good approximation, as a free quark. Measurements of
 the top quark's properties plays an important role in testing the Standard
@@ -51,8 +51,7 @@ and neutrino; $W \rightarrow l + \nu_l$, or into a quark, anti-quark pair: $W \r
 	\includegraphics[width=\linewidth]{Placeholder_FeynmanDiagram.png}
 	\caption{The Feynman diagram shows one of the possible decays of the top
       quarks. For this single leptonic decay, we see from the figure that there
-      are 4 quark jets as the end product.}
-	\label{fig_feynmandiagram}
+      are 4 quark jets as the end product.}\label{figfeynmandiagram}
 \end{figure}
 
 In this report, we are only looking at decays with a single lepton as decay
@@ -115,13 +114,13 @@ them is the result of violent inelastic collisions, which creates these jets of
 quarks, anti quarks.\\
 
 \subsubsection{Symmetries and Laws of Conservation}
-Emmy Noether showed that any conservation law is associated with a continues
-symmetry of the Lagrangian. The conservation laws of classical physics are the
-result of them being invariant with respect to their canonically conjugate
-quantities. The conservation of energy, linear momentum and angular momentum,
-stems from their invariance in time, space and angles respectively. This implies
-that the laws of physics are independent of the time, the location and the
-orientation in space.\\
+In the year 1971, Emmy Noether showed that any conservation law is associated
+with a continues symmetry of the Lagrangian\cite{Noether_1971}. The
+conservation laws of classical physics are the result of them being invariant
+with respect to their canonically conjugate quantities. The conservation of
+energy, linear momentum and angular momentum, stems from their invariance in
+time, space and angles respectively. This implies that the laws of physics are
+independent of the time, the location and the orientation in space.\\
 
 Another symmetry, that is very important for quantum mechanics, is the
 reflection symmetry, called parity. A wave function can have positive or
@@ -147,9 +146,10 @@ The Dirac equation extends the Schrödinger wave equations, to include the
 effects of special relativity. The solution to this equation shows that for
 relativistic particles, where $\beta = v/c \rightarrow 1$, the projection of a particle's spin
 onto the direction of their momentum is conserved. This conserved quantity is
-called helicity and is defined as
+called helicity\cite[63]{Povh2015} and is defined as
 
-\begin{equation} h = \frac{\vb s \cdot \vb p}{\abs{\vb s} \cdot \abs{\vb p}}.
+\begin{equation}
+  h = \frac{\vb{s \cdot p}}{\abs{\vb s} \cdot \abs{\vb p}}.
 \end{equation}
 
 Chirality is a fundamental property of a particle determined by representation
@@ -160,20 +160,18 @@ right-chiral antiparticles. The operator of an interaction that describes the
 exchange of a boson, can have both vector $V$ and axial vector $A$ nature. If it
 has both a vector and an axial part, as in the case of weak interactions, parity
 is violated, while maximum parity violation occurs when both the contributions
-becomes equal magnitude.
+becomes equal magnitude.\\
 
 After the discovery of parity violation and charge conjugation, by physicist C.S
-Wu, it was believed by physicists that CP-symmetry, the combination of charge
-conjugation symmetry and parity, was a true symmetry of the Standard model,
-until that too was violated in weak decay of neutral kaons, forcing physicists
-to reformulate the electroweak interaction in the Standard Model. The
-Cabbibo-Kobayashi-Maskawa (CKM) matrix explains how the flavour eigenstates of
-the quarks are related to the mass eigenstates, and is a $3 \times 3$ unitary matrix,
-with four independant parameters: three real angles and an imaginary phase. The
-imaginary phase gives rise to CP violation, but the matrix preserves CPT symmetry.
-
-%https://journals.aps.org/pr/abstract/10.1103/PhysRev.105.1413
-%INPP bogen side 153
+Wu\cite{PhysRev.105.1413}, it was believed by physicists that CP-symmetry, the
+combination of charge conjugation symmetry and parity, was a true symmetry of
+the Standard model, until that too was violated in weak decay of neutral kaons,
+forcing physicists to reformulate the electroweak interaction in the Standard
+Model. The Cabbibo-Kobayashi-Maskawa (CKM) matrix explains how the flavour
+eigenstates of the quarks are related to the mass eigenstates, and is a $3 \times 3$
+unitary matrix, with four independant parameters: three real angles and an
+imaginary phase\cite[153]{Povh2015}. The imaginary phase gives rise to CP
+violation, but the matrix preserves CPT symmetry.
 
 \subsection{Four-momentum}
 The data collected in LHC collisions, allows us to reconstruct the 4-vector of
@@ -220,7 +218,7 @@ of the production.
 
 %insætte Feynman diagram af gluon fusion og q-anti q annihilation
 
-\subsection{Coupling of W$^+$bt}
+\subsection{Coupling of W$^+$tb}
 The leptonic decay of the $W$boson, can decay into either of the three leptonic
 families, with nearly equal branching ratios. The $\tau$ lepton is also very
 unstable and has too short a lifetime, so it does not get tagged in this paper.
@@ -234,16 +232,22 @@ structure of the couple vertex is fulfilled. Because of parity violation, the
 events with positive helicity (right polarized) gets suppressed, while events
 with negative (left polarized) and longitudinal helicity dominates.
 
-%Vil indsætte et billede her om det
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{W_Polarization.png}
+	\caption{The figure illustrates W-boson with negative, zero and positive
+    helicity, corresponding to a left, longitudinal and right handed
+    polarization. The right handed polarization will be heavily suppressed
+    because of the (V-A) structure of the Wtb vertex.}\label{figpolarization}
+\end{figure}
 
 The fraction of; longitudinally $F_0$, left $F_L$ or right $F_R$ polarized
 $W-$bosons which are produced from top quark decay, we refer to as helicity
 fractions. In the Standard Model we can determine these fractions with quantum
-chromo dynamics, in next to next to leading order calculations to be
-$F_0 = 0.687 \pm 0.005$, $F_L = 0.311 \pm 0.005$ and $F_R = 0.0017 \pm 0.0001$.
-The experimental method to extract these fractions is by studying the angular
-decay distribution of the leptonic decay products of the top quark. The angular
-distribution is given by:
+chromo dynamics, in next to next to leading order (NNLO) calculations to be
+$F_0 = 0.687 \pm 0.005$, $F_L = 0.311 \pm 0.005$ and
+$F_R = 0.0017 \pm 0.0001$\cite{Czarnecki_2010}. The experimental method to
+extract these fractions is by studying the angular decay distribution of the
+leptonic decay products of the top quark. The angular distribution is given by:
 
 \begin{equation}
   \frac{1}{\Gamma}\dv{\Gamma}{\cos \theta^*} = \frac{3}{8}(1-\cos \theta^*)^2 F_L +
@@ -253,8 +257,8 @@ distribution is given by:
 Where $\theta^*$ is the helicity angle, which is defined as the angle between the
 decayed lepton momentum direction, and the reversible momentum direction of the
 $b$-quark decay from the same top quark, viewed from a reference frame with $W$
-at rest. From the 4-vectors of the lepton and $b$-jet, we can find the
-$\cos \theta^*$ from the following expression:
+at rest\cite{PhysRevD.45.124}. From the 4-vectors of the lepton and $b$-jet, we
+can find the $\cos \theta^*$ from the following expression:
 \begin{equation}
   \cos \theta^* = \frac{p_e \cdot p_b - E_e E_b}{\abs{\vb{p_e}} \abs{\vb{p_b}}} \simeq
   \frac{2 M_{eb}^2}{m_t^2 - M_W^2} - 1,
@@ -262,7 +266,18 @@ $\cos \theta^*$ from the following expression:
 
 here $p_l$ and $p_b$ are the four momentum vectors of the lepton and the bottom
 quark respectively. $M_{lb}$ is the invariant mass of the lepton and bottom
-quark system.
+quark system. The dependence is shown in Fig\ref{figdistributions} for the three
+distribution seperately, and for the SM, with the above mentioned NNLO helicity
+fractions.
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{angular_dist.png}
+	\caption{The predicted $\cos \theta^{*}$ angular distribution for helicity
+    fractions. The distributions for $F_{0}$, $F_{L}$ and $F_{R}$ are
+    normalized, and are given by the blue, red and green line respectively. The
+    black line is the sum of the three contributions, but with helicity
+    fractions given according to SM predictions.}\label{figdistributions}
+\end{figure}
 
 \section{Apparatus}
 
@@ -271,20 +286,20 @@ In the Large Hadron Collider, top quarks are mainly produced through violent
 collisions of protons, causing gluon-gluon fusion, which produces top, anti-top
 pairs $gg \rightarrow t\bar t$. The data used in this paper, is from the 2016 run at LHC,
 with a centre-of-mass energy of $\sqrt s = 13 \mathrm{TeV}$, which corresponds
-to an integrated luminosity of 10 $\mathrm{fb}^{-1}$. At these energies, the
-protons are accelerated close to the speed of light before their
+to an integrated luminosity of 10 $\mathrm{fb}^{-1}$\cite{oreach2020}. At these
+energies, the protons are accelerated close to the speed of light before their
 collisions in the ATLAS detector.\\
 
-This process starts, when protons are produced from hydrogen gas in a linear
-accelerator LINAC2 then gets injected into the LHC, through a series of smaller
-synchrotron accelerators, Proton Syncrotron Booster (PSB), Proton Syncrotron
-(PS) and Super Protron Synhrotron (SPS). The LHC receives bunches from another
-SPS, containing a lot of protons in each bunch, effectively increasing the
-cross-sectional area for collisions to occur. In order to prevent energy loss
-due to synchrotron radiation, the LHC was built to be the largest particle
-accelerator in the world, which has allowed it to reach higher energies than
-other accelerators. At these energies, more events happen inside the detector,
-described by the following equation:
+This process starts, when protons are generated from an ion source in the linear
+accelerator, LINAC2, then gets injected into the LHC, through a series of
+smaller synchrotron accelerators, Proton Syncrotron Booster (PSB), Proton
+Syncrotron (PS) and Super Protron Synhrotron (SPS)\cite[135]{Evans_2008}. The
+LHC receives bunches from another SPS, containing a lot of protons in each
+bunch, effectively increasing the cross-sectional area for collisions to occur.
+In order to prevent energy loss due to synchrotron radiation, the LHC was built
+to be the largest particle accelerator in the world, which has allowed it to
+reach higher energies than other accelerators. At these energies, more events
+happen inside the detector, described by the following equation:
 \begin{equation}
   N = \sigma \int L \dd t,
 \end{equation}
@@ -382,7 +397,8 @@ the detector, to compare theory with real data.
 % Definer Psuedorapidity \eta %
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
 \subsection{Event Selection}
-In order to identify the top-quark-pair production, several cuts in the data were implemented. The criteria are as follows 
+In order to identify the top-quark-pair production, several cuts in the data
+were implemented. The criteria are as follows
 \begin{itemize}
 	\item Only one electron or muon in the final state with $p_{T} > 30 \mathrm{GeV}$
 	\item Missing transverse momentum $E_{T}^{miss} > 30 \mathrm{GeV}$
@@ -395,7 +411,31 @@ where $\eta$ describes angle between the particle and the beam axis given by
 \begin{equation}
 	\eta = -\ln({\tan\left(\frac{\theta}{2}\right)})
 \end{equation}
+
 \subsubsection{B-tagging}
+To study the $Wtb$ structure, a mechanism to identify the $b$-jets from the
+other detected jets is required. First the jets are detected, $b$-hadrons,
+$c$-hadrons or light-flavour jets, then their trajectories (tracks) are
+reconstructed in the inner detector. Once a jet has been found, the jets
+contining b-hadrons are then identified by a combination of three distinct
+algorithms. Hadrons containing $b$-quarks have a long enough lifetime to fly a
+measurable distance before it decays, and can be exploted to built
+lifetime-based tagging algorithms. The impact parameter based algorithm, IP3D,
+uses transverse and longitudinal impact parameter significances of each track
+within a jet, the SV reconstructs the secondary vertex within the jet and decay
+chain multi-vertex algorithm (JetFitter) reconstructs the full b-hadron
+decay chain.\\
+
+To better discriminate between jets, a Boosted Decision Tree (BDT) algorithm,
+which uses the Root Toolkit for Multivariate Data Analysis (TMVA), is used to
+make cuts that discards most of the background components, the $c$- and
+light-flavoured jets. For this report, a $b$-jet efficiency rate of 70\% is
+used, which corresponds to a BDT cut value of 0.8244. This efficiency rate
+originates from samples of simulated $t\bar t$ events with a $c$- and light-jet
+rejection factor of nearly 400\cite{ATL-PHYS-PUB-2016-012}. At these cuts, most
+of the $c$-jets and light-flavoured jets gets rejected, while still maintaining
+most of the $b$-jet data.
+
 %\subsubsection{Single Lepton Channel}
 
 \subsection{The Code}
@@ -403,6 +443,9 @@ where $\eta$ describes angle between the particle and the beam axis given by
 \subsubsection{ROOT}
 
 \subsection{Results}
+
+\section{Discussion}
+
 
 \section{Conclusion}
 
