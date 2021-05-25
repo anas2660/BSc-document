@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 
 \usepackage{amsmath}
 \usepackage{physics}
@@ -309,11 +309,21 @@ subcomponents or subsections.
 % https://atlas.web.cern.ch/Atlas/TP/NEW/HTML/tp9new/node10.html#SECTION00433000000000000000
 % https://atlas.cern/discover/detector/inner-detector
 % https://en.wikipedia.org/wiki/ATLAS_experiment#Inner_Detector
+
 The purpose of this component is to measure charge and momentum, including it's
-direction, of the detected particle. It consists of three subcomponents.
+direction, of the detected particle. It consists of three subcomponents. 
 \paragraph{Pixel Detector}
+% https://iopscience.iop.org/article/10.1088/1748-0221/3/07/P07007
+The pixel detector consists of approximately 92 million electronic channels. It's used for identification and reconstruction of secondary vertices from decay of particles containing a b-quark or for b-tagging jets. The pixel detector covers pseudorapidity range $|\eta| < 2.5 $ 
+% Og mange flere kriterier relevant? 
+
 \paragraph{Semiconductor Tracker}
+%https://cds.cern.ch/record/1019885/files/indet-pub-2007-007.pdf
+The Semiconductor tracker is a silicon microstrip tracker consisting of 4088 two-sided modules and over 6 million readout strips. These readout strips are distributed every $80\mathrm{\mu m}$ which allows recording of the position of charged particles to an accuracy of  $17\mathrm{\mu m}$
+
 \paragraph{Transition Radiation Tracker.}
+The transition radiation tracker is a drift tube tracker which consists of a straw of 4mm diameter and 0.03mm diameter tungsten wire coated with 0.5-0.7mm gold. The tube is filled with a gas mixture of Xe, $\mathrm{CO_{2}}$ and $\mathrm{O_{2}}$. When charged particles travel through the tube the gas gets ionized which frees electrons that move to the gold wire. The negative charge measured on the wire can be used to distinguish which charged particle ionzed the gas. 
+%Kringlet, probably  omskriv?
 
 \subsubsection{Calorimeter}
 % https://atlas.web.cern.ch/Atlas/TP/NEW/HTML/tp9new/node9.html#SECTION00432000000000000000
@@ -321,12 +331,12 @@ direction, of the detected particle. It consists of three subcomponents.
 % https://en.wikipedia.org/wiki/ATLAS_experiment#Calorimeters
 This component will stop particles moving through while measuring the
 energy they lose by being stopped. % måske lidt kringlet og er passivt
-The Calorimeter can not stop muons and neutrinos.
+The Calorimeter can not stop muons and neutrinos. Region up to $|\eta| < 4.9 $ is covered.
 
 % 2 subcomponents
 \paragraph{Liquid Argon Calorimeter}
 \paragraph{Tile Hadronic Calorimeter}
-
+Measures hadrons
 \subsubsection{Muon Spectrometer}
 % https://atlas.web.cern.ch/Atlas/TP/NEW/HTML/tp9new/node11.html#SECTION00434000000000000000
 % https://atlas.cern/discover/detector/muon-spectrometer
