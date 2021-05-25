@@ -364,7 +364,9 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                   float Meb = (Lepton_1 + bjet_1).M() / 1000.0f;
                   costheta  = 2.0f * Meb * Meb / (m_t * m_t - M_W * M_W) - 1.0f;
 
-                  FillHistogramsGlobal(costheta, weight, "hist_costheta");
+                  if (costheta >= 0.0f && costheta <= 1.0f)
+                    FillHistogramsGlobal(costheta, weight, "hist_costheta");
+
 
                   /////#define m_t 172800.0f
                   /////#define M_W 80400.0f
@@ -388,8 +390,8 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
 
                   float Mjjmax = (j1 + j2).M() / 1000.; // first indices
 
-                  //if (Mjjjmax > 100 && Mjjjmax < 250)
-                  FillHistogramsTTbar(Mjjjmax, weight, "hist_Topmass");
+                  if (Mjjjmax > 100 && Mjjjmax < 250)
+                    FillHistogramsTTbar(Mjjjmax, weight, "hist_Topmass");
 
                   if (Mjjmax > 50 && Mjjmax < 120) FillHistogramsTTbar(Mjjmax, weight, "hist_Wmass");
 
