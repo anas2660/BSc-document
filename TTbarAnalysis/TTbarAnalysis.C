@@ -366,13 +366,18 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                   float Meb = (Lepton_1 + bjet_1).M() / 1000.0f;
                   costheta  = 2.0f * Meb * Meb / (m_t * m_t - M_W * M_W) - 1.0f;
                   
-                  static const float zplus = 0.58740105f;
-                  static const float zminus = -0.58740105f;
+                  static const float zplus = -0.58740105f;
+                  static const float zminus = 0.58740105f;
                   
-                  if (costheta > zplus) Nzplus ++;
-                  if (costheta > zminus) Nzminus ++;
+                  
 
-                  if (costheta >= -1.0f && costheta <= 1.0f) FillHistogramsGlobal(costheta, weight, "hist_costheta");
+                  if (costheta >= -1.0f && costheta <= 1.0f) {
+                    if (costheta > zplus) Nzplus ++;
+                    if (costheta > zminus) Nzminus ++;
+                    FillHistogramsGlobal(costheta, weight, "hist_costheta");
+                  } 
+
+                  
 
                   /////#define m_t 172800.0f
                   /////#define M_W 80400.0f
