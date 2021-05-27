@@ -226,7 +226,8 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                                                         Lepton_1.E() / 1000.,
                                                         Lepton_1.Phi(),
                                                         (double)lep_charge->at(goodlep_index),
-                                                        (double)lep_type->at(goodlep_index)};
+                                                        (double)lep_type->at(goodlep_index),
+                                                        Lepton_1.Et()/1000.0};
 
                   double names_of_jet_variable[] = {(double)goodjet_n,   jet_pt->at(goodjet1_index) / 1000.,  jet_eta->at(goodjet1_index),
                                                     (double)goodbjet_n,  jet_pt->at(goodbjet1_index) / 1000., jet_eta->at(goodbjet1_index),
@@ -234,8 +235,8 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
 
                   TString histonames_of_global_variable[] = {"hist_etmiss", "hist_mtw"};
 
-                  TString histonames_of_leadlep_variable[] = {"hist_leadleptpt",  "hist_leadlepteta", "hist_leadleptE",
-                                                              "hist_leadleptphi", "hist_leadleptch",  "hist_leadleptID"};
+                  TString histonames_of_leadlep_variable[] = {"hist_leadleptpt", "hist_leadlepteta", "hist_leadleptE", "hist_leadleptphi",
+                                                              "hist_leadleptch", "hist_leadleptID",  "hist_leadleptEt"};
 
                   TString histonames_of_jet_variable[] = {"hist_n_jets",      "hist_leadjet_pt",   "hist_leadjet_eta",    "hist_n_bjets",
                                                           "hist_leadbjet_pt", "hist_leadbjet_eta", "hist_syst_leadjet_pt"};
@@ -246,16 +247,15 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
 
                   int length_leadjet = sizeof(names_of_jet_variable) / sizeof(names_of_jet_variable[0]);
 
-                  for (int i = 0; i < length_global; i++) {
+                  for (int i = 0; i < length_global; i++)
                     FillHistogramsGlobal(names_of_global_variable[i], weight, histonames_of_global_variable[i]);
-                  }
 
-                  for (int i = 0; i < length_leadlep; i++) {
+                  for (int i = 0; i < length_leadlep; i++)
                     FillHistogramsLeadlept(names_of_leadlep_variable[i], weight, histonames_of_leadlep_variable[i]);
-                  }
-                  for (int i = 0; i < length_leadjet; i++) {
+
+                  for (int i = 0; i < length_leadjet; i++)
                     FillHistogramsLeadJet(names_of_jet_variable[i], weight, histonames_of_jet_variable[i]);
-                  }
+
 
                   // Invariant mass distribution of the 3-jets combination with
                   // the highest vector pT sum, a handle on the top mass
@@ -271,10 +271,10 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                   //                  bool i_is_bjet, j_is_bjet, k_
                   for (int i = 0; i < goodjet_n; ++i) {
                     // int bjet_matched = 0;
-                    int igji = goodjet_index[i];                 
+                    int igji = goodjet_index[i];
 
                     for (int j = i + 1; j < goodjet_n; ++j) {
-                      int igjj = goodjet_index[j];                    
+                      int igjj = goodjet_index[j];
 
                       for (int k = j + 1; k < goodjet_n; ++k) {
                         int igjk = goodjet_index[k];
@@ -305,7 +305,7 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                           bjets_found++;
                           bjet_used = 1;
                         }
-                        //if (!bjets_found) continue;
+                        // if (!bjets_found) continue;
 
                         if (bjets_found != 1) continue;
 
@@ -356,17 +356,14 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
 
                   TLorentzVector bjet_1  = TLorentzVector();
                   int            bjet_lb = goodbjet_index[1 - bjet_jjj];
-                  bjet_1.SetPtEtaPhiE(jet_pt->at(bjet_lb), jet_eta->at(bjet_lb),
-                                      jet_phi->at(bjet_lb), jet_E->at(bjet_lb));
+                  bjet_1.SetPtEtaPhiE(jet_pt->at(bjet_lb), jet_eta->at(bjet_lb), jet_phi->at(bjet_lb), jet_E->at(bjet_lb));
 
 #define m_t 172.800f
 #define M_W 80.400f
                   float Meb = (Lepton_1 + bjet_1).M() / 1000.0f;
                   costheta  = 2.0f * Meb * Meb / (m_t * m_t - M_W * M_W) - 1.0f;
 
-                  if (costheta >= 0.0f && costheta <= 1.0f)
-                    FillHistogramsGlobal(costheta, weight, "hist_costheta");
-
+                  if (costheta >= -1.0f && costheta <= 1.0f) FillHistogramsGlobal(costheta, weight, "hist_costheta");
 
                   /////#define m_t 172800.0f
                   /////#define M_W 80400.0f
@@ -390,8 +387,7 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
 
                   float Mjjmax = (j1 + j2).M() / 1000.; // first indices
 
-                  if (Mjjjmax > 100 && Mjjjmax < 250)
-                    FillHistogramsTTbar(Mjjjmax, weight, "hist_Topmass");
+                  if (Mjjjmax > 100 && Mjjjmax < 250) FillHistogramsTTbar(Mjjjmax, weight, "hist_Topmass");
 
                   if (Mjjmax > 50 && Mjjmax < 120) FillHistogramsTTbar(Mjjmax, weight, "hist_Wmass");
 
