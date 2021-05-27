@@ -370,14 +370,13 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                   static const float zminus = 0.58740105f;
                   
                   
-                  //Remove overflow & underflow
+                  // Remove overflow & underflow
                   if (costheta >= -1.0f && costheta <= 1.0f) {
                     if (costheta > zplus) Nzplus ++;
                     if (costheta > zminus) Nzminus ++;
                     FillHistogramsGlobal(costheta, weight, "hist_costheta");
-                  } 
+                  }
 
-                  
 
                   /////#define m_t 172800.0f
                   /////#define M_W 80400.0f
