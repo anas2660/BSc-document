@@ -32,7 +32,10 @@
 
 string name;
 
-void TTbarAnalysis::Begin(TTree *) { nEvents = 0; }
+void TTbarAnalysis::Begin(TTree *) { 
+  nEvents = 0; 
+  Nzplus = Nzminus = 0;
+}
 
 void TTbarAnalysis::SlaveBegin(TTree *) {
   TString option = GetOption();
@@ -358,10 +361,16 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                   int            bjet_lb = goodbjet_index[1 - bjet_jjj];
                   bjet_1.SetPtEtaPhiE(jet_pt->at(bjet_lb), jet_eta->at(bjet_lb), jet_phi->at(bjet_lb), jet_E->at(bjet_lb));
 
-#define m_t 172.800f
-#define M_W 80.400f
+                  static const float m_t = 172.800f;
+                  static const float M_W = 80.400f;
                   float Meb = (Lepton_1 + bjet_1).M() / 1000.0f;
                   costheta  = 2.0f * Meb * Meb / (m_t * m_t - M_W * M_W) - 1.0f;
+                  
+                  static const float zplus = 0.58740105f;
+                  static const float zminus = -0.58740105f;
+                  
+                  if (costheta > zplus) Nzplus ++;
+                  if (costheta > zminus) Nzminus ++;
 
                   if (costheta >= -1.0f && costheta <= 1.0f) FillHistogramsGlobal(costheta, weight, "hist_costheta");
 
@@ -393,6 +402,8 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
 
                   // delete random number
                   gRand->Delete();
+
+                  
                 }
               }
             }
@@ -407,7 +418,21 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
 void TTbarAnalysis::SlaveTerminate() {}
 
 void TTbarAnalysis::Terminate() {
+  int NTotal = hist_costheta->GetEntries();
+  float Aplus = (float)(Nzplus - (NTotal - Nzplus)) / (float)(Nzplus + (NTotal - Nzplus));
+  float Aminus = (float)(Nzminus - (NTotal - Nzminus)) / (float)(Nzminus + (NTotal - Nzminus));
+  float beta = 0.25992104f;
+  float Fr = 1.0f/(1.0f-beta) + (Aminus - beta*Aplus)/(3.0f*beta*(1.0f-beta*beta));
+  float Fl = 1.0f/(1.0f-beta) + (Aplus - beta*Aminus)/(3.0f*beta*(1.0f-beta*beta));
+  float F0 = (1.0f+beta)/(1.0f-beta) + (Aplus - beta*Aminus)/(3.0f*beta*(1.0f-beta));
+  printf("Value of Fr %g\n", Fr);
+  printf("Value of Fl %g\n", Fl);
+  printf("Value of F0 %g\n", F0);
+  printf("Value of Aplus %g\n", Aplus);
+  printf("Value of Aminus %g\n", Aminus);
 
+
+ 
   TString filename_option = GetOption();
   printf("Writting with name option: %s \n", filename_option.Data());
   TString     output_name = "Output_TTbarAnalysis/" + filename_option + ".root";
@@ -416,4 +441,6 @@ void TTbarAnalysis::Terminate() {
   TFile physicsoutput_TTbar(filename, "recreate");
   WriteHistograms();
   physicsoutput_TTbar.Close();
+
+  
 }
