@@ -370,7 +370,7 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                   static const float zminus = 0.58740105f;
                   
                   
-
+                  //Remove overflow & underflow
                   if (costheta >= -1.0f && costheta <= 1.0f) {
                     if (costheta > zplus) Nzplus ++;
                     if (costheta > zminus) Nzminus ++;
@@ -427,9 +427,9 @@ void TTbarAnalysis::Terminate() {
   float Aplus = (float)(Nzplus - (NTotal - Nzplus)) / (float)(Nzplus + (NTotal - Nzplus));
   float Aminus = (float)(Nzminus - (NTotal - Nzminus)) / (float)(Nzminus + (NTotal - Nzminus));
   float beta = 0.25992104f;
-  float Fr = 1.0f/(1.0f-beta) + (Aminus - beta*Aplus)/(3.0f*beta*(1.0f-beta*beta));
-  float Fl = 1.0f/(1.0f-beta) + (Aplus - beta*Aminus)/(3.0f*beta*(1.0f-beta*beta));
-  float F0 = (1.0f+beta)/(1.0f-beta) + (Aplus - beta*Aminus)/(3.0f*beta*(1.0f-beta));
+  float Fr = 1.0f/(1.0f-beta) + (Aminus - beta * Aplus)/(3.0f*beta*(1.0f-beta*beta));
+  float Fl = 1.0f/(1.0f-beta) - (Aplus - beta * Aminus)/(3.0f*beta*(1.0f-beta*beta));
+  float F0 = -(1.0f+beta)/(1.0f-beta) + (Aplus - Aminus)/(3.0f*beta*(1.0f-beta));
   printf("Value of Fr %g\n", Fr);
   printf("Value of Fl %g\n", Fl);
   printf("Value of F0 %g\n", F0);
