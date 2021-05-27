@@ -97,15 +97,25 @@ parity symmetry (CP). Weak interactions does obey the combination of charge
 conjugation, parity, and time reversal symmetry.
 
 \subsubsection{Quantum Chromodynamics}
+
+
 Quantum chromo dynamics (QCD), is the theory of the strong interaction, which
-binds the quarks together. In QCD, each quark is associated with a color charge,
-that color confines the quark via the strong interaction, to other quarks, to
-make up a total color charge of white. While the color charge isn't physically
-related to actual colors, the way they mix together, is analogous to the way we
-mix the colors green, red and blue, as well as their anti colors, magenta,
-yellow and cyan. Because of these properties, quarks can bind together in groups
-with odd number of quarks, with at least three, to form baryons, or an even
-number of at least two, to form mesons.\\
+binds the quarks together. In the year 1964, physicist Murray Gell-Mann and his
+PhD student George Zweig, proposed that baryons and mesons could be explained by
+the existence of smaller triplet particles\cite{GELLMANN1964214}. Since the
+Pauli exclusion principle forbids any fermions from inhabiting the same state,
+leading to the development of the concept of color in 1973\cite{FRITZSCH1973365}
+by phycisists Harald Fritzsh, Heinrich Leutwyler and Murray Gell-mann,
+suggesting that these quarks had additional conserved
+quantum numbers, later named color charge.\\
+
+In QCD, each quark is associated with a color charge that confines the quark via
+the strong interaction to other quarks to make up a total color charge that is
+neutral. While the color charge isn't physically related to actual colors, the
+way they mix together, is analogous to the way we mix the colors green, red and
+blue, as well as their anti colors, magenta, yellow and cyan. Because of these
+properties, quarks can bind together in groups with odd number of quarks with
+at least three to form baryons, or an even number of at least two to form mesons.\\
 
 If enough energy is added to stretch one of the quarks away from the rest, the
 gluon field breaks, and a new quark and anti quark pair is created. This process
@@ -149,8 +159,13 @@ onto the direction of their momentum is conserved. This conserved quantity is
 called helicity\cite[63]{Povh2015} and is defined as
 
 \begin{equation}
-  h = \frac{\vb{s \cdot p}}{\abs{\vb s} \cdot \abs{\vb p}}.
+  h = \frac{\vb{s \cdot p}}{\abs{\vb s} \cdot \abs{\vb p}},
 \end{equation}
+
+where $\vb s$ is the  spin, and $\vb p$ is the momentum of the particle. For
+spin 1 particles, the Gauge bosons, the particle can take on three distinct
+helicity values, $h=-1$, $h=0$ and $h=1$, which corresponds to left handed,
+longtitudinal and right handed respectively.\\
 
 Chirality is a fundamental property of a particle determined by representation
 theory. In the relativistic limit the distinction between helicity and chirality
@@ -262,14 +277,14 @@ can find the $\cos \theta^*$ from the following expression:
 \begin{equation}
   \cos \theta^* = \frac{p_e \cdot p_b - E_e E_b}{\abs{\vb{p_e}} \abs{\vb{p_b}}} \simeq
   \frac{2 M_{eb}^2}{m_t^2 - M_W^2} - 1,
+  \label{eqcostheta}
 \end{equation}
 
 here $p_l$ and $p_b$ are the four momentum vectors of the lepton and the bottom
 quark respectively. $M_{lb}$ is the invariant mass of the lepton and bottom
-quark system. The dependence is shown in Fig\ref{figdistributions} for the three
+quark system. The dependence is shown in Fig.~\ref{figdistributions} for the three
 distribution seperately, and for the SM, with the above mentioned NNLO helicity
 fractions.
-
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{angular_dist.png}
 	\caption{The predicted $\cos \theta^{*}$ angular distribution for helicity
@@ -278,6 +293,28 @@ fractions.
     black line is the sum of the three contributions, but with helicity
     fractions given according to SM predictions.}\label{figdistributions}
 \end{figure}
+
+Another approach to obtaining the polarization states the $W$-bosons, is done by
+counting the number of events with a specific $\cos \theta^*$, then use angular
+asymmetries, $A_-$, and $A_+$, defined as
+\begin{equation}
+  A_{\pm}=\frac{N(\cos \theta^* > z)-N(\cos \theta^* < z)}{N(\cos \theta^* > z)+N(\cos \theta^* < z)},
+\end{equation}
+
+with $z=\pm(2^{2/3}-1)$, to choose asymmetries involving only dependence on
+$F_0$ and $F_L$ for $A_+$, or $F_0$ and $F_R$ for $A_-$. The helicity fractions
+for the $W$ boson, can then be obtained by
+\begin{equation}
+  \begin{split}
+    F_R=\frac{1}{1-\beta}+\frac{A_- - \beta A_+}{3\beta (1-\beta^2)},\\
+    F_L=\frac{1}{1-\beta}+\frac{A_+ - \beta A_-}{3\beta (1-\beta^2)},\\
+    F_0=\frac{1+\beta}{1-\beta}+\frac{A_+ - A_-}{3\beta (1-\beta)},
+  \end{split}
+\end{equation}
+
+where $\beta = 2^{1/3}-1$. The values for angular asymmetries is calculated in SM
+NNLO as $A_+=0.537 \pm 0.004$ and $A_-=-0.0841 \pm 0.006$.
+%kilde findes på forsøgs artiklen.
 
 \section{Apparatus}
 
@@ -436,15 +473,15 @@ within a jet, the SV reconstructs the secondary vertex within the jet and decay
 chain multi-vertex algorithm (JetFitter) reconstructs the full b-hadron
 decay chain.\\
 
-To better discriminate between jets, a Boosted Decision Tree (BDT) algorithm,
-which uses the Root Toolkit for Multivariate Data Analysis (TMVA), is used to
-make cuts that discards most of the background components, the $c$- and
-light-flavoured jets. For this report, a $b$-jet efficiency rate of 70\% is
-used, which corresponds to a BDT cut value of 0.8244. This efficiency rate
-originates from samples of simulated $t\bar t$ events with a $c$- and light-jet
-rejection factor of nearly 400\cite{ATL-PHYS-PUB-2016-012}. At these cuts, most
-of the $c$-jets and light-flavoured jets gets rejected, while still maintaining
-most of the $b$-jet data.
+To better discriminate between jets, a Boosted Decision Tree (BDT) algorithm
+called MV2c10, which uses the Root Toolkit for Multivariate Data Analysis
+(TMVA), is used to make cuts that discards most of the background components,
+the $c$- and light-flavoured jets. For this report, a $b$-jet efficiency rate of
+70\% is used, which corresponds to a BDT cut value of 0.8244. This efficiency
+rate originates from samples of simulated $t\bar t$ events with a $c$- and
+light-jet rejection factor of nearly 400\cite{ATL-PHYS-PUB-2016-012}. At these
+cuts, most of the $c$-jets and light-flavoured jets gets rejected, while still
+maintaining most of the $b$-jet data.
 
 %\subsubsection{Single Lepton Channel}
 
@@ -455,7 +492,28 @@ most of the $b$-jet data.
 \subsection{Results}
 
 \section{Discussion}
+Due to the limitations of the released 13 TeV Open Datasets, it was not possible
+to analyse the helicity fractions angular distribution through that data, which
+lead to the utilization of Delphes. The deviation between the predicted SM
+values for the helicity fraction, and the value obtained through the fitting, is
+possible the result of systematic errors in attempting to fit Delphes simulated
+spin orientation, to the data obtained from the LHC Open ATLAS run in 2016.
+Since Delphes runs a fast-simulation, it is not designed to be used in parallel
+with data taken from advanced detector studies. This analysis consequently
+serves as a test for this novel approach of combining Delphes simulations with
+data taken from ATLAS detector. While similar cuts was attempted to be
+implemented on the Delphes' truth-information, due to the absence of the
+b-tagging MV2c10 algorithm in Delphes, cuts were made using 80\% efficiency
+instead.\\  %skal finde en kilde til det her
 
+The reconstructed $\cos \theta^*$ had significant entries in overflow. Attempts using
+the theoretical $\cos \theta^*$, rather than the approximation, as seen in
+Eq.~\ref{eqcostheta}, but no visible differences appeared, and the overflow
+remained. This overflow was ignored in the fitting process, as only data
+remaining within the physically possible range from -1 to 1, was considered in
+the analysis. The Delphes data for the helicity destributions, had substantially
+less overflow, than data from OpenATLAS, which also motived the decision to only
+fit within the parameter -1 to 1.
 
 \section{Conclusion}
 
