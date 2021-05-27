@@ -47,8 +47,9 @@ void TTbarAnalysis::define_histograms() {
       new TH1F("hist_leadlept_ptc", "Leading Lepton Relative Transverse Momentum Isolation; ptconerel30^{leadlep}; Events / bin", 20, -0.1, 0.2);
   hist_leadleptetc =
       new TH1F("hist_leadleptetc", "Leading Lepton Relative Transverse Energy Isolation; etconerel20^{leadlep}; Events / bin", 20, -0.1, 0.2);
-  hist_leadlepz0 = new TH1F("hist_leadlepz0", "Leading Lepton z0 impact parameter; z_{0}^{leadlep} [mm]; Events / bin", 20, -1, 1);
-  hist_leadlepd0 = new TH1F("hist_leadlepd0", "Leading Lepton d0 impact parameter; d_{0}^{leadlep} [mm]; Events / bin", 20, -0.2, 0.2);
+  hist_leadlepz0  = new TH1F("hist_leadlepz0", "Leading Lepton z0 impact parameter; z_{0}^{leadlep} [mm]; Events / bin", 20, -1, 1);
+  hist_leadlepd0  = new TH1F("hist_leadlepd0", "Leading Lepton d0 impact parameter; d_{0}^{leadlep} [mm]; Events / bin", 20, -0.2, 0.2);
+  hist_leadleptEt = new TH1F("hist_leadleptEt", "Leading Lepton Transverse Energy; E_{T}^{leadlep} [GeV]; Events / bin", 30, 0, 300);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -76,6 +77,7 @@ void TTbarAnalysis::FillOutputList() {
   GetOutputList()->Add(hist_leadleptetc);
   GetOutputList()->Add(hist_leadlepz0);
   GetOutputList()->Add(hist_leadlepd0);
+  GetOutputList()->Add(hist_leadleptEt);
 
   // Add Jet variables histograms
   GetOutputList()->Add(hist_n_jets);
@@ -112,6 +114,7 @@ void TTbarAnalysis::WriteHistograms() {
   hist_leadleptetc->Write();
   hist_leadlepz0->Write();
   hist_leadlepd0->Write();
+  hist_leadleptEt->Write();
 
   // Write Jet variables histograms
   hist_n_jets->Write();
@@ -139,17 +142,18 @@ void TTbarAnalysis::FillHistogramsTTbar(double m, float w, TString s) {
 
 void TTbarAnalysis::FillHistogramsLeadlept(double m, float w, TString s) {
   // Leading lepton histograms
-  if (s.Contains("hist_leadleptpt")) hist_leadleptpt->Fill(m, w);
+  if (s.Contains("hist_leadleptpt"))      hist_leadleptpt->Fill(m, w);
   if (s.Contains("hist_syst_leadleptpt")) hist_syst_leadleptpt->Fill(m, w);
-  if (s.Contains("hist_leadlepteta")) hist_leadlepteta->Fill(m, w);
-  if (s.Contains("hist_leadleptE")) hist_leadleptE->Fill(m, w);
-  if (s.Contains("hist_leadleptphi")) hist_leadleptphi->Fill(m, w);
-  if (s.Contains("hist_leadleptch")) hist_leadleptch->Fill(m, w);
-  if (s.Contains("hist_leadleptID")) hist_leadleptID->Fill(m, w);
-  if (s.Contains("hist_leadlept_ptc")) hist_leadlept_ptc->Fill(m, w);
-  if (s.Contains("hist_leadleptetc")) hist_leadleptetc->Fill(m, w);
-  if (s.Contains("hist_leadlepz0")) hist_leadlepz0->Fill(m, w);
-  if (s.Contains("hist_leadlepd0")) hist_leadlepd0->Fill(m, w);
+  if (s.Contains("hist_leadlepteta"))     hist_leadlepteta->Fill(m, w);
+  if (s.Contains("hist_leadleptE"))       hist_leadleptE->Fill(m, w);
+  if (s.Contains("hist_leadleptphi"))     hist_leadleptphi->Fill(m, w);
+  if (s.Contains("hist_leadleptch"))      hist_leadleptch->Fill(m, w);
+  if (s.Contains("hist_leadleptID"))      hist_leadleptID->Fill(m, w);
+  if (s.Contains("hist_leadlept_ptc"))    hist_leadlept_ptc->Fill(m, w);
+  if (s.Contains("hist_leadleptetc"))     hist_leadleptetc->Fill(m, w);
+  if (s.Contains("hist_leadlepz0"))       hist_leadlepz0->Fill(m, w);
+  if (s.Contains("hist_leadlepd0"))       hist_leadlepd0->Fill(m, w);
+  if (s.Contains("hist_leadleptEt"))      hist_leadleptEt->Fill(m, w);
 }
 
 void TTbarAnalysis::FillHistogramsLeadJet(double m, float w, TString s) {

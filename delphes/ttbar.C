@@ -6,6 +6,7 @@ di-electron invariant mass.
 root -l examples/Example1.C'("delphes_output.root")'
 */
 
+#include <cassert>
 #ifdef __CLING__
 R__LOAD_LIBRARY(libDelphes)
 #endif
@@ -49,13 +50,13 @@ void ttbar(const char *inputFile, TH1 *hist) {
   //TClonesArray *branchPhoton      = treeReader->UseBranch("Photon");
 
   // Book histograms
-  TH1 *histMissET = new TH1F("missET", "Missing E_{T}", 60, 0., 300.);
-  TH1 *histLeptPT = new TH1F("lept_pt", "lepton P_{T}", 60, 0., 300.);
-  TH1 *histJet0PT = new TH1F("jet0_pt", "jet0 P_{T}", 60, 0., 300.);
-  TH1 *histJet1PT = new TH1F("jet1_pt", "jet1 P_{T}", 60, 0., 300.);
-  TH1 *histJet2PT = new TH1F("jet2_pt", "jet2 P_{T}", 60, 0., 300.);
-  TH1 *histJet3PT = new TH1F("jet3_pt", "jet3 P_{T}", 60, 0., 300.);
-  TH1 *histNBTag  = new TH1F("NBTag", "number BTag", 5, 0., 5.);
+  TH1 *histMissET = new TH1F("missET",  "Missing E_{T}", 60, 0., 300.);
+  TH1 *histLeptPT = new TH1F("lept_pt", "lepton P_{T}",  60, 0., 300.);
+  TH1 *histJet0PT = new TH1F("jet0_pt", "jet0 P_{T}",    60, 0., 300.);
+  TH1 *histJet1PT = new TH1F("jet1_pt", "jet1 P_{T}",    60, 0., 300.);
+  TH1 *histJet2PT = new TH1F("jet2_pt", "jet2 P_{T}",    60, 0., 300.);
+  TH1 *histJet3PT = new TH1F("jet3_pt", "jet3 P_{T}",    60, 0., 300.);
+  TH1 *histNBTag  = new TH1F("NBTag",   "number BTag",   5,  0., 5.);
 
   TH1 *histCTStarGen =
       new TH1F("CTStarGen", "generated cos(theta*)", 15, -1., 1.);
@@ -86,7 +87,7 @@ void ttbar(const char *inputFile, TH1 *hist) {
       }
 
       // Find b from t decay
-      if (PID == 5 ) { // b particle
+      if (PID == 5) { // b particle
         int M1 = (ipar_branch)->M1;
         if (M1 < 0) continue;
         if (ABS_PID(M1) == 6) { // top particle
@@ -200,15 +201,25 @@ void ttbar(const char *inputFile, TH1 *hist) {
     
   // Show histograms
   //if (histsum != NULL) {
-  //  if (!strcmp(inputFile, "./delphes0.root"))
-  //    histCTStarGen->Scale(0.687);
-  //  if (!strcmp(inputFile, "./delphesL.root"))
-  //    histCTStarGen->Scale(0.311);
-  //  if (!strcmp(inputFile, "./delphesR.root"))
-  //    histCTStarGen->Scale(0.0017);
+  TCanvas *ctruth = new TCanvas("ctruth", "ctruth", 80, 80, 700, 700);
+  histCTStarGen->Draw();
+  if (!strcmp(inputFile, "./delphes0.root"))
+    ctruth->SaveAs("out/delphes_gen0.png");
+  //histCTStarGen->Scale(0.687);
+  if (!strcmp(inputFile, "./delphesL.root"))
+    ctruth->SaveAs("out/delphes_genL.png");
+  //histCTStarGen->Scale(0.311);
+  if (!strcmp(inputFile, "./delphesR.root"))
+    ctruth->SaveAs("out/delphes_genR.png");
+  //histCTStarGen->Scale(0.0017);
   //  histsum->Add(histCTStarGen);
   //  return;
   //}
+  ctruth->Close();
+  delete ctruth;
+
+  //TCanvas *c4 = new TCanvas("c4", "c4", 80, 80, 700, 700);
+  //histCTStarGen->Draw();
 
   if (hist) return;
 
@@ -298,11 +309,11 @@ void costheta(){
       new TH1F("CTStarGenSum", "generated sum cos(theta*)", 15, -1., 1.);
 
   histCTStarGen0 =
-      new TH1F("CTStarGen0", "generated cos(theta*)", 15, -1., 1.);
+      new TH1F("CTStarGen0", "cos(theta*)", 15, -1., 1.);
   histCTStarGenL =
-      new TH1F("CTStarGenL", "generated cos(theta*)", 15, -1., 1.);
+      new TH1F("CTStarGenL", "cos(theta*)", 15, -1., 1.);
   histCTStarGenR =
-      new TH1F("CTStarGenR", "generated cos(theta*)", 15, -1., 1.);
+      new TH1F("CTStarGenR", "cos(theta*)", 15, -1., 1.);
 
   ttbar("./delphes0.root", histCTStarGen0);
   ttbar("./delphesL.root", histCTStarGenL);
@@ -319,14 +330,38 @@ void costheta(){
   TCanvas *c5 = new TCanvas("c5", "c5", 80, 80, 700, 700);
   TF1* f = new TF1("fitfunc", fitfunc, -1, 1, 3);
   f->SetParNames("F_0", "F_L", "F_R");
+  f->SetNpx(1000);
+  f->SetLineColor(kRed);
+  f->SetLineWidth(3);
 
   //atlas_costheta->Scale(1.0f/128.460461f);
 
   atlas_costheta->Fit(f, "L");
+  //c5->BuildLegend();
   atlas_costheta->Draw();
+  //c5->BuildLegend();
+  auto legend = new TLegend(0.6,0.7125,0.975,0.75);
+  //legend->SetHeader("The Legend Title","C"); // option "C" allows to center the header
+  legend->AddEntry(atlas_costheta, "ATLAS data cos theta*","l");
+  // legend->AddEntry("fitfunc","Delphes fit","l");
+  legend->Draw();
+
+  c5->SaveAs("out/delphes_fit.png");
+
+
   TCanvas *c6 = new TCanvas("c6", "c6", 80, 80, 700, 700);
   histCTStarGen0->Draw();
-  //c6->Divide(3);
+  c6->SaveAs("out/delphes_ctstar0.png");
+
+  TCanvas *c7 = new TCanvas("c7", "c7", 80, 80, 700, 700);
+  histCTStarGenR->Draw(); //"SAME"
+  c7->SaveAs("out/delphes_ctstarR.png");
+
+  TCanvas *c8 = new TCanvas("c8", "c8", 80, 80, 700, 700);
+  //histCTStarGenR->SetLineColor(gROOT->GetColor(1)->GetNumber());
+  histCTStarGenL->Draw(); //"SAME"
+  c8->SaveAs("out/delphes_ctstarL.png");
+  //histCTStarGenR->SetLineColor(gROOT->GetColor(2)->GetNumber());
   //c6->cd(0);
   ///c6->cd(1);
   ///histCTStarGenL->Draw();
@@ -344,7 +379,14 @@ void costheta(){
 //  histCTStarGenSum->Add(histCTStarGenR);
 //  histCTStarGenSum->Draw();
 
+  assert(atlas_file);
+  assert(atlas_costheta);
+  assert(histCTStarGen0);
+  assert(histCTStarGenL);
+  assert(histCTStarGenR);
 
+  
+  
   //TF1 *func = new TF1("fit", fitf, -1, 1);
   //func->SetParameters(1.0, 1.0, 1.0);
   //func->SetParNames("F_0", "F_L", "F_R");

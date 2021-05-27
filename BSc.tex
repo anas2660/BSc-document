@@ -6,6 +6,8 @@
 \usepackage{graphicx}
 \usepackage{biblatex}
 \usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \addbibresource{References.bib}
 \nocite{*}
@@ -22,6 +24,7 @@ DATE
 \end{abstract}
 \cleardoublepage{}
 \tableofcontents{}
+\cleardoublepage{}
 \section{Introduction}
 The standard model (SM) of particle physics is very successful at describing the
 fundamental constituents of matter in our universe. Through experiments with
@@ -275,9 +278,7 @@ $b$-quark decay from the same top quark, viewed from a reference frame with $W$
 at rest\cite{PhysRevD.45.124}. From the 4-vectors of the lepton and $b$-jet, we
 can find the $\cos \theta^*$ from the following expression:
 \begin{equation}
-  \cos \theta^* = \frac{p_e \cdot p_b - E_e E_b}{\abs{\vb{p_e}} \abs{\vb{p_b}}} \simeq
-  \frac{2 M_{eb}^2}{m_t^2 - M_W^2} - 1,
-  \label{eqcostheta}
+  \frac{2 M_{eb}^2}{m_t^2 - M_W^2} - 1, \label{eq:costheta}
 \end{equation}
 
 here $p_l$ and $p_b$ are the four momentum vectors of the lepton and the bottom
@@ -444,13 +445,14 @@ the detector, to compare theory with real data.
 % Definer Psuedorapidity \eta %
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
 \subsection{Event Selection}
+\label{sec:cuts}
 In order to identify the top-quark-pair production, several cuts in the data
 were implemented. The criteria are as follows
 \begin{itemize}
 	\item Only one electron or muon in the final state with $p_{T} > 30 \mathrm{GeV}$
 	\item Missing transverse momentum $E_{T}^{miss} > 30 \mathrm{GeV}$
 	\item Transverse mass of the W-boson $M_{T}^{W} > 30 \mathrm{GeV}$
-	\item At least four jets with $p_{T} > 30 \mathrm{GeV}$, with two of these being b-tagged
+	\item At least four jets with $p_{T} > 30 \mathrm{GeV}$, with exactly two of these being b-tagged
 	\item Electrons are required to have $|\eta| > 2.47$ aside from $1.37 < |\eta| < 1.52$
 	\item Muons are limited by $|\eta| > 2.50$
 \end{itemize}
@@ -485,6 +487,146 @@ maintaining most of the $b$-jet data.
 
 %\subsubsection{Single Lepton Channel}
 
+\subsection{Histograms from the ATLAS data}
+
+After we have identified top-quark pair production we know that only one lepton
+should be present in the event. This means that we can use the first lepton in
+the event as the leading lepton. This lepton, however, can be either a electron
+or a muon. Using this information we can construct the Lorentz vector for the
+lepton, and from this we can plot the transverse energy. To calculate the
+transverse energy we are using the builtin ROOT \texttt{TLorentzVector} member
+function \texttt{Et()}. That function is effectively defined as
+\begin{equation}
+  % {{{\it p\_t}\,\sqrt{{\it p\_y}^2+{\it p\_x}^2}}\over{\sqrt{ {\it p\_z}^2+{\it p\_y}^2+{\it p\_x}^2}}}
+  E_t = p_t \frac{\sqrt{p_y^2+p_x^2}}{\sqrt{p_z^2+p_y^2+p_x^2}}
+\end{equation}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{figures/hist_leadleptEt}
+  \caption{\label{fig:lepEt}Lead lepton transverse energy for both single-electron and single-muon channel.}
+\end{figure}
+% Wait, er det her ikke det samme da M er tæt på nul? Det er måske derfor de
+% splitter electron muon. det kan være vi bare skal plotte noget andet eller vi
+% kan jo selvfølgelig også bare gøre det samme som de gør ved at splitte
+% electron/muon. Vi kan endda også bare plotte histogrammet med partikel id for
+% at vise hvor mange af hver der er
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{figures/hist_leadleptpt}
+  \caption{\label{fig:leppt}Lead lepton transverse momentum for both single-electron and single-muon channel.}
+\end{figure}
+
+
+In the given data we are directly given the missing transverse energy, which we
+can then immediately plot if the given event satisfies all the criteria given in
+subsection \ref{sec:cuts}. It is worth noting that it is given in the unit MeV, and all we have
+to do is simply convert to GeV, for a more manageable unit in the plot.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{figures/hist_etmiss}
+  \caption{\label{fig:etmiss}Missing transverse energy for both single-electron and single-muon channel.}
+\end{figure}
+
+We are also given transverse momentum of jets in the event. % maybe explain jvt
+The jets in the event are ordered and we can therefore get information about the
+leading jet by accessing the first one. % also a requirement on pseudorapidity
+% of the jets to be less than 2.5, however this should probably be mentioned in
+% the criteria
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{figures/hist_leadjet_pt}
+  \caption{\label{fig:jetpt}Lead jet transverse momentum for both single-electron and single-muon channel.}
+\end{figure}
+
+
+
+\subsection{$\cos \theta^{*}$ reconstruction}
+From the data we can reconstruct $\cos \theta^{*}$ using equation \eqref{eq:costheta}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/hist_costheta}
+  \caption{\label{fig:costhetaatlas}Reconstructed $\cos \theta^{*}$ from ATLAS data.}
+\end{figure}
+
+
+
+% do we differentiate between them by S_z value
+\subsection{Delphes data}
+Using delphes we can at least verify that the generated data at least matches
+the theoretical analytical functions plotted in figure \ref{figdistributions} as
+a sanity check. % i guess we just fit them instead of doing
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_genL}
+        \caption{Lorem ipsum}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_genR}
+        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+      \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_gen0}
+        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+    \end{subfigure}
+    \caption{Caption place holder}
+\end{figure*}
+Using the same information, as we would get in the ATLAS data, we can use the
+same criteria from subsection \ref{sec:cuts} to isolate the equivalent usable
+data, as we would get from the ATLAS detector, in the delphes data.
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarL}
+        \caption{Lorem ipsum}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarR}
+        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+      \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstar0}
+        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+    \end{subfigure}
+    \caption{Caption place holder}
+\end{figure*}
+We can now fit the resulting histograms in a linear combination to the histogram from the ATLAS data.
+\cleardoublepage{}
+\subsection{Fitting to atlas data}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/delphes_fit}
+  \caption{\label{fig:delphesfit}Reconstructed Delphes $\cos \theta^{*}$ fitted to
+    the $\cos \theta^{*}$ from ATLAS data.}
+\end{figure}
+
+\begin{verbatim}
+FCN=954.777 FROM MIGRAD    STATUS=CONVERGED   217 CALLS   218 TOTAL
+          EDM=3.15154e-10    STRATEGY= 1      ERROR MATRIX ACCURATE
+ NO. PARAMETER VALUE         ERROR         STEP SIZE  FIRST DERIVATIVE
+  1  F_0       4.00289e+01   1.28234e+00   4.79954e-03  -4.35846e-05
+  2  F_L       2.79292e+01   4.50791e-01   3.37816e-03  -6.07790e-05
+  3  F_R       2.28996e-01   4.03043e-01   2.22299e-03  -4.81292e-05
+                               ERR DEF= 0.5
+\end{verbatim}
+
+
+
+%%% TODO: LAST of the four
+%%% CHECK IF CHANNELS ARE WORTH DISTINGUISHING BETWEEN
+%%% ADD COSTHETA
+%%% DELPHES TRUTH
+%%%
+
+
+
+
 \subsection{The Code}
 
 \subsubsection{ROOT}
@@ -508,7 +650,7 @@ instead.\\  %skal finde en kilde til det her
 
 The reconstructed $\cos \theta^*$ had significant entries in overflow. Attempts using
 the theoretical $\cos \theta^*$, rather than the approximation, as seen in
-Eq.~\ref{eqcostheta}, but no visible differences appeared, and the overflow
+Eq.~\ref{eq:costheta}, but no visible differences appeared, and the overflow
 remained. This overflow was ignored in the fitting process, as only data
 remaining within the physically possible range from -1 to 1, was considered in
 the analysis. The Delphes data for the helicity destributions, had substantially
