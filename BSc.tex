@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 
 \usepackage{amsmath}
 \usepackage{physics}
@@ -6,9 +6,13 @@
 \usepackage{graphicx}
 \usepackage{biblatex}
 \usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \addbibresource{References.bib}
 \nocite{*}
+
+\numberwithin{equation}{section}
 
 \begin{document}
 
@@ -22,6 +26,7 @@ DATE
 \end{abstract}
 \cleardoublepage{}
 \tableofcontents{}
+\cleardoublepage{}
 \section{Introduction}
 The standard model (SM) of particle physics is very successful at describing the
 fundamental constituents of matter in our universe. Through experiments with
@@ -31,11 +36,11 @@ led to the construction of the large hadron collider (LHC), finished in 2008.
 Particles are collided together at high energy to probe the properties of the
 produced debris, hoping to discover new physics that deviates from the SM.\\
 
-The top quark was discovered in 1995, by experiments done by CDF and DØ. It is
-the heaviest known fundamental particle, with a mass of
-$173.34 \pm 0.27 \pm 0.71 \mathrm{GeV/c^2}$, and its coupling strength to all
-the bosons are well predicted by the standard model. Because of its heavy mass
-and consequently short lifetime, it doesn't have enough time to bind with
+The top quark was discovered in 1995, by experiments done by CDF\cite{Abe_1995}
+and DØ\cite{Abachi_1995}. It is the heaviest known fundamental particle, with a
+mass of $173.34 \pm 0.27 \pm 0.71 \mathrm{GeV/c^2}$, and its coupling strength
+to all the bosons are well predicted by the standard model. Because of its heavy
+mass and consequently short lifetime, it doesn't have enough time to bind with
 lighter quarks and form hadrons before it decays, which means that it
 effectively decays, to a good approximation, as a free quark. Measurements of
 the top quark's properties plays an important role in testing the Standard
@@ -51,8 +56,7 @@ and neutrino; $W \rightarrow l + \nu_l$, or into a quark, anti-quark pair: $W \r
 	\includegraphics[width=\linewidth]{Placeholder_FeynmanDiagram.png}
 	\caption{The Feynman diagram shows one of the possible decays of the top
       quarks. For this single leptonic decay, we see from the figure that there
-      are 4 quark jets as the end product.}
-	\label{fig_feynmandiagram}
+      are 4 quark jets as the end product.}\label{figfeynmandiagram}
 \end{figure}
 
 In this report, we are only looking at decays with a single lepton as decay
@@ -98,15 +102,25 @@ parity symmetry (CP). Weak interactions does obey the combination of charge
 conjugation, parity, and time reversal symmetry.
 
 \subsubsection{Quantum Chromodynamics}
+
+
 Quantum chromo dynamics (QCD), is the theory of the strong interaction, which
-binds the quarks together. In QCD, each quark is associated with a color charge,
-that color confines the quark via the strong interaction, to other quarks, to
-make up a total color charge of white. While the color charge isn't physically
-related to actual colors, the way they mix together, is analogous to the way we
-mix the colors green, red and blue, as well as their anti colors, magenta,
-yellow and cyan. Because of these properties, quarks can bind together in groups
-with odd number of quarks, with at least three, to form baryons, or an even
-number of at least two, to form mesons.\\
+binds the quarks together. In the year 1964, physicist Murray Gell-Mann and his
+PhD student George Zweig, proposed that baryons and mesons could be explained by
+the existence of smaller triplet particles\cite{GELLMANN1964214}. Since the
+Pauli exclusion principle forbids any fermions from inhabiting the same state,
+leading to the development of the concept of color in 1973\cite{FRITZSCH1973365}
+by phycisists Harald Fritzsh, Heinrich Leutwyler and Murray Gell-mann,
+suggesting that these quarks had additional conserved
+quantum numbers, later named color charge.\\
+
+In QCD, each quark is associated with a color charge that confines the quark via
+the strong interaction to other quarks to make up a total color charge that is
+neutral. While the color charge isn't physically related to actual colors, the
+way they mix together, is analogous to the way we mix the colors green, red and
+blue, as well as their anti colors, magenta, yellow and cyan. Because of these
+properties, quarks can bind together in groups with odd number of quarks with
+at least three to form baryons, or an even number of at least two to form mesons.\\
 
 If enough energy is added to stretch one of the quarks away from the rest, the
 gluon field breaks, and a new quark and anti quark pair is created. This process
@@ -115,13 +129,13 @@ them is the result of violent inelastic collisions, which creates these jets of
 quarks, anti quarks.\\
 
 \subsubsection{Symmetries and Laws of Conservation}
-Emmy Noether showed that any conservation law is associated with a continues
-symmetry of the Lagrangian. The conservation laws of classical physics are the
-result of them being invariant with respect to their canonically conjugate
-quantities. The conservation of energy, linear momentum and angular momentum,
-stems from their invariance in time, space and angles respectively. This implies
-that the laws of physics are independent of the time, the location and the
-orientation in space.\\
+In the year 1971, Emmy Noether showed that any conservation law is associated
+with a continues symmetry of the Lagrangian\cite{Noether_1971}. The
+conservation laws of classical physics are the result of them being invariant
+with respect to their canonically conjugate quantities. The conservation of
+energy, linear momentum and angular momentum, stems from their invariance in
+time, space and angles respectively. This implies that the laws of physics are
+independent of the time, the location and the orientation in space.\\
 
 Another symmetry, that is very important for quantum mechanics, is the
 reflection symmetry, called parity. A wave function can have positive or
@@ -147,10 +161,16 @@ The Dirac equation extends the Schrödinger wave equations, to include the
 effects of special relativity. The solution to this equation shows that for
 relativistic particles, where $\beta = v/c \rightarrow 1$, the projection of a particle's spin
 onto the direction of their momentum is conserved. This conserved quantity is
-called helicity and is defined as
+called helicity\cite[63]{Povh2015} and is defined as
 
-\begin{equation} h = \frac{\vb s \cdot \vb p}{\abs{\vb s} \cdot \abs{\vb p}}.
+\begin{equation}
+  h = \frac{\vb{s \cdot p}}{\abs{\vb s} \cdot \abs{\vb p}},
 \end{equation}
+
+where $\vb s$ is the  spin, and $\vb p$ is the momentum of the particle. For
+spin 1 particles, the Gauge bosons, the particle can take on three distinct
+helicity values, $h=-1$, $h=0$ and $h=1$, which corresponds to left handed,
+longtitudinal and right handed respectively.\\
 
 Chirality is a fundamental property of a particle determined by representation
 theory. In the relativistic limit the distinction between helicity and chirality
@@ -160,20 +180,18 @@ right-chiral antiparticles. The operator of an interaction that describes the
 exchange of a boson, can have both vector $V$ and axial vector $A$ nature. If it
 has both a vector and an axial part, as in the case of weak interactions, parity
 is violated, while maximum parity violation occurs when both the contributions
-becomes equal magnitude.
+becomes equal magnitude.\\
 
 After the discovery of parity violation and charge conjugation, by physicist C.S
-Wu, it was believed by physicists that CP-symmetry, the combination of charge
-conjugation symmetry and parity, was a true symmetry of the Standard model,
-until that too was violated in weak decay of neutral kaons, forcing physicists
-to reformulate the electroweak interaction in the Standard Model. The
-Cabbibo-Kobayashi-Maskawa (CKM) matrix explains how the flavour eigenstates of
-the quarks are related to the mass eigenstates, and is a $3 \times 3$ unitary matrix,
-with four independant parameters: three real angles and an imaginary phase. The
-imaginary phase gives rise to CP violation, but the matrix preserves CPT symmetry.
-
-%https://journals.aps.org/pr/abstract/10.1103/PhysRev.105.1413
-%INPP bogen side 153
+Wu\cite{PhysRev.105.1413}, it was believed by physicists that CP-symmetry, the
+combination of charge conjugation symmetry and parity, was a true symmetry of
+the Standard model, until that too was violated in weak decay of neutral kaons,
+forcing physicists to reformulate the electroweak interaction in the Standard
+Model. The Cabbibo-Kobayashi-Maskawa (CKM) matrix explains how the flavour
+eigenstates of the quarks are related to the mass eigenstates, and is a $3 \times 3$
+unitary matrix, with four independant parameters: three real angles and an
+imaginary phase\cite[153]{Povh2015}. The imaginary phase gives rise to CP
+violation, but the matrix preserves CPT symmetry.
 
 \subsection{Four-momentum}
 The data collected in LHC collisions, allows us to reconstruct the 4-vector of
@@ -220,7 +238,7 @@ of the production.
 
 %insætte Feynman diagram af gluon fusion og q-anti q annihilation
 
-\subsection{Coupling of W$^+$bt}
+\subsection{Coupling of W$^+$tb}
 The leptonic decay of the $W$boson, can decay into either of the three leptonic
 families, with nearly equal branching ratios. The $\tau$ lepton is also very
 unstable and has too short a lifetime, so it does not get tagged in this paper.
@@ -234,16 +252,22 @@ structure of the couple vertex is fulfilled. Because of parity violation, the
 events with positive helicity (right polarized) gets suppressed, while events
 with negative (left polarized) and longitudinal helicity dominates.
 
-%Vil indsætte et billede her om det
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{W_Polarization.png}
+	\caption{The figure illustrates W-boson with negative, zero and positive
+    helicity, corresponding to a left, longitudinal and right handed
+    polarization. The right handed polarization will be heavily suppressed
+    because of the (V-A) structure of the Wtb vertex.}\label{figpolarization}
+\end{figure}
 
 The fraction of; longitudinally $F_0$, left $F_L$ or right $F_R$ polarized
 $W-$bosons which are produced from top quark decay, we refer to as helicity
 fractions. In the Standard Model we can determine these fractions with quantum
-chromo dynamics, in next to next to leading order calculations to be
-$F_0 = 0.687 \pm 0.005$, $F_L = 0.311 \pm 0.005$ and $F_R = 0.0017 \pm 0.0001$.
-The experimental method to extract these fractions is by studying the angular
-decay distribution of the leptonic decay products of the top quark. The angular
-distribution is given by:
+chromo dynamics, in next to next to leading order (NNLO) calculations to be
+$F_0 = 0.687 \pm 0.005$, $F_L = 0.311 \pm 0.005$ and
+$F_R = 0.0017 \pm 0.0001$\cite{Czarnecki_2010}. The experimental method to
+extract these fractions is by studying the angular decay distribution of the
+leptonic decay products of the top quark. The angular distribution is given by:
 
 \begin{equation}
   \frac{1}{\Gamma}\dv{\Gamma}{\cos \theta^*} = \frac{3}{8}(1-\cos \theta^*)^2 F_L +
@@ -253,16 +277,45 @@ distribution is given by:
 Where $\theta^*$ is the helicity angle, which is defined as the angle between the
 decayed lepton momentum direction, and the reversible momentum direction of the
 $b$-quark decay from the same top quark, viewed from a reference frame with $W$
-at rest. From the 4-vectors of the lepton and $b$-jet, we can find the
-$\cos \theta^*$ from the following expression:
+at rest\cite{PhysRevD.45.124}. From the 4-vectors of the lepton and $b$-jet, we
+can find the $\cos \theta^*$ from the following expression:
 \begin{equation}
-  \cos \theta^* = \frac{p_e \cdot p_b - E_e E_b}{\abs{\vb{p_e}} \abs{\vb{p_b}}} \simeq
-  \frac{2 M_{eb}^2}{m_t^2 - M_W^2} - 1,
+  \frac{2 M_{eb}^2}{m_t^2 - M_W^2} - 1, \label{eq:costheta}
 \end{equation}
 
 here $p_l$ and $p_b$ are the four momentum vectors of the lepton and the bottom
 quark respectively. $M_{lb}$ is the invariant mass of the lepton and bottom
-quark system.
+quark system. The dependence is shown in Fig.~\ref{figdistributions} for the three
+distribution seperately, and for the SM, with the above mentioned NNLO helicity
+fractions.
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{angular_dist.png}
+	\caption{The predicted $\cos \theta^{*}$ angular distribution for helicity
+    fractions. The distributions for $F_{0}$, $F_{L}$ and $F_{R}$ are
+    normalized, and are given by the blue, red and green line respectively. The
+    black line is the sum of the three contributions, but with helicity
+    fractions given according to SM predictions.}\label{figdistributions}
+\end{figure}
+
+Another approach to obtaining the polarization states the $W$-bosons, is done by
+counting the number of events with a specific $\cos \theta^*$, then use angular
+asymmetries, $A_-$, and $A_+$, defined as
+\begin{equation}
+  A_{\pm}=\frac{N(\cos \theta^* > z)-N(\cos \theta^* < z)}{N(\cos \theta^* > z)+N(\cos \theta^* < z)},
+\end{equation}
+
+with $z=\pm(2^{2/3}-1)$, to choose asymmetries involving only dependence on
+$F_0$ and $F_L$ for $A_+$, or $F_0$ and $F_R$ for $A_-$. The helicity fractions
+for the $W$ boson, can then be obtained by,
+\begin{align}
+  F_R&=\frac{1}{1-\beta}+\frac{A_- - \beta A_+}{3\beta (1-\beta^2)},\\
+  F_L&=\frac{1}{1-\beta}+\frac{A_+ - \beta A_-}{3\beta (1-\beta^2)},\\
+  F_0&=\frac{1+\beta}{1-\beta}+\frac{A_+ - A_-}{3\beta (1-\beta)},
+\end{align}
+
+where $\beta = 2^{1/3}-1$. The values for angular asymmetries is calculated in SM
+NNLO as $A_+=0.537 \pm 0.004$ and $A_-=-0.0841 \pm 0.006$.
+%kilde findes på forsøgs artiklen.
 
 \section{Apparatus}
 
@@ -271,20 +324,20 @@ In the Large Hadron Collider, top quarks are mainly produced through violent
 collisions of protons, causing gluon-gluon fusion, which produces top, anti-top
 pairs $gg \rightarrow t\bar t$. The data used in this paper, is from the 2016 run at LHC,
 with a centre-of-mass energy of $\sqrt s = 13 \mathrm{TeV}$, which corresponds
-to an integrated luminosity of 10 $\mathrm{fb}^{-1}$. At these energies, the
-protons are accelerated close to the speed of light before their
+to an integrated luminosity of 10 $\mathrm{fb}^{-1}$\cite{oreach2020}. At these
+energies, the protons are accelerated close to the speed of light before their
 collisions in the ATLAS detector.\\
 
-This process starts, when protons are produced from hydrogen gas in a linear
-accelerator LINAC2 then gets injected into the LHC, through a series of smaller
-synchrotron accelerators, Proton Syncrotron Booster (PSB), Proton Syncrotron
-(PS) and Super Protron Synhrotron (SPS). The LHC receives bunches from another
-SPS, containing a lot of protons in each bunch, effectively increasing the
-cross-sectional area for collisions to occur. In order to prevent energy loss
-due to synchrotron radiation, the LHC was built to be the largest particle
-accelerator in the world, which has allowed it to reach higher energies than
-other accelerators. At these energies, more events happen inside the detector,
-described by the following equation:
+This process starts, when protons are generated from an ion source in the linear
+accelerator, LINAC2, then gets injected into the LHC, through a series of
+smaller synchrotron accelerators, Proton Syncrotron Booster (PSB), Proton
+Syncrotron (PS) and Super Protron Synhrotron (SPS)\cite[135]{Evans_2008}. The
+LHC receives bunches from another SPS, containing a lot of protons in each
+bunch, effectively increasing the cross-sectional area for collisions to occur.
+In order to prevent energy loss due to synchrotron radiation, the LHC was built
+to be the largest particle accelerator in the world, which has allowed it to
+reach higher energies than other accelerators. At these energies, more events
+happen inside the detector, described by the following equation:
 \begin{equation}
   N = \sigma \int L \dd t,
 \end{equation}
@@ -309,11 +362,21 @@ subcomponents or subsections.
 % https://atlas.web.cern.ch/Atlas/TP/NEW/HTML/tp9new/node10.html#SECTION00433000000000000000
 % https://atlas.cern/discover/detector/inner-detector
 % https://en.wikipedia.org/wiki/ATLAS_experiment#Inner_Detector
+
 The purpose of this component is to measure charge and momentum, including it's
-direction, of the detected particle. It consists of three subcomponents.
+direction, of the detected particle. It consists of three subcomponents. 
 \paragraph{Pixel Detector}
+% https://iopscience.iop.org/article/10.1088/1748-0221/3/07/P07007
+The pixel detector consists of approximately 92 million electronic channels. It's used for identification and reconstruction of secondary vertices from decay of particles containing a b-quark or for b-tagging jets. The pixel detector covers pseudorapidity range $|\eta| < 2.5 $ 
+% Og mange flere kriterier relevant? 
+
 \paragraph{Semiconductor Tracker}
+%https://cds.cern.ch/record/1019885/files/indet-pub-2007-007.pdf
+The Semiconductor tracker is a silicon microstrip tracker consisting of 4088 two-sided modules and over 6 million readout strips. These readout strips are distributed every $80\mathrm{\mu m}$ which allows recording of the position of charged particles to an accuracy of  $17\mathrm{\mu m}$
+
 \paragraph{Transition Radiation Tracker.}
+The transition radiation tracker is a drift tube tracker which consists of a straw of 4mm diameter and 0.03mm diameter tungsten wire coated with 0.5-0.7mm gold. The tube is filled with a gas mixture of Xe, $\mathrm{CO_{2}}$ and $\mathrm{O_{2}}$. When charged particles travel through the tube the gas gets ionized which frees electrons that move to the gold wire. The negative charge measured on the wire can be used to distinguish which charged particle ionzed the gas. 
+%Kringlet, probably  omskriv?
 
 \subsubsection{Calorimeter}
 % https://atlas.web.cern.ch/Atlas/TP/NEW/HTML/tp9new/node9.html#SECTION00432000000000000000
@@ -321,12 +384,12 @@ direction, of the detected particle. It consists of three subcomponents.
 % https://en.wikipedia.org/wiki/ATLAS_experiment#Calorimeters
 This component will stop particles moving through while measuring the
 energy they lose by being stopped. % måske lidt kringlet og er passivt
-The Calorimeter can not stop muons and neutrinos.
+The Calorimeter can not stop muons and neutrinos. Region up to $|\eta| < 4.9 $ is covered.
 
 % 2 subcomponents
 \paragraph{Liquid Argon Calorimeter}
 \paragraph{Tile Hadronic Calorimeter}
-
+Measures hadrons
 \subsubsection{Muon Spectrometer}
 % https://atlas.web.cern.ch/Atlas/TP/NEW/HTML/tp9new/node11.html#SECTION00434000000000000000
 % https://atlas.cern/discover/detector/muon-spectrometer
@@ -382,12 +445,14 @@ the detector, to compare theory with real data.
 % Definer Psuedorapidity \eta %
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
 \subsection{Event Selection}
-In order to identify the top-quark-pair production, several cuts in the data were implemented. The criteria are as follows 
+\label{sec:cuts}
+In order to identify the top-quark-pair production, several cuts in the data
+were implemented. The criteria are as follows
 \begin{itemize}
 	\item Only one electron or muon in the final state with $p_{T} > 30 \mathrm{GeV}$
 	\item Missing transverse momentum $E_{T}^{miss} > 30 \mathrm{GeV}$
 	\item Transverse mass of the W-boson $M_{T}^{W} > 30 \mathrm{GeV}$
-	\item At least four jets with $p_{T} > 30 \mathrm{GeV}$, with two of these being b-tagged
+	\item At least four jets with $p_{T} > 30 \mathrm{GeV}$, with exactly two of these being b-tagged
 	\item Electrons are required to have $|\eta| > 2.47$ aside from $1.37 < |\eta| < 1.52$
 	\item Muons are limited by $|\eta| > 2.50$
 \end{itemize}
@@ -395,14 +460,202 @@ where $\eta$ describes angle between the particle and the beam axis given by
 \begin{equation}
 	\eta = -\ln({\tan\left(\frac{\theta}{2}\right)})
 \end{equation}
+
 \subsubsection{B-tagging}
+To study the $Wtb$ structure, a mechanism to identify the $b$-jets from the
+other detected jets is required. First the jets are detected, $b$-hadrons,
+$c$-hadrons or light-flavour jets, then their trajectories (tracks) are
+reconstructed in the inner detector. Once a jet has been found, the jets
+contining b-hadrons are then identified by a combination of three distinct
+algorithms. Hadrons containing $b$-quarks have a long enough lifetime to fly a
+measurable distance before it decays, and can be exploted to built
+lifetime-based tagging algorithms. The impact parameter based algorithm, IP3D,
+uses transverse and longitudinal impact parameter significances of each track
+within a jet, the SV reconstructs the secondary vertex within the jet and decay
+chain multi-vertex algorithm (JetFitter) reconstructs the full b-hadron
+decay chain.\\
+
+To better discriminate between jets, a Boosted Decision Tree (BDT) algorithm
+called MV2c10, which uses the Root Toolkit for Multivariate Data Analysis
+(TMVA), is used to make cuts that discards most of the background components,
+the $c$- and light-flavoured jets. For this report, a $b$-jet efficiency rate of
+70\% is used, which corresponds to a BDT cut value of 0.8244. This efficiency
+rate originates from samples of simulated $t\bar t$ events with a $c$- and
+light-jet rejection factor of nearly 400\cite{ATL-PHYS-PUB-2016-012}. At these
+cuts, most of the $c$-jets and light-flavoured jets gets rejected, while still
+maintaining most of the $b$-jet data.
+
 %\subsubsection{Single Lepton Channel}
+
+\subsection{Histograms from the ATLAS data}
+
+After we have identified top-quark pair production we know that only one lepton
+should be present in the event. This means that we can use the first lepton in
+the event as the leading lepton. This lepton, however, can be either a electron
+or a muon. Using this information we can construct the Lorentz vector for the
+lepton, and from this we can plot the transverse energy. To calculate the
+transverse energy we are using the builtin ROOT \texttt{TLorentzVector} member
+function \texttt{Et()}. That function is effectively defined as
+\begin{equation}
+  % {{{\it p\_t}\,\sqrt{{\it p\_y}^2+{\it p\_x}^2}}\over{\sqrt{ {\it p\_z}^2+{\it p\_y}^2+{\it p\_x}^2}}}
+  E_t = p_t \frac{\sqrt{p_y^2+p_x^2}}{\sqrt{p_z^2+p_y^2+p_x^2}}
+\end{equation}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{figures/hist_leadleptEt}
+  \caption{\label{fig:lepEt}Lead lepton transverse energy for both single-electron and single-muon channel.}
+\end{figure}
+% Wait, er det her ikke det samme da M er tæt på nul? Det er måske derfor de
+% splitter electron muon. det kan være vi bare skal plotte noget andet eller vi
+% kan jo selvfølgelig også bare gøre det samme som de gør ved at splitte
+% electron/muon. Vi kan endda også bare plotte histogrammet med partikel id for
+% at vise hvor mange af hver der er
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{figures/hist_leadleptpt}
+  \caption{\label{fig:leppt}Lead lepton transverse momentum for both single-electron and single-muon channel.}
+\end{figure}
+
+
+In the given data we are directly given the missing transverse energy, which we
+can then immediately plot if the given event satisfies all the criteria given in
+subsection \ref{sec:cuts}. It is worth noting that it is given in the unit MeV, and all we have
+to do is simply convert to GeV, for a more manageable unit in the plot.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{figures/hist_etmiss}
+  \caption{\label{fig:etmiss}Missing transverse energy for both single-electron and single-muon channel.}
+\end{figure}
+
+We are also given transverse momentum of jets in the event. % maybe explain jvt
+The jets in the event are ordered and we can therefore get information about the
+leading jet by accessing the first one. % also a requirement on pseudorapidity
+% of the jets to be less than 2.5, however this should probably be mentioned in
+% the criteria
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{figures/hist_leadjet_pt}
+  \caption{\label{fig:jetpt}Lead jet transverse momentum for both single-electron and single-muon channel.}
+\end{figure}
+
+
+
+\subsection{$\cos \theta^{*}$ reconstruction}
+From the data we can reconstruct $\cos \theta^{*}$ using equation \eqref{eq:costheta}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/hist_costheta}
+  \caption{\label{fig:costhetaatlas}Reconstructed $\cos \theta^{*}$ from ATLAS data.}
+\end{figure}
+
+
+
+% do we differentiate between them by S_z value
+\subsection{Delphes data}
+Using delphes we can at least verify that the generated data at least matches
+the theoretical analytical functions plotted in figure \ref{figdistributions} as
+a sanity check. % i guess we just fit them instead of doing
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_genL}
+        \caption{Lorem ipsum}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_genR}
+        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+      \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_gen0}
+        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+    \end{subfigure}
+    \caption{Caption place holder}
+\end{figure*}
+Using the same information, as we would get in the ATLAS data, we can use the
+same criteria from subsection \ref{sec:cuts} to isolate the equivalent usable
+data, as we would get from the ATLAS detector, in the delphes data.
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarL}
+        \caption{Lorem ipsum}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarR}
+        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+      \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstar0}
+        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+    \end{subfigure}
+    \caption{Caption place holder}
+\end{figure*}
+We can now fit the resulting histograms in a linear combination to the histogram from the ATLAS data.
+\cleardoublepage{}
+\subsection{Fitting to atlas data}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/delphes_fit}
+  \caption{\label{fig:delphesfit}Reconstructed Delphes $\cos \theta^{*}$ fitted to
+    the $\cos \theta^{*}$ from ATLAS data.}
+\end{figure}
+
+\begin{verbatim}
+FCN=954.777 FROM MIGRAD    STATUS=CONVERGED   217 CALLS   218 TOTAL
+          EDM=3.15154e-10    STRATEGY= 1      ERROR MATRIX ACCURATE
+ NO. PARAMETER VALUE         ERROR         STEP SIZE  FIRST DERIVATIVE
+  1  F_0       4.00289e+01   1.28234e+00   4.79954e-03  -4.35846e-05
+  2  F_L       2.79292e+01   4.50791e-01   3.37816e-03  -6.07790e-05
+  3  F_R       2.28996e-01   4.03043e-01   2.22299e-03  -4.81292e-05
+                               ERR DEF= 0.5
+\end{verbatim}
+
+
+
+%%% TODO: LAST of the four
+%%% CHECK IF CHANNELS ARE WORTH DISTINGUISHING BETWEEN
+%%% ADD COSTHETA
+%%% DELPHES TRUTH
+%%%
+
+
+
 
 \subsection{The Code}
 
 \subsubsection{ROOT}
 
 \subsection{Results}
+
+\section{Discussion}
+Due to the limitations of the released 13 TeV Open Datasets, it was not possible
+to analyse the helicity fractions angular distribution through that data, which
+lead to the utilization of Delphes. The deviation between the predicted SM
+values for the helicity fraction, and the value obtained through the fitting, is
+possible the result of systematic errors in attempting to fit Delphes simulated
+spin orientation, to the data obtained from the LHC Open ATLAS run in 2016.
+Since Delphes runs a fast-simulation, it is not designed to be used in parallel
+with data taken from advanced detector studies. This analysis consequently
+serves as a test for this novel approach of combining Delphes simulations with
+data taken from ATLAS detector. While similar cuts was attempted to be
+implemented on the Delphes' truth-information, due to the absence of the
+b-tagging MV2c10 algorithm in Delphes, cuts were made using 80\% efficiency
+instead.\\  %skal finde en kilde til det her
+
+The reconstructed $\cos \theta^*$ had significant entries in overflow. Attempts using
+the theoretical $\cos \theta^*$, rather than the approximation, as seen in
+Eq.~\ref{eq:costheta}, but no visible differences appeared, and the overflow
+remained. This overflow was ignored in the fitting process, as only data
+remaining within the physically possible range from -1 to 1, was considered in
+the analysis. The Delphes data for the helicity destributions, had substantially
+less overflow, than data from OpenATLAS, which also motived the decision to only
+fit within the parameter -1 to 1.
 
 \section{Conclusion}
 

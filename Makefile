@@ -2,7 +2,7 @@
 pdf: BSc.pdf
 
 BSc.pdf: BSc.tex BSc.bbl
-	pdflatex BSc.tex
+	pdflatex BSc.tex -interaction=nonstopmode -halt-on-error
 
 doc: pdf
 	cp -f BSc.pdf Doc.pdf

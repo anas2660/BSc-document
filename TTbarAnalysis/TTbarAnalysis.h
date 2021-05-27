@@ -39,6 +39,7 @@ public:
   TH1F *hist_leadleptetc  = 0;
   TH1F *hist_leadlepz0    = 0;
   TH1F *hist_leadlepd0    = 0;
+  TH1F *hist_leadleptEt   = 0;
 
   // Jet variables histograms
   TH1F *hist_n_jets          = 0;
