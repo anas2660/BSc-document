@@ -500,12 +500,19 @@ maintaining most of the $b$-jet data.
 %\subsubsection{Single Lepton Channel}
 
 \subsection{Histograms from the ATLAS data}
-
 After we have identified top-quark pair production we know that only one lepton
 should be present in the event. This means that we can use the first lepton in
 the event as the leading lepton. This lepton, however, can be either a electron
 or a muon. Using this information we can construct the Lorentz vector for the
-lepton, and from this we can plot the transverse energy. To calculate the
+lepton, and from this we can plot the transverse energy.
+% The function, which we use to construct the Lorentz vector, \texttt{SetPtEtaPhiE} is defined as such,
+%\begin{equation}
+%  p(pt, \eta, \phi, E) =
+%  \begin{pmatrix}
+%    |pt| \cos(\phi)\\ |pt|\sin(\phi)\\ |pt| \sinh(eta)\\ E
+%  \end{pmatrix}
+%\end{equation}
+To calculate the
 transverse energy we are using the builtin ROOT \texttt{TLorentzVector} member
 function \texttt{Et()}. That function is effectively defined as
 \begin{equation}
