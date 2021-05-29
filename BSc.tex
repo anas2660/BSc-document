@@ -67,7 +67,7 @@ and neutrino; $W \rightarrow l + \nu_l$, or into a quark, anti-quark pair: $W \r
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{figures/placeholder_feynman_singlelep.png}
 	\caption{The Feyingle leptonic decay, we see from the figure that there are 4
-    quark jets as the end product. (placeholder)}\label{fig:feynmandiagram}
+    quark jets as the end product.}\label{fig:feynmandiagram}%placeholder
 \end{figure}
 
 In this report, we are only looking at decays with a single lepton as decay
@@ -204,7 +204,9 @@ unitary matrix, with four independant parameters: three real angles and an
 imaginary phase\cite[153]{Povh2015}. The imaginary phase gives rise to CP
 violation, but the matrix preserves CPT symmetry.
 
-\subsection{Four-momentum}
+\subsection{Momentum}
+
+\subsubsection{Four-momentum}
 The data collected in LHC collisions, allows us to reconstruct the 4-vector of
 momentum for the involved particles. This 4-vector is a four component tensor,
 made up of an ordinary 3-vector for relativistic momentum $\vb p$, and the
@@ -226,6 +228,40 @@ s = (p + p')^2 = (E + E')^2 - (\vb p + \vb p')^2
 is conserved, and is the center-of-mass energy squared of the system. It is the
 energy available to create new particles, or probing the properties of
 particles.
+
+\subsubsection{Transverse Momentum}
+In LHC experiments, the protons gets smashed together in head-on collisions at
+nearly the speed of light. Since the protons momenentums are parallel to the
+beam axis, conventionally defined as the $z$-axis their total momentum in the
+$xy$-plane, the transverse momentum $p_T$, is zero. The jets scatter off in new
+directions, at angles given by the polar angle $\theta$, and the azimuthal angle $\phi$.
+The polar angle is defined as the angle of the jet, with respect to the
+$z$-axis, in the $xz$-plane, while the azimuthal angle is defined as the angle
+of the jet, with respect to the $x$-axis in the $xy$-plane, as seen in Fig..
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics{figures/momentum.jpg}\label{fig:momentum}
+  \caption{The fgure shows the momentum traveling parallel to the beam axis, and
+  the transverse momentum, each with their respective angles.}%placeholder
+\end{figure}
+
+
+In cylindrical detectors, it is useful to use another magnitude called
+pseudorapidity, which ranges from values between $(-\infty, \infty)$. Pseudorapidity is
+related to the polar angle, and is defined as:
+
+\begin{align}
+\label{eq:pseudorapidity}
+\eta = -\ln({\tan\left(\frac{\theta}{2}\right)}).
+\end{align}
+
+Not all particles are, or can be deteccted by the detectors, but their existence
+is still well understood through the conservation of momentum. At $v \rightarrow c$, the
+momentum $\abs{\vb p} \approx E$, and the missing transverse momentum $E_T^{miss}$ is
+defined as the transverse momentum that is not detected by the detector, but
+calculated as the momentum for which the total momentum will become
+zero~cite{xabier}.
 
 \subsection{Top Quarks}
 The top quark is the third generation up-type quark in the SM, with a charge of
@@ -249,8 +285,8 @@ of the production\cite{dasilva2016quark}.
 	\includegraphics[width=\linewidth]{figures/placeholder_feynman_ttproduction.png}
 	\caption{A Feynman diagram of the two main production processes $gg \rightarrow t\bar t$
     on the left, and $q\bar q \rightarrow t\bar t$ on the right. Both produciton
-    mechanisms are results of strong interactions.
-    (placeholder)}\label{fig:ttproduction}
+    mechanisms are results of strong interactions.}\label{fig:ttproduction}
+  %placeholder
 \end{figure}
 
 \subsection{Coupling of W$^+$tb}
@@ -489,10 +525,6 @@ were implemented. The criteria are as follows~\cite{oreach2020}
 	\item Electrons are required to have $|\eta| > 2.47$ aside from $1.37 < |\eta| < 1.52$
 	\item Muons are limited by $|\eta| > 2.50$
 \end{itemize}
-where $\eta$ describes angle between the particle and the beam axis given by 
-\begin{equation}
-	\eta = -\ln({\tan\left(\frac{\theta}{2}\right)})
-\end{equation}
 
 \subsubsection{B-tagging}
 To study the $Wtb$ structure, a mechanism to identify the $b$-jets from the
@@ -586,19 +618,21 @@ a sanity check. % i guess we just fit them instead of doing
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{figures/delphes_genL}
-        \caption{Lorem ipsum}
+        \caption{$F_L$ generated distribution.}
     \end{subfigure}%
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{figures/delphes_genR}
-        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+        \caption{$F_R$ generated distribution.}
       \end{subfigure}
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{figures/delphes_gen0}
-        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+        \caption{$F_0$ generated distribution.}
     \end{subfigure}
-    \caption{Caption place holder}
+    \caption{The figures shows the truth data of the generated $F_L$, $F_R$ and
+      $F_0$ distributions, with a sample of 20000 events, using Delphes fast
+      simulations to generate.}
 \end{figure*}
 Using the same information, as we would get in the ATLAS data, we can use the
 same criteria from subsection \ref{sec:cuts} to isolate the equivalent usable
@@ -608,19 +642,22 @@ data, as we would get from the ATLAS detector, in the delphes data.
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarL}
-        \caption{Lorem ipsum}
+        \caption{$F_L$ generated distribution.}
     \end{subfigure}%
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarR}
-        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+        \caption{$F_R$ generated distribution.}
       \end{subfigure}
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{figures/delphes_ctstar0}
-        \caption{Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum,Lorem ipsum}
+        \caption{$F_0$ generated distribution.}
     \end{subfigure}
-    \caption{Caption place holder}
+    \caption{The figures shows the reconstructed Delphes $\cos \theta^*$ of the
+      generated $F_L$, $F_R$ and $F_0$ distributions, with a sample of 20000
+      events, using Delphes fast simulations to generate, and similar cuts to
+      the ones made on the Open ATLAS data.}
 \end{figure*}
 We can now fit the resulting histograms in a linear combination to the histogram from the ATLAS data.
 \cleardoublepage{}
