@@ -435,7 +435,9 @@ collisions taking place in the detector in that time frame. However, only some o
 	\label{detector}
 \end{figure}
 
-\section{Monte Carlo Simulation}
+\subsection{Tools}
+
+\subsection{Monte Carlo Simulation}
 Monte Carlo (MC) simulation was used to model the signal and background
 processes expected at the LHC, for the 13 TeV Atlas Open Data used for this
 report. This process follows four steps, starting with an event generation which
@@ -449,8 +451,28 @@ used to reconstruct the collisions, particle trajectories and subsequent product
 In The 13 TeV ATLAS Open Data set, there are several SM processes which are
 modelled using MC simulations. For the purpose of this report, the MC
 simulations on top-quark-pair production was used alongside real data taken from
-the detector, to compare theory with real data.
-%http://opendata.atlas.cern/release/2020/documentation/datasets/mc.html
+the detector, to compare theory with real data\cite{mcopenatlas}.
+
+\subsubsection{ROOT}
+% The function, which we use to construct the Lorentz vector, \texttt{SetPtEtaPhiE} is defined as such,
+%\begin{equation}
+%  p(pt, \eta, \phi, E) =
+%  \begin{pmatrix}
+%    |pt| \cos(\phi)\\ |pt|\sin(\phi)\\ |pt| \sinh(eta)\\ E
+%  \end{pmatrix}
+%\end{equation}
+To calculate the
+transverse energy we are using the builtin ROOT \texttt{TLorentzVector} member
+function \texttt{Et()}. That function is effectively defined as
+\begin{equation}
+  % {{{\it p\_t}\,\sqrt{{\it p\_y}^2+{\it p\_x}^2}}\over{\sqrt{ {\it p\_z}^2+{\it p\_y}^2+{\it p\_x}^2}}}
+  E_t = p_t \frac{\sqrt{p_y^2+p_x^2}}{\sqrt{p_z^2+p_y^2+p_x^2}}
+\end{equation}
+
+\subsubsection{Delphes}
+
+\subsection{Results}
+
 
 \section{Data Analysis}
 % Definer Psuedorapidity \eta %
@@ -458,7 +480,7 @@ the detector, to compare theory with real data.
 \subsection{Event Selection}
 \label{sec:cuts}
 In order to identify the top-quark-pair production, several cuts in the data
-were implemented. The criteria are as follows \cite{oreach2020}
+were implemented. The criteria are as follows~\cite{oreach2020}
 \begin{itemize}
 	\item Only one electron or muon in the final state with $p_{T} > 30 \mathrm{GeV}$
 	\item Missing transverse momentum $E_{T}^{miss} > 30 \mathrm{GeV}$
@@ -504,20 +526,6 @@ should be present in the event. This means that we can use the first lepton in
 the event as the leading lepton. This lepton, however, can be either a electron
 or a muon. Using this information we can construct the Lorentz vector for the
 lepton, and from this we can plot the transverse energy.
-% The function, which we use to construct the Lorentz vector, \texttt{SetPtEtaPhiE} is defined as such,
-%\begin{equation}
-%  p(pt, \eta, \phi, E) =
-%  \begin{pmatrix}
-%    |pt| \cos(\phi)\\ |pt|\sin(\phi)\\ |pt| \sinh(eta)\\ E
-%  \end{pmatrix}
-%\end{equation}
-To calculate the
-transverse energy we are using the builtin ROOT \texttt{TLorentzVector} member
-function \texttt{Et()}. That function is effectively defined as
-\begin{equation}
-  % {{{\it p\_t}\,\sqrt{{\it p\_y}^2+{\it p\_x}^2}}\over{\sqrt{ {\it p\_z}^2+{\it p\_y}^2+{\it p\_x}^2}}}
-  E_t = p_t \frac{\sqrt{p_y^2+p_x^2}}{\sqrt{p_z^2+p_y^2+p_x^2}}
-\end{equation}
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.55\textwidth]{figures/hist_leadleptEt}
@@ -642,14 +650,6 @@ FCN=954.777 FROM MIGRAD    STATUS=CONVERGED   217 CALLS   218 TOTAL
 %%% DELPHES TRUTH
 %%%
 
-
-
-
-\subsection{The Code}
-
-\subsubsection{ROOT}
-
-\subsection{Results}
 
 \section{Discussion}
 Due to the limitations of the released 13 TeV Open Datasets, it was not possible
