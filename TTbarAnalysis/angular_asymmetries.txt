@@ -1,0 +1,28 @@
+
+DataA.root:
+    Value of Fr -0.0158881
+    Value of Fl 0.254557
+    Value of F0 0.761331
+    Value of Aplus 0.578048
+    Value of Aminus -0.843745
+
+DataB.root
+    Value of Fr -0.0225171
+    Value of Fl 0.251323
+    Value of F0 0.771195
+    Value of Aplus 0.579227
+    Value of Aminus -0.848258
+
+DataC.root
+    Value of Fr -0.0114604
+    Value of Fl 0.236095
+    Value of F0 0.775365
+    Value of Aplus 0.593342
+    Value of Aminus -0.836551
+
+DataD.root
+    Value of Fr -0.0166079
+    Value of Fl 0.242174
+    Value of F0 0.774435
+    Value of Aplus 0.587559
+    Value of Aminus -0.841796
