@@ -372,8 +372,8 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                   
                   // Remove overflow & underflow
                   if (costheta >= -1.0f && costheta <= 1.0f) {
-                    if (costheta > zplus) Nzplus ++;
-                    if (costheta > zminus) Nzminus ++;
+                    if (costheta > zplus)  Nzplus++;
+                    if (costheta > zminus) Nzminus++;
                     FillHistogramsGlobal(costheta, weight, "hist_costheta");
                   }
 
@@ -423,12 +423,12 @@ void TTbarAnalysis::SlaveTerminate() {}
 
 void TTbarAnalysis::Terminate() {
   int NTotal = hist_costheta->GetEntries();
-  float Aplus = (float)(Nzplus - (NTotal - Nzplus)) / (float)(Nzplus + (NTotal - Nzplus));
-  float Aminus = (float)(Nzminus - (NTotal - Nzminus)) / (float)(Nzminus + (NTotal - Nzminus));
-  float beta = 0.25992104f;
-  float Fr = 1.0f/(1.0f-beta) + (Aminus - beta * Aplus)/(3.0f*beta*(1.0f-beta*beta));
-  float Fl = 1.0f/(1.0f-beta) - (Aplus - beta * Aminus)/(3.0f*beta*(1.0f-beta*beta));
-  float F0 = -(1.0f+beta)/(1.0f-beta) + (Aplus - Aminus)/(3.0f*beta*(1.0f-beta));
+  double Aplus = (double)(Nzplus - (NTotal - Nzplus)) / (double)(Nzplus + (NTotal - Nzplus));
+  double Aminus = (double)(Nzminus - (NTotal - Nzminus)) / (double)(Nzminus + (NTotal - Nzminus));
+  double beta = 0.25992104;
+  double Fr = 1.0/(1.0-beta) + (Aminus - beta * Aplus)/(3.0*beta*(1.0-beta*beta));
+  double Fl = 1.0/(1.0-beta) - (Aplus - beta * Aminus)/(3.0*beta*(1.0-beta*beta));
+  double F0 = -(1.0+beta)/(1.0-beta) + (Aplus - Aminus)/(3.0*beta*(1.0-beta));
   printf("Value of Fr %g\n", Fr);
   printf("Value of Fl %g\n", Fl);
   printf("Value of F0 %g\n", F0);
