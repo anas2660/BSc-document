@@ -429,6 +429,9 @@ void TTbarAnalysis::Terminate() {
   double Fr = 1.0/(1.0-beta) + (Aminus - beta * Aplus)/(3.0*beta*(1.0-beta*beta));
   double Fl = 1.0/(1.0-beta) - (Aplus - beta * Aminus)/(3.0*beta*(1.0-beta*beta));
   double F0 = -(1.0+beta)/(1.0-beta) + (Aplus - Aminus)/(3.0*beta*(1.0-beta));
+  int N1 = NTotal - Nzminus;
+  int N3 = Nzplus;
+  int N2 = N1 - N3;
   printf("Value of Fr %g\n", Fr);
   printf("Value of Fl %g\n", Fl);
   printf("Value of F0 %g\n", F0);
@@ -436,9 +439,16 @@ void TTbarAnalysis::Terminate() {
   printf("Value of Aminus %g\n", Aminus);
 
 
- 
   TString filename_option = GetOption();
-  printf("Writting with name option: %s \n", filename_option.Data());
+
+  // root file name, Aplus, Aminus, Fr, Fl, F0, N1, N2, N3
+  FILE* angular_asymmetries_file = fopen("angular_asymmetries_generated.csv", "a");
+  fprintf(angular_asymmetries_file, "\n%s, \t%f, \t%f, ", (const char*)filename_option, Aplus, Aminus);
+  fprintf(angular_asymmetries_file, "\t%f, \t%f, \t%f, ", Fr, Fl, F0);
+  fprintf(angular_asymmetries_file, "\t%d, \t%d, \t%d", N1, N2, N3);
+  fclose(angular_asymmetries_file);
+
+  printf("Writing with name option: %s \n", filename_option.Data());
   TString     output_name = "Output_TTbarAnalysis/" + filename_option + ".root";
   const char *filename    = output_name;
 
