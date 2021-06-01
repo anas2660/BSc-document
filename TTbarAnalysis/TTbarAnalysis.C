@@ -431,7 +431,7 @@ void TTbarAnalysis::Terminate() {
   double F0 = -(1.0+beta)/(1.0-beta) + (Aplus - Aminus)/(3.0*beta*(1.0-beta));
   int N1 = NTotal - Nzminus;
   int N3 = Nzplus;
-  int N2 = N1 - N3;
+  int N2 = NTotal - N1 - N3;
   printf("Value of Fr %g\n", Fr);
   printf("Value of Fl %g\n", Fl);
   printf("Value of F0 %g\n", F0);
