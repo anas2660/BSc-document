@@ -125,8 +125,6 @@ parity symmetry (CP). Weak interactions does obey the combination of charge
 conjugation, parity, and time reversal symmetry.
 
 \subsubsection{Quantum Chromodynamics}
-
-
 Quantum chromo dynamics (QCD), is the theory of the strong interaction, which
 binds the quarks together. In the year 1964, physicist Murray Gell-Mann and his
 PhD student George Zweig, proposed that baryons and mesons could be explained by
@@ -473,10 +471,10 @@ charged particles to an accuracy of $17\mathrm{\mu m}$
 
 \paragraph{Transition Radiation Tracker.}
 The transition radiation tracker is a drift tube tracker which consists of a
-straw of 4mm diameter and 0.03mm diameter tungsten wire coated with 0.5--0.7mm
-gold. The tube is filled with a gas mixture of Xe, $\mathrm{CO_2}$ and
-$\mathrm{O_2}$. When charged particles travel through the tube the gas gets
-ionized which frees electrons that move to the gold wire. The negative charge
+straw with 4mm diameter and 0.03mm diameter tungsten wire, coated with 0.5--0.7mm
+gold. The tube is filled with a mixture of Xe, $\mathrm{CO_2}$ and
+$\mathrm{O_2}$ gasses. When charged particles travel through the tube the gas gets
+ionized, which frees electrons that move to the gold wire. The negative charge %befrier det de elektroner som bevæger sig hen til guld ledningen, eller befrier den elektronerne, så de kan bevæge sig hen til guld ledningen?
 measured on the wire can be used to distinguish which charged particle ionized
 the gas.
 %Kringlet, probably  omskriv?
@@ -486,8 +484,9 @@ the gas.
 % https://atlas.cern/discover/detector/calorimeter
 % https://en.wikipedia.org/wiki/ATLAS_experiment#Calorimeters
 Calorimeters measure the energy of particles by absorbing them. There are two
-types of calorimeters used in ATLAS, the Electromagnetic Calorimeter (ECal) and
-Hadronic Calorimeter (HCal). ECal measures charged particles and photons.
+types of calorimeters used in the ATLAS detector; the Electromagnetic
+Calorimeter (ECal) and Hadronic Calorimeter (HCal). ECal measures charged
+particles and photons.
 %Maybe Expand
 
 The HCal consist of scintillator plates that radiates light when exposed to a
@@ -504,14 +503,14 @@ the hadron.
 
 The muon spectrometer is on the outer part of the ATLAS detector it operates in
 the pseudorapidity range $|\eta| < 2.7$. Muons usually pass through the inner
-detector and the calorimeters undetected which is why the muon spectrometer is
+detector and the calorimeters undetected, which is why the muon spectrometer is
 located on the outside as other particles will have been stopped earlier in the
-detector. The muon spectrometer consists of tubes much like the transition
-radiation tracker that contains a gold wire which is surrounded by a gas. When
+detector. The muon spectrometer consists of tubes, much like the transition
+radiation tracker, that contains a gold wire which is surrounded by a gas. When
 muons go through these tubes they interact with the gas and leave behind a trail
 of ions and electrons which drift towards the gold wire in the centre. By
-detecting the starting point of these trails and measuring the time it takes to
-reach the gold wire the position of the muon can then be determined. The Muon
+detecting the starting point of these trails, and measuring the time it takes to
+reach the gold wire, the position of the muon can then be determined. The Muon %eks. på ændring: it is possible to determine the position of the muon
 Spectrometer can be seen in Figure~\ref{detector}
 
 
@@ -521,12 +520,13 @@ Spectrometer can be seen in Figure~\ref{detector}
 % https://atlas.cern/discover/detector/trigger-daq
 The detector generates 60 terabytes of data per second from the 1.7 billion
 collisions taking place in the detector in that time frame. However, only some
-of the raw data contain interesting characteristics. To make the data more
+of the raw data contains interesting characteristics. To make the data more %eks. på ændring: However, only a small sample of the raw data (is of interest / is necessary) to reconstruct the collisions
 manageable ATLAS uses a two-level trigger system to only save the most important
-data. The first part of the trigger system is hardware based and can at most
-save 100 000 events per second, which then gets passed on to the High-Level
-Trigger which is software based. After both triggers approximately 1000 events
-out of the initial 1.7 billion are saved for later analysis.
+data. The first part of the trigger system is hardware based, and can at most
+save 100 000 events per second, which then gets passed on to the, software
+based, High-Level Trigger. After passing through both triggers, only
+approximately 1000 events out of the initial 1.7 billion are saved for later
+analysis.
 
 \begin{figure}[H]
 	\centering
@@ -537,20 +537,23 @@ out of the initial 1.7 billion are saved for later analysis.
 \subsection{Tools}
 
 \subsection{Monte Carlo Simulation}
-Monte Carlo (MC) simulation was used to model the signal and background
-processes expected at the LHC, for the 13 TeV Atlas Open Data used for this
-report. This process follows four steps, starting with an event generation which
+Monte Carlo (MC) simulation is used in modelling the signal and background
+processes expected at the LHC.\@ For the 13 TeV Atlas Open Data used in this
+thesis, this process follows four steps; starting with an event generation which
 uses a MC generator to mimic the initial pp collision. In the second step,
 detector simulation, the geometry of the ATLAS detector and its material
-properties gets simulated. As part of the digitisation step, the previous step
-is followed by simulating the responding signals in read-out data written in a
-format compatible with real output of the detector. Finally these data can be
-used to reconstruct the collisions, particle trajectories and subsequent products.\\
+properties gets simulated. The digitisation step, follows the previous step by
+simulating the responding signals in read-out data, written in a format
+compatible with real output of the detector. Finally these data can be
+used to reconstruct the collisions, particle trajectories and subsequent
+products.\\
 
 In The 13 TeV ATLAS Open Data set, there are several SM processes which are
 modelled using MC simulations. For the purpose of this report, the MC
 simulations on top-quark-pair production was used alongside real data taken from
-the detector, to compare theory with real data\cite{mcopenatlas}.
+the detector, to compare theory with real data~\cite{mcopenatlas}.
+%Skal måske omskrives en smule, håber at i kan læse det igennem og se om der
+%mangler noget.
 
 \subsubsection{ROOT}
 % The function, which we use to construct the Lorentz vector, \texttt{SetPtEtaPhiE} is defined as such,
@@ -567,17 +570,17 @@ function \texttt{Et()}. That function is effectively defined as
   % {{{\it p\_t}\,\sqrt{{\it p\_y}^2+{\it p\_x}^2}}\over{\sqrt{ {\it p\_z}^2+{\it p\_y}^2+{\it p\_x}^2}}}
   E_t = p_t \frac{\sqrt{p_y^2+p_x^2}}{\sqrt{p_z^2+p_y^2+p_x^2}}
 \end{equation}
+%Den her sektion mangler at bliver skrivet færdig
 
 \subsubsection{Delphes}
 
 \subsection{Results}
-
+%Måske skal den her sektion slettes, eller sættes som en del af data analysis.
 
 \section{Data Analysis}
 % Definer Psuedorapidity \eta %
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
-\subsection{Event Selection}
-\label{sec:cuts}
+\subsection{Event Selection}\label{sec:cuts}
 In order to identify the top-quark-pair production, several cuts in the data
 were implemented. The criteria are as follows~\cite{oreach2020}
 \begin{itemize}
@@ -612,15 +615,22 @@ rate originates from samples of simulated $t\bar t$ events with a $c$- and
 light-jet rejection factor of nearly 400\cite{ATL-PHYS-PUB-2016-012}. At these
 cuts, most of the $c$-jets and light-flavoured jets gets rejected, while still
 maintaining most of the $b$-jet data.
+%Håber en kan læse det her igennem for at se om de forstår det fint, eller om
+%det har brug for rettelser
 
 %\subsubsection{Single Lepton Channel}
 
 \subsection{Histograms from the ATLAS data}
-After we have identified top-quark pair production we know that only one lepton
+After we have identified top-quark pair production, we know that only one lepton
 should be present in the event. This means that we can use the first lepton in
 the event as the leading lepton. This lepton, however, can be either a electron
 or a muon. Using this information we can construct the Lorentz vector for the
-lepton, and from this we can plot the transverse energy.
+lepton, and from this we can plot the transverse energy. %Efter jeg lige har
+% læst rapporten igennem, så ser det ud til at vi bruger passivt sprog i resten
+% af rapporten, vi skal nok lige snakke om hvorvidt vi har tænkt os at bruge
+% passivt sprog eller aktivt sprog, vi kan sagtens også bruge passivt sprog til
+% analyse delen (siden det er noget som vi har lavet), men det er nok en god ide
+% at vi bliver enige og er konsistent, ihvertfald i analysen.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.55\textwidth]{figures/hist_leadleptEt}
@@ -638,11 +648,11 @@ lepton, and from this we can plot the transverse energy.
 \end{figure}
 
 
-In the given data we are directly given the missing transverse energy, which we
-can then immediately plot if the given event satisfies all the criteria given in
-subsection \ref{sec:cuts}. It is worth noting that it is given in the unit MeV,
-and all we have to do is simply convert to GeV, for a more manageable unit in
-the plot.
+In the ATLAS Open Data we are directly given the missing transverse energy,
+which we can then immediately plot if the given event satisfies all the criteria
+given in Subsection~\ref{sec:cuts}. It is worth noting that it is given in the
+unit MeV, and all we have to do is simply convert to GeV, for a more manageable
+unit in the plot.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.55\textwidth]{figures/hist_etmiss}
@@ -765,8 +775,8 @@ with data taken from advanced detector studies. This analysis consequently
 serves as a test for this novel approach of combining Delphes simulations with
 data taken from ATLAS detector. While similar cuts was attempted to be
 implemented on the Delphes' truth-information, due to the absence of the
-b-tagging MV2c10 algorithm in Delphes, cuts were made using 80\% efficiency
-instead.\\  %skal finde en kilde til det her
+b-tagging MV2c10 algorithm in Delphes, cuts were made using 80--85\% efficiency
+instead.\\ %skal finde en kilde til det her
 
 The reconstructed $\cos \theta^*$ had significant entries in overflow. Attempts using
 the theoretical $\cos \theta^*$, rather than the approximation, as seen in
@@ -776,6 +786,8 @@ remaining within the physically possible range from -1 to 1, was considered in
 the analysis. The Delphes data for the helicity destributions, had substantially
 less overflow, than data from OpenATLAS, which also motived the decision to only
 fit within the parameter -1 to 1.
+%Kan godt være at jeg skal lave nogle ændringer på diskussionen, med de nye
+%data, og med fokus på den nye tilgangs metode.
 
 \section{Conclusion}
 
