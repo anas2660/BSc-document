@@ -30,8 +30,8 @@ R__LOAD_LIBRARY(libDelphes)
 
 //------------------------------------------------------------------------------
 
-TH1 *histCTStarGen;
-
+TH1   *histCTStarGen;
+TFile *out_file;
 ///////////////////////////////////////////////////////////////////////////////
 //                               Distributions                               //
 ///////////////////////////////////////////////////////////////////////////////
@@ -85,8 +85,19 @@ void ttbar(const char *inputFile, TH1 *hist) {
   TH1 *histJet3PT = new TH1F("jet3_pt", "jet3 P_{T}",    60, 0., 300.);
   TH1 *histNBTag  = new TH1F("NBTag",   "number BTag",   5,  0., 5.);
 
-  histCTStarGen =
-      new TH1F("CTStarGen", "generated cos(theta*)", 15, -1., 1.);
+  // histCTStarGen=
+  //     new TH1F("CTStarGen", "truth cos(theta*)", 15, -1., 1.);
+
+
+  if (!strcmp(inputFile, "./delphes0.root"))
+    histCTStarGen =
+      new TH1F("CTStarGen0", "truth cos(theta*)", 15, -1., 1.);
+  if (!strcmp(inputFile, "./delphesL.root"))
+    histCTStarGen =
+      new TH1F("CTStarGenL", "truth cos(theta*)", 15, -1., 1.);
+  if (!strcmp(inputFile, "./delphesR.root"))
+    histCTStarGen =
+      new TH1F("CTStarGenR", "truth cos(theta*)", 15, -1., 1.);
 
   TH1 *histCTStar =
       new TH1F("CTStar", "new cos(theta*)", 15, -1., 1.);
@@ -168,6 +179,7 @@ void ttbar(const char *inputFile, TH1 *hist) {
         if(good_muon_id == -1) good_muon_id = imuon;
       }
     }
+
 
     // Exactly 1 lepton with pT > 30 GeV
     if (nGoodEl + nGoodMu != 1) continue;
@@ -270,6 +282,7 @@ void ttbar(const char *inputFile, TH1 *hist) {
     f->SetLineWidth(2);
     histCTStarGen->Fit(f);
     histCTStarGen->Draw();
+    histCTStarGen->Write();
     ctruth->SaveAs("out/delphes_gen0.png");
   }
 
@@ -282,6 +295,7 @@ void ttbar(const char *inputFile, TH1 *hist) {
     f->SetLineWidth(2);
     histCTStarGen->Fit(f);
     histCTStarGen->Draw();
+    histCTStarGen->Write();
     ctruth->SaveAs("out/delphes_genL.png");
   }
   //histCTStarGen->Scale(0.311);
@@ -293,8 +307,10 @@ void ttbar(const char *inputFile, TH1 *hist) {
     f->SetLineWidth(2);
     histCTStarGen->Fit(f);
     histCTStarGen->Draw();
+    histCTStarGen->Write();
     ctruth->SaveAs("out/delphes_genR.png");
   }
+
   //histCTStarGen->Scale(0.0017);
   //  histsum->Add(histCTStarGen);
   //  return;
@@ -363,23 +379,6 @@ double fitf(double *x, double *par) {
 }
 
 double fitfunc(double* x, double* pars) {
-  // Here I just create the histograms I would like to fit with weights.
-  // You don't have to do this here, all that is needed is that the histograms
-  // are visible in this function.
-  /*
-  static bool initialized = false;
-  static TH1D h1("h1", "", 100, -10, 10);
-  static TH1D h2("h2", "", 100, -10, 10);
-  if (!initialized) {
-    int n = 100000;
-    for (int i=0; i<n; ++i) h1.Fill(gRandom->Gaus(-3));
-    for (int i=0; i<n; ++i) h2.Fill(gRandom->Gaus(+3));
-    h1.Scale(1./n);
-    h2.Scale(1./n);
-    initialized = true;
-  }
-  */
-
   const double xx = x[0]; // use x[1] to get 2nd dimension, x[2] for 3rd ...
   // the fit parameters, i.e. the histogram weights
   const double w1 = pars[0];
@@ -392,17 +391,6 @@ double fitfunc(double* x, double* pars) {
   const double y3 = histCTStarGenR->GetBinContent(histCTStarGenR->GetXaxis()->FindFixBin(xx));
 
   return w1*y1 + w2*y2 + w3*y3;
-  //return 4.0*w1*y1/3.0 + 8.0*w2*y2/3.0 + 8.0*w3*y3/3.0;
-/*
- FCN=0.00831042 FROM MIGRAD    STATUS=CONVERGED     137 CALLS         138 TOTAL
-                     EDM=1.61199e-07    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   1.9 per cent
-  EXT PARAMETER                                   STEP         FIRST
-  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE
-   1  F_0          4.06808e-01   5.35428e+00  -1.56390e-02   3.09175e-04
-   2  F_L          5.05306e-01   2.86144e+00   2.19484e-02   2.48891e-04
-   3  F_R          8.81551e-02   3.07593e+00  -4.53229e-03   1.91461e-04
-                               ERR DEF= 0.5
-*/
 }
 
 
@@ -412,21 +400,29 @@ void costheta(){
   gSystem->Load("libDelphes");
 #endif
 
+  TFile* atlas_file     = new TFile("data.root");
+  TH1F*  atlas_costheta = atlas_file->Get<TH1F>("hist_costheta");
+  int    nbins  = atlas_costheta->GetNbinsX();
 
   TH1 *histCTStarGenSum =
       new TH1F("CTStarGenSum", "generated sum cos(theta*)", 15, -1., 1.);
 
   histCTStarGen0 =
-      new TH1F("CTStarGen0", "cos(theta*)", 15, -1., 1.);
+      new TH1F("CTStar0", "cos(theta*)", 15, -1., 1.);
   histCTStarGenL =
-      new TH1F("CTStarGenL", "cos(theta*)", 15, -1., 1.);
+      new TH1F("CTStarL", "cos(theta*)", 15, -1., 1.);
   histCTStarGenR =
-      new TH1F("CTStarGenR", "cos(theta*)", 15, -1., 1.);
+      new TH1F("CTStarR", "cos(theta*)", 15, -1., 1.);
 
+  out_file = new TFile("delphes.root", "recreate");
   ttbar("./delphes0.root", histCTStarGen0);
   ttbar("./delphesL.root", histCTStarGenL);
   ttbar("./delphesR.root", histCTStarGenR);
+  histCTStarGen0->Write();
+  histCTStarGenL->Write();
+  histCTStarGenR->Write();
 
+  
   histCTStarGen0->Scale(1.0/histCTStarGen0->GetEntries());
   histCTStarGenL->Scale(1.0/histCTStarGenL->GetEntries());
   histCTStarGenR->Scale(1.0/histCTStarGenR->GetEntries());
@@ -434,16 +430,18 @@ void costheta(){
   histCTStarGenL->SetLineWidth(3);
   histCTStarGenR->SetLineWidth(3);
 
-  TFile* atlas_file     = new TFile("data.root");
-  TH1F*  atlas_costheta = atlas_file->Get<TH1F>("hist_costheta");
-  int    nbins  = atlas_costheta->GetNbinsX();
 
-  for (int i = 0; i < nbins; i++) {
-    histCTStarGen0->SetBinError(i+1, 0);
-    histCTStarGenL->SetBinError(i+1, 0);
-    histCTStarGenR->SetBinError(i+1, 0);
-  }
 
+  //for (int i = 0; i < nbins; i++) {
+  //  histCTStarGen0->SetBinError(i+1, 0);
+  //  histCTStarGenL->SetBinError(i+1, 0);
+  //  histCTStarGenR->SetBinError(i+1, 0);
+  //}
+
+  double* error_array = (double*) malloc(sizeof(double)*nbins+2);
+  double* errors = &error_array[1];
+  for (int i = 0; i < nbins; i++)
+    errors[i] = sqrt(atlas_costheta->GetBinContent(i+1))/atlas_costheta->GetEntries();
   atlas_costheta->Scale(1.0/atlas_costheta->GetEntries());
 
   //atlas_costheta->SetBinContent(atlas_costheta->GetXaxis()->GetNbins()+1, 0);
@@ -469,42 +467,42 @@ void costheta(){
   double fl = parameters[1] = fit_result->Parameter(1);
   double fr = parameters[2] = fit_result->Parameter(2);
 
-  const char* filenames[4] = {"dataA.root","dataB.root","dataC.root","dataD.root"};
-  TFile* data_files[4];
-  TH1F*  data_hist[4];
+  //const char* filenames[4] = {"dataA.root","dataB.root","dataC.root","dataD.root"};
+  //TFile* data_files[4];
+  //TH1F*  data_hist[4];
 
-  double* error_array = (double*) malloc(sizeof(double)*nbins+2);
-  double* errors = &error_array[1];
-  double* xbar   = (double*)malloc(sizeof(double)*nbins);
+  //double* error_array = (double*) malloc(sizeof(double)*nbins+2);
+  //double* errors = &error_array[1];
+  //double* xbar   = (double*)malloc(sizeof(double)*nbins);
+//
+//  for (int i = 0; i < nbins; i++){
+//    errors[i] = 0;
+//    xbar[i]   = atlas_costheta->GetBinContent(i+1);
+//  }
+//
+//  for (int i = 0; i < 4; i++) {
+//    data_files[i] = new TFile(filenames[i]);
+//    data_hist[i]  = data_files[i]->Get<TH1F>("hist_costheta");
+//    data_hist[i]->Scale(1.0/data_hist[i]->GetEntries());
+//    for (int bin = 0; bin < nbins; bin++) {
+//      double diff = data_hist[i]->GetBinContent(bin+1) - xbar[bin];
+//      diff = abs(diff);
+//      diff *= diff;
+//      errors[bin] += diff;
+//    }
+//  }
 
-  for (int i = 0; i < nbins; i++){
-    errors[i] = 0;
-    xbar[i]   = atlas_costheta->GetBinContent(i+1);
-  }
-
-  for (int i = 0; i < 4; i++) {
-    data_files[i] = new TFile(filenames[i]);
-    data_hist[i]  = data_files[i]->Get<TH1F>("hist_costheta");
-    data_hist[i]->Scale(1.0/data_hist[i]->GetEntries());
-    for (int bin = 0; bin < nbins; bin++) {
-      double diff = data_hist[i]->GetBinContent(bin+1) - xbar[bin];
-      diff = abs(diff);
-      diff *= diff;
-      errors[bin] += diff;
-    }
-  }
-
-  for (int i = 0; i < nbins; i++)
-    errors[i] = sqrt(errors[i]/4.0);
+  ///for (int i = 0; i < nbins; i++)
+  ///  errors[i] = atlas_costheta->GetBinContent(i+1);//sqrt(errors[i]/4.0);
 
 
-  /*
+
   // Draw fit error bars
+  /*
   double* x     = (double*)malloc(sizeof(double)*nbins); //{1,2,3};
   double* y     = (double*)malloc(sizeof(double)*nbins); //{1,4,9};
   double* err_x = (double*)malloc(sizeof(double)*nbins); //{0,0,0};
   double* err_y = (double*)malloc(sizeof(double)*nbins); //{5,5,5};
-
 
   //F_0", "F_L", "F_R
   for (int i = 0; i < nbins; i++) {
@@ -516,18 +514,21 @@ void costheta(){
     err_y[i] += fr*histCTStarGenR->GetBinError(i);
   }
 
-   auto errorband = new TGraphErrors(nbins,x,y,err_x,err_y);
-  // errorband->SetFillColor(kRed);
-  // errorband->SetFillStyle(3010);
-  // errorband->Draw("a3 SAME");
-  */
+  auto errorband = new TGraphErrors(nbins,x,y,err_x,err_y);
+  errorband->SetFillColor(kRed);
+  errorband->SetFillStyle(3010);
+  errorband->Draw("a3 SAME");
+*/
 
   atlas_costheta->SetLineWidth(3);
   atlas_costheta->SetError(error_array);
   atlas_costheta->SetLineColor(kBlue);
-  atlas_costheta->Draw("SAME");
+  atlas_costheta->Draw("e SAME");
   atlas_costheta->ShowBackground()->SetLineColor(kBlue);
 
+  atlas_costheta->Write();
+  out_file->Close();
+  delete out_file;
 
   // Draw legend
   auto legend = new TLegend(0.6,0.7125,0.975,0.75);
@@ -539,8 +540,8 @@ void costheta(){
   c5->SaveAs("out/delphes_fit.png");
 
   //TCanvas *cfit = new TCanvas("cfit", "cfit", 80, 80, 700, 700);
-//
-//  atlas_costheta->Draw();
+
+  //atlas_costheta->Draw();
 //
 //  errorband->SetFillColor(kRed);
 //  errorband->SetFillStyle(3010);
@@ -549,6 +550,9 @@ void costheta(){
 //  legend->Draw();
 
 
+
+
+  
   TCanvas *c6 = new TCanvas("c6", "c6", 80, 80, 700, 700);
   histCTStarGen0->Draw();
   histCTStarGen0->ShowBackground()->SetLineColor(kBlue);
