@@ -79,7 +79,7 @@ void plot(){
         y_R[i] /= y_entries;
     }
 
-    TCanvas *c0 = new TCanvas("costheta 0", "c0", 80, 80, 700, 700);
+    TCanvas *c0 = new TCanvas("costheta 0", "c0", 80, 80, 1400, 700);
     c0->Range(0, 0, 1, 1);
     c0->SetTitle("Delphes Scatterplot");
 
@@ -130,7 +130,7 @@ void plot(){
     TLine *line0 = make_diagonal_line(c0);
     line0->Draw();
 
-    TLegend* leg = new TLegend(0.1,0.7,0.48,0.9);
+    TLegend* leg = new TLegend(0.1,0.7,0.3,0.9);
     //leg->SetHeader("cos theta* 0");
     leg->AddEntry(gL,    "costheta* L", "lep");
     leg->AddEntry(g0,    "costheta* 0", "lep");
@@ -138,6 +138,7 @@ void plot(){
     leg->AddEntry(line0, "Expectation","l r");
     leg->Draw();
 
+    c0->SaveAs("scatterplot.png");
 
 
 /*
