@@ -35,7 +35,15 @@ DATE
 
 \cleardoublepage{}
 \begin{abstract}
-  
+  This thesis studies the $Wtb$ vertex structure, using data ATLAS data from top
+  quark decays, derived from $t\bar t$ events. The events are reconstructed with
+  missing transverse momentum, single lepton decay and at least four jets where
+  two of those jets are tagged as $b$ jets. The ATLAS Open Data, used in this
+  thesis, was taken from $pp$ collisions at a center-of-mass energy of $13$ TeV,
+  which corresponds to a integrated luminosity of 10 $\mathrm{fb}^{-1}$. Angular
+  asymmetries is used as the primary method for measuring the polarization of the
+  $W$ bosons. The measured helicity fractions from Angular asymmetries is ?????.
+
 \end{abstract}
 \cleardoublepage{}
 \tableofcontents{}
@@ -49,8 +57,8 @@ led to the construction of the large hadron collider (LHC), finished in 2008.
 Particles are collided together at high energy to probe the properties of the
 produced debris, hoping to discover new physics that deviates from the SM.\\
 
-The top quark was discovered in 1995, by experiments done by CDF\cite{Abe_1995}
-and DØ\cite{Abachi_1995}. It is the heaviest known fundamental particle, with a
+The top quark was discovered in 1995, by experiments done by CDF~\cite{Abe_1995}
+and DØ~\cite{Abachi_1995}. It is the heaviest known fundamental particle, with a
 mass of $173.34 \pm 0.27 \pm 0.71 \mathrm{GeV/c^2}$, and its coupling strength
 to all the bosons are well predicted by the standard model. Because of its heavy
 mass and consequently short lifetime, it doesn't have enough time to bind with
@@ -62,13 +70,16 @@ are produced in top, anti-top pairs. One test of the Standard Model, is the
 study of the $Wtb$ vertex Lorentz structure and coupling, which is studied by
 looking at the decay products of top quarks. The top quarks decay, with almost
 100\% branching fraction, by weak interactions into $W$ bosons and bottom quarks
-$t \rightarrow W + b$. The $W$ bosons decay, into either a charged lepton
-and neutrino; $W \rightarrow l + \nu_l$, or into a quark, anti-quark pair: $W \rightarrow q' + \bar{q}$.\\
+$t \rightarrow W + b$. The $W$ bosons decay, into either a charged lepton and neutrino;
+$W \rightarrow l + \nu_l$, or into a quark, anti-quark pair: $W \rightarrow q' + \bar{q}$, as
+illustrated in the Feynman diagram Figure~\ref{fig:feynmandiagram}.\\
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{figures/placeholder_feynman_singlelep.png}
-	\caption{The Feyingle leptonic decay, we see from the figure that there are 4
-    quark jets as the end product.}\label{fig:feynmandiagram}%placeholder
+	\caption{The Feynman diagram shows the chain of decay, that results in single
+    leptonic decay, for pair $t\bar t$. The diagram illustrates the final
+    product of the reaction; at least four jets and a lepton neutrino
+    pair.}\label{fig:feynmandiagram}%placeholder
 \end{figure}
 
 In this report, we are only looking at decays with a single lepton as decay
@@ -235,10 +246,11 @@ In LHC experiments, the protons gets smashed together in head-on collisions at
 nearly the speed of light. Since the protons momenentums are parallel to the
 beam axis, conventionally defined as the $z$-axis their total momentum in the
 $xy$-plane, the transverse momentum $p_T$, is zero. The jets scatter off in new
-directions, at angles given by the polar angle $\theta$, and the azimuthal angle $\phi$.
+directions, at angles given by the polar angle $\theta$, and the azimuthal angle $\varphi$.
 The polar angle is defined as the angle of the jet, with respect to the
 $z$-axis, in the $xz$-plane, while the azimuthal angle is defined as the angle
-of the jet, with respect to the $x$-axis in the $xy$-plane, as seen in Fig..
+of the jet, with respect to the $x$-axis in the $xy$-plane, as seen in
+Fig.~\ref{fig:momentum}.
 
 \begin{figure}[H]
   \centering
@@ -262,7 +274,7 @@ of the jet, with respect to the $x$-axis in the $xy$-plane, as seen in Fig..
     \draw (8,1.5) node {$xy$-plane};
   \end{tikzpicture}
   \caption{The figure shows the momentum traveling parallel to the beam axis, and
-  the transverse momentum, each with their respective angles.\label{fig:momentum}}%placeholder
+  the transverse momentum, each with their respective angles.\label{fig:momentum}}
 \end{figure}
 
 In cylindrical detectors, it is useful to use another magnitude called
@@ -310,9 +322,9 @@ of the production\cite{dasilva2016quark}.
 \subsection{Coupling of W$^+$tb}
 The leptonic decay of the $W$-boson, can decay into either of the three leptonic
 families, with nearly equal branching ratios. The $\tau$ lepton is also very
-unstable and has too short a lifetime, so it does not get tagged in this paper.
+unstable and has too short a lifetime, so it does not get tagged in this thesis.
 $\tau$-particles that decay by weak interaction into electrons, $\tau^+ \rightarrow e^+ \nu_e$, or
-muons, $\tau^+ \rightarrow \mu^+ \nu_{\mu}$, are tagged as part of the single lepton channel.
+muons, $\tau^+ \rightarrow \mu^+ \nu_\mu$, are tagged as part of the single lepton channel.\\
 
 The $W$-boson couples only to left-handed fermions, or right handed
 anti-fermions, giving $Wtb$ vortex a (V-A) structure. In the Standard Model we
@@ -373,7 +385,7 @@ asymmetries, $A_-$, and $A_+$, defined as
   A_{\pm}=\frac{N(\cos \theta^* > z)-N(\cos \theta^* < z)}{N(\cos \theta^* > z)+N(\cos \theta^* < z)},
 \end{equation}
 
-with $z=\pm(2^{2/3}-1)$, to choose asymmetries involving only dependence on
+with $z=\pm(1-2^{2/3})$, to choose asymmetries involving only dependence on
 $F_0$ and $F_L$ for $A_+$, or $F_0$ and $F_R$ for $A_-$. The helicity fractions
 for the $W$ boson, can then be obtained by,
 \begin{align}
@@ -392,7 +404,7 @@ $A_-=-0.841 \pm 0.006$~\cite[24]{CastroNunesFiolhais:1544047}.
 \subsection{LHC}
 In the Large Hadron Collider, top quarks are mainly produced through violent
 collisions of protons, causing gluon-gluon fusion, which produces top, anti-top
-pairs $gg \rightarrow t\bar t$. The data used in this paper, is from the 2016 run at LHC,
+pairs $gg \rightarrow t\bar t$. The data used in this thesis, is from the 2016 run at LHC,
 with a centre-of-mass energy of $\sqrt s = 13 \mathrm{TeV}$, which corresponds
 to an integrated luminosity of 10 $\mathrm{fb}^{-1}$\cite{oreach2020}. At these
 energies, the protons are accelerated close to the speed of light before their
@@ -400,8 +412,8 @@ collisions in the ATLAS detector.\\
 
 This process starts, when protons are generated from an ion source in the linear
 accelerator, LINAC2, then gets injected into the LHC, through a series of
-smaller synchrotron accelerators, as seen in Fig., Proton Syncrotron
-Booster (PSB), Proton Syncrotron (PS) and Super Protron Synhrotron
+smaller synchrotron accelerators, as Fig.~\ref{fig:lhc} illustrates; Proton
+Syncrotron Booster (PSB), Proton Syncrotron (PS) and Super Protron Synhrotron
 (SPS)~\cite[135]{Evans_2008}. The LHC receives bunches from SPS, containing many
 protons in each bunch, effectively increasing the cross-sectional area for
 collisions to occur. In order to prevent energy loss due to synchrotron
@@ -446,25 +458,43 @@ The purpose of this component is to measure charge and momentum, including it's
 direction, of the detected particle. It consists of three subcomponents. 
 \paragraph{Pixel Detector}
 % https://iopscience.iop.org/article/10.1088/1748-0221/3/07/P07007
-The pixel detector consists of approximately 92 million electronic channels. It's used for identification and reconstruction of secondary vertices from decay of particles containing a b-quark or for b-tagging jets. The pixel detector covers pseudorapidity range $|\eta| < 2.5 $ 
+The pixel detector consists of approximately 92 million electronic channels.
+It's used for identification and reconstruction of secondary vertices from decay
+of particles containing a b-quark or for b-tagging jets. The pixel detector
+covers pseudorapidity range $|\eta| < 2.5 $
 % Og mange flere kriterier relevant? 
 
 \paragraph{Semiconductor Tracker}
 %https://cds.cern.ch/record/1019885/files/indet-pub-2007-007.pdf
-The Semiconductor tracker is a silicon microstrip tracker consisting of 4088 two-sided modules and over 6 million readout strips. These readout strips are distributed every $80\mathrm{\mu m}$ which allows recording of the position of charged particles to an accuracy of  $17\mathrm{\mu m}$
+The Semiconductor tracker is a silicon microstrip tracker consisting of 4088
+two-sided modules and over 6 million readout strips. These readout strips are
+distributed every $80\mathrm{\mu m}$ which allows recording of the position of
+charged particles to an accuracy of $17\mathrm{\mu m}$
 
 \paragraph{Transition Radiation Tracker.}
-The transition radiation tracker is a drift tube tracker which consists of a straw of 4mm diameter and 0.03mm diameter tungsten wire coated with 0.5-0.7mm gold. The tube is filled with a gas mixture of Xe, $\mathrm{CO_{2}}$ and $\mathrm{O_{2}}$. When charged particles travel through the tube the gas gets ionized which frees electrons that move to the gold wire. The negative charge measured on the wire can be used to distinguish which charged particle ionized the gas. 
+The transition radiation tracker is a drift tube tracker which consists of a
+straw of 4mm diameter and 0.03mm diameter tungsten wire coated with 0.5--0.7mm
+gold. The tube is filled with a gas mixture of Xe, $\mathrm{CO_2}$ and
+$\mathrm{O_2}$. When charged particles travel through the tube the gas gets
+ionized which frees electrons that move to the gold wire. The negative charge
+measured on the wire can be used to distinguish which charged particle ionized
+the gas.
 %Kringlet, probably  omskriv?
 
 \subsubsection{Calorimeter}
 % https://atlas.web.cern.ch/Atlas/TP/NEW/HTML/tp9new/node9.html#SECTION00432000000000000000
 % https://atlas.cern/discover/detector/calorimeter
 % https://en.wikipedia.org/wiki/ATLAS_experiment#Calorimeters
-Calorimeters measure the energy of particles by absorbing them. There are two types of calorimeters used in ATLAS, the Electromagnetic Calorimeter (ECal) and Hadronic Calorimeter (HCal). ECal measures charged particles and photons. 
+Calorimeters measure the energy of particles by absorbing them. There are two
+types of calorimeters used in ATLAS, the Electromagnetic Calorimeter (ECal) and
+Hadronic Calorimeter (HCal). ECal measures charged particles and photons.
 %Maybe Expand
 
-The HCal consist of scintillator plates that radiates light when exposed to a charged particle. When a hadron passes through a scintillator plate it produces a shower of particles which then makes the scintillator radiate light. The intensity of the radiated light can then be analysed to measure the energy of the hadron.
+The HCal consist of scintillator plates that radiates light when exposed to a
+charged particle. When a hadron passes through a scintillator plate it produces
+a shower of particles which then makes the scintillator radiate light. The
+intensity of the radiated light can then be analysed to measure the energy of
+the hadron.
 
 
 \subsubsection{Muon Spectrometer}
@@ -472,7 +502,17 @@ The HCal consist of scintillator plates that radiates light when exposed to a ch
 % https://atlas.cern/discover/detector/muon-spectrometer
 % https://en.wikipedia.org/wiki/ATLAS_experiment#Muon_Spectrometer
 
-The muon spectrometer is on the outer part of the ATLAS detector it operates in the pseudorapidity range $|\eta| < 2.7$. Muons usually pass through the inner detector and the calorimeters undetected which is why the muon spectrometer is located on the outside as other particles will have been stopped earlier in the detector. The muon spectrometer consists of tubes much like the transition radiation tracker that contains a gold wire which is surrounded by a gas. When muons go through these tubes they interact with the gas and leave behind a trail of ions and electrons which drift towards the gold wire in the centre. By detecting the starting point of these trails and measuring the time it takes to reach the gold wire the position of the muon can then be determined. The Muon Spectrometer can be seen in figure \ref{detector}  
+The muon spectrometer is on the outer part of the ATLAS detector it operates in
+the pseudorapidity range $|\eta| < 2.7$. Muons usually pass through the inner
+detector and the calorimeters undetected which is why the muon spectrometer is
+located on the outside as other particles will have been stopped earlier in the
+detector. The muon spectrometer consists of tubes much like the transition
+radiation tracker that contains a gold wire which is surrounded by a gas. When
+muons go through these tubes they interact with the gas and leave behind a trail
+of ions and electrons which drift towards the gold wire in the centre. By
+detecting the starting point of these trails and measuring the time it takes to
+reach the gold wire the position of the muon can then be determined. The Muon
+Spectrometer can be seen in Figure~\ref{detector}
 
 
 \subsubsection{Data Collection}
@@ -480,13 +520,18 @@ The muon spectrometer is on the outer part of the ATLAS detector it operates in 
 % https://en.wikipedia.org/wiki/ATLAS_experiment#Data_systems
 % https://atlas.cern/discover/detector/trigger-daq
 The detector generates 60 terabytes of data per second from the 1.7 billion
-collisions taking place in the detector in that time frame. However, only some of the raw data contain interesting characteristics. To make the data more manageable ATLAS uses a two-level trigger system to only save the most important data. The first part of the trigger system is hardware based and can at most save 100 000 events per second, which then gets passed on to the High-Level Trigger which is software based. After both triggers approximately 1000 events out of the initial 1.7 billion are saved for later analysis.  
+collisions taking place in the detector in that time frame. However, only some
+of the raw data contain interesting characteristics. To make the data more
+manageable ATLAS uses a two-level trigger system to only save the most important
+data. The first part of the trigger system is hardware based and can at most
+save 100 000 events per second, which then gets passed on to the High-Level
+Trigger which is software based. After both triggers approximately 1000 events
+out of the initial 1.7 billion are saved for later analysis.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.1]{figures/atlas.jpg}
-	\caption{A computer generated image of the ATLAS detector \cite{detector}}
-	\label{detector}
+	\caption{A computer generated image of the ATLAS detector~\cite{detector}}\label{detector}
 \end{figure}
 
 \subsection{Tools}
@@ -595,8 +640,9 @@ lepton, and from this we can plot the transverse energy.
 
 In the given data we are directly given the missing transverse energy, which we
 can then immediately plot if the given event satisfies all the criteria given in
-subsection \ref{sec:cuts}. It is worth noting that it is given in the unit MeV, and all we have
-to do is simply convert to GeV, for a more manageable unit in the plot.
+subsection \ref{sec:cuts}. It is worth noting that it is given in the unit MeV,
+and all we have to do is simply convert to GeV, for a more manageable unit in
+the plot.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.55\textwidth]{figures/hist_etmiss}
@@ -617,7 +663,7 @@ leading jet by accessing the first one. % also a requirement on pseudorapidity
 
 
 \subsection{$\cos \theta^{*}$ reconstruction}
-From the data we can reconstruct $\cos \theta^{*}$ using equation \eqref{eq:costheta}.
+From the data we can reconstruct $\cos \theta^{*}$ using equation~\eqref{eq:costheta}.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{figures/hist_costheta}
@@ -629,7 +675,7 @@ From the data we can reconstruct $\cos \theta^{*}$ using equation \eqref{eq:cost
 % do we differentiate between them by S_z value
 \subsection{Delphes data}
 Using delphes we can at least verify that the generated data at least matches
-the theoretical analytical functions plotted in figure \ref{figdistributions} as
+the theoretical analytical functions plotted in Figure~\ref{figdistributions} as
 a sanity check. % i guess we just fit them instead of doing
 \begin{figure*}[t!]
     \centering
@@ -653,7 +699,7 @@ a sanity check. % i guess we just fit them instead of doing
       simulations to generate.}
 \end{figure*}
 Using the same information, as we would get in the ATLAS data, we can use the
-same criteria from subsection \ref{sec:cuts} to isolate the equivalent usable
+same criteria from Subsection~\ref{sec:cuts} to isolate the equivalent usable
 data, as we would get from the ATLAS detector, in the delphes data.
 \begin{figure*}[t!]
     \centering
@@ -677,8 +723,8 @@ data, as we would get from the ATLAS detector, in the delphes data.
       events, using Delphes fast simulations to generate, and similar cuts to
       the ones made on the Open ATLAS data.}
 \end{figure*}
-We can now fit the resulting histograms in a linear combination to the histogram from the ATLAS data.
-\cleardoublepage{}
+We can now fit the resulting histograms in a linear combination to the histogram
+from the ATLAS data. \cleardoublepage{}
 \subsection{Fitting to atlas data}
 \begin{figure}[H]
   \centering
