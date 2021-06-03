@@ -556,13 +556,13 @@ the detector, to compare theory with real data~\cite{mcopenatlas}.
 %mangler noget.
 
 \subsubsection{ROOT}
-% The function, which we use to construct the Lorentz vector, \texttt{SetPtEtaPhiE} is defined as such,
-%\begin{equation}
-%  p(pt, \eta, \phi, E) =
-%  \begin{pmatrix}
-%    |pt| \cos(\phi)\\ |pt|\sin(\phi)\\ |pt| \sinh(eta)\\ E
-%  \end{pmatrix}
-%\end{equation}
+The function, which ROOT uses to construct the Lorentz vector, \texttt{SetPtEtaPhiE}, is defined as such,
+\begin{equation}
+  p({\vb p_t}, \eta, \phi, E) =
+  \begin{pmatrix}
+    |{\vb p_t}| \cos(\phi)\\ |{\vb p_t}|\sin(\phi)\\ |{\vb p_t}| \sinh(\eta)\\ E
+  \end{pmatrix}
+\end{equation}
 To calculate the
 transverse energy we are using the builtin ROOT \texttt{TLorentzVector} member
 function \texttt{Et()}. That function is effectively defined as
