@@ -138,7 +138,7 @@ void plot(){
     leg->AddEntry(line0, "Expectation","l r");
     leg->Draw();
 
-    c0->SaveAs("scatterplot.png");
+    c0->SaveAs("../figures/scatterplot.png");
 
 
 /*
