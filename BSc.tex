@@ -9,6 +9,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{tikz}
+%\usepackage{tikz-feynman}
 
 % TODOS WHEN DONE:
 %   - Feynman diagrams
@@ -76,6 +77,20 @@ illustrated in the Feynman diagram Figure~\ref{fig:feynmandiagram}.\\
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{figures/placeholder_feynman_singlelep.png}
+  %\begin{center}
+  %  \feynmandiagram[layered layout,horizontal=a to start] {
+  %    a     -- [gluon] start -- [fermion, edge label=$t$] t,
+  %    t     -- [boson, edge label=$W^+$] Wp,
+  %    Wp    -- [fermion] v [particle=$\nu_e$],
+  %    Wp    -- [anti fermion] e [particle=$e^+$],
+  %    t     -- [fermion] b [particle=$b$],
+  %    start -- [anti fermion,edge label'=\(\overline{t}\)] tbar,
+  %    tbar  -- [boson, edge label=$W^-$] Wm,
+  %    Wm    -- [fermion] d [particle=$d$],
+  %    Wm    -- [anti fermion] u [particle=$\overline{u}$],
+  %    tbar  -- [anti fermion] bbar [particle=$\overline{b}$],
+  %    };
+  %\end{center}
 	\caption{The Feynman diagram shows the chain of decay, that results in single
     leptonic decay, for pair $t\bar t$. The diagram illustrates the final
     product of the reaction; at least four jets and a lepton neutrino
