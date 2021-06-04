@@ -412,7 +412,7 @@ helicity fractions.
 Another approach to obtaining the polarization states the $W$-bosons, is done by
 counting the number of events with a specific $\cos \theta^*$, then use angular
 asymmetries, $A_-$, and $A_+$, defined as
-\begin{equation}
+\begin{equation}\label{Asymmetries}
   A_{\pm}=\frac{N(\cos \theta^* > z)-N(\cos \theta^* < z)}{N(\cos \theta^* > z)+N(\cos \theta^* < z)},
 \end{equation}
 
@@ -431,7 +431,8 @@ $A_-=-0.841 \pm 0.006$~\cite[24]{CastroNunesFiolhais:1544047}.
 %kilde findes på forsøgs artiklen.
 
 \section{Apparatus}
-
+%TODO
+% Indsæt referencer
 \subsection{LHC}
 In the Large Hadron Collider, top quarks are mainly produced through violent
 collisions of protons, causing gluon-gluon fusion, which produces top, anti-top
@@ -464,7 +465,7 @@ the events, and $\int L \dd t$ is the integrated luminosity.
 	\caption{The scheme shows the accelerator and detector layout at
     CERN~\cite{Haffner:1621894}.}\label{fig:lhc}
 \end{figure}
-%evt fjerner jeg lavels i bunden senere.
+%evt fjerner jeg labels i bunden senere.
 
 % Cern Thesis af Satoshi Hasegawa
 %http://opendata.atlas.cern/release/2020/documentation/datasets/files.html
@@ -572,6 +573,8 @@ ROOT is a framework used for storing and processing data in high energy physics.
 %?
 
 \subsection{Monte Carlo Simulation}
+%TODO 
+%Omskriv til at inkludere pythia + POWHEG, delphes og ukendt opendata simuleringsværktøj
 Monte Carlo (MC) simulation is used in modelling the signal and background
 processes expected at the LHC.\@ For the 13 TeV Atlas Open Data used in this
 thesis, this process follows four steps; starting with an event generation which
@@ -606,12 +609,17 @@ function \texttt{Et()}. That function is effectively defined as
   E_t = p_t \frac{\sqrt{p_y^2+p_x^2}}{\sqrt{p_z^2+p_y^2+p_x^2}}
 \end{equation}
 %Den her sektion mangler at bliver skrivet færdig
+%Jeg tænker den skal være i et andet afsnit?
 
-\subsubsection{Delphes}
+\section{Methodology}
+%Evt nyt afsnit, måske overlap med noget data analysis? 
+\subsection{Template Method}
+%draft
+Pythia was used to generate three files containing left, longitudinal and right-handed polarizations of the W-boson separately. These files were then run through delphes, which simulates the ATLAS detector response and uses that to reconstruct the particles. Cuts were applied in ROOT matching the event selection criteria defined in section \ref{sec:cuts}. The templates were then combined and fitted to the real $\cos \theta^{*}$ distribution from the ATLAS detector, giving us the three helicity fractions $F_L$, $F_R$ and $F_0$
 
-\subsection{Results}
-%Måske skal den her sektion slettes, eller sættes som en del af data analysis.
-
+\subsection{Angular Asymmetries}
+%draft
+From equation \eqref{Asymmetries} the angular asymmetries are obtained for MC data. These are compared to Standard Model expectation, to obtain corrections factors which are then used on ATLAS detector data to obtain the real helicity fractions.
 
 \section{Data Analysis}
 % TODO:
@@ -621,7 +629,7 @@ function \texttt{Et()}. That function is effectively defined as
 % Måske sæt overflow ind i costheta plot
 % Draw error in delphes histograms
 
-% Definer Psuedorapidity \eta %
+
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
 \subsection{Event Selection}\label{sec:cuts}
 In order to identify the top-quark-pair production, several cuts in the data
