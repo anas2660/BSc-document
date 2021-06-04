@@ -753,27 +753,35 @@ Using the same information, as we would get in the ATLAS data, we can use the
 same criteria from Subsection~\ref{sec:cuts} to isolate the equivalent usable
 data, as we would get from the ATLAS detector, in the delphes data.
 \begin{figure*}[t!]
+  \centering
+  \begin{subfigure}[t]{0.5\textwidth}
     \centering
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarL}
-        \caption{$F_L$ generated distribution.}
-    \end{subfigure}%
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarR}
-        \caption{$F_R$ generated distribution.}
-      \end{subfigure}
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstar0}
-        \caption{$F_0$ generated distribution.}
-    \end{subfigure}
-    \caption{The figures shows the reconstructed Delphes $\cos \theta^*$ of the
-      generated $F_L$, $F_R$ and $F_0$ distributions, with a sample of 20000
-      events, using Delphes fast simulations to generate, and similar cuts to
-      the ones made on the Open ATLAS data.}
+    \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarL}
+    \caption{$F_L$ generated distribution.}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarR}
+    \caption{$F_R$ generated distribution.}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/delphes_ctstar0}
+    \caption{$F_0$ generated distribution.}
+  \end{subfigure}
+  \caption{The figures shows the reconstructed Delphes $\cos \theta^*$ of the
+    generated $F_L$, $F_R$ and $F_0$ distributions, with a sample of 20000
+    events, using Delphes fast simulations to generate, and similar cuts to
+    the ones made on the Open ATLAS data.}
 \end{figure*}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/scatterplot}
+  \caption{\label{fig:scatterplot}}
+\end{figure}
+
+
 We can now fit the resulting histograms in a linear combination to the histogram
 from the ATLAS data. \cleardoublepage{}
 \subsection{Fitting to atlas data}
