@@ -78,7 +78,7 @@ illustrated in the Feynman diagram Figure~\ref{fig:feynmandiagram}.\\
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{figures/placeholder_feynman_singlelep.png}
   %\begin{center}
-  %  \feynmandiagram[layered layout,horizontal=a to start] {
+  %  \feynmandiagram[horizontal=a to start, tree layout] {
   %    a     -- [gluon] start -- [fermion, edge label=$t$] t,
   %    t     -- [boson, edge label=$W^+$] Wp,
   %    Wp    -- [fermion] v [particle=$\nu_e$],
@@ -325,7 +325,24 @@ branching fraction of each of the pair production processes, is related to the
 center-of-mass energy, for which gluon fusion dominates at the LHC at about 86\%
 of the production\cite{dasilva2016quark}.
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{figures/placeholder_feynman_ttproduction.png}
+  \centering
+	\includegraphics[width=\linewidth]{figures/placeholder_feynman_ttproduction.png}\\
+  %\hfill{}
+  %\feynmandiagram[layered layout,horizontal=a to b] {
+  %  g1 [particle=$g$] -- [gluon] a [dot],
+  %  g2 [particle=$g$] -- [gluon] a,
+  %  a  -- [gluon] b[dot],
+  %  b  -- [fermion] t [particle=$t$],
+  %  b  -- [anti fermion] tbar [particle=$\overline{t}$],
+  %};\hfill{}
+  %\feynmandiagram[layered layout,horizontal=a to b] {
+  %  qbar [particle=$\overline{q}$] -- [anti fermion] a [dot],
+  %  q [particle=$q$] -- [fermion] a,
+  %  a  -- [gluon] b[dot],
+  %  b  -- [fermion] t [particle=$t$],
+  %  b  -- [anti fermion] tbar [particle=$\overline{t}$],
+  %};
+  %\hfill{}
 	\caption{A Feynman diagram of the two main production processes $gg \rightarrow t\bar t$
     on the left, and $q\bar q \rightarrow t\bar t$ on the right. Both produciton
     mechanisms are results of strong interactions.}\label{fig:ttproduction}
