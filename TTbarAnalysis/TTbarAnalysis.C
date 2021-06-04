@@ -368,8 +368,8 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                   
                   static const float zplus = -0.58740105f;
                   static const float zminus = 0.58740105f;
-                  
-                  
+
+                  FillHistogramsGlobal(costheta, weight, "hist_costheta_overflow");
                   // Remove overflow & underflow
                   if (costheta >= -1.0f && costheta <= 1.0f) {
                     if (costheta > zplus)  Nzplus++;

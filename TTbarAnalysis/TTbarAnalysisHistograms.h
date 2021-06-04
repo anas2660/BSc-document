@@ -17,6 +17,7 @@ void TTbarAnalysis::define_histograms() {
   hist_syst_mtw = new TH1F("hist_syst_mtw",
                            "Transverse Mass (MET syst); M^{W}_{T} [GeV] (after E_{T}^{miss} and p_{T}^{lep} syst. uncert.);Events / bin", 20, 0, 300);
   hist_costheta = new TH1F("hist_costheta", "cos theta*;cos theta*;Events / bin", 15, -1, 1);
+  hist_costheta_overflow = new TH1F("hist_costheta_overflow", "cos theta*;cos theta*;Events / bin", 16, -1, 1.133333);
 
   // Jet variables histograms
   hist_n_jets          = new TH1F("hist_n_jets", "Number of Jets;N_{jets};Events", 5, 3.5, 8.5);
@@ -64,6 +65,7 @@ void TTbarAnalysis::FillOutputList() {
   GetOutputList()->Add(hist_syst_mtw);
   GetOutputList()->Add(hist_Wmass);
   GetOutputList()->Add(hist_costheta);
+  GetOutputList()->Add(hist_costheta_overflow);
 
   // Add Leading Lepton histograms
   GetOutputList()->Add(hist_leadleptpt);
@@ -101,6 +103,7 @@ void TTbarAnalysis::WriteHistograms() {
   hist_syst_mtw->Write();
   hist_Wmass->Write();
   hist_costheta->Write();
+  hist_costheta_overflow->Write();
 
   // Write Leading Lepton histograms
   hist_leadleptpt->Write();
@@ -133,6 +136,7 @@ void TTbarAnalysis::FillHistogramsGlobal(double m, float w, TString s) {
   if (s.Contains("hist_syst_etmiss")) hist_syst_etmiss->Fill(m, w);
   if (s.Contains("hist_syst_mtw")) hist_syst_mtw->Fill(m, w);
   if (s.Contains("hist_costheta")) hist_costheta->Fill(m, w);
+  if (s.Contains("hist_costheta_overflow")) hist_costheta_overflow->Fill(m, w);
 }
 
 void TTbarAnalysis::FillHistogramsTTbar(double m, float w, TString s) {
