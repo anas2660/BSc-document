@@ -412,7 +412,7 @@ helicity fractions.
 Another approach to obtaining the polarization states the $W$-bosons, is done by
 counting the number of events with a specific $\cos \theta^*$, then use angular
 asymmetries, $A_-$, and $A_+$, defined as
-\begin{equation}\label{Asymmetries}
+\begin{equation}\label{eq:asymmetries}
   A_{\pm}=\frac{N(\cos \theta^* > z)-N(\cos \theta^* < z)}{N(\cos \theta^* > z)+N(\cos \theta^* < z)},
 \end{equation}
 
@@ -619,7 +619,7 @@ Pythia was used to generate three files containing left, longitudinal and right-
 
 \subsection{Angular Asymmetries}
 %draft
-From equation \eqref{Asymmetries} the angular asymmetries are obtained for MC data. These are compared to Standard Model expectation, to obtain corrections factors which are then used on ATLAS detector data to obtain the real helicity fractions.
+From equation \eqref{eq:asymmetries} the angular asymmetries are obtained for MC data. These are compared to Standard Model expectation, to obtain corrections factors which are then used on ATLAS detector data to obtain the real helicity fractions.
 
 \section{Data Analysis}
 % TODO:
@@ -773,11 +773,11 @@ equivalent usable data, gotten from the ATLAS detector. The
 Figures~\ref{fig:redelphesdist} shows the three helicity distrubutions after the
 cuts.
 \begin{figure*}[t!]
-   \centering
-   \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarL}
-        \caption{$F_L$ generated distribution.}
+  \centering
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarL}
+    \caption{$F_L$ generated distribution.}
   \end{subfigure}%
   \begin{subfigure}[t]{0.5\textwidth}
     \centering
@@ -844,27 +844,54 @@ CHI2 : 1963.72
 % Skriv om delphes scatterplot når den er sat ind i data analysis
 % Error propagation
 Due to the limitations of the released 13 TeV Open Datasets, it was not possible
-to analyse the helicity fractions angular distribution through that data, which
-lead to the utilization of Delphes. The deviation between the predicted SM
+to analyse the helicity fractions' angular distributions through the ATLAS data,
+which lead to the utilization of Delphes. The deviation between the predicted SM
 values for the helicity fraction, and the value obtained through the fitting, is
-possible the result of systematic errors in attempting to fit Delphes simulated
-spin orientation, to the data obtained from the LHC Open ATLAS run in 2016.
-Since Delphes runs a fast-simulation, it is not designed to be used in parallel
-with data taken from advanced detector studies. This analysis consequently
-serves as a test for this novel approach of combining Delphes simulations with
-data taken from ATLAS detector. While similar cuts was attempted to be
-implemented on the Delphes' truth-information, due to the absence of the
-b-tagging MV2c10 algorithm in Delphes, cuts were made using 80--85\% efficiency
-instead.\\ %skal finde en kilde til det her
+possibly the result of systematic errors when attempting to fit Delphes
+simulated spin orientation, to the data obtained from the LHC Open ATLAS run in
+2016. Since Delphes runs a fast-simulation, it is not designed to be used in
+parallel with data taken from advanced detector studies. This analysis
+consequently serves as a test for this novel approach of combining Delphes
+simulations with data taken from ATLAS detector. While similar cuts was
+attempted to be implemented on the Delphes' truth-information, due to the
+absence of the b-tagging MV2c10 algorithm in Delphes, cuts were made using
+80--85\% efficiency instead~\cite{CMS-PAS-BTV-11-004}.\\
 
-The reconstructed $\cos \theta^*$ had significant entries in overflow. Attempts using
-the theoretical $\cos \theta^*$, rather than the approximation, as seen in
-Eq.~\ref{eq:costheta}, but no visible differences appeared, and the overflow
-remained. This overflow was ignored in the fitting process, as only data
-remaining within the physically possible range from -1 to 1, was considered in
-the analysis. The Delphes data for the helicity destributions, had substantially
-less overflow, than data from OpenATLAS, which also motived the decision to only
-fit within the parameter -1 to 1.
+However, perhaps the greatest source of errors is a consequence of statistical
+errors, due to the small event samples surviving the cut on the given Delphes
+data, an efficiency of less than 1/20. Figure~\ref{fig:scatterplot} illustrates
+the effect of the cuts on the truth data, where the normalized data of
+Fig.~\ref{fig:delphesdist}, is plotted out of one axis, and the data from
+Fig.~\ref{fig:redelphesdist} is plotted out of the other. The values for the
+reconstructed left and right handed distributions diverge from the truth values,
+at values with higher density of events, corresponding to the corners of the
+truth distribution. As a result of time constraints, and the large storage space
+required to simulate a sufficient number of Delphes events, information about
+the $W$ polarization was instead obtained by the method of angular asymmetries,
+described in Section~\ref{sec:coupling}.\\
+
+%For measurements of angular asymmetries, three parameters were
+%considered; $N1 = N(\cos \theta^{*}<z_-)$, $N3 = N(\cos \theta^{*}>z_+)$ and $N2$ being
+%the remaining events. Applying these parameters to the simulated data, the
+%correction factors were obtained by comparing the simulated data to the Standard
+%Model expectation, then solving a system of equation.
+
+For measurements of angular asymmetries, the error was found, using first order
+error propagation on equation~\eqref{eq:asymmetries}. The statistical error of
+this approach, was significantly smaller, due to the fact that the data was
+taken exclusively from the Open ATLAS Data, which had a much larger data sample
+than the Delphes simulations.\\
+
+The reconstructed $\cos \theta^*$, from the ATLAS data, used in both methods, had
+significant entries in overflow. The theoretical $\cos \theta^*$ was compared to the
+the approximation, but no significant differences appeared between the two,
+refuting the possibility that overflow stemmed from the approximation. This %ved ikke om vi overhovedet bør nævne det med den sammenligningen.
+overflow was ignored in the fitting process, as only data remaining within the
+physically possible range from -1 to 1, was considered in the analysis. The
+Delphes data for the helicity destributions, had substantially less overflow,
+than data from Open ATLAS, which also motived the decision to only fit within the
+parameter -1 to 1.
+
 %Kan godt være at jeg skal lave nogle ændringer på diskussionen, med de nye
 %data, og med fokus på den nye tilgangs metode.
 
