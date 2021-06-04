@@ -9,6 +9,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{tikz}
+%\usepackage{tikz-feynman}
 
 % TODOS WHEN DONE:
 %   - Feynman diagrams
@@ -76,6 +77,20 @@ illustrated in the Feynman diagram Figure~\ref{fig:feynmandiagram}.\\
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{figures/placeholder_feynman_singlelep.png}
+  %\begin{center}
+  %  \feynmandiagram[horizontal=a to start, tree layout] {
+  %    a     -- [gluon] start -- [fermion, edge label=$t$] t,
+  %    t     -- [boson, edge label=$W^+$] Wp,
+  %    Wp    -- [fermion] v [particle=$\nu_e$],
+  %    Wp    -- [anti fermion] e [particle=$e^+$],
+  %    t     -- [fermion] b [particle=$b$],
+  %    start -- [anti fermion,edge label'=\(\overline{t}\)] tbar,
+  %    tbar  -- [boson, edge label=$W^-$] Wm,
+  %    Wm    -- [fermion] d [particle=$d$],
+  %    Wm    -- [anti fermion] u [particle=$\overline{u}$],
+  %    tbar  -- [anti fermion] bbar [particle=$\overline{b}$],
+  %    };
+  %\end{center}
 	\caption{The Feynman diagram shows the chain of decay, that results in single
     leptonic decay, for pair $t\bar t$. The diagram illustrates the final
     product of the reaction; at least four jets and a lepton neutrino
@@ -310,7 +325,24 @@ branching fraction of each of the pair production processes, is related to the
 center-of-mass energy, for which gluon fusion dominates at the LHC at about 86\%
 of the production\cite{dasilva2016quark}.
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{figures/placeholder_feynman_ttproduction.png}
+  \centering
+	\includegraphics[width=\linewidth]{figures/placeholder_feynman_ttproduction.png}\\
+  %\hfill{}
+  %\feynmandiagram[layered layout,horizontal=a to b] {
+  %  g1 [particle=$g$] -- [gluon] a [dot],
+  %  g2 [particle=$g$] -- [gluon] a,
+  %  a  -- [gluon] b[dot],
+  %  b  -- [fermion] t [particle=$t$],
+  %  b  -- [anti fermion] tbar [particle=$\overline{t}$],
+  %};\hfill{}
+  %\feynmandiagram[layered layout,horizontal=a to b] {
+  %  qbar [particle=$\overline{q}$] -- [anti fermion] a [dot],
+  %  q [particle=$q$] -- [fermion] a,
+  %  a  -- [gluon] b[dot],
+  %  b  -- [fermion] t [particle=$t$],
+  %  b  -- [anti fermion] tbar [particle=$\overline{t}$],
+  %};
+  %\hfill{}
 	\caption{A Feynman diagram of the two main production processes $gg \rightarrow t\bar t$
     on the left, and $q\bar q \rightarrow t\bar t$ on the right. Both produciton
     mechanisms are results of strong interactions.}\label{fig:ttproduction}
@@ -368,7 +400,8 @@ quark system. The dependence is shown in Fig.~\ref{fig:distributions} for the
 three distribution seperately, and for the SM, with the above mentioned NNLO
 helicity fractions.
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{figures/angular_dist.png}
+  \centering
+	\includegraphics[width=0.7\linewidth]{figures/angular_dist.png}
 	\caption{The predicted $\cos \theta^{*}$ angular distribution for helicity
     fractions. The distributions for $F_{0}$, $F_{L}$ and $F_{R}$ are
     normalized, and are given by the blue, red and green line respectively. The
@@ -379,7 +412,7 @@ helicity fractions.
 Another approach to obtaining the polarization states the $W$-bosons, is done by
 counting the number of events with a specific $\cos \theta^*$, then use angular
 asymmetries, $A_-$, and $A_+$, defined as
-\begin{equation}
+\begin{equation}\label{Asymmetries}
   A_{\pm}=\frac{N(\cos \theta^* > z)-N(\cos \theta^* < z)}{N(\cos \theta^* > z)+N(\cos \theta^* < z)},
 \end{equation}
 
@@ -398,7 +431,8 @@ $A_-=-0.841 \pm 0.006$~\cite[24]{CastroNunesFiolhais:1544047}.
 %kilde findes på forsøgs artiklen.
 
 \section{Apparatus}
-
+%TODO
+% Indsæt referencer
 \subsection{LHC}
 In the Large Hadron Collider, top quarks are mainly produced through violent
 collisions of protons, causing gluon-gluon fusion, which produces top, anti-top
@@ -431,7 +465,7 @@ the events, and $\int L \dd t$ is the integrated luminosity.
 	\caption{The scheme shows the accelerator and detector layout at
     CERN~\cite{Haffner:1621894}.}\label{fig:lhc}
 \end{figure}
-%evt fjerner jeg lavels i bunden senere.
+%evt fjerner jeg labels i bunden senere.
 
 % Cern Thesis af Satoshi Hasegawa
 %http://opendata.atlas.cern/release/2020/documentation/datasets/files.html
@@ -534,9 +568,13 @@ analysis.
 	\caption{A computer generated image of the ATLAS detector~\cite{detector}}\label{fig:detector}
 \end{figure}
 
-\subsection{Tools}
+\subsection{ROOT}
+ROOT is a framework used for storing and processing data in high energy physics. ROOT is primarily written in the programming language c++. Data in ROOT files are stored in a tree format, the file itself is a compressed binary file. 
+%?
 
 \subsection{Monte Carlo Simulation}
+%TODO 
+%Omskriv til at inkludere pythia + POWHEG, delphes og ukendt opendata simuleringsværktøj
 Monte Carlo (MC) simulation is used in modelling the signal and background
 processes expected at the LHC.\@ For the 13 TeV Atlas Open Data used in this
 thesis, this process follows four steps; starting with an event generation which
@@ -556,13 +594,13 @@ the detector, to compare theory with real data~\cite{mcopenatlas}.
 %mangler noget.
 
 \subsubsection{ROOT}
-% The function, which we use to construct the Lorentz vector, \texttt{SetPtEtaPhiE} is defined as such,
-%\begin{equation}
-%  p(pt, \eta, \phi, E) =
-%  \begin{pmatrix}
-%    |pt| \cos(\phi)\\ |pt|\sin(\phi)\\ |pt| \sinh(eta)\\ E
-%  \end{pmatrix}
-%\end{equation}
+The function, which ROOT uses to construct the Lorentz vector, \texttt{SetPtEtaPhiE}, is defined as such,
+\begin{equation}
+  p({\vb p_t}, \eta, \phi, E) =
+  \begin{pmatrix}
+    |{\vb p_t}| \cos(\phi)\\ |{\vb p_t}|\sin(\phi)\\ |{\vb p_t}| \sinh(\eta)\\ E
+  \end{pmatrix}
+\end{equation}
 To calculate the
 transverse energy we are using the builtin ROOT \texttt{TLorentzVector} member
 function \texttt{Et()}. That function is effectively defined as
@@ -571,8 +609,17 @@ function \texttt{Et()}. That function is effectively defined as
   E_t = p_t \frac{\sqrt{p_y^2+p_x^2}}{\sqrt{p_z^2+p_y^2+p_x^2}}
 \end{equation}
 %Den her sektion mangler at bliver skrivet færdig
+%Jeg tænker den skal være i et andet afsnit?
 
-\subsubsection{Delphes}
+\section{Methodology}
+%Evt nyt afsnit, måske overlap med noget data analysis? 
+\subsection{Template Method}
+%draft
+Pythia was used to generate three files containing left, longitudinal and right-handed polarizations of the W-boson separately. These files were then run through delphes, which simulates the ATLAS detector response and uses that to reconstruct the particles. Cuts were applied in ROOT matching the event selection criteria defined in section \ref{sec:cuts}. The templates were then combined and fitted to the real $\cos \theta^{*}$ distribution from the ATLAS detector, giving us the three helicity fractions $F_L$, $F_R$ and $F_0$
+
+\subsection{Angular Asymmetries}
+%draft
+From equation \eqref{Asymmetries} the angular asymmetries are obtained for MC data. These are compared to Standard Model expectation, to obtain corrections factors which are then used on ATLAS detector data to obtain the real helicity fractions.
 
 \section{Data Analysis}
 % TODO:
@@ -582,7 +629,7 @@ function \texttt{Et()}. That function is effectively defined as
 % Måske sæt overflow ind i costheta plot
 % Draw error in delphes histograms
 
-% Definer Psuedorapidity \eta %
+
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
 \subsection{Event Selection}\label{sec:cuts}
 In order to identify the top-quark-pair production, several cuts in the data
@@ -591,9 +638,9 @@ were implemented. The criteria are as follows~\cite{oreach2020}
 	\item Only one electron or muon in the final state with $p_{T} > 30 \mathrm{GeV}$
 	\item Missing transverse momentum $E_{T}^{miss} > 30 \mathrm{GeV}$
 	\item Transverse mass of the W-boson $M_{T}^{W} > 30 \mathrm{GeV}$
-	\item At least four jets with $p_{T} > 30 \mathrm{GeV}$, with exactly two of these being b-tagged
-	\item Electrons are required to have $|\eta| > 2.47$ aside from $1.37 < |\eta| < 1.52$
-	\item Muons are limited by $|\eta| > 2.50$
+	\item At least four jets with $p_{T} > 30 \mathrm{GeV}$ and $|\eta| < 2.5$, with exactly two of these being b-tagged
+	\item Electrons are required to have $|\eta| < 2.47$ aside from $1.37 < |\eta| < 1.52$
+	\item Muons are limited by $|\eta| < 2.50$
 \end{itemize}
 
 \subsubsection{B-tagging}
@@ -726,27 +773,36 @@ equivalent usable data, gotten from the ATLAS detector. The
 Figures~\ref{fig:redelphesdist} shows the three helicity distrubutions after the
 cuts.
 \begin{figure*}[t!]
+  \centering
+  \begin{subfigure}[t]{0.5\textwidth}
     \centering
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarL}
-        \caption{$F_L$ generated distribution.}
-    \end{subfigure}%
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarR}
-        \caption{$F_R$ generated distribution.}
-      \end{subfigure}
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{figures/delphes_ctstar0}
-        \caption{$F_0$ generated distribution.}
-    \end{subfigure}
-    \caption{The figures shows the reconstructed Delphes $\cos \theta^*$ of the
-      generated $F_L$, $F_R$ and $F_0$ distributions, with a sample of 20000
-      events, using Delphes fast simulations to generate, and similar cuts to
-      the ones made on the Open ATLAS data.}\label{fig:redelphesdist}
+    \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarL}
+    \caption{$F_L$ generated distribution.}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/delphes_ctstarR}
+    \caption{$F_R$ generated distribution.}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/delphes_ctstar0}
+    \caption{$F_0$ generated distribution.}
+  \end{subfigure}
+  \caption{The figures shows the reconstructed Delphes $\cos \theta^*$ of the
+    generated $F_L$, $F_R$ and $F_0$ distributions, with a sample of 20000
+    events, using Delphes fast simulations to generate, and similar cuts to
+    the ones made on the Open ATLAS data.}\label{fig:redelphesdist}
 \end{figure*}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/scatterplot}
+  \caption{\label{fig:scatterplot}}
+\end{figure}
 
 \subsection{Fitting to atlas data}
 The histograms shown in Fig.~\ref{fig:redelphesdist}, is fitted by a linear
@@ -757,7 +813,7 @@ error associated with the itterative approach to the fit.\cleardoublepage{}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{figures/delphes_fit}
+  \includegraphics[width=0.9\textwidth]{figures/delphes_fit}
   \caption{\label{fig:delphesfit}Reconstructed Delphes $\cos \theta^{*}$ fitted to
     the $\cos \theta^{*}$ from ATLAS data.}
 \end{figure}

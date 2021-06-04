@@ -3,6 +3,8 @@
 #include <TGraph.h>
 #include <TCanvas.h>
 #include <TLine.h>
+#include <TLegend.h>
+#include <TGaxis.h>
 
 TLine* make_diagonal_line(TCanvas* canvas){
     canvas->Update();
@@ -10,6 +12,7 @@ TLine* make_diagonal_line(TCanvas* canvas){
     double p2 = fmin(canvas->GetUxmax(), canvas->GetUymax());
     
     TLine *line = new TLine(p1, p1, p2, p2);
+    line->SetLineStyle(kDashed);
     line->SetLineColor(kRed);
     line->SetLineWidth(3);
     return line;
@@ -76,13 +79,69 @@ void plot(){
         y_R[i] /= y_entries;
     }
 
-    
-    TCanvas *c0 = new TCanvas("costheta 0", "c0", 80, 80, 700, 700);
+    TCanvas *c0 = new TCanvas("costheta 0", "c0", 80, 80, 1400, 700);
+    c0->Range(0, 0, 1, 1);
+    c0->SetTitle("Delphes Scatterplot");
+
+    // double max0, maxL, maxR;
+    // max0 = maxL = maxR = 0;
+    // //double max0, maxL, maxR;
+    // for (int i = 0; i < nbins; i++) {
+    //     max0 = fmax(x_0[i] + x_error_0[i], max0);
+    //     maxL = fmax(x_L[i] + x_error_L[i], maxL);
+    //     maxR = fmax(x_R[i] + x_error_R[i], maxR);
+    // }
+    // printf("max 0 : %g\n", max0);
+    // printf("max L : %g\n", maxL);
+    // printf("max R : %g\n", maxR);
+
+    // double min0, minL, minR;
+    // min0 = minL = minR = 100.0;
+    // //double min0, minL, minR;
+    // for (int i = 0; i < nbins; i++) {
+    //     min0 = fmin(x_0[i] - x_error_0[i], min0);
+    //     minL = fmin(x_L[i] - x_error_L[i], minL);
+    //     minR = fmin(x_R[i] - x_error_R[i], minR);
+    // }
+    // printf("min 0 : %g\n", min0);
+    // printf("min L : %g\n", minL);
+    // printf("min R : %g\n", minR);
+
+    // L is the widest x-interval so use that to create the axis
+    TGraph *gL = new TGraphErrors(nbins, x_L, y_L, x_error_L, y_error_L);
+    gL->SetTitle("Delphes Scatterplot");
+    gL->SetLineColor(kRed);
+    gL->SetLineWidth(2);
+    gL->Draw("SAME aep");
+
     TGraph *g0 = new TGraphErrors(nbins, x_0, y_0, x_error_0, y_error_0);
-    g0->Draw("ap");
+    g0->SetLineColor(kBlue);
+    g0->SetLineWidth(2);
+    g0->Draw("SAME e");
+
+    TGraph *gR = new TGraphErrors(nbins, x_R, y_R, x_error_R, y_error_R);
+    gR->SetLineWidth(2);
+    gR->Draw("SAME e");
+
+    gL->GetXaxis()->SetRangeUser(-1, 1.0);
+    gL->GetYaxis()->SetRangeUser(0, 0.207376);
+
+
     TLine *line0 = make_diagonal_line(c0);
     line0->Draw();
 
+    TLegend* leg = new TLegend(0.1,0.7,0.3,0.9);
+    //leg->SetHeader("cos theta* 0");
+    leg->AddEntry(gL,    "costheta* L", "lep");
+    leg->AddEntry(g0,    "costheta* 0", "lep");
+    leg->AddEntry(gR,    "costheta* R", "lep");
+    leg->AddEntry(line0, "Expectation","l r");
+    leg->Draw();
+
+    c0->SaveAs("../figures/scatterplot.png");
+
+
+/*
     TCanvas *cL = new TCanvas("costheta L", "cL", 80, 80, 700, 700);
     TGraph *gL = new TGraphErrors(nbins, x_L, y_L, x_error_L, y_error_L);
     gL->Draw("ap");
@@ -94,4 +153,5 @@ void plot(){
     gR->Draw("ap");
     TLine *lineR = make_diagonal_line(cR);
     lineR->Draw();
+*/
 }
