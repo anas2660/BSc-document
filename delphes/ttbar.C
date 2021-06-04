@@ -407,12 +407,9 @@ void costheta(){
   TH1 *histCTStarGenSum =
       new TH1F("CTStarGenSum", "generated sum cos(theta*)", 15, -1., 1.);
 
-  histCTStarGen0 =
-      new TH1F("CTStar0", "cos(theta*)", 15, -1., 1.);
-  histCTStarGenL =
-      new TH1F("CTStarL", "cos(theta*)", 15, -1., 1.);
-  histCTStarGenR =
-      new TH1F("CTStarR", "cos(theta*)", 15, -1., 1.);
+  histCTStarGen0 = new TH1F("CTStar0", "cos(theta*)", 15, -1., 1.);
+  histCTStarGenL = new TH1F("CTStarL", "cos(theta*)", 15, -1., 1.);
+  histCTStarGenR = new TH1F("CTStarR", "cos(theta*)", 15, -1., 1.);
 
   out_file = new TFile("delphes.root", "recreate");
   ttbar("./delphes0.root", histCTStarGen0);
@@ -422,7 +419,6 @@ void costheta(){
   histCTStarGenL->Write();
   histCTStarGenR->Write();
 
-  
   histCTStarGen0->Scale(1.0/histCTStarGen0->GetEntries());
   histCTStarGenL->Scale(1.0/histCTStarGenL->GetEntries());
   histCTStarGenR->Scale(1.0/histCTStarGenR->GetEntries());
@@ -459,7 +455,7 @@ void costheta(){
   //atlas_costheta->Scale(1.0f/128.460461f);
 
   TFitResultPtr fit_result_ptr = atlas_costheta->Fit(f, "S");
-  TFitResult* fit_result = fit_result_ptr.Get();
+  TFitResult*   fit_result     = fit_result_ptr.Get();
   printf("CHI2 : %g\n", fit_result->Chi2());
 
   double parameters[3];
@@ -520,8 +516,8 @@ void costheta(){
   errorband->Draw("a3 SAME");
 */
 
-  atlas_costheta->SetLineWidth(3);
   atlas_costheta->SetError(error_array);
+  atlas_costheta->SetLineWidth(3);
   atlas_costheta->SetLineColor(kBlue);
   atlas_costheta->Draw("e SAME");
   atlas_costheta->ShowBackground()->SetLineColor(kBlue);
@@ -537,7 +533,7 @@ void costheta(){
   // legend->AddEntry("fitfunc","Delphes fit","l");
   legend->Draw();
 
-  c5->SaveAs("out/delphes_fit.png");
+  ///// c5->SaveAs("out/delphes_fit.png");
 
   //TCanvas *cfit = new TCanvas("cfit", "cfit", 80, 80, 700, 700);
 
@@ -550,24 +546,65 @@ void costheta(){
 //  legend->Draw();
 
 
+  double* hist_fit_data  = (double*)malloc(sizeof(double)*nbins+2);
+  double* hist_fit_error = (double*)malloc(sizeof(double)*nbins+2);
+
+  for (int i = 0; i < nbins+2; i++) {
+    hist_fit_data[i]  = f0 * histCTStarGen0->GetBinContent(i);
+    hist_fit_data[i] += fl * histCTStarGenL->GetBinContent(i);
+    hist_fit_data[i] += fr * histCTStarGenR->GetBinContent(i);
+
+    // Through error propagation sqrt(e3^2 * x3^2 + e2^2 * x2^2 + e1^2 * x1^2)
+    double e1 = histCTStarGen0->GetBinError(i);
+    double e2 = histCTStarGenL->GetBinError(i);
+    double e3 = histCTStarGenR->GetBinError(i);
+    double error = sqrt(e3*e3 * fr*fr + e2*e2 * fl*fl + e1*e1 * f0*f0);
+    hist_fit_error[i] = error;
+  }
+  
+  TCanvas* cfit  = new TCanvas("cfit", "cfit", 80, 80, 1200, 700);
+  TH1F* hist_fit = new TH1F("hist_name", "Delphes cos#theta* Fit to Atlas Data", nbins, -1, 1);
+  hist_fit->SetContent(hist_fit_data);
+  hist_fit->SetError(hist_fit_error);
+
+  hist_fit->GetXaxis()->SetTitle("cos#theta*");
+
+  hist_fit->SetLineWidth(3);
+  hist_fit->SetLineColor(kRed);
+  hist_fit->Draw("E1");
+
+  atlas_costheta->SetTitle("cos#theta*");
+  atlas_costheta->Draw("E1 SAME");
+  atlas_costheta->ShowBackground()->SetLineColor(kBlue);
+  //atlas_costheta->get
+
+    //TLegend* legend2 = new TLegend(0.75,0.65,0.975,0.75);
+  TLegend* legend2 = new TLegend(0.75, 0.775, 0.98, 0.935);
+  legend2->AddEntry(atlas_costheta, "ATLAS data cos#theta*",     "l");
+  legend2->AddEntry(hist_fit,       "Fitted Delphes cos#theta*", "l");
+  // legend2->SetHeader("The Legend Title","C"); // option "C" allows to center the header
+  // legend2->AddEntry("fitfunc","Delphes fit","l");
+  legend2->Draw();
+
+  cfit->SaveAs("out/delphes_fit.png");
+
+
 
 
   
   TCanvas *c6 = new TCanvas("c6", "c6", 80, 80, 700, 700);
-  histCTStarGen0->Draw();
+  histCTStarGen0->Draw("E1");
   histCTStarGen0->ShowBackground()->SetLineColor(kBlue);
   c6->SaveAs("out/delphes_ctstar0.png");
 
   TCanvas *c7 = new TCanvas("c7", "c7", 80, 80, 700, 700);
-  histCTStarGenR->Draw(); //"SAME"
+  histCTStarGenR->Draw("E1"); //"SAME"
   histCTStarGenR->ShowBackground()->SetLineColor(kBlue);
   c7->SaveAs("out/delphes_ctstarR.png");
 
   TCanvas *c8 = new TCanvas("c8", "c8", 80, 80, 700, 700);
-  //histCTStarGenR->SetLineColor(gROOT->GetColor(1)->GetNumber());
-  histCTStarGenL->Draw(); //"SAME"
+  histCTStarGenL->Draw("E1"); //"SAME"
   histCTStarGenL->ShowBackground()->SetLineColor(kBlue);
-
   c8->SaveAs("out/delphes_ctstarL.png");
 
   assert(atlas_file);
