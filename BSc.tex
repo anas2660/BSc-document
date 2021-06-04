@@ -239,7 +239,7 @@ is conserved, and is the center-of-mass energy squared of the system. It is the
 energy available to create new particles, or probing the properties of
 particles.
 
-\subsubsection{Transverse Momentum}
+\subsubsection{Transverse Momentum}\label{sec:transmomentum}
 In LHC experiments, the protons gets smashed together in head-on collisions at
 nearly the speed of light. Since the protons momenentums are parallel to the
 beam axis, conventionally defined as the $z$-axis their total momentum in the
@@ -317,7 +317,7 @@ of the production\cite{dasilva2016quark}.
   %placeholder
 \end{figure}
 
-\subsection{Coupling of W$^+$tb}
+\subsection{Coupling of W$^+$tb}\label{sec:coupling}
 The leptonic decay of the $W$-boson, can decay into either of the three leptonic
 families, with nearly equal branching ratios. The $\tau$ lepton is also very
 unstable and has too short a lifetime, so it does not get tagged in this thesis.
@@ -511,7 +511,7 @@ muons go through these tubes they interact with the gas and leave behind a trail
 of ions and electrons which drift towards the gold wire in the centre. By
 detecting the starting point of these trails, and measuring the time it takes to
 reach the gold wire, the position of the muon can then be determined. The Muon %eks. på ændring: it is possible to determine the position of the muon
-Spectrometer can be seen in Figure~\ref{detector}
+Spectrometer can be seen in Figure~\ref{fig:detector}
 
 
 \subsubsection{Data Collection}
@@ -531,7 +531,7 @@ analysis.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.1]{figures/atlas.jpg}
-	\caption{A computer generated image of the ATLAS detector~\cite{detector}}\label{detector}
+	\caption{A computer generated image of the ATLAS detector~\cite{detector}}\label{fig:detector}
 \end{figure}
 
 \subsection{Tools}
@@ -573,10 +573,6 @@ function \texttt{Et()}. That function is effectively defined as
 %Den her sektion mangler at bliver skrivet færdig
 
 \subsubsection{Delphes}
-
-\subsection{Results}
-%Måske skal den her sektion slettes, eller sættes som en del af data analysis.
-
 
 \section{Data Analysis}
 % TODO:
@@ -629,16 +625,13 @@ maintaining most of the $b$-jet data.
 %\subsubsection{Single Lepton Channel}
 
 \subsection{Histograms from the ATLAS data}
-After we have identified top-quark pair production, we know that only one lepton
-should be present in the event. This means that we can use the first lepton in
-the event as the leading lepton. This lepton, however, can be either a electron
-or a muon. Using this information we can construct the Lorentz vector for the
-lepton, and from this we can plot the transverse energy. %Efter jeg lige har
-% læst rapporten igennem, så ser det ud til at vi bruger passivt sprog i resten
-% af rapporten, vi skal nok lige snakke om hvorvidt vi har tænkt os at bruge
-% passivt sprog eller aktivt sprog, vi kan sagtens også bruge passivt sprog til
-% analyse delen (siden det er noget som vi har lavet), men det er nok en god ide
-% at vi bliver enige og er konsistent, ihvertfald i analysen.
+Only a single lepton should be present in the events, after the identification
+of the top-quark pair production. This allows the first lepton in the event to
+be used as the leading lepton. Due to the nature of the decay, described in
+Section~\ref{sec:coupling}, the tagged lepton can be either an electron or a
+muon. This information is used in the construction of the Lorentz vector for the
+lepton, from which the transverse energy and momentum is plotted in
+Fig.~\ref{fig:lepEt} and \Fig.~\ref{fig:leppt}.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.55\textwidth]{figures/hist_leadleptEt}
@@ -655,21 +648,12 @@ lepton, and from this we can plot the transverse energy. %Efter jeg lige har
   \caption{\label{fig:leppt}Lead lepton transverse momentum for both single-electron and single-muon channel.}
 \end{figure}
 
-
-In the ATLAS Open Data we are directly given the missing transverse energy,
-which we can then immediately plot if the given event satisfies all the criteria
-given in Subsection~\ref{sec:cuts}. It is worth noting that it is given in the
-unit MeV, and all we have to do is simply convert to GeV, for a more manageable
-unit in the plot.
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\textwidth]{figures/hist_etmiss}
-  \caption{\label{fig:etmiss}Missing transverse energy for both single-electron and single-muon channel.}
-\end{figure}
-
-We are also given transverse momentum of jets in the event. % maybe explain jvt
-The jets in the event are ordered and we can therefore get information about the
-leading jet by accessing the first one. % also a requirement on pseudorapidity
+In the ATLAS Open Data, the reconstruction of the tracks, and calculation of the
+transverse momentum of jets, is already given. The jets in the event are
+ordered, which provides information about the leading jet simply by accessing
+the first one. Good jets are decided on the requirements given in
+Section~\ref{sec:cuts}, and the momentum plotted in
+Fig.~\ref{fig:jetpt}. % also a requirement on pseudorapidity
 % of the jets to be less than 2.5, however this should probably be mentioned in
 % the criteria
 \begin{figure}[H]
@@ -678,10 +662,25 @@ leading jet by accessing the first one. % also a requirement on pseudorapidity
   \caption{\label{fig:jetpt}Lead jet transverse momentum for both single-electron and single-muon channel.}
 \end{figure}
 
+The missing transverse energy, $E_T^{miss}$, is also given, calculated by
+consideration of momentum conservation, in accordance with what is described in
+Section~\ref{sec:transmomentum}. The missing transverse energy is then plotted
+if the given event satisfies all the criteria given in Section~\ref{sec:cuts}.
+The energy was plotted in the appropriate units below in Figure~\ref{fig:etmiss}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{figures/hist_etmiss}
+  \caption{\label{fig:etmiss}Missing transverse energy for both single-electron and single-muon channel.}
+\end{figure}
+
 
 
 \subsection{$\cos \theta^{*}$ reconstruction}
-From the data we can reconstruct $\cos \theta^{*}$ using equation~\eqref{eq:costheta}.
+Reconstruction of $\cos \theta^{*}$ from the data given in the Lorentz 4 vectors, was
+accomplished by equation~\eqref{eq:costheta}. Since only two $b$-jets is tagged,
+the $b$-jet associated with the leptonic decay was decided by the method of
+exclusion, once the $b$-jet associated with the other jets was identified. The
+reconstructed $\cos \theta^{*}$ is plotted in Figure~\ref{fig:costhetaatlas} below.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{figures/hist_costheta}
@@ -692,9 +691,12 @@ From the data we can reconstruct $\cos \theta^{*}$ using equation~\eqref{eq:cost
 
 % do we differentiate between them by S_z value
 \subsection{Delphes data}
-Using delphes we can at least verify that the generated data at least matches
-the theoretical analytical functions plotted in Figure~\ref{figdistributions} as
-a sanity check. % i guess we just fit them instead of doing
+Before the criteria from Section~\ref{sec:cuts} were applied to the Delphes
+data, a sanity check was performed on the generated truth data, to assess
+whether it matches with the theoretical analytical function plotted in
+Figure~\ref{fig:distributions}. The three plots are displayed below for each of
+the three polarizations in Figures~\ref{fig:delphesdist}.
+
 \begin{figure*}[t!]
     \centering
     \begin{subfigure}[t]{0.5\textwidth}
@@ -714,11 +716,15 @@ a sanity check. % i guess we just fit them instead of doing
     \end{subfigure}
     \caption{The figures shows the truth data of the generated $F_L$, $F_R$ and
       $F_0$ distributions, with a sample of 20000 events, using Delphes fast
-      simulations to generate.}
+      simulations to generate.}\label{fig:delphesdist}
 \end{figure*}
-Using the same information, as we would get in the ATLAS data, we can use the
-same criteria from Subsection~\ref{sec:cuts} to isolate the equivalent usable
-data, as we would get from the ATLAS detector, in the delphes data.
+
+To reconstruct the helicity distributions which would be found from
+measurements, the criteria performed on the ATLAS data, from
+Section~\ref{sec:cuts}, were matched on the Delphes data, to isolate the
+equivalent usable data, gotten from the ATLAS detector. The
+Figures~\ref{fig:redelphesdist} shows the three helicity distrubutions after the
+cuts.
 \begin{figure*}[t!]
     \centering
     \begin{subfigure}[t]{0.5\textwidth}
@@ -739,11 +745,16 @@ data, as we would get from the ATLAS detector, in the delphes data.
     \caption{The figures shows the reconstructed Delphes $\cos \theta^*$ of the
       generated $F_L$, $F_R$ and $F_0$ distributions, with a sample of 20000
       events, using Delphes fast simulations to generate, and similar cuts to
-      the ones made on the Open ATLAS data.}
+      the ones made on the Open ATLAS data.}\label{fig:redelphesdist}
 \end{figure*}
-We can now fit the resulting histograms in a linear combination to the histogram
-from the ATLAS data. \cleardoublepage{}
+
 \subsection{Fitting to atlas data}
+The histograms shown in Fig.~\ref{fig:redelphesdist}, is fitted by a linear
+combination of parameters, to the histogram containing the ATLAS data.
+Figure~\ref{fig:delphesfit} displays the fitted data, and below is listed the
+obtained parameters, corresponding to the helicity fractions, alongside the
+error associated with the itterative approach to the fit.\cleardoublepage{}
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{figures/delphes_fit}
