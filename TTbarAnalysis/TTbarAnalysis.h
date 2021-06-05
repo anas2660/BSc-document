@@ -26,6 +26,8 @@ public:
   TH1F *hist_Wmass       = 0;
   TH1F *hist_costheta    = 0;
 
+  TH1F *hist_costheta_overflow = 0;
+
   // Leading Lepton histograms
   TH1F *hist_leadleptpt      = 0;
   TH1F *hist_syst_leadleptpt = 0;
