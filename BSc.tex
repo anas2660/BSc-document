@@ -684,11 +684,24 @@ lepton, from which the transverse momentum is plotted in Fig.~\ref{fig:leppt}.
 % kan jo selvfølgelig også bare gøre det samme som de gør ved at splitte
 % electron/muon. Vi kan endda også bare plotte histogrammet med partikel id for
 % at vise hvor mange af hver der er
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\textwidth]{figures/hist_leadleptpt}
-  \caption{\label{fig:leppt}Lead lepton transverse momentum for both single-electron and single-muon channel.}
-\end{figure}
+
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}[t]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/hist_leadleptpt}
+        \caption{\label{fig:leppt}Lead lepton transverse momentum for both
+          single-electron and single-muon channel.}
+      \end{subfigure}%
+      \hfill{}
+    \begin{subfigure}[t]{0.47\textwidth}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/hist_leadjet_pt}
+      \caption{\label{fig:jetpt}Lead jet transverse momentum for both
+        single-electron and single-muon channel.}
+    \end{subfigure}
+    \caption{}
+\end{figure*}
 
 In the ATLAS Open Data, the reconstruction of the tracks, and calculation of the
 transverse momentum of jets, is already given. The jets in the event are
@@ -698,11 +711,6 @@ Section~\ref{sec:cuts}, and the momentum plotted in
 Fig.~\ref{fig:jetpt}. % also a requirement on pseudorapidity
 % of the jets to be less than 2.5, however this should probably be mentioned in
 % the criteria
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\textwidth]{figures/hist_leadjet_pt}
-  \caption{\label{fig:jetpt}Lead jet transverse momentum for both single-electron and single-muon channel.}
-\end{figure}
 
 The missing transverse energy, $E_T^{miss}$, is also given, calculated by
 consideration of momentum conservation, in accordance with what is described in
