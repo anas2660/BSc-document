@@ -125,6 +125,8 @@ void plot(){
 
     gL->GetXaxis()->SetRangeUser(-1, 1.0);
     gL->GetYaxis()->SetRangeUser(0, 0.207376);
+    gL->GetXaxis()->SetTitle("Normalized truth cos #theta");
+    gL->GetYaxis()->SetTitle("Normalized cos #theta*");
 
 
     TLine *line0 = make_diagonal_line(c0);
@@ -132,9 +134,12 @@ void plot(){
 
     TLegend* leg = new TLegend(0.1,0.7,0.3,0.9);
     //leg->SetHeader("cos theta* 0");
-    leg->AddEntry(gL,    "costheta* L", "lep");
-    leg->AddEntry(g0,    "costheta* 0", "lep");
-    leg->AddEntry(gR,    "costheta* R", "lep");
+    leg->AddEntry(gL,    "h = -1", "lep");
+    leg->AddEntry(g0,    "h = 0", "lep");
+    leg->AddEntry(gR,    "h = 1", "lep");
+    //leg->AddEntry(gL,    "costheta* L", "lep");
+    //leg->AddEntry(g0,    "costheta* 0", "lep");
+    //leg->AddEntry(gR,    "costheta* R", "lep");
     leg->AddEntry(line0, "Expectation","l r");
     leg->Draw();
 
