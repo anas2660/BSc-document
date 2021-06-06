@@ -830,17 +830,24 @@ cuts.
   \centering
   \begin{tabular}[H]{|c|c|c|c|}
     \hline
-    $h=-1$    & $h=0$     & $h=+1$    & Sum    \\\hline
-    $3.457\%$ & $4.932\%$ & $4.754\%$ & $4.375\%$\\\hline
+    $h=-1$    & $h=0$     & $h=+1$    & Sum       \\\hline
+    $3.457\%$ & $4.932\%$ & $4.754\%$ & $4.375\%$ \\\hline
   \end{tabular}
-  \caption{\label{fig:delphesefficiency}Efficiency table}
+  \caption{\label{fig:delphesefficiency}Efficiency table calculated by dividing
+    the histogram entry count by its corresponding truth value histogram entry
+    count.}
 \end{figure}
 
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{figures/scatterplot}
-  \caption{\label{fig:scatterplot}}
+  \caption{\label{fig:scatterplot}Every point represents a bin. The $x$-value is
+    the normalized truth value, and the $y$-value is the normalized value after
+    the cuts in the data have been made. From this it is possible to see how the
+    shape of the histograms change after the cuts. The extremes are cut off and
+    histogram for $h=0$ is shifted to a side which can be seen by the symmetric
+    shape around the expectation line.}
 \end{figure}
 
 \subsection{Fitting to atlas data}
