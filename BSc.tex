@@ -9,6 +9,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{tikz}
+\usepackage[separate-uncertainty=true]{siunitx}
 %\usepackage{tikz-feynman}
 
 % TODOS WHEN DONE:
@@ -617,13 +618,11 @@ function \texttt{Et()}. That function is effectively defined as
 
 \subsection{Angular Asymmetries}
 For measurements of angular asymmetries $A_{\pm}$ from eq \eqref{eq:asymmetries}, the $\cos\theta^{*}$ distribution was split into three non-uniform bins with events above and below $z_{\pm} = \pm(1-2^{\frac{2}{3}})$ given by; $N_1 = N(\cos \theta^{*}<z_-)$, $N_3 = N(\cos \theta^{*}>z_+)$ and $N_2$ being
-the remaining events. Here  	
-
-Applying these parameters to the simulated data, correction factors $e_1$ and $e_3$ were obtained by comparing the simulated data to the Standard
+the remaining events. Applying these parameters to the simulated data, correction factors $e_1$ and $e_3$ were obtained by comparing the simulated data to the Standard
 Model expectation, then solving the system of equations obtained from \eqref{eq:asymmetries}. 
 
 \begin{align}
-	e_1 = \frac{N_2(1+A_-)}{N_1(A_+-A_-)} = 1.515\cdot 10^{-2} \pm 0.065\cdot 10^  \quad e_3 =  -\frac{N_2(A_+-1)}{N_3(A_+-A_-)} = 0.057 \pm 
+	e_1 &= \frac{N_2(1+A_-)}{N_1(A_+-A_-)} = \num{1.515 +- 0.065E-2} \\ e_3 &= -\frac{N_2(A_+-1)}{N_3(A_+-A_-)} = \num{5.390 +- 0.081E-2}
 \end{align}
 
 
