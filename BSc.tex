@@ -482,10 +482,6 @@ The ATLAS detector consists of multiple primary components, each with their own
 subcomponents or subsections.
 
 \subsubsection{The Inner Detector}
-% https://atlas.web.cern.ch/Atlas/TP/NEW/HTML/tp9new/node10.html#SECTION00433000000000000000
-% https://atlas.cern/discover/detector/inner-detector
-% https://en.wikipedia.org/wiki/ATLAS_experiment#Inner_Detector
-
 The purpose of this component is to measure charge and momentum, including it's
 direction, of the detected particle. It consists of three subcomponents. 
 \paragraph{Pixel Detector}
@@ -507,10 +503,8 @@ charged particles to an accuracy of $17\mathrm{\mu m}$
 The transition radiation tracker is a drift tube tracker which consists of a
 straw with 4mm diameter and 0.03mm diameter tungsten wire, coated with 0.5--0.7mm
 gold. The tube is filled with a mixture of Xe, $\mathrm{CO_2}$ and
-$\mathrm{O_2}$ gasses. When charged particles travel through the tube the gas gets
-ionized, which frees electrons that move to the gold wire. The negative charge %befrier det de elektroner som bevæger sig hen til guld ledningen, eller befrier den elektronerne, så de kan bevæge sig hen til guld ledningen?
-measured on the wire can be used to distinguish which charged particle ionized
-the gas.
+$\mathrm{O_2}$ gasses. When charged particles travel through the tube the gas gets ionized, which frees electrons from the gas that move to the gold wire. The negative charge %befrier det de elektroner som bevæger sig hen til guld ledningen, eller befrier den elektronerne, så de kan bevæge sig hen til guld ledningen?
+measured on the wire can be used to distinguish which charged particle ionized the gas. \cite{ATLAS-ID}
 %Kringlet, probably  omskriv?
 
 \subsubsection{Calorimeter}
@@ -544,14 +538,10 @@ radiation tracker, that contains a gold wire which is surrounded by a gas. When
 muons go through these tubes they interact with the gas and leave behind a trail
 of ions and electrons which drift towards the gold wire in the centre. By
 detecting the starting point of these trails, and measuring the time it takes to
-reach the gold wire, the position of the muon can then be determined. The Muon %eks. på ændring: it is possible to determine the position of the muon
-Spectrometer can be seen in Figure~\ref{fig:detector}
+reach the gold wire, it is possible to determine the position of the muon. The Muon Spectrometer can be seen in Figure~\ref{fig:detector} \cite{ATLAS-Muon}
 
 
 \subsubsection{Data Collection}
-% https://atlas.web.cern.ch/Atlas/TP/NEW/HTML/tp9new/node12.html
-% https://en.wikipedia.org/wiki/ATLAS_experiment#Data_systems
-% https://atlas.cern/discover/detector/trigger-daq
 The detector generates 60 terabytes of data per second from the 1.7 billion
 collisions taking place in the detector in that time frame. However, only some
 of the raw data contains interesting characteristics. To make the data more %eks. på ændring: However, only a small sample of the raw data (is of interest / is necessary) to reconstruct the collisions
@@ -560,7 +550,7 @@ data. The first part of the trigger system is hardware based, and can at most
 save 100 000 events per second, which then gets passed on to the, software
 based, High-Level Trigger. After passing through both triggers, only
 approximately 1000 events out of the initial 1.7 billion are saved for later
-analysis.
+analysis. \cite{ATLAS-trig}
 
 \begin{figure}[H]
 	\centering
@@ -569,7 +559,7 @@ analysis.
 \end{figure}
 
 \subsection{ROOT}
-ROOT is a framework used for storing and processing data in high energy physics. ROOT is primarily written in the programming language c++. Data in ROOT files are stored in a tree format, the file itself is a compressed binary file. 
+ROOT is a framework used for storing and processing data in high energy physics. ROOT is primarily written in the programming language c++. Data in ROOT files are stored in a tree format, the file itself is a compressed binary file. \cite{root}
 %?
 
 \subsection{Monte Carlo Simulation}
@@ -611,15 +601,6 @@ function \texttt{Et()}. That function is effectively defined as
 %Den her sektion mangler at bliver skrivet færdig
 %Jeg tænker den skal være i et andet afsnit?
 
-\section{Methodology}
-%Evt nyt afsnit, måske overlap med noget data analysis? 
-\subsection{Template Method}
-%draft
-Pythia was used to generate three files containing left, longitudinal and right-handed polarizations of the W-boson separately. These files were then run through delphes, which simulates the ATLAS detector response and uses that to reconstruct the particles. Cuts were applied in ROOT matching the event selection criteria defined in section \ref{sec:cuts}. The templates were then combined and fitted to the real $\cos \theta^{*}$ distribution from the ATLAS detector, giving us the three helicity fractions $F_L$, $F_R$ and $F_0$
-
-\subsection{Angular Asymmetries}
-%draft
-From equation \eqref{eq:asymmetries} the angular asymmetries are obtained for MC data. These are compared to Standard Model expectation, to obtain corrections factors which are then used on ATLAS detector data to obtain the real helicity fractions.
 
 \section{Data Analysis}
 % TODO:
@@ -628,6 +609,24 @@ From equation \eqref{eq:asymmetries} the angular asymmetries are obtained for MC
 % Add delphes scatterplot
 % Måske sæt overflow ind i costheta plot
 % Draw error in delphes histograms
+
+\subsection{Angular Asymmetries}
+For measurements of angular asymmetries $A_{\pm}$ from eq \eqref{eq:asymmetries}, the $\cos\theta^{*}$ distribution was split into three non-uniform bins with events above and below $z_{\pm} = \pm(1-2^{\frac{2}{3}})$ given by; $N_1 = N(\cos \theta^{*}<z_-)$, $N_3 = N(\cos \theta^{*}>z_+)$ and $N_2$ being
+the remaining events. Here  	
+
+Applying these parameters to the simulated data, correction factors $e_1$ and $e_3$ were obtained by comparing the simulated data to the Standard
+Model expectation, then solving the system of equations obtained from \eqref{eq:asymmetries}. 
+
+\begin{align}
+	e_1 = \frac{N_2(1+A_-)}{N_1(A_+-A_-)} = 1.515\cdot 10^{-2} \pm 0.065\cdot 10^  \quad e_3 =  -\frac{N_2(A_+-1)}{N_3(A_+-A_-)} = 0.057 \pm 
+\end{align}
+
+
+\subsection{Template Method}
+%draft
+Pythia was used to generate three files containing left, longitudinal and right-handed polarizations of the W-boson separately. These files were then run through delphes, which simulates the ATLAS detector response and uses that to reconstruct the particles. Cuts were applied in ROOT matching the event selection criteria defined in section \ref{sec:cuts} to filter out background data. The templates were then combined and fitted to the real $\cos \theta^{*}$ distribution from the ATLAS detector, giving us the three helicity fractions $F_L$, $F_R$ and $F_0$.
+
+
 
 
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
