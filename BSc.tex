@@ -717,11 +717,22 @@ consideration of momentum conservation, in accordance with what is described in
 Section~\ref{sec:transmomentum}. The missing transverse energy is then plotted
 if the given event satisfies all the criteria given in Section~\ref{sec:cuts}.
 The energy was plotted in the appropriate units below in Figure~\ref{fig:etmiss}
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\textwidth]{figures/hist_etmiss}
-  \caption{\label{fig:etmiss}Missing transverse energy for both single-electron and single-muon channel.}
-\end{figure}
+
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}[t]{0.47\textwidth}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/hist_etmiss}
+      \caption{\label{fig:etmiss}Missing transverse energy for both single-electron and single-muon channel.}
+    \end{subfigure}%
+      \hfill{}
+    \begin{subfigure}[t]{0.47\textwidth}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/hist_Topmass}
+      \caption{\label{fig:topmass}Top quark mass from the ATLAS data.}
+    \end{subfigure}
+    \caption{}
+\end{figure*}
 
 % maybe explain why maxing Pt gives the lower three jets but seems a bit
 % obvious: if the b-jet in the upper part was in the combination it would
@@ -736,11 +747,6 @@ Figure~\ref{fig:feynmandiagram}.
 Once the top quark mass is found it can be plotted, as seen in
 Figure~\ref{fig:topmass}. The peak of this histogram should then be compared to
 the value from the standard model, which is $172.76 \pm 0.30$ GeV\cite{pdg}.
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\textwidth]{figures/hist_Topmass}
-  \caption{\label{fig:topmass}Top quark mass from the ATLAS data.}
-\end{figure}
 
 \subsection{$\cos \theta^{*}$ reconstruction}
 Reconstruction of $\cos \theta^{*}$ from the data given in the Lorentz 4 vectors, was
