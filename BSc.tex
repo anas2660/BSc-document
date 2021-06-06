@@ -349,7 +349,6 @@ of the production\cite{dasilva2016quark}.
 	\caption{A Feynman diagram of the two main production processes $gg \rightarrow t\bar t$
     on the left, and $q\bar q \rightarrow t\bar t$ on the right. Both produciton
     mechanisms are results of strong interactions.}\label{fig:ttproduction}
-  %placeholder
 \end{figure}
 
 \subsection{Coupling of W$^+$tb}\label{sec:coupling}
@@ -500,7 +499,10 @@ charged particles to an accuracy of $17\mathrm{\mu m}$
 The transition radiation tracker is a drift tube tracker which consists of a
 straw with 4mm diameter and 0.03mm diameter tungsten wire, coated with 0.5--0.7mm
 gold. The tube is filled with a mixture of Xe, $\mathrm{CO_2}$ and
-$\mathrm{O_2}$ gasses. When charged particles travel through the tube the gas gets ionized, which frees electrons from the gas that move to the gold wire. The negative charge measured on the wire can be used to distinguish which charged particle ionized the gas. \cite{ATLAS-ID}
+$\mathrm{O_2}$ gasses. When charged particles travel through the tube the gas
+gets ionized, which frees electrons from the gas that move to the gold wire. The
+negative charge measured on the wire can be used to distinguish which charged
+particle ionized the gas. \cite{ATLAS-ID}
 
 
 \subsubsection{Calorimeter}
@@ -533,15 +535,18 @@ radiation tracker, that contains a gold wire which is surrounded by a gas. When
 muons go through these tubes they interact with the gas and leave behind a trail
 of ions and electrons which drift towards the gold wire in the centre. By
 detecting the starting point of these trails, and measuring the time it takes to
-reach the gold wire, it is possible to determine the position of the muon. The Muon Spectrometer can be seen in Figure~\ref{fig:detector} \cite{ATLAS-Muon}
+reach the gold wire, it is possible to determine the position of the muon. The
+Muon Spectrometer can be seen in Figure~\ref{fig:detector} \cite{ATLAS-Muon}
 
 
 \subsubsection{Data Collection}
 The detector generates 60 terabytes of data per second from the 1.7 billion
-collisions taking place in the detector in that time frame. However, only a small sample of the raw data is necessary to reconstruct the collisions. To make the data more manageable ATLAS uses a two-level trigger system to only save the most important
-data. The first part of the trigger system is hardware based, and can at most
-save 100 000 events per second, which then gets passed on to the software
-based High-Level Trigger. After passing through both triggers, only
+collisions taking place in the detector in that time frame. However, only a
+small sample of the raw data is necessary to reconstruct the collisions. To make
+the data more manageable ATLAS uses a two-level trigger system to only save the
+most important data. The first part of the trigger system is hardware based, and
+can at most save 100 000 events per second, which then gets passed on to the
+software based High-Level Trigger. After passing through both triggers, only
 approximately 1000 events out of the initial 1.7 billion are saved for later
 analysis.\cite{ATLAS-trig}
 
@@ -552,7 +557,10 @@ analysis.\cite{ATLAS-trig}
 \end{figure}
 
 \subsection{ROOT}
-ROOT is a framework used for storing and processing data in high energy physics. ROOT is primarily written in the programming language c++. Data in ROOT files are stored in a tree format, the file itself is a compressed binary file. \cite{root}
+ROOT is a framework used for storing and processing data in high energy physics.
+ROOT is primarily written in the programming language c++. Data in ROOT files
+are stored in a tree format, the file itself is a compressed binary file.
+\cite{root}
 
 %?
 
@@ -566,8 +574,8 @@ uses an MC generator to mimic the initial pp collision. In the second step,
 detector simulation, the geometry of the ATLAS detector and its material
 properties gets simulated. The digitization step, follows the previous step by
 simulating the responding signals in read-out data, written in a format
-compatible with real output of the detector. Finally, these data can be
-used to reconstruct the collisions, particle trajectories and subsequent
+compatible with real output of the detector. Finally, these data can be used to
+reconstruct the collisions, particle trajectories and subsequent
 products.\\
 
 In The 13 TeV ATLAS Open Data set, there are several SM processes which are
@@ -608,14 +616,22 @@ Solving for the correction factors the following values are obtained.
 	e_1 &=  \num{1.515 +- 0.065E-2} \\ e_3 &= \num{5.390 +- 0.081E-2}
 \end{align}
 
-These correction factors obtained from simulation is then applied to the $\cos\theta^{*}$ distribution from the ATLAS data. 
+These correction factors obtained from simulation is then applied to the
+$\cos\theta^{*}$ distribution from the ATLAS data.
 
-Leading to the angular asymmetries $A_- = -0.828 \pm 0.006$ and $A_+ = 0.521 \pm 0.006$, 
-resulting in the helicity fractions $F_0=0.634 \pm 0.016$,
-$F_L=0.339 \pm 0.009$ and $F_R=0.026 \pm 0.009$. 
+Leading to the angular asymmetries $A_- = -0.828 \pm 0.006$ and
+$A_+ = 0.521 \pm 0.006$, resulting in the helicity fractions
+$F_0=0.634 \pm 0.016$, $F_L=0.339 \pm 0.009$ and $F_R=0.026 \pm 0.009$.
 
 \subsection{Template Method}
-Pythia was used to generate three files containing left, longitudinal and right-handed polarizations of the W-boson separately. These files were then run through Delphes, which simulates the ATLAS detector response and uses that to reconstruct the particles. Cuts were applied in ROOT matching the event selection criteria defined in section \ref{sec:cuts} to filter out background data. The templates were then combined and fitted to the real $\cos \theta^{*}$ distribution from the ATLAS detector, giving us the three helicity fractions $F_L$, $F_R$ and $F_0$.
+Pythia was used to generate three files containing left, longitudinal and
+right-handed polarizations of the W-boson separately. These files were then run
+through Delphes, which simulates the ATLAS detector response and uses that to
+reconstruct the particles. Cuts were applied in ROOT matching the event
+selection criteria defined in section \ref{sec:cuts} to filter out background
+data. The templates were then combined and fitted to the real $\cos \theta^{*}$
+distribution from the ATLAS detector, giving us the three helicity fractions
+$F_L$, $F_R$ and $F_0$.
 
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
 \subsection{Event Selection}\label{sec:cuts}
@@ -626,7 +642,8 @@ criteria are as follows~\cite{oreach2020}.
 	\item Only one electron or muon in the final state with $p_{T} > 30 \mathrm{GeV}$
 	\item Missing transverse momentum $E_{T}^{miss} > 30 \mathrm{GeV}$
 	\item Transverse mass of the W-boson $M_{T}^{W} > 30 \mathrm{GeV}$
-	\item At least four jets with $p_{T} > 30 \mathrm{GeV}$ and $|\eta| < 2.5$, with exactly two of these being b-tagged
+	\item At least four jets with $p_{T} > 30 \mathrm{GeV}$ and $|\eta| < 2.5$, with
+        exactly two of these being b-tagged
 	\item Electrons are required to have $|\eta| < 2.47$ aside from $1.37 < |\eta| < 1.52$
 	\item Muons are limited by $|\eta| < 2.50$
 \end{itemize}
@@ -660,8 +677,10 @@ maintaining most of the $b$-jet data.
 
 
 \subsection{Histograms from the ATLAS data}
-ROOT defines the function \texttt{SetPtEtaPhiE}, which is used in accordance to section \ref{sec:momentum} as seen in equation \eqref{eq:TLorentz}.
-%The function, which ROOT uses to construct the Lorentz vector, \texttt{SetPtEtaPhiE}, is defined as such,
+ROOT defines the function \texttt{SetPtEtaPhiE}, which is used in accordance to
+section \ref{sec:momentum} as seen in equation \eqref{eq:TLorentz}.
+% The function, which ROOT uses to construct the Lorentz vector,
+% \texttt{SetPtEtaPhiE}, is defined as such,
 \begin{equation} \label{eq:TLorentz}
 p({\vb p_t}, \eta, \phi, E) =
 \begin{pmatrix}
@@ -728,7 +747,8 @@ The energy was plotted in the appropriate units in Figure~\ref{fig:etmiss}.\\
     \begin{subfigure}[t]{0.47\textwidth}
       \centering
       \includegraphics[width=1.0\textwidth]{figures/hist_etmiss}
-      \caption{\label{fig:etmiss}Missing transverse energy for both single-electron and single-muon channel.}
+      \caption{\label{fig:etmiss}Missing transverse energy for both
+        single-electron and single-muon channel.}
     \end{subfigure}%
       \hfill{}
     \begin{subfigure}[t]{0.47\textwidth}
@@ -925,8 +945,8 @@ This %ved ikke om vi overhovedet bør nævne det med den sammenligningen.
 overflow was ignored in the fitting process, as only data remaining within the
 physically possible range from -1 to 1, was considered in the analysis. The
 Delphes data for the helicity distributions, had substantially less overflow,
-than data from Open ATLAS, which also motivated the decision to only fit within the
-parameter -1 to 1.
+than data from Open ATLAS, which also motivated the decision to only fit within
+the parameter -1 to 1.
 
 %Kan godt være at jeg skal lave nogle ændringer på diskussionen, med de nye
 %data, og med fokus på den nye tilgangs metode.
