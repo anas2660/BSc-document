@@ -45,9 +45,10 @@ DATE
   asymmetries is used as the primary method for measuring the polarization of
   the $W$ bosons, with a novel approach of fitting Delphes $W$ polarization
   simulations to data taken from the ATLAS detector. The measured helicity
-  fractions from Angular asymmetries is $F_0=0.635 \pm 0.015$,
+  fractions from Angular asymmetries are $F_0=0.634 \pm 0.016$,
   $F_L=0.339 \pm 0.009$ and $F_R=0.026 \pm 0.009$, with only statistical
-  uncertainties considered, deviating slightly from the Standard Model.
+  uncertainties considered, with angular asymmetries of $A_+ = 0.521 \pm 0.006$
+  and $A_- = -0.828 \pm 0.006$, deviating slightly from the Standard Model.
 
 \end{abstract}
 \cleardoublepage{}
@@ -682,50 +683,75 @@ of the top-quark pair production. This allows the first lepton in the event to
 be used as the leading lepton. Due to the nature of the decay, described in
 Section~\ref{sec:coupling}, the tagged lepton can be either an electron or a
 muon. This information is used in the construction of the Lorentz vector for the
-lepton, from which the transverse energy and momentum is plotted in
-Fig.~\ref{fig:lepEt} and Fig.~\ref{fig:leppt}.
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\textwidth]{figures/hist_leadleptEt}
-  \caption{\label{fig:lepEt}Lead lepton transverse energy for both single-electron and single-muon channel.}
-\end{figure}
+lepton, from which the transverse momentum is plotted in Fig.~\ref{fig:leppt}.\\
 % Wait, er det her ikke det samme da M er tæt på nul? Det er måske derfor de
 % splitter electron muon. det kan være vi bare skal plotte noget andet eller vi
 % kan jo selvfølgelig også bare gøre det samme som de gør ved at splitte
 % electron/muon. Vi kan endda også bare plotte histogrammet med partikel id for
 % at vise hvor mange af hver der er
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\textwidth]{figures/hist_leadleptpt}
-  \caption{\label{fig:leppt}Lead lepton transverse momentum for both single-electron and single-muon channel.}
-\end{figure}
+
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}[t]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/hist_leadleptpt}
+        \caption{\label{fig:leppt}Lead lepton transverse momentum for both
+          single-electron and single-muon channel.}
+      \end{subfigure}%
+      \hfill{}
+    \begin{subfigure}[t]{0.47\textwidth}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/hist_leadjet_pt}
+      \caption{\label{fig:jetpt}Lead jet transverse momentum for both
+        single-electron and single-muon channel.}
+    \end{subfigure}
+    \caption{}
+\end{figure*}
 
 In the ATLAS Open Data, the reconstruction of the tracks, and calculation of the
 transverse momentum of jets, is already given. The jets in the event are
 ordered, which provides information about the leading jet simply by accessing
 the first one. Good jets are decided on the requirements given in
 Section~\ref{sec:cuts}, and the momentum plotted in
-Fig.~\ref{fig:jetpt}. % also a requirement on pseudorapidity
+Fig.~\ref{fig:jetpt}. \\% also a requirement on pseudorapidity
 % of the jets to be less than 2.5, however this should probably be mentioned in
 % the criteria
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\textwidth]{figures/hist_leadjet_pt}
-  \caption{\label{fig:jetpt}Lead jet transverse momentum for both single-electron and single-muon channel.}
-\end{figure}
 
 The missing transverse energy, $E_T^{miss}$, is also given, calculated by
 consideration of momentum conservation, in accordance with what is described in
 Section~\ref{sec:transmomentum}. The missing transverse energy is then plotted
 if the given event satisfies all the criteria given in Section~\ref{sec:cuts}.
-The energy was plotted in the appropriate units below in Figure~\ref{fig:etmiss}
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\textwidth]{figures/hist_etmiss}
-  \caption{\label{fig:etmiss}Missing transverse energy for both single-electron and single-muon channel.}
-\end{figure}
+The energy was plotted in the appropriate units in Figure~\ref{fig:etmiss}.\\
 
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}[t]{0.47\textwidth}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/hist_etmiss}
+      \caption{\label{fig:etmiss}Missing transverse energy for both single-electron and single-muon channel.}
+    \end{subfigure}%
+      \hfill{}
+    \begin{subfigure}[t]{0.47\textwidth}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/hist_Topmass}
+      \caption{\label{fig:topmass}Top quark mass from the ATLAS data.}
+    \end{subfigure}
+    \caption{}
+\end{figure*}
 
+% maybe explain why maxing Pt gives the lower three jets but seems a bit
+% obvious: if the b-jet in the upper part was in the combination it would
+% subtract from the transverse momentum because it was produced from the top
+% quark which has opposite momentum from the anti top quark.
+The top quark mass can be calculated by finding the combination of three jets,
+of which one is a bjet, with the highest transverse momentum, and taking the
+mass of the whole three jet system. These three jets are the ones produced by
+the the $\overline{t}$-quark in the lower part of the feynman diagram seen in
+Figure~\ref{fig:feynmandiagram}.
+% possible explanation why it works here (see comment above)
+Once the top quark mass is found it can be plotted, as seen in
+Figure~\ref{fig:topmass}. The peak of this histogram should then be compared to
+the value from the standard model, which is $172.76 \pm 0.30$ GeV\cite{pdg}.
 
 \subsection{$\cos \theta^{*}$ reconstruction}
 Reconstruction of $\cos \theta^{*}$ from the data given in the Lorentz 4 vectors, was
@@ -747,7 +773,7 @@ Before the criteria from Section~\ref{sec:cuts} were applied to the Delphes
 data, a sanity check was performed on the generated truth data, to assess
 whether it matches with the theoretical analytical function plotted in
 Figure~\ref{fig:distributions}. The three plots are displayed below for each of
-the three polarizations in Figures~\ref{fig:delphesdist}.
+the three polarizations in Figures~\ref{fig:delphesdist}.\\
 
 \begin{figure*}[t!]
     \centering
@@ -805,7 +831,7 @@ cuts.
   \begin{tabular}[H]{|c|c|c|c|}
     \hline
     $h=-1$    & $h=0$     & $h=+1$    & Sum    \\\hline
-    $3.457\%$ & $4.932\%$ & $4.754\%$ & $4.375$\\\hline
+    $3.457\%$ & $4.932\%$ & $4.754\%$ & $4.375\%$\\\hline
   \end{tabular}
   \caption{\label{fig:delphesefficiency}Efficiency table}
 \end{figure}
@@ -905,7 +931,7 @@ A measurement of the polarization of $W$ bosons, from top quark pair events
 decay to single lepton channels, was presented using data collected from Open
 ATLAS $pp$ cikkusuibs at $\sqrt s = 13$TeV, corresponding to an integrated
 luminosity of 10 fb$^{-1}$. The helicity fractions obtained from angular
-asymmetries are $F_0=0.635 \pm 0.015$, $F_L=0.339 \pm 0.009$ and
+asymmetries are $F_0=0.634 \pm 0.016$, $F_L=0.339 \pm 0.009$ and
 $F_R=0.026 \pm 0.009$. Due to the limitations of the Open Atlas
 Data~\cite{oreach2020}, only statistical uncertainties were considered, leaving
 the possibility of larger systematic uncertainties. The measured helicity
