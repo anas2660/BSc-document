@@ -12,17 +12,17 @@
 \usepackage[separate-uncertainty=true]{siunitx}
 %\usepackage{tikz-feynman}
 
-% TODOS WHEN DONE:
-%   - Feynman diagrams
+% TODO:
+% 	- ROOT Måske?
+%	- Færdiggøre Abstract
+% 	- Omskrive Monte Carlo Måske?
 %   - Hyperref
-%   - Abstract
-%   - Fix first plots in data analysis
-%   - Discussion
-%   - Error + Errorbars
+%   - Discussion 
 %   - Conclusion
 %   - Titlepage
 %   - Update (maybe fix) fit to delphes data
-%   - Delphes track stuff?
+% 	- Langtool 
+
 
 \addbibresource{References.bib}
 \nocite{*}
@@ -437,8 +437,6 @@ $A_-=-0.841 \pm 0.006$~\cite[24]{CastroNunesFiolhais:1544047}.
 %kilde findes på forsøgs artiklen.
 
 \section{Apparatus}
-%TODO
-% Indsæt referencer
 \subsection{LHC}
 In the Large Hadron Collider, top quarks are mainly produced through violent
 collisions of protons, causing gluon-gluon fusion, which produces top, anti-top
@@ -509,9 +507,8 @@ charged particles to an accuracy of $17\mathrm{\mu m}$
 The transition radiation tracker is a drift tube tracker which consists of a
 straw with 4mm diameter and 0.03mm diameter tungsten wire, coated with 0.5--0.7mm
 gold. The tube is filled with a mixture of Xe, $\mathrm{CO_2}$ and
-$\mathrm{O_2}$ gasses. When charged particles travel through the tube the gas gets ionized, which frees electrons from the gas that move to the gold wire. The negative charge %befrier det de elektroner som bevæger sig hen til guld ledningen, eller befrier den elektronerne, så de kan bevæge sig hen til guld ledningen?
-measured on the wire can be used to distinguish which charged particle ionized the gas. \cite{ATLAS-ID}
-%Kringlet, probably  omskriv?
+$\mathrm{O_2}$ gasses. When charged particles travel through the tube the gas gets ionized, which frees electrons from the gas that move to the gold wire. The negative charge measured on the wire can be used to distinguish which charged particle ionized the gas. \cite{ATLAS-ID}
+
 
 \subsubsection{Calorimeter}
 % https://atlas.web.cern.ch/Atlas/TP/NEW/HTML/tp9new/node9.html#SECTION00432000000000000000
@@ -527,7 +524,7 @@ The HCal consist of scintillator plates that radiates light when exposed to a
 charged particle. When a hadron passes through a scintillator plate it produces
 a shower of particles which then makes the scintillator radiate light. The
 intensity of the radiated light can then be analysed to measure the energy of
-the hadron.
+the hadron. \cite{detector-vid}
 
 
 \subsubsection{Muon Spectrometer}
@@ -610,11 +607,8 @@ function \texttt{Et()}. That function is effectively defined as
 
 \section{Data Analysis}
 % TODO:
-% Passive voice
 % Add plot for top mass / W mass
-% Add delphes scatterplot
 % Måske sæt overflow ind i costheta plot
-% Draw error in delphes histograms
 
 \subsection{Angular Asymmetries}
 For measurements of angular asymmetries $A_{\pm}$ from eq \eqref{eq:asymmetries}, the $\cos\theta^{*}$ distribution was split into three non-uniform bins with events above and below $z_{\pm} = \pm(1-2^{\frac{2}{3}})$ given by; $N_1 = N(\cos \theta^{*}<z_-)$, $N_3 = N(\cos \theta^{*}>z_+)$ and $N_2$ being
@@ -622,16 +616,21 @@ the remaining events. Applying these parameters to the simulated data, correctio
 Model expectation, then solving the system of equations obtained from \eqref{eq:asymmetries}. 
 
 \begin{align}
-	e_1 &= \frac{N_2(1+A_-)}{N_1(A_+-A_-)} = \num{1.515 +- 0.065E-2} \\ e_3 &= -\frac{N_2(A_+-1)}{N_3(A_+-A_-)} = \num{5.390 +- 0.081E-2}
+	A_{+}^{SM} &= \frac{(e_3N_3 + N_2) - e_1N_1}{e_1N_1 + e_2N_2 + e_3N_3} \\
+	A_{-}^{SM} &= \frac{e_3N_3 - (e_1N_1 + N_2)}{e_1N_1 + e_2N_2 + e_3N_3}     
 \end{align}
 
+\begin{align}
+	e_1 &= \frac{N_2(1+A_-)}{N_1(A_+-A_-)} = \num{1.515 +- 0.065E-2} \\ e_3 &= -\frac{N_2(A_+-1)}{N_3(A_+-A_-)} = \num{5.390 +- 0.081E-2}
+\end{align}
+These correction factors obtained from simulation is then applied to the $\cos\theta^{*}$ distribution from the ATLAS data. 
+
+And we get angular asymmetries $A_- = -0.828 \pm 0.006$ and $A_+ = 0.521 \pm 0.006$
+resulting in the helicity fractions $F_0=0.634 \pm 0.016$,
+$F_L=0.339 \pm 0.009$ and $F_R=0.026 \pm 0.009$. 
 
 \subsection{Template Method}
-%draft
 Pythia was used to generate three files containing left, longitudinal and right-handed polarizations of the W-boson separately. These files were then run through delphes, which simulates the ATLAS detector response and uses that to reconstruct the particles. Cuts were applied in ROOT matching the event selection criteria defined in section \ref{sec:cuts} to filter out background data. The templates were then combined and fitted to the real $\cos \theta^{*}$ distribution from the ATLAS detector, giving us the three helicity fractions $F_L$, $F_R$ and $F_0$.
-
-
-
 
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
 \subsection{Event Selection}\label{sec:cuts}
@@ -875,9 +874,6 @@ CHI2 : 1963.72
 
 \section{Discussion}
 % TODO:
-% Beskriv hvordan vi bruger angular asymmetries til korrektion
-% Nævn delphes efficiency efter cuts 800/20000 eller whatever
-% Skriv om delphes scatterplot når den er sat ind i data analysis
 % Error propagation
 Due to the limitations of the released 13 TeV Open Datasets, it was not possible
 to analyse the helicity fractions' angular distributions through the ATLAS data,
@@ -934,7 +930,7 @@ parameter -1 to 1.
 \section{Conclusion}
 A measurement of the polarization of $W$ bosons, from top quark pair events
 decay to single lepton channels, was presented using data collected from Open
-ATLAS $pp$ cikkusuibs at $\sqrt s = 13$TeV, corresponding to an integrated
+ATLAS $pp$ collision at $\sqrt s = 13$TeV, corresponding to an integrated
 luminosity of 10 fb$^{-1}$. The helicity fractions obtained from angular
 asymmetries are $F_0=0.634 \pm 0.016$, $F_L=0.339 \pm 0.009$ and
 $F_R=0.026 \pm 0.009$. Due to the limitations of the Open Atlas
@@ -943,16 +939,6 @@ the possibility of larger systematic uncertainties. The measured helicity
 fractions deviated slightly from the SM expectation values, but this could be
 the result of lack in systematic uncertainties, or discarding the overflow.
 
-% TODO:
-% ROOT Måske?
-% Top Mass
-% Angular Asymmetries Results
-% Forklaring på hvad vi gjorde i Angular Asymmetries
-% Conclusion
-% Færdiggøre Abstract
-% Cite til Apparatus
-% Uddybe Data Analysis Metoder
-% Omskrive Monte Carlo Måske?
 
 \printbibliography
 
