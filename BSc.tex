@@ -639,13 +639,15 @@ In order to identify the top-quark-pair production, as seen in
 figure~\ref{fig:feynmandiagram}, several cuts in the data were implemented. The
 criteria are as follows~\cite{oreach2020}.
 \begin{itemize}
-	\item Only one electron or muon in the final state with $p_{T} > 30 \mathrm{GeV}$
-	\item Missing transverse momentum $E_{T}^{miss} > 30 \mathrm{GeV}$
-	\item Transverse mass of the W-boson $M_{T}^{W} > 30 \mathrm{GeV}$
-	\item At least four jets with $p_{T} > 30 \mathrm{GeV}$ and $|\eta| < 2.5$, with
+  \item Only one electron or muon in the final state with $p_{T} > 30 \mathrm{GeV}$
+  \begin{itemize}
+    \item Electrons are required to have $|\eta| < 2.47$ aside from $1.37 < |\eta| < 1.52$
+    \item Muons are limited by $|\eta| < 2.50$
+  \end{itemize}
+  \item Missing transverse momentum $E_{T}^{miss} > 30 \mathrm{GeV}$
+  \item Transverse mass of the W-boson $M_{T}^{W} > 30 \mathrm{GeV}$
+  \item At least four jets with $p_{T} > 30 \mathrm{GeV}$ and $|\eta| < 2.5$, with
         exactly two of these being b-tagged
-	\item Electrons are required to have $|\eta| < 2.47$ aside from $1.37 < |\eta| < 1.52$
-	\item Muons are limited by $|\eta| < 2.50$
 \end{itemize}
 
 \subsubsection{B-tagging}
