@@ -479,6 +479,12 @@ the events, and $\int L \dd t$ is the integrated luminosity.
 The ATLAS detector consists of multiple primary components, each with their own
 subcomponents or subsections.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.1]{figures/atlas.jpg}
+	\caption{A computer generated image of the ATLAS detector~\cite{detector}}\label{fig:detector}
+\end{figure}
+
 \subsubsection{The Inner Detector}
 The purpose of this component is to measure charge and momentum, including its
 direction, of the detected particle. It consists of three subcomponents. 
@@ -552,11 +558,7 @@ software based High-Level Trigger. After passing through both triggers, only
 approximately 1000 events out of the initial 1.7 billion are saved for later
 analysis.\cite{ATLAS-trig}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.1]{figures/atlas.jpg}
-	\caption{A computer generated image of the ATLAS detector~\cite{detector}}\label{fig:detector}
-\end{figure}
+
 
 \subsection{ROOT}
 ROOT is a framework used for storing and processing data in high energy physics.
@@ -756,17 +758,17 @@ For measurements of angular asymmetries $A_{\pm}$ from equation
 non-uniform bins with events above and below $z_{\pm} = \pm(1-2^{\frac{2}{3}})$
 given by; $N_1 = N(\cos \theta^{*}<z_-)$, $N_3 = N(\cos \theta^{*}>z_+)$ and $N_2$ being
 the remaining events. Applying these parameters to the simulated data,
-correction factors $e_1$ and $e_3$ were obtained by comparing the simulated data
+correction factors $c_1$ and $c_3$ were obtained by comparing the simulated data
 to the Standard Model expectation, then solving the system of equations obtained
 from \eqref{eq:asymmetries}.
 
 \begin{align}
-	A_{+}^{SM} &= \frac{(e_3N_3 + N_2) - e_1N_1}{e_1N_1 + e_2N_2 + e_3N_3} \\
-	A_{-}^{SM} &= \frac{e_3N_3 - (e_1N_1 + N_2)}{e_1N_1 + e_2N_2 + e_3N_3}
+	A_{+}^{SM} &= \frac{(c_3N_3 + N_2) - c_1N_1}{c_1N_1 + N_2 + c_3N_3} \\
+	A_{-}^{SM} &= \frac{c_3N_3 - (c_1N_1 + N_2)}{c_1N_1 + N_2 + c_3N_3}
 \end{align}
 Solving for the correction factors the following values are obtained.
 \begin{align}
-	e_1 &=  \num{1.515 +- 0.065E-2} \\ e_3 &= \num{5.390 +- 0.081E-2}
+	c_1 &=  \num{3.037 +- 0.043} \\ c_3 &= \num{2.720 +- 0.118}
 \end{align}
 
 These correction factors obtained from simulation is then applied to the
