@@ -590,9 +590,6 @@ the detector, to compare theory with real data~\cite{mcopenatlas}.
 %mangler noget.
 
 
-%Den her sektion mangler at bliver skrivet færdig
-%Jeg tænker den skal være i et andet afsnit?
-
 \subsubsection{B-tagging}
 To study the $Wtb$ structure, a mechanism to identify the $b$-jets from the
 other detected jets is required. First the jets are detected, $b$-hadrons,
@@ -752,15 +749,12 @@ reconstructed $\cos \theta^{*}$ is plotted in Figure~\ref{fig:costhetaatlas} bel
 
 \subsection{Angular Asymmetries}
 % TODO:
-% Maybe expand reason for correction
+% Kilde til konstant selection ratio?
 For measurements of angular asymmetries $A_{\pm}$ from equation
 \eqref{eq:asymmetries}, the $\cos\theta^{*}$ distribution was split into three
 non-uniform bins with events above and below $z_{\pm} = \pm(1-2^{\frac{2}{3}})$
 given by; $N_1 = N(\cos \theta^{*}<z_-)$, $N_3 = N(\cos \theta^{*}>z_+)$ and $N_2$ being
-the remaining events. Applying these parameters to the simulated data,
-correction factors $c_1$ and $c_3$ were obtained by comparing the simulated data
-to the Standard Model expectation, then solving the system of equations obtained
-from \eqref{eq:asymmetries}.
+the remaining events. The true $\cos\theta^*$ distribution has a constant selection ratio over all angles $\cos\theta^*$, and the simulated $\cos\theta^*$ distribution does not. Therefore the observed ATLAS $\cos\theta^*$ distribution is unfolded by calculating correction factors $c_1$ and $c_3$ for bin $N_1$ and $N_3$ respectively. The correction factors were calculated from the simulated distribution with eq.  \eqref{eq:asymmetries}.
 
 \begin{align}
 	A_{+}^{SM} &= \frac{(c_3N_3 + N_2) - c_1N_1}{c_1N_1 + N_2 + c_3N_3} \\
@@ -777,6 +771,8 @@ $\cos\theta^{*}$ distribution from the ATLAS data.
 Leading to the angular asymmetries $A_- = -0.828 \pm 0.006$ and
 $A_+ = 0.521 \pm 0.006$, resulting in the helicity fractions
 $F_0=0.634 \pm 0.016$, $F_L=0.339 \pm 0.009$ and $F_R=0.026 \pm 0.009$.
+
+%TODO Error
 
 \subsection{Template Method}
 Pythia was used to generate three files containing left, longitudinal and
