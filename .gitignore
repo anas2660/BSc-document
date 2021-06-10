@@ -284,3 +284,10 @@ TTbarAnalysis/Output_TTbarAnalysis/*
 *.so
 *.d
 path.h
+
+*.wxmx
+*ACLiC*
+perf*
+.ccls*
+maxima_files
+OLD*
