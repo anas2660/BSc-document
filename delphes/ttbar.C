@@ -18,6 +18,8 @@ R__LOAD_LIBRARY(libDelphes)
 #include <TFile.h>
 #include <TF1.h>
 #include <TClonesArray.h>
+#include <TH2F.h>
+
 
 #include "TLorentzVector.h"
 
@@ -32,6 +34,9 @@ R__LOAD_LIBRARY(libDelphes)
 
 TH1   *histCTStarGen;
 TFile *out_file;
+
+TH2D  *ctRecVsTrue;
+
 ///////////////////////////////////////////////////////////////////////////////
 //                               Distributions                               //
 ///////////////////////////////////////////////////////////////////////////////
@@ -252,16 +257,16 @@ void ttbar(const char *inputFile, TH1 *hist) {
     // how do we select bjet????????
     TLorentzVector bjet_1 = jet[goodbjet[1]]->P4();
 
-    float m_t = 172.8f;
-    float M_W = 80.4f;
-    float Meb = (plep + bjet_1).M();
-    float costheta  = 2.0f * Meb * Meb / (m_t * m_t - M_W * M_W) - 1.0f;
+    double m_t = 172.8f;
+    double M_W = 80.4f;
+    double Meb = (plep + bjet_1).M();
+    double costheta  = 2.0f * Meb * Meb / (m_t * m_t - M_W * M_W) - 1.0f;
     // printf("Meb : %f, \tcos theta : %f\n", Meb, costheta);
     if (costheta >= -1.0f && costheta <= 1.0f) {
       histCTStar->Fill(costheta);
+      ctRecVsTrue->Fill(ctstarGen, costheta);
       if (hist) hist->Fill(costheta);
     }
-
   }
     
   // Show histograms
@@ -387,6 +392,8 @@ void costheta(){
   gSystem->Load("libDelphes");
 #endif
 
+  ctRecVsTrue = new TH2D("cthRecVsTrue", "cos(theta*) reconstructed vs true", 20, -1., 1., 20, -1., 1.);
+  
   TFile* atlas_file     = new TFile("data.root");
   TH1F*  atlas_costheta = atlas_file->Get<TH1F>("hist_costheta");
   int    nbins  = atlas_costheta->GetNbinsX();
@@ -512,6 +519,11 @@ void costheta(){
   histCTStarGenL->Draw("E1"); //"SAME"
   histCTStarGenL->ShowBackground()->SetLineColor(kBlue);
   c8->SaveAs("out/delphes_ctstarL.png");
+
+  gStyle->SetPalette(kRainBow);
+  TCanvas * c2d = new TCanvas("c2d","c2d",40,40,800,800);
+  ctRecVsTrue->Draw("colz");
+  //ctRecVsTrue->Draw("cont4z");
 
   assert(atlas_file);
   assert(atlas_costheta);
