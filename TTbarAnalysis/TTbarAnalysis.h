@@ -105,8 +105,8 @@ public:
   Float_t               met_et_syst;
   vector<float> *       jet_pt_syst;
 
-  Int_t Nzplus;
-  Int_t Nzminus;
+  Int_t N1;
+  Int_t N3;
 
   // List of branches
   TBranch *b_runNumber;                 //!

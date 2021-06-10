@@ -34,7 +34,7 @@ string name;
 
 void TTbarAnalysis::Begin(TTree *) { 
   nEvents = 0; 
-  Nzplus = Nzminus = 0;
+  N1 = N3 = 0;
 }
 
 void TTbarAnalysis::SlaveBegin(TTree *) {
@@ -372,8 +372,8 @@ Bool_t TTbarAnalysis::Process(Long64_t entry) {
                   FillHistogramsGlobal(costheta, weight, "hist_costheta_overflow");
                   // Remove overflow & underflow
                   if (costheta >= -1.0f && costheta <= 1.0f) {
-                    if (costheta > zplus)  Nzplus++;
-                    if (costheta > zminus) Nzminus++;
+                    if (costheta < zplus)  N1++;
+                    if (costheta > zminus) N3++;
                     FillHistogramsGlobal(costheta, weight, "hist_costheta");
                   }
 
@@ -423,15 +423,14 @@ void TTbarAnalysis::SlaveTerminate() {}
 
 void TTbarAnalysis::Terminate() {
   int NTotal = hist_costheta->GetEntries();
-  double Aplus = (double)(Nzplus - (NTotal - Nzplus)) / (double)(Nzplus + (NTotal - Nzplus));
-  double Aminus = (double)(Nzminus - (NTotal - Nzminus)) / (double)(Nzminus + (NTotal - Nzminus));
+  int N2 = NTotal - N1 - N3;
+  double Aplus = (double)(N2 + N3 - N1) / (double)(N1 + N2 + N3);
+  double Aminus = (double)(N3 -(N2 + N1)) / (double)(N1 + N2 + N3);
   double beta = 0.25992104;
   double Fr = 1.0/(1.0-beta) + (Aminus - beta * Aplus)/(3.0*beta*(1.0-beta*beta));
   double Fl = 1.0/(1.0-beta) - (Aplus - beta * Aminus)/(3.0*beta*(1.0-beta*beta));
   double F0 = -(1.0+beta)/(1.0-beta) + (Aplus - Aminus)/(3.0*beta*(1.0-beta));
-  int N1 = NTotal - Nzminus;
-  int N3 = Nzplus;
-  int N2 = NTotal - N1 - N3;
+  
   printf("Value of Fr %g\n", Fr);
   printf("Value of Fl %g\n", Fl);
   printf("Value of F0 %g\n", F0);
