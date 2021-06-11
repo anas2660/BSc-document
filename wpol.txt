@@ -127,11 +127,6 @@ side 19: - Jeg synes I skal droppe Eq. (4.5).
            Hvad der betyder noget er, at vi har adgang til 4-impulsen for alle partikler 
            of jets (alle objekter, som vi siger).
 
-         - Nederst på siden, synes jeg I skal understrege, at det er en hypotese,
-           at I kan rekonstruere den hadronisk henfaldende top quark ved at udvælge
-           de tre jets (hvoraf præcis en er b-tagget) med den højeste pT-sum.
-           Det virker statistisk set, men ikke i hver event.
-
          - Forresten synes jeg I bør kommentere mere kvalitativt på figurene 8 og 9.
            Niveauet af baggrund: lavt.
            Overensstemmelse af fordelingerne: gennemgående flot!
