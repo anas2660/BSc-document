@@ -46,10 +46,10 @@ DATE
   asymmetries is used as the primary method for measuring the polarization of
   the $W$ bosons, with a novel approach of fitting Delphes $W$ polarization
   simulations to data taken from the ATLAS detector. The measured helicity
-  fractions from Angular asymmetries are $F_0=0.634 \pm 0.016$,
-  $F_L=0.339 \pm 0.009$ and $F_R=0.026 \pm 0.009$, with only statistical
-  uncertainties considered, with angular asymmetries of $A_+ = 0.521 \pm 0.006$
-  and $A_- = -0.828 \pm 0.006$, deviating slightly from the Standard Model.
+  fractions from Angular asymmetries are $F_0=0.695 \pm 0.015$,
+  $F_L=0.297 \pm 0.008$ and $F_R=0.007 \pm 0.009$, with only statistical
+  uncertainties considered, with angular asymmetries of $A_+ = 0.550 \pm 0.006$
+  and $A_- = -0.834 \pm 0.007$, in agreement with the Standard Model.
 
 \end{abstract}
 \cleardoublepage{}
@@ -66,7 +66,7 @@ produced debris, hoping to discover new physics that deviates from the SM.\\
 
 The top quark was discovered in 1995, by experiments done by CDF~\cite{Abe_1995}
 and DØ~\cite{Abachi_1995}. It is the heaviest known fundamental particle, with a
-mass of $172.76 \pm 0.30 \mathrm{GeV/c^2}$~\cite{tmass}, and its coupling
+mass of $172.76 \pm 0.30 \mathrm{GeV/c^2}$~\cite{pdg}, and its coupling
 strength to all the bosons are well predicted by the standard model. Because of
 its heavy mass and consequently short lifetime, it doesn't have enough time to
 bind with lighter quarks and form hadrons before it decays, which means that it
@@ -193,11 +193,12 @@ studying these groups, we can discover other conserved quantities in the
 interactions of the EM, the weak or the strong force.\\
 
 The Gauge invariance of the unitary group U(1), leads to conservation of
-electric charge, as well as the conservation of lepton number, as far as we know
-in all interactions. Certain particles behave practically identically with
-respect to the strong or the weak interactions, these properties are studied
-through irreducible representations of the group SU(3), and are characterized by
-strong and weak isospin, which are also conserved.\\
+electric charge, as well as the conservation of lepton number. Lepton number
+conservation is, far as we know, conserved in all interactions. Certain
+particles behave practically identically with respect to the strong or the weak
+interactions, these properties are studied through irreducible representations
+of the group SU(3), and are characterized by strong and weak isospin, which are
+also conserved.\\
 
 The Dirac equation extends the Schrödinger wave equations, to include the
 effects of special relativity. The solution to this equation shows that for
@@ -219,48 +220,51 @@ energy. The weak force will only interact with left-chiral particles and
 right-chiral antiparticles. The operator of an interaction that describes the
 exchange of a boson, can have both vector $V$ and axial vector $A$ nature. If it
 has both a vector and an axial part, as in the case of weak interactions, parity
-is violated, while maximum parity violation occurs when both the contributions
-becomes equal magnitude.\\
+is violated, and maximum parity violation occurs when both the contributions
+becomes equal magnitude, which is true for (V-A) structures..\\
 
-After the discovery of parity violation and charge conjugation, by physicist C.S
-Wu\cite{PhysRev.105.1413}, it was believed by physicists that CP-symmetry, the
-combination of charge conjugation symmetry and parity, was a true symmetry of
-the Standard model, until that too was violated in weak decay of neutral kaons,
-forcing physicists to reformulate the electroweak interaction in the Standard
-Model. The Cabbibo-Kobayashi-Maskawa (CKM) matrix explains how the flavour
-eigenstates of the quarks are related to the mass eigenstates, and is a $3 \times 3$
-unitary matrix, with four independent parameters: three real angles and an
-imaginary phase\cite[153]{Povh2015}. The imaginary phase gives rise to CP
-violation, but the matrix preserves CPT symmetry.
+After the discovery of parity violation and charge conjugation, in weak
+interactions, by physicist C.S Wu\cite{PhysRev.105.1413}, it was believed by
+physicists that CP-symmetry, the combination of charge conjugation symmetry and
+parity, was a true symmetry of the Standard model, until that too was violated
+in weak decay of neutral kaons, forcing physicists to reformulate the
+electroweak interaction in the Standard Model. The Cabbibo-Kobayashi-Maskawa
+(CKM) matrix explains how the flavour eigenstates of the quarks are related to
+the mass eigenstates, and is a $3 \times 3$ unitary matrix, with four independent
+parameters: three real angles and an imaginary phase\cite[153]{Povh2015}. The
+imaginary phase gives rise to CP violation, but the matrix preserves CPT
+symmetry.
 
 \subsection{Momentum}\label{sec:momentum}
 
 \subsubsection{Four-momentum}
 The data collected in LHC collisions, allows us to reconstruct the 4-vector of
-momentum for the involved particles. This 4-vector is a four component tensor,
-made up of an ordinary 3-vector for relativistic momentum $\vb p$, and the
-relativistic energy term, $E/c$, as its first component. Working in natural
-units, where we set $c=1$, our 4-vector will be given as
+momentum for the involved particles, the Lorentzvector. This 4-vector is a four
+component tensor, made up of an ordinary 3-vector for relativistic momentum
+$\vb p$, and the relativistic energy term, $E/c$, as its first component.
+Working in natural units, where $c=1$, the 4-vector will be given as
 \begin{equation}
 p = \left(\begin{matrix} E \\ \vb p \end{matrix} \right).
 \end{equation}
 
-The dot product of two 4-vectors is given by $p\cdot p' = E E' - \vb p \cdot \vb{p'}$,
-where $\vb p \cdot \vb{p'}$ is the ordinary dot product of two 3-vector momentum.
-From special relativity, we know that $E^2 - \abs{\vb p}^2 = m^2$, so from the
-dot product, we get that $p^2 = m^2$. Other vector operations on a 4-vector is
-similar to those same vector operations on a 3-vector. The quantity
+The dot product of two 4-vectors is defined for this Lorentzvector as;
+$p\cdot p' = E E' - \vb p \cdot \vb{p'}$, where $\vb p \cdot \vb{p'}$ is the ordinary dot
+product of two 3-vector momentum vectors. From special relativity, it is known
+that $E^2 - \abs{\vb p}^2 = m^2$, so from the 4-vector dot product of two
+identical 4-vectors, the following holds true $p^2 = m^2$. Other vector
+operations on a 4-vector is similar to the same vector operations on a
+3-vector. The quantity
 \begin{equation}
 s = (p + p')^2 = (E + E')^2 - (\vb p + \vb p')^2
 \end{equation}
-is conserved, and is the center-of-mass energy squared of the system. It is the
-energy available to create new particles, or probing the properties of
-particles.
+is a conserved quantity, the center-of-mass energy squared of the system. It is
+the square of the collision energy, which allows the creation of new particles,
+and allows the probing of particle properties.
 
 \subsubsection{Transverse Momentum}\label{sec:transmomentum}
 In LHC experiments, the protons gets smashed together in head-on collisions at
 nearly the speed of light. Since the protons momenta are parallel to the beam
-axis, conventionally defined as the $z$-axis their total momentum in the
+axis, conventionally defined as the $z$-axis, their total momentum in the
 $xy$-plane, the transverse momentum $\vb p_T$, is zero. The jets scatter off in
 new directions, at angles given by the polar angle $\theta$, and the azimuthal angle
 $\varphi$. The polar angle is defined as the angle of the jet, with respect to the
@@ -364,9 +368,13 @@ the single lepton channel.\\
 The $W$-boson couples only to left-handed fermions, or right-handed
 anti-fermions, giving $Wtb$ vortex a (V-A) structure. In the Standard Model we
 expect that the $W$-boson and $b$-quark from top decay, arrange such that chiral
-structure of the couple vertex is fulfilled. Because of parity violation, the
+structure of the coupled vertex is fulfilled. Because of parity violation, the
 events with positive helicity (right polarized) gets suppressed, while events
-with negative (left polarized) and longitudinal helicity dominates.
+with negative (left polarized) and longitudinal helicity dominates. The three
+polarizations are illustrated in Fig.~\ref{fig:polarization}, where, in this
+hyper relativistic limit the $b$ quark can, to a good approximaiton,
+$m_t >> m_b$, always be considered left handed, which necessitates that the $W$
+boson is either longitudinal or right handed.
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{figures/w_polarization.png}
@@ -377,11 +385,22 @@ with negative (left polarized) and longitudinal helicity dominates.
 \end{figure}
 
 The fraction of; longitudinally $F_0$, left $F_L$ or right $F_R$ polarized
-$W-$bosons which are produced from top quark decay, we refer to as helicity
-fractions. In the Standard Model we can determine these fractions with quantum
-chromodynamics, in next to next to leading order (NNLO) calculations to be
-$F_0 = 0.687 \pm 0.005$, $F_L = 0.311 \pm 0.005$ and
-$F_R = 0.0017 \pm 0.0001$\cite{Czarnecki_2010}. The experimental method to
+$W$-bosons which are produced from top quark decay, is referred to as helicity
+fractions. In the Standard Model these fractions are calculated using quantum
+chromodynamics. In leading order calculations, using the $m_b = 0$ limit, the
+fractions are determined by the folllowing relations; $F_0/F_L = (m_t/m_W)^2$
+and $F_R = 0 \Rightarrow F_0 + F_L = 1$, corresponding to the helicity fractions;
+
+\begin{align}
+\label{eq:helfrac}
+  F_0 &= \frac{m_t^2}{m_t^2 + 2 m_W^2} \approx 0.7\\
+  F_L &= \frac{2 m_W^2}{m_t^2 + 2 m_W^2} \approx 0.3\\
+  F_R &= 0
+\end{align}
+
+For further corrections, these fractions are found in next to next to leading
+order (NNLO) calculations to be $F_0 = 0.687 \pm 0.005$, $F_L = 0.311 \pm 0.005$
+and $F_R = 0.0017 \pm 0.0001$\cite{Czarnecki_2010}. The experimental method to
 extract these fractions is by studying the angular decay distribution of the
 leptonic decay products of the top quark. The angular distribution is given by:
 
@@ -391,18 +410,25 @@ leptonic decay products of the top quark. The angular distribution is given by:
 \end{equation}
 
 Where $\theta^*$ is the helicity angle, which is defined as the angle between the
-decayed lepton momentum direction, and the reversible momentum direction of the
-$b$-quark decay from the same top quark, viewed from a reference frame with $W$
-at rest\cite{PhysRevD.45.124}. From the 4-vectors of the lepton and $b$-jet, we
-can find the $\cos \theta^*$ from the following expression:
+charged lepton momentum direction, and the reversed momentum direction of the
+decayed $b$ quark, viewed from a reference frame with $W$ at
+rest~\cite{PhysRevD.45.124}. An expression for $\cos \theta^*$ can be found, using
+the dot product of the two four-momentum vectors, the lepton $p_l$ and $b$ quark
+$p_b$; $p_l\cdot p_b=E_bE_l-\vb{p_l\cdot p_b}=E_bE_l+\abs{\vb{p_l}}\abs{\vb{p_b}}\cos \theta^*$,
+where the $\cos{(\theta^{*}-\pi)}=-\cos \theta^{*}$ was used to flip the sign.
+$\cos \theta^{*}$ is then given by;
+
+
 \begin{equation}
-  \cos \theta^*=\frac{p_l\cdot p_b-E_lE_b}{\abs{\vb{p_l}}\abs{\vb{p_b}}} \simeq \frac{2 M_{lb}^2}{m_t^2 - M_W^2} - 1. \label{eq:costheta}
+  \cos \theta^*=\frac{p_l\cdot p_b-E_lE_b}{\abs{\vb{p_l}}\abs{\vb{p_b}}}\\
+  \simeq -\frac{p_l\cdot p_b}{E_lE_b} - 1 = \frac{2 M_{lb}^2}{m_t^2 - M_W^2} - 1. \label{eq:costheta}
 \end{equation}
-Here $p_l$ and $p_b$ are the four momentum vectors of the lepton and the bottom
-quark respectively. $M_{lb}$ is the invariant mass of the lepton and bottom
-quark system. The dependence is shown in Fig.~\ref{fig:distributions} for the
-three distribution separately, and for the SM, with the above-mentioned NNLO
-helicity fractions.
+Where $M_{lb}$ is the invariant mass of the lepton and bottom quark system. The
+approximation arises from the relativistic assumption that the masses of the
+lepton and $b$ quark can be neglected so that
+$E_lE_b\simeq \abs{\vb{p_l}}\abs{\vb{p_b}}$. The dependence is shown in
+Fig.~\ref{fig:distributions} for the three distribution separately, and for the
+SM, with the above-mentioned NNLO helicity fractions.
 \begin{figure}[H]
   \centering
 	\includegraphics[width=0.7\linewidth]{figures/angular_dist.png}
@@ -419,15 +445,27 @@ asymmetries, $A_-$, and $A_+$, defined as
 \begin{equation}\label{eq:asymmetries}
   A_{\pm}=\frac{N(\cos \theta^* > z)-N(\cos \theta^* < z)}{N(\cos \theta^* > z)+N(\cos \theta^* < z)},
 \end{equation}
-with $z=\pm(1-2^{2/3})$, to choose asymmetries involving only dependence on
-$F_0$ and $F_L$ for $A_+$, or $F_0$ and $F_R$ for $A_-$. The helicity fractions
-for the $W$ boson, can then be obtained by,
+where $z=\pm(1-2^{2/3})$, is chosen that the asymmetries only has dependence on
+$F_0$ and $F_L$ for $A_+$, or $F_0$ and $F_R$ for $A_-$. From
+equation~\eqref{eq:asymmetries}, the helicity can be extracted using the
+following approach;
+\begin{align}
+\label{eq:asymmetriesplus}
+  A_+ &= \int^1_{z_+} \frac{1}{\Gamma}\dv{\Gamma}{\cos \theta^*} \dd{\cos \theta^{*}} - \int^{z_+}_{-1}
+      \frac{1}{\Gamma}\dv{\Gamma}{\cos \theta^*} \dd{\cos \theta^{*}} = 3\beta [F_0 + (1+\beta)F_R],\\
+\label{eq:asymmetriesminus}
+  A_- &= \int^1_{z_-} \frac{1}{\Gamma}\dv{\Gamma}{\cos \theta^*} \dd{\cos \theta^{*}} - \int^{z_-}_{-1}
+      \frac{1}{\Gamma}\dv{\Gamma}{\cos \theta^*} \dd{\cos \theta^{*}} = -3\beta [F_0 + (1+\beta)F_L],
+\end{align}
+where $\beta = 2^{1/3}-1$. From the
+equations~\eqref{eq:asymmetriesplus},~\eqref{eq:asymmetriesminus} and
+$F_L+F_0+F_R=1$, the following helicity fractions for the $W$ boson is obtained;
 \begin{align}
   F_R&=\frac{1}{1-\beta}+\frac{A_- - \beta A_+}{3\beta (1-\beta^2)},\\
   F_L&=\frac{1}{1-\beta}-\frac{A_+ - \beta A_-}{3\beta (1-\beta^2)},\\
-  F_0&=-\frac{1+\beta}{1-\beta}+\frac{A_+ - A_-}{3\beta (1-\beta)},
+  F_0&=-\frac{1+\beta}{1-\beta}+\frac{A_+ - A_-}{3\beta (1-\beta)}.
 \end{align}
-where $\beta = 2^{1/3}-1$. The values for angular asymmetries is calculated in SM
+The values for angular asymmetries is calculated in SM
 NNLO as $A_+=0.537 \pm 0.004$ and
 $A_-=-0.841 \pm 0.006$~\cite[24]{CastroNunesFiolhais:1544047}.
 %kilde findes på forsøgs artiklen.
@@ -899,70 +937,81 @@ CHI2 : 1963.72
 \section{Discussion}
 % TODO:
 % Error propagation
-Due to the limitations of the released 13 TeV Open Datasets, it was not possible
-to analyse the helicity fractions' angular distributions through the ATLAS data,
-which lead to the utilization of Delphes. The deviation between the predicted SM
-values for the helicity fraction, and the value obtained through the fitting, is
-possibly the result of systematic errors when attempting to fit Delphes
-simulated spin orientation, to the data obtained from the LHC Open ATLAS run in
-2016. Since Delphes runs a fast-simulation, it is not designed to be used in
-parallel with data taken from advanced detector studies. This analysis
-consequently serves as a test for this novel approach of combining Delphes
-simulations with data taken from ATLAS detector. While similar cuts was
-attempted to be implemented on the Delphes' truth-information, due to the
-absence of the b-tagging MV2c10 algorithm in Delphes, cuts were made using
-80--85\% efficiency instead~\cite{CMS-PAS-BTV-11-004}.\\
+The 13 TeV Open Datasets did not simulate polarizations of the $W$ boson,
+leading to the utilization of Delphes, in getting polarization distributions to
+fit to the reconstructed $\cos \theta^{*}$ data. However, perhaps the greatest source
+of errors is a consequence of statistical errors, due to the small event samples
+surviving the cut on the given Delphes data, where less than 1/20 of the events
+survives the cuts from truth to reconstructed. This results in much more
+statistic from the ATLAS data, than from the Delphes simulations. The
+uncertainties on the helicity fractions only take error associated with the
+statistical fluctuations of the Atlas data into consideration, therefore the
+uncertainties presented are greatly underestimated.\\ %noget om at forsøge at estimere højere usikkerheder
 
-However, perhaps the greatest source of errors is a consequence of statistical
-errors, due to the small event samples surviving the cut on the given Delphes
-data, an efficiency of less than 1/20. Figure~\ref{fig:scatterplot} illustrates
-the effect of the cuts on the truth data, where the normalized data of
-Fig.~\ref{fig:delphesdist}, is plotted out of one axis, and the data from
-Fig.~\ref{fig:redelphesdist} is plotted out of the other. The values for the
-reconstructed left and right-handed distributions diverge from the truth values,
-at values with higher density of events, corresponding to the corners of the
-truth distribution. As a result of time constraints, and the large storage space
-required to simulate a sufficient number of Delphes events, information about
-the $W$ polarization was instead obtained by the method of angular asymmetries,
-described in Section~\ref{sec:coupling}.\\
+From Fig. ??, it is illustrated that the efficiency is not flat as a function of
+$\cos \theta^{*}$, but has lower effeciency in $\cos \theta^{*} < z_+$. This possible
+originates from the criteria on lepton tagging, where it is required that they
+appear isolated in the detector. At $\cos \theta^{*} \rightarrow -1$, the $b$ quark and the
+lepton is moving in the same direction, making it impossible to detect the
+lepton, and erasing the event from the single lepton
+channel.\\ %skal også beskrive den anden figur med 2d smear
 
-%For measurements of angular asymmetries, three parameters were
-%considered; $N1 = N(\cos \theta^{*}<z_-)$, $N3 = N(\cos \theta^{*}>z_+)$ and $N2$ being
-%the remaining events. Applying these parameters to the simulated data, the
-%correction factors were obtained by comparing the simulated data to the Standard
-%Model expectation, then solving a system of equation.
+Since Delphes runs a fast-simulation, it is not designed to be used in parallel
+with data taken from advanced detector studies. This analysis could consequently
+serve as a test for this novel approach of combining Delphes simulations with
+data taken from ATLAS detector, but the great statistical uncertainty, due to
+the low number of simulated events, makes any reasonable conclusion on this
+approach impossible. Instead, as a result of time constraints, and the large
+storage space required to simulate a sufficient number of Delphes events,
+information about the $W$ polarization was obtained by the method of angular
+asymmetries, described in Section~\ref{sec:coupling}.\\
 
-For measurements of angular asymmetries, the error was found, using first order
-error propagation on equation~\eqref{eq:asymmetries}. The statistical error of
-this approach, was significantly smaller, due to the fact that the data was
-taken exclusively from the Open ATLAS Data, which had a much larger data sample
-than the Delphes simulations.\\
+Measurements using angular asymmetries were more accurate with less statistical
+errors, due to the fact that the data was taken exclusively from the Open ATLAS
+Data, which had a much larger data sample than the Delphes simulations. This
+allowed for a more confident evaluation of the $W$ boson's helicity fractions.\\
 
-The reconstructed $\cos \theta^*$, from the ATLAS data, used in both methods, had
-significant entries in overflow. The theoretical $\cos \theta^*$ was compared to the
-approximation, but no significant differences appeared between the two, refuting
-the possibility that overflow stemmed from the approximation.
-This %ved ikke om vi overhovedet bør nævne det med den sammenligningen.
-overflow was ignored in the fitting process, as only data remaining within the
-physically possible range from -1 to 1, was considered in the analysis. The
-Delphes data for the helicity distributions, had substantially less overflow,
-than data from Open ATLAS, which also motivated the decision to only fit within
-the parameter -1 to 1.
 
-%Kan godt være at jeg skal lave nogle ændringer på diskussionen, med de nye
-%data, og med fokus på den nye tilgangs metode.
+
+%Det her skal nok stå et sted i Delphes delen, hvis det skal stå et sted
+%While similar cuts was attempted to be implemented on the Delphes'
+%truth-information, due to the absence of the b-tagging MV2c10 algorithm in
+%Delphes, cuts were made using
+%80--85\% efficiency instead~\cite{CMS-PAS-BTV-11-004}.\\
+
+
+
+
+%Forklaring om overflow, ved ikke hvor meget der er relevant.
+%The reconstructed $\cos \theta^*$, from the ATLAS data, used in both methods, had
+%significant entries in overflow. The theoretical $\cos \theta^*$ was compared to the
+%approximation, but no significant differences appeared between the two, refuting
+%the possibility that overflow stemmed from the approximation.
+%This %ved ikke om vi overhovedet bør nævne det med den sammenligningen.
+%overflow was ignored in the fitting process, as only data remaining within the
+%physically possible range from -1 to 1, was considered in the analysis. The
+%Delphes data for the helicity distributions, had substantially less overflow,
+%than data from Open ATLAS, which also motivated the decision to only fit within
+%the parameter -1 to 1.
+
+%error propagation, skal nok stå lidt mere om
+%For measurements of angular asymmetries, the error was found, using first order
+%error propagation on equation~\eqref{eq:asymmetries}.
+
+%Noget om statistical uncertainty, kan måske skrives som en kort kommentar i
+%analysen.
+%Due to the limitations of the Open Atlas
+%Data~\cite{oreach2020}, only statistical uncertainties were considered, leaving
+%the possibility of larger systematic uncertainties.
 
 \section{Conclusion}
 A measurement of the polarization of $W$ bosons, from top quark pair events
 decay to single lepton channels, was presented using data collected from Open
 ATLAS $pp$ collision at $\sqrt s = 13$TeV, corresponding to an integrated
 luminosity of 10 fb$^{-1}$. The helicity fractions obtained from angular
-asymmetries are $F_0=0.634 \pm 0.016$, $F_L=0.339 \pm 0.009$ and
-$F_R=0.026 \pm 0.009$. Due to the limitations of the Open Atlas
-Data~\cite{oreach2020}, only statistical uncertainties were considered, leaving
-the possibility of larger systematic uncertainties. The measured helicity
-fractions deviated slightly from the SM expectation values, but this could be
-the result of lack in systematic uncertainties, or discarding the overflow.
+asymmetries are $F_0=0.695 \pm 0.015$, $F_L=0.297 \pm 0.008$ and
+$F_R=0.007 \pm 0.009$. These results are in agreement with the NNLO QCD
+predictions.
 
 
 \printbibliography
