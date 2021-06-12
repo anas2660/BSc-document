@@ -937,55 +937,72 @@ CHI2 : 1963.72
 \section{Discussion}
 % TODO:
 % Error propagation
-Due to the limitations of the released 13 TeV Open Datasets, it was not possible
-to analyse the helicity fractions' angular distributions through the ATLAS data,
-which lead to the utilization of Delphes. The deviation between the predicted SM
-values for the helicity fraction, and the value obtained through the fitting, is
-possibly the result of systematic errors when attempting to fit Delphes
-simulated spin orientation, to the data obtained from the LHC Open ATLAS run in
-2016. Since Delphes runs a fast-simulation, it is not designed to be used in
-parallel with data taken from advanced detector studies. This analysis
-consequently serves as a test for this novel approach of combining Delphes
-simulations with data taken from ATLAS detector. While similar cuts was
-attempted to be implemented on the Delphes' truth-information, due to the
-absence of the b-tagging MV2c10 algorithm in Delphes, cuts were made using
-80--85\% efficiency instead~\cite{CMS-PAS-BTV-11-004}.\\
+The 13 TeV Open Datasets did not simulate polarizations of the $W$ boson,
+leading to the utilization of Delphes, in getting polarization distributions to
+fit to the reconstructed $\cos \theta^{*}$ data. However, perhaps the greatest source
+of errors is a consequence of statistical errors, due to the small event samples
+surviving the cut on the given Delphes data, where less than 1/20 of the events
+survives the cuts from truth to reconstructed. This results in much more
+statistic from the ATLAS data, than from the Delphes simulations. The
+uncertainties on the helicity fractions only take error associated with the
+statistical fluctuations of the Atlas data into consideration, therefore the
+uncertainties presented are greatly underestimated.\\ %noget om at forsøge at estimere højere usikkerheder
 
-However, perhaps the greatest source of errors is a consequence of statistical
-errors, due to the small event samples surviving the cut on the given Delphes
-data, an efficiency of less than 1/20. Figure~\ref{fig:scatterplot} illustrates
-the effect of the cuts on the truth data, where the normalized data of
-Fig.~\ref{fig:delphesdist}, is plotted out of one axis, and the data from
-Fig.~\ref{fig:redelphesdist} is plotted out of the other. The values for the
-reconstructed left and right-handed distributions diverge from the truth values,
-at values with higher density of events, corresponding to the corners of the
-truth distribution. As a result of time constraints, and the large storage space
-required to simulate a sufficient number of Delphes events, information about
-the $W$ polarization was instead obtained by the method of angular asymmetries,
-described in Section~\ref{sec:coupling}.\\
+From Fig. ??, it is illustrated that the efficiency is not flat as a function of
+$\cos \theta^{*}$, but has lower effeciency in $\cos \theta^{*} < z_+$. This possible
+originates from the criteria on lepton tagging, where it is required that they
+appear isolated in the detector. At $\cos \theta^{*} \rightarrow -1$, the $b$ quark and the
+lepton is moving in the same direction, making it impossible to detect the
+lepton, and erasing the event from the single lepton
+channel.\\ %skal også beskrive den anden figur med 2d smear
 
-%For measurements of angular asymmetries, three parameters were
-%considered; $N1 = N(\cos \theta^{*}<z_-)$, $N3 = N(\cos \theta^{*}>z_+)$ and $N2$ being
-%the remaining events. Applying these parameters to the simulated data, the
-%correction factors were obtained by comparing the simulated data to the Standard
-%Model expectation, then solving a system of equation.
+Since Delphes runs a fast-simulation, it is not designed to be used in parallel
+with data taken from advanced detector studies. This analysis could consequently
+serve as a test for this novel approach of combining Delphes simulations with
+data taken from ATLAS detector, but the great statistical uncertainty, due to
+the low number of simulated events, makes any reasonable conclusion on this
+approach impossible. Instead, as a result of time constraints, and the large
+storage space required to simulate a sufficient number of Delphes events,
+information about the $W$ polarization was obtained by the method of angular
+asymmetries, described in Section~\ref{sec:coupling}.\\
 
-For measurements of angular asymmetries, the error was found, using first order
-error propagation on equation~\eqref{eq:asymmetries}. The statistical error of
-this approach, was significantly smaller, due to the fact that the data was
-taken exclusively from the Open ATLAS Data, which had a much larger data sample
-than the Delphes simulations.\\
+Measurements using angular asymmetries were more accurate with less statistical
+errors, due to the fact that the data was taken exclusively from the Open ATLAS
+Data, which had a much larger data sample than the Delphes simulations. This
+allowed for a more confident evaluation of the $W$ boson's helicity fractions.\\
 
-The reconstructed $\cos \theta^*$, from the ATLAS data, used in both methods, had
-significant entries in overflow. The theoretical $\cos \theta^*$ was compared to the
-approximation, but no significant differences appeared between the two, refuting
-the possibility that overflow stemmed from the approximation.
-This %ved ikke om vi overhovedet bør nævne det med den sammenligningen.
-overflow was ignored in the fitting process, as only data remaining within the
-physically possible range from -1 to 1, was considered in the analysis. The
-Delphes data for the helicity distributions, had substantially less overflow,
-than data from Open ATLAS, which also motivated the decision to only fit within
-the parameter -1 to 1.
+
+
+%Det her skal nok stå et sted i Delphes delen, hvis det skal stå et sted
+%While similar cuts was attempted to be implemented on the Delphes'
+%truth-information, due to the absence of the b-tagging MV2c10 algorithm in
+%Delphes, cuts were made using
+%80--85\% efficiency instead~\cite{CMS-PAS-BTV-11-004}.\\
+
+
+
+
+%Forklaring om overflow, ved ikke hvor meget der er relevant.
+%The reconstructed $\cos \theta^*$, from the ATLAS data, used in both methods, had
+%significant entries in overflow. The theoretical $\cos \theta^*$ was compared to the
+%approximation, but no significant differences appeared between the two, refuting
+%the possibility that overflow stemmed from the approximation.
+%This %ved ikke om vi overhovedet bør nævne det med den sammenligningen.
+%overflow was ignored in the fitting process, as only data remaining within the
+%physically possible range from -1 to 1, was considered in the analysis. The
+%Delphes data for the helicity distributions, had substantially less overflow,
+%than data from Open ATLAS, which also motivated the decision to only fit within
+%the parameter -1 to 1.
+
+%error propagation, skal nok stå lidt mere om
+%For measurements of angular asymmetries, the error was found, using first order
+%error propagation on equation~\eqref{eq:asymmetries}.
+
+%Noget om statistical uncertainty, kan måske skrives som en kort kommentar i
+%analysen.
+%Due to the limitations of the Open Atlas
+%Data~\cite{oreach2020}, only statistical uncertainties were considered, leaving
+%the possibility of larger systematic uncertainties.
 
 \section{Conclusion}
 A measurement of the polarization of $W$ bosons, from top quark pair events
@@ -993,10 +1010,8 @@ decay to single lepton channels, was presented using data collected from Open
 ATLAS $pp$ collision at $\sqrt s = 13$TeV, corresponding to an integrated
 luminosity of 10 fb$^{-1}$. The helicity fractions obtained from angular
 asymmetries are $F_0=0.695 \pm 0.015$, $F_L=0.297 \pm 0.008$ and
-$F_R=0.007 \pm 0.009$. Due to the limitations of the Open Atlas
-Data~\cite{oreach2020}, only statistical uncertainties were considered, leaving
-the possibility of larger systematic uncertainties. These results are in
-agreement with the NNLO QCD predictions.
+$F_R=0.007 \pm 0.009$. These results are in agreement with the NNLO QCD
+predictions.
 
 
 \printbibliography
