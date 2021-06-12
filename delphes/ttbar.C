@@ -18,6 +18,8 @@ R__LOAD_LIBRARY(libDelphes)
 #include <TFile.h>
 #include <TF1.h>
 #include <TClonesArray.h>
+#include <TH2F.h>
+
 
 #include "TLorentzVector.h"
 
@@ -32,6 +34,9 @@ R__LOAD_LIBRARY(libDelphes)
 
 TH1   *histCTStarGen;
 TFile *out_file;
+
+TH2D  *ctRecVsTrue;
+
 ///////////////////////////////////////////////////////////////////////////////
 //                               Distributions                               //
 ///////////////////////////////////////////////////////////////////////////////
@@ -58,7 +63,6 @@ double right_distribution(double *x, double *par) {
 }
 
 void ttbar(const char *inputFile, TH1 *hist) {
-
   // Create chain of root trees
   TChain chain("Delphes");
   chain.Add(inputFile);
@@ -253,16 +257,16 @@ void ttbar(const char *inputFile, TH1 *hist) {
     // how do we select bjet????????
     TLorentzVector bjet_1 = jet[goodbjet[1]]->P4();
 
-    float m_t = 172.8f;
-    float M_W = 80.4f;
-    float Meb = (plep + bjet_1).M();
-    float costheta  = 2.0f * Meb * Meb / (m_t * m_t - M_W * M_W) - 1.0f;
+    double m_t = 172.8f;
+    double M_W = 80.4f;
+    double Meb = (plep + bjet_1).M();
+    double costheta  = 2.0f * Meb * Meb / (m_t * m_t - M_W * M_W) - 1.0f;
     // printf("Meb : %f, \tcos theta : %f\n", Meb, costheta);
     if (costheta >= -1.0f && costheta <= 1.0f) {
       histCTStar->Fill(costheta);
+      ctRecVsTrue->Fill(ctstarGen, costheta);
       if (hist) hist->Fill(costheta);
     }
-
   }
     
   // Show histograms
@@ -364,18 +368,6 @@ double fitf(double *x, double *par) {
   delphes_R = histCTStarGenR->Interpolate(x[0]);
   return delphes_0*par[0] + delphes_L*par[1] + delphes_R*par[2];
 
-  /*
-  FCN=0.00831042 FROM MIGRAD    STATUS=CONVERGED     137 CALLS         138 TOTAL
-                     EDM=1.61199e-07    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   1.9 per cent
-  EXT PARAMETER                                   STEP         FIRST
-  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE
-   1  F_0          4.06808e-01   5.35428e+00  -1.56390e-02   3.09175e-04
-   2  F_L          5.05306e-01   2.86144e+00   2.19484e-02   2.48891e-04
-   3  F_R          8.81551e-02   3.07593e+00  -4.53229e-03   1.91461e-04
-                               ERR DEF= 0.5
-
-*/
-
 }
 
 double fitfunc(double* x, double* pars) {
@@ -400,6 +392,8 @@ void costheta(){
   gSystem->Load("libDelphes");
 #endif
 
+  ctRecVsTrue = new TH2D("cthRecVsTrue", "cos(theta*) reconstructed vs true", 20, -1., 1., 20, -1., 1.);
+  
   TFile* atlas_file     = new TFile("data.root");
   TH1F*  atlas_costheta = atlas_file->Get<TH1F>("hist_costheta");
   int    nbins  = atlas_costheta->GetNbinsX();
@@ -426,24 +420,11 @@ void costheta(){
   histCTStarGenL->SetLineWidth(3);
   histCTStarGenR->SetLineWidth(3);
 
-
-
-  //for (int i = 0; i < nbins; i++) {
-  //  histCTStarGen0->SetBinError(i+1, 0);
-  //  histCTStarGenL->SetBinError(i+1, 0);
-  //  histCTStarGenR->SetBinError(i+1, 0);
-  //}
-
   double* error_array = (double*) malloc(sizeof(double)*nbins+2);
   double* errors = &error_array[1];
   for (int i = 0; i < nbins; i++)
     errors[i] = sqrt(atlas_costheta->GetBinContent(i+1))/atlas_costheta->GetEntries();
   atlas_costheta->Scale(1.0/atlas_costheta->GetEntries());
-
-  //atlas_costheta->SetBinContent(atlas_costheta->GetXaxis()->GetNbins()+1, 0);
-  //histCTStarGen0->SetBinContent(histCTStarGen0->GetXaxis()->GetNbins()+1, 0);
-  //histCTStarGenL->SetBinContent(histCTStarGenL->GetXaxis()->GetNbins()+1, 0);
-  //histCTStarGenR->SetBinContent(histCTStarGenR->GetXaxis()->GetNbins()+1, 0);
 
   TCanvas *c5 = new TCanvas("c5", "c5", 80, 80, 700, 700);
   TF1* f = new TF1("fitfunc", fitfunc, -1, 1, 3);
@@ -463,59 +444,6 @@ void costheta(){
   double fl = parameters[1] = fit_result->Parameter(1);
   double fr = parameters[2] = fit_result->Parameter(2);
 
-  //const char* filenames[4] = {"dataA.root","dataB.root","dataC.root","dataD.root"};
-  //TFile* data_files[4];
-  //TH1F*  data_hist[4];
-
-  //double* error_array = (double*) malloc(sizeof(double)*nbins+2);
-  //double* errors = &error_array[1];
-  //double* xbar   = (double*)malloc(sizeof(double)*nbins);
-//
-//  for (int i = 0; i < nbins; i++){
-//    errors[i] = 0;
-//    xbar[i]   = atlas_costheta->GetBinContent(i+1);
-//  }
-//
-//  for (int i = 0; i < 4; i++) {
-//    data_files[i] = new TFile(filenames[i]);
-//    data_hist[i]  = data_files[i]->Get<TH1F>("hist_costheta");
-//    data_hist[i]->Scale(1.0/data_hist[i]->GetEntries());
-//    for (int bin = 0; bin < nbins; bin++) {
-//      double diff = data_hist[i]->GetBinContent(bin+1) - xbar[bin];
-//      diff = abs(diff);
-//      diff *= diff;
-//      errors[bin] += diff;
-//    }
-//  }
-
-  ///for (int i = 0; i < nbins; i++)
-  ///  errors[i] = atlas_costheta->GetBinContent(i+1);//sqrt(errors[i]/4.0);
-
-
-
-  // Draw fit error bars
-  /*
-  double* x     = (double*)malloc(sizeof(double)*nbins); //{1,2,3};
-  double* y     = (double*)malloc(sizeof(double)*nbins); //{1,4,9};
-  double* err_x = (double*)malloc(sizeof(double)*nbins); //{0,0,0};
-  double* err_y = (double*)malloc(sizeof(double)*nbins); //{5,5,5};
-
-  //F_0", "F_L", "F_R
-  for (int i = 0; i < nbins; i++) {
-    x[i]     =  atlas_costheta->GetBinCenter(i+1);
-    y[i]     =  fitfunc(&x[i], parameters);
-    err_x[i] =  0;
-    err_y[i] =  f0*histCTStarGen0->GetBinError(i);
-    err_y[i] += fl*histCTStarGenL->GetBinError(i);
-    err_y[i] += fr*histCTStarGenR->GetBinError(i);
-  }
-
-  auto errorband = new TGraphErrors(nbins,x,y,err_x,err_y);
-  errorband->SetFillColor(kRed);
-  errorband->SetFillStyle(3010);
-  errorband->Draw("a3 SAME");
-*/
-
   atlas_costheta->SetError(error_array);
   atlas_costheta->SetLineWidth(3);
   atlas_costheta->SetLineColor(kBlue);
@@ -532,18 +460,6 @@ void costheta(){
   //legend->SetHeader("The Legend Title","C"); // option "C" allows to center the header
   // legend->AddEntry("fitfunc","Delphes fit","l");
   legend->Draw();
-
-  ///// c5->SaveAs("out/delphes_fit.png");
-
-  //TCanvas *cfit = new TCanvas("cfit", "cfit", 80, 80, 700, 700);
-
-  //atlas_costheta->Draw();
-//
-//  errorband->SetFillColor(kRed);
-//  errorband->SetFillStyle(3010);
-//  errorband->Draw("a3 same");
-//
-//  legend->Draw();
 
 
   double* hist_fit_data  = (double*)malloc(sizeof(double)*nbins+2);
@@ -588,9 +504,6 @@ void costheta(){
 
   cfit->SaveAs("out/delphes_fit.png");
 
-
-
-
   
   TCanvas *c6 = new TCanvas("c6", "c6", 80, 80, 700, 700);
   histCTStarGen0->Draw("E1");
@@ -606,6 +519,11 @@ void costheta(){
   histCTStarGenL->Draw("E1"); //"SAME"
   histCTStarGenL->ShowBackground()->SetLineColor(kBlue);
   c8->SaveAs("out/delphes_ctstarL.png");
+
+  gStyle->SetPalette(kRainBow);
+  TCanvas * c2d = new TCanvas("c2d","c2d",40,40,800,800);
+  ctRecVsTrue->Draw("colz");
+  //ctRecVsTrue->Draw("cont4z");
 
   assert(atlas_file);
   assert(atlas_costheta);

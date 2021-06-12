@@ -1,0 +1,267 @@
+
+PARTLY DONE:
+side 11: - Uha, der mangles lige en tau neutrino i jeres tau-henfald.
+
+         - Det er enkelt at forstå via en tegning af spinretninger, hvorfor 
+           højrehåndende W'er ikke er tilladt i top henfald. Altså, når man antager at b-
+           kvarken er venstrehåndet, hvilket er en god approksimation, idet den jo et 
+           hyper-relativistisk i henfaldet, da mt >> mb. Jeg synes det ville være godt, 
+           hvis I kunne argumentere for dette. Ligeledes har jeg netop lært fra appendiks 
+           B i Kane et al at forholdet mellem 0 og L er 1:(mt/mW)^2/2. Dette giver 70%
+           venstrehåndende mod 30% longitudinelle W. Dette er kunne anføres her som et 
+           lavest-ordens teoretisk forudsigelse. [Forresten er denne masseafhængige
+           kobling til longitudinelle W'er jo utvivlsomt givet ved, at den longitudinelle
+           polariseringsvektor for W indeholder p_z/m, se mine slides side 5 lige over 
+           figuren, I har lånt.]
+           En figur der viser de to spinretninger af top-kvarken og de deraf følgende 
+           muligheder for spin at W ville være forfriskende.
+         - Linje to fra bunden "reservible". Det er klart et forkert ord.
+           ATLAS skriver: "The angle θ∗ is defined as the angle between the momentum
+           direction of the charged lepton from the decay of the W boson and the 
+           reversed momentum direction of the b-quark from the decay of the top 
+           quark, both boosted into the W boson rest frame."
+           Altså, vi sidder i W-hvilesystemet (hvor jo W ikke har nogen bevægelse
+           og dermed ikke nogen bevægelsesretning). Men bW systemet kommer jo fra et 
+           to-legeme-henfald af et top. Set fra top bevæger sig altså b og W back-to-back.
+           Nå vi derefter booster til W-systemet, så kan vi benytte b-retningen til at 
+           hitte us af i hvilken retning vi booster. Det modsatte b-retning giver dermed
+           kvantiseringsaksen for W. [Hvis dette ikke er klart, må man lige sidde og tegne
+           lidt for at hitte ud af det.] Men altså, theta* bliver, som Kane udtrykker 
+           det, "the polar angle theta* distribution of the e+ in the rest frame of the 
+           W+ boson whose z-axis is defined to be the moving direction of the W+ boson 
+           in the rest frame of the top quark". Det er jo netop ved at tage b-retningen, 
+           at man finder denne "whose z-axis is defined to be the moving direction of 
+           the W+ boson in the rest frame of the top quark".
+
+side 12: - Det ville have været fornemt, hvis I kunne eftervise (2.6) som følger af
+           (simpel) relativistisk mekanik.
+           . "Første =" dette er jo blot prikproduktet af de to enhedsvektorer i 
+                       der beskriver retningen at l og b. Prikproduktet er udregnet i 
+           W-hvilssystemet, og er jo dermed netop cosinus til vinklen vi søger.
+           . Resten er omskrivninger, hvor approx kommer af at negligere b-massen.
+
+         - "Another"... hvad var den første?
+
+         - Under (2.7) "involving only dependences":
+           Måske det bare er mig der er langsom, men endelig har jeg forsøgt at finde ud
+           af, hvad der foregår her. Jeg troede disse z-værdier tilsvarede 
+           skæringspunkterne mellem kurverne, men det er jo åbenbart forkert. 
+           Derimod har man valgt de negative z som der, hvor integralet af F_L er 
+           det samme over og under denne z-værdi (for det positive z er det F_R der
+           er symmetrisk fordelt). Det er derfor man kan sige, at A+ kun involverer 
+           F_0 og F_L: F_R er "symmetrisk" fordelt omkring den aktuelle z-værdi, og
+           bidrager intet til værdien af A+.
+           Jeg bliver lidt forvirret her, over hvilken z-værdi der hører til hvilket 
+           A (A+ eller A-). Vi lærer, at A+ er positiv og A- er negativ. Des lavere 
+           z-værdi, des højere A-værdi. Det følger matematisk af (2.7). Så dermed må 
+           A+ tilhøre den lavere z-værdi. Men denne skulle være uafhængig af F_L ifølge
+           Fig.5. Så der er noget der ikke stemmer for mig. Kan ulighedstegnere i 
+           (2.7) (og dermed i ATLAS-papiret) måske vende forkert. 
+           Undskyld mig alt dette, men jeg synes det er vigtigt, at forstå dette.
+           Hele metoden hviler på dette fundament. Måske I har en bedre forståelse.
+
+PARTLY:
+side 13: - "In order to prevent energy loss due to synchrotron radiation":
+           Hmmm, sandheden er lidt mere kompliceret.
+           Det er korrekt, at LHC-tunellen er så stor som den er af ovennævnte
+           årsag. Men det skyldes, at der i samme tunnel fra 1989-2000 var en e+e-, LEP.
+           Og for denne er synchrotronstrålinäg et problem. Denne stråling går 
+           proportionalt med de accelererede partiklers gamma-faktor i fjerde potens,
+           så for elektroner som er 2000 gange lettere end protoner, er dette er stor
+           effekt. Men altså ikke for protoner. 
+           Derimod er det der sætter begrænsningen for protoner hvor Tesla magneter,
+           og med disse kan man netop køre med 7 TeV protonstråler.
+           Vil man højere op i energi må man enten skaffe sig stærkere magneter,
+           eller graven en større tunnel.
+
+side 14: - Måske I skulle flytte ATLAS-figuren lidt længere frem, så I kan henvise til 
+           den. Frem for at fortælle, hvor mange elektronikkanaler der er i de forskellige
+           detektorkomponenter, så tror jeg læseren har mere brug for at forstå den 
+           geometriske relation mellem de forskellige komponenter: a) inderst måler man
+           ladede sport med præcise detektorer, der er så lette som muligt for at undgå
+           vekselvirkning i materialet. Dernæst stopper man partiklerne med massive
+           kalorimetre, for at måle deres energi. Sidste måler man muoner, som 
+           penetrerer gennem kalorimetrene. Der er ikke noget i vejen med at beskrive det, 
+           som I gør det. Men denne yderligere information kunne hjælp læseren.
+ 
+side 15: - Kalorimetre måler netop ikke kun "charged particles" (som spordetektorene gør)
+           men også neutrale. De stopper jo alt, unseat ladning. Så hvad I mener er, at
+           ECAL måler elektroner og fotoner.
+
+         - Nej, muoner går ikke "undetected" gennem spordetektorene og kalorimetrene.
+           De ses faktisk hele vejen ud. Men muon-systemet giver en yderligere 
+           identifikation (alle andre partikler vil stoppes på vejen ud). Og bidrager
+           også til måling af deres impuls. ATLAS har en meget præcis måling af muoners 
+           impuls, idet de måles både i inner tracker og i muon-systemet.
+
+         - Jeg kan ikke tro, at muon-kamrene har gold wires. Måske de er dækket af 
+           et tyndt guld-lag. Men guld i sig selv er for dyrt, og slet ikke stærkt 
+           nok til at modstå den kraftige mekaniske spænding, der er nødvendig for
+           at holde trådene lige.
+
+side 17: - Det virker ret ukonventionelt at kalde ef korrektionsfaktor for e, men 
+           det er selvfølgelig ikke afgørende. Mere konventionelt ville nok være c
+           (for correction) eller f (for faktor).
+
+         - Jeg synes I også bør forklare, hvorfor I korrigerer. Det er jo fordi
+           selektionen af begivenheder måske ikke er flad i cos(theta*). Pointen er
+           da, at finde korrektionsfaktorer der er aktuelle for simuleringer, og 
+           anvende disse på de rigtige data.  
+
+         - I (4.1) og (4.2) optræder et e_2. Det må være en fejl. I korrigerer kun 
+           de ydre bins, mener jeg. De bliver korrigeret mht det midterste. 
+
+         - Jeg er ret overrasket over værdien af jeres faktorer i (4.3-4). 
+           Mener I, at faktorene er 1+e, hvor e er størrelserne I angiver?
+           Faktorene må vel være sådan cirka 1???
+
+         - Måske I også bør gøre lidt mere ud af, hvordan I bestemmer faktorene.
+           Og deres usikkerheder. Det beskrevne virker ret overfladisk for en 
+           bachelorrapport.
+
+side 19: - Jeg synes I skal droppe Eq. (4.5).
+           Det er jo slet ikke en 4-vektor I har der.
+           Det er korrekt, at man kan sætte en TLorentzVector med SetPtEtaPhiE,
+           men det betyder jo ikke, at den gemmes som det I beskriver (og hvordan
+           den gemmes af computeren er vi vel egentlig også ligeglade med).
+           Hvad der betyder noget er, at vi har adgang til 4-impulsen for alle partikler 
+           of jets (alle objekter, som vi siger).
+
+         - Forresten synes jeg I bør kommentere mere kvalitativt på figurene 8 og 9.
+           Niveauet af baggrund: lavt.
+           Overensstemmelse af fordelingerne: gennemgående flot!
+
+         - Jeg mener (men er ikke 100%) sikker, at simuleringerne er gennemført med en 
+           top masse på 172.5 GeV. En *lille* uoverensstemmelse kan evt. skyldes, at 
+           dataene favoriserer en lidt anderledes masse. 
+           
+Generelt her: 
+
+         - Jeg synes ikke helt rapporten hænger logisk sammen. 
+           Jeres afsnit 4.1 (især) og 4.2 optræder ligesom lidt tidligt.
+           Hvorfor ikke starte afsnit 4 ud med "Event Selection"?
+           [Indholdet i Afsnit 4.4 kunne iøvrigt let bare være en del af dette afsnit.]
+           Først efter I har præsenteret (den imponerende flotte) Fig. 10 synes
+           jeg det giver mening at tale om hvordan I ekstraherer information om 
+           W-polaristion od af denne. Altså med de to metoder.
+           For "Angular Asymmetries" kunne man overveje at lave et nyt cos(theta*)-plot,
+           med med kun de tre bins defineret under Eq. 2.7. Det er vigtigt at 
+           anskueliggøre sine metoder (I må ud i noget med variable bin-sizes i root, 
+           men det skulle være ret ligetil.)
+
+
+
+################
+side 21: - Før I begynder diskussionen af Delphes data, så synes jeg I skal forklare 
+           baggrunden:
+         o Udover "Angular Asymmetries" forsøger I at anvende "Template Method".
+           Til dette har I brug for simulerede events, hvor I for hvert event kender
+           W-spinretningen. Det har OI simplethen ikke til rådighed i ATLAS open data.
+           Og hvad så?
+           Tja, måske man selv kunne lave nogle. Til dette brug ville fuld simulering 
+           være art foretrække. Men det er umuligt; det ville kræve "uendelig" med 
+           computertid. Så vi forsøger med "fast simulation", som giver kune en 
+           emuleret respons af detektoren. Delphes ere en sådan pakke, som kan
+           give emuleret respons to forskellige detektorer. Den har vi forsøgt at 
+           bruge.
+
+           Arbejdsgangen er da:
+            i) generering af ttbar-begivenheder via pythia. Dette producerer 4-impulser 
+               for alle sluttilstandspartikler i proton-proton-kollisionerne.
+           ii) Emulering af detektor-respons via Delphes.
+
+           Komplikation: 
+            - Fra Pythia kender vi heller ikke W-spinretningen for hvert event.
+            - Pythia beskriver Standard Model, så der er ingen R. Dermed er vil der 
+              være meget få begivenheder produceret med cos(theta*) ~ 1.
+
+            Så der er det, at jeg har "snydt".
+             a) Jeg går ind i pythia of finder W-henfaldet til lepton+neutrino.
+                Her bytter jeg simplethen i halvdelen af begivenhederne om på 
+                identiteten at lepton og neutrino (neutrinoen går i den retning, som 
+                leptonen gjorde, og omvendt). Derefter beregner jeg cos(theta*)-værdien
+                pr. begivenhed ved beregninger som i Eq. 2.6. P.g.a. det ovennævnte 
+                trick bliver cos(theta*) fordelingen symmetrisk omkring cos(theta*) lig 0.
+                Jeg har altså nu både L, 0, og R. 
+                Nu ved jeg jo, hvordan den teoretiske fordeling for hhv L, 0 og R
+                skal se ud. Jeg forkaster nu begivenheder indtil jeg for hver 
+                spinretning får præcis, hvad jeg har brug for. (Dette hedder "importance
+                sampling" på udenlandsk).
+                Ved dette trick, at jeg lavet de tre filer I har fået.
+             b) Nu er der det ved det, at filerne blev ret store.
+                Så jeg producerede kun 20k events af hver type. 
+                Dette er jo desværre for lidt.
+                Men vi kan da illustrere metoden, vi ville kunne have anvendt.
+
+
+          Nu er det så jeg synes, når I har adgang til genererende events det ville være
+          interessant at se på:
+          a) effektivitet af jeres udvælgelsescuts som funktion af cos(theta*).
+             Læg alle tre simulerede filer sammen så I har 60k events.
+             Bestem rekonstrueret cos(theta*) for alle og histogramér.
+             Udfør cuts of histogramér igen.
+             Forholdet af de to histogrammer giver da den efterspurgte effektivitet.
+          b) Bias i cos(theta*)-målingen.
+             Bestem den sande og den rekonstruerede cos(theta*) værdi.
+             Plot fordelinge af begge på samme plot, og se forskellen.
+             Lav dernæst et 2D-plot, som jeg sendte eksempel på i går, og vis 
+             rekonstrueret værdi vs sand værdi.
+             De to plots ovenfor kan laves både før og efter udvælgelse af events.
+
+          Der er forresten noget jeg ikke helt kan få til at stemme. I har 691, 916 og
+          981 events der overlever i de tre samples. Antallet varierer kraftigt fra
+          sample til sample. Dette må vel skyldes de forskellige sande 
+          cos(theta*)-fordelinger. Altså ville man vel forvente en stærk bias som
+          funktion af cos(theta*). 
+          Dette synes at stemme dårligt med den små korrektionsfaktorer anført i afs. 4.1.
+          Eller misforstår jeg?
+          Det ville være godt at forstå.
+
+side 23 Fig 14 er vist ikke rigtig meningsfuld. 
+        Hvordan normaliserer man et cos(theta*)-værdi.
+        Det som vi er interesserede i, er nok snarere effektiviteten af cuts som funktion 
+        af cos(theta*). Som beskrevet ovenfor.
+
+side 24: Til diskussionen af jeres fits, så synes jeg I bør diskutere det faktum,
+         at jeres MC-statistik er langt, langt mindre end data-statistik. 
+         Og at jeres metode udelukkende tager højde for statistiske fluktuationer 
+         af data men ikke af MC. Så vi ved, at usikkerhederne er stærkt underestimeret.
+         Dermed kan vi jo ikke stole på resultatet. Og da slet ikke på de estimerede 
+         usikkerheder. 
+
+         Lad mig forsøge noget vovet:
+         - Der er vil omkring 120k events i jeres data-fordeling.
+         - I hver af MC-fordelingerne er der omkring en faktor 200 mindre.
+           sqrt(200) = 14. Så måske usikkerhederne på jeres fit er underestimeret
+           med sådan cirka en faktor 14. 
+
+           Hvis vi accepterer dette, så får vi
+ 
+           F_0    0.511 +/- 0.017 -> 0.24
+           F_L    0.441 +/- 0.009 -> 0.12
+           F_R    0.031 +/- 0.009 -> 0.12
+
+          hvor det efter -> er mine nye (modigt estimerede) usikkerheder.
+
+         Under alle omstændigher må I præsentere (og diskutere) jeres resultater og 
+         ikke blot lade dem fremkomme i et dump fra root.
+
+side 25: Ja, I skal vende op/ned på denne diskussion. 
+         Begynd med at sige, at pga den lave statistik i delphes-data, så 
+         kan I jo desværre ikke rigtig konkludere noget om, hvorvidt delphes 
+         kan bruges til det I forsøger.
+         Forresten: hvis I ville evaluere delphes, så ville det jo have været fornuftigt
+         at lave plots a al Figs. 8-10 for disse data og sammenlignet.
+
+         De to sidste afsnit indeholder nytting information, som bør optræde på 
+         det aktuelle sted, og ikke her i konklusionen: "error propagation" 
+         (giv gerne flere detaljer), "overflow".
+         Vdr overflows, så kunne I jo passende i forbindelse med Fig. 10 informere om,
+         hvor mange % er i overflow i data og MC.
+
+                
+          
+             
+
+
+           
