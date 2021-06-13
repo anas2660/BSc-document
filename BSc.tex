@@ -44,12 +44,12 @@ DATE
   thesis, was taken from $pp$ collisions at a center-of-mass energy of $13$ TeV,
   which corresponds to a integrated luminosity of 10 $\mathrm{fb}^{-1}$. Angular
   asymmetries is used as the primary method for measuring the polarization of
-  the $W$ bosons, with a novel approach of fitting Delphes $W$ polarization
-  simulations to data taken from the ATLAS detector. The measured helicity
-  fractions from Angular asymmetries are $F_0=0.678 \pm 0.015$,
+  the $W$ bosons, with a secondary novel approach of fitting Delphes $W$
+  polarization simulations to data taken from the ATLAS detector. The measured
+  helicity fractions from Angular asymmetries are $F_0=0.678 \pm 0.015$,
   $F_L=0.308 \pm 0.008$ and $F_R=0.014 \pm 0.009$, with only statistical
-  uncertainties considered, and angular asymmetries of $A_+ = 0.550 \pm 0.006$
-  and $A_- = -0.834 \pm 0.007$, in agreement with the Standard Model.
+  uncertainties considered, and angular asymmetries of $A_+ = 0.542 \pm 0.005$
+  and $A_- = -0.831 \pm 0.007$, in agreement with the Standard Model.
 
 \end{abstract}
 \cleardoublepage{}
@@ -241,7 +241,7 @@ symmetry.
 The data collected in LHC collisions, allows us to reconstruct the 4-vector of
 momentum for the involved particles, the Lorentzvector. This 4-vector is a four
 component tensor, made up of an ordinary 3-vector for relativistic momentum
-$\vb p$, and the relativistic energy term, $E/c$, as its first component.
+$\vb p$, and the relativistic energy term, $E/c$, as its zeroth component.
 Working in natural units, where $c=1$, the 4-vector will be given as
 \begin{equation}
 p = \left(\begin{matrix} E \\ \vb p \end{matrix} \right).
@@ -259,7 +259,7 @@ s = (p + p')^2 = (E + E')^2 - (\vb p + \vb p')^2
 \end{equation}
 is a conserved quantity, the center-of-mass energy squared of the system. It is
 the square of the collision energy, which allows the creation of new particles,
-and allows the probing of particle properties.
+and allows the probing of particles' properties.
 
 \subsubsection{Transverse Momentum}\label{sec:transmomentum}
 In LHC experiments, the protons gets smashed together in head-on collisions at
@@ -548,7 +548,12 @@ the events, and $\int L \dd t$ is the integrated luminosity.
 % potential figure https://commons.wikimedia.org/wiki/File:ATLAS_Drawing.jpg
 
 
-In short, the ATLAS detector consists of multiple components. The first part is the Inner Detector it tracks charged particles; it is very light to minimize interaction with the particles. The next part of the detector is the calorimeters, they stop all particles but muons and neutrinos and measure their energy. The last part is the muon chambers which serves as extra identification of muons. The subcomponents  are described in more detail below. 
+In short, the ATLAS detector consists of multiple components. The first part is
+the Inner Detector it tracks charged particles; it is very light to minimize
+interaction with the particles. The next part of the detector is the
+calorimeters, they stop all particles but muons and neutrinos and measure their
+energy. The last part is the muon chambers which serves as extra identification
+of muons. The subcomponents are described in more detail below.
 
 \begin{figure}[H]
 	\centering
@@ -581,9 +586,8 @@ gold. The tube is filled with a mixture of Xe, $\mathrm{CO_2}$ and
 $\mathrm{O_2}$ gasses. When charged particles travel through the tube the gas
 gets ionized, which frees electrons from the gas that move to the gold wire. The
 negative charge measured on the wire can be used to distinguish which charged
-particle ionized the gas. \cite{ATLAS-ID}
-
-The Inner detector and its subcomponents can be seen in Figure~\ref{fig:detector}.
+particle ionized the gas~\cite{ATLAS-ID}. The Inner detector and its
+subcomponents can be seen in Figure~\ref{fig:detector}.
 
 
 \subsubsection{Calorimeter}
@@ -598,7 +602,7 @@ The HCal consist of scintillator plates that radiates light when exposed to a
 charged particle. When a hadron passes through a scintillator plate it produces
 a shower of particles which then makes the scintillator radiate light. The
 intensity of the radiated light can then be analysed to measure the energy of
-the hadron. The calorimeters can be seen in Figure~\ref{fig:detector}. \cite{detector-vid}
+the hadron. The calorimeters can be seen in Figure~\ref{fig:detector}.\cite{detector-vid}
 
 
 \subsubsection{Muon Spectrometer}
@@ -607,14 +611,15 @@ the hadron. The calorimeters can be seen in Figure~\ref{fig:detector}. \cite{det
 % https://en.wikipedia.org/wiki/ATLAS_experiment#Muon_Spectrometer
 
 The muon spectrometer is on the outer part of the ATLAS detector it operates in
-the pseudorapidity range $|\eta| < 2.7$. The muon spectrometer is
-located on the outside of the detector as other particles will have been stopped earlier in the calorimeters. The muon spectrometer consists of tubes, much like the transition
-radiation tracker, that contains a wire which is surrounded by a gas. When
-muons go through these tubes they interact with the gas and leave behind a trail
-of ions and electrons which drift towards the wire in the centre. By
-detecting the starting point of these trails and measuring the time it takes to
-reach the wire, it is possible to determine the position of the muon. The
-Muon Spectrometer can be seen in Figure~\ref{fig:detector}. \cite{ATLAS-Muon}
+the pseudorapidity range $|\eta| < 2.7$. The muon spectrometer is located on the
+outside of the detector as other particles will have been stopped earlier in the
+calorimeters. The muon spectrometer consists of tubes, much like the transition
+radiation tracker, that contains a wire which is surrounded by a gas. When muons
+go through these tubes they interact with the gas and leave behind a trail of
+ions and electrons which drift towards the wire in the centre. By detecting the
+starting point of these trails and measuring the time it takes to reach the
+wire, it is possible to determine the position of the muon. The Muon
+Spectrometer can be seen in Figure~\ref{fig:detector}.\cite{ATLAS-Muon}
 
 
 \subsubsection{Data Collection}
@@ -709,7 +714,7 @@ criteria are as follows~\cite{oreach2020}.
 \end{itemize}
 
 ROOT defines the function \texttt{SetPtEtaPhiE}, which is used in accordance to
-section \ref{sec:momentum} as seen in equation \eqref{eq:TLorentz}.
+Section~\ref{sec:momentum} as seen in equation~\eqref{eq:TLorentz}.
 % The function, which ROOT uses to construct the Lorentz vector,
 % \texttt{SetPtEtaPhiE}, is defined as such,
 \begin{equation} \label{eq:TLorentz}
@@ -822,13 +827,17 @@ reconstructed $\cos \theta^{*}$ is plotted in Figure~\ref{fig:costhetaatlas} bel
 \subsection{Angular Asymmetries}
 % TODO:
 % Kilde til konstant selection ratio?
-For measurements of angular asymmetries $A_{\pm}$ from equation
-\eqref{eq:asymmetries}, the $\cos\theta^{*}$ distribution was split into three
-non-uniform bins with events above and below $z_{\pm} = \pm(1-2^{\frac{2}{3}})$
-given by; $N_1 = N(\cos \theta^{*}<z_-)$, $N_3 = N(\cos \theta^{*}>z_+)$ and $N_2$ being
-the remaining events. The true $\cos\theta^*$ distribution has a constant selection ratio over all angles $\cos\theta^*$, and the simulated $\cos\theta^*$ distribution does not. 
+For measurements of angular asymmetries $A_{\pm}$ from
+equation~\eqref{eq:asymmetries}, the $\cos\theta^{*}$ distribution was split into
+three non-uniform bins with events above and below
+$z_{\pm} = \pm(1-2^{\frac{2}{3}})$ given by; $N_1 = N(\cos \theta^{*}<z_-)$,
+$N_3 = N(\cos \theta^{*}>z_+)$ and $N_2$ being the remaining events. The true
+$\cos\theta^*$ distribution has a constant selection ratio over all angles $\cos\theta^*$,
+and the simulated $\cos\theta^*$ distribution does not.
 
-Therefore, correction factors $c_1$ and $c_3$ for bin $N_1$ and $N_3$ respectively are calculated for the simulated $\cos\theta^*$ distribution to match the Standard Model values of $A_{\pm}$.
+Therefore, correction factors $c_1$ and $c_3$ for bin $N_1$ and $N_3$
+respectively are calculated for the simulated $\cos\theta^*$ distribution to match
+the Standard Model values of $A_{\pm}$.
 
 \begin{align}
 	A_{+}^{SM} &= \frac{(c_3N_3 + N_2) - c_1N_1}{c_1N_1 + N_2 + c_3N_3} \\
@@ -853,7 +862,7 @@ Pythia was used to generate three files containing left, longitudinal and
 right-handed polarizations of the W-boson separately. These files were then run
 through Delphes, which simulates the ATLAS detector response and uses that to
 reconstruct the particles. Cuts were applied in ROOT matching the event
-selection criteria defined in section \ref{sec:results} to filter out background
+selection criteria defined in Section~\ref{sec:results} to filter out background
 data. The templates were then combined and fitted to the real $\cos \theta^{*}$
 distribution from the ATLAS detector, giving us the three helicity fractions
 $F_L$, $F_R$ and $F_0$.
@@ -988,9 +997,10 @@ originates from the criteria on lepton tagging, where it is required that they
 appear isolated in the detector. At $\cos \theta^{*} \rightarrow -1$, the $b$ quark and the
 lepton is moving in the same direction, making it impossible to detect the
 lepton, and erasing the event from the single lepton channel. The 2D plot of
-Fig. ?? further reinforces this assertion, where the shift below the diagional
-line, represents the fact that the reconstructed values diverges more from
-the truth vlues, at lower $\cos \theta^{*}$, the reconstructed plot moves towards the
+Fig.~\ref{fig:2dhist}, further reinforces this assertion, where the shift below
+the diagional line, represents the fact that the reconstructed values diverges
+more from the truth vlues, at lower $\cos \theta^{*}$, the reconstructed plot moves
+towards the
 left.\\
 
 Since Delphes runs a fast-simulation, it is not designed to be used in parallel
