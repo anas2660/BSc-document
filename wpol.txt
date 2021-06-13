@@ -74,6 +74,7 @@ side 13: - "In order to prevent energy loss due to synchrotron radiation":
            Vil man højere op i energi må man enten skaffe sig stærkere magneter,
            eller graven en større tunnel.
 
+DONE
 side 14: - Måske I skulle flytte ATLAS-figuren lidt længere frem, så I kan henvise til 
            den. Frem for at fortælle, hvor mange elektronikkanaler der er i de forskellige
            detektorkomponenter, så tror jeg læseren har mere brug for at forstå den 
@@ -83,7 +84,7 @@ side 14: - Måske I skulle flytte ATLAS-figuren lidt længere frem, så I kan he
            kalorimetre, for at måle deres energi. Sidste måler man muoner, som 
            penetrerer gennem kalorimetrene. Der er ikke noget i vejen med at beskrive det, 
            som I gør det. Men denne yderligere information kunne hjælp læseren.
- 
+DONE 
 side 15: - Kalorimetre måler netop ikke kun "charged particles" (som spordetektorene gør)
            men også neutrale. De stopper jo alt, unseat ladning. Så hvad I mener er, at
            ECAL måler elektroner og fotoner.
@@ -99,6 +100,7 @@ side 15: - Kalorimetre måler netop ikke kun "charged particles" (som spordetekt
            nok til at modstå den kraftige mekaniske spænding, der er nødvendig for
            at holde trådene lige.
 
+PARTLY:
 side 17: - Det virker ret ukonventionelt at kalde ef korrektionsfaktor for e, men 
            det er selvfølgelig ikke afgørende. Mere konventionelt ville nok være c
            (for correction) eller f (for faktor).

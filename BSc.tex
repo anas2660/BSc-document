@@ -514,8 +514,8 @@ the events, and $\int L \dd t$ is the integrated luminosity.
 
 % potential figure https://commons.wikimedia.org/wiki/File:ATLAS_Drawing.jpg
 
-The ATLAS detector consists of multiple primary components, each with their own
-subcomponents or subsections.
+
+In short, the ATLAS detector consists of multiple components. The first part is the Inner Detector it tracks charged particles; it is very light to minimize interaction with the particles. The next part of the detector is the calorimeters, they stop all particles but muons and neutrinos and measure their energy. The last part is the muon chambers which serves as extra identification of muons. The subcomponents  are described in more detail below. 
 
 \begin{figure}[H]
 	\centering
@@ -550,21 +550,22 @@ gets ionized, which frees electrons from the gas that move to the gold wire. The
 negative charge measured on the wire can be used to distinguish which charged
 particle ionized the gas. \cite{ATLAS-ID}
 
+The Inner detector and its subcomponents can be seen in Figure~\ref{fig:detector}.
+
 
 \subsubsection{Calorimeter}
 % TODO
 % Maybe Expand ECal
 Calorimeters measure the energy of particles by absorbing them. There are two
 types of calorimeters used in the ATLAS detector; the Electromagnetic
-Calorimeter (ECal) and Hadronic Calorimeter (HCal). ECal measures charged
-particles and photons.
+Calorimeter (ECal) and Hadronic Calorimeter (HCal). ECal measures electrons and photons. 
 
 
 The HCal consist of scintillator plates that radiates light when exposed to a
 charged particle. When a hadron passes through a scintillator plate it produces
 a shower of particles which then makes the scintillator radiate light. The
 intensity of the radiated light can then be analysed to measure the energy of
-the hadron. \cite{detector-vid}
+the hadron. The calorimeters can be seen in Figure~\ref{fig:detector}. \cite{detector-vid}
 
 
 \subsubsection{Muon Spectrometer}
@@ -573,16 +574,14 @@ the hadron. \cite{detector-vid}
 % https://en.wikipedia.org/wiki/ATLAS_experiment#Muon_Spectrometer
 
 The muon spectrometer is on the outer part of the ATLAS detector it operates in
-the pseudorapidity range $|\eta| < 2.7$. Muons usually pass through the inner
-detector and the calorimeters undetected, which is why the muon spectrometer is
-located on the outside as other particles will have been stopped earlier in the
-detector. The muon spectrometer consists of tubes, much like the transition
-radiation tracker, that contains a gold wire which is surrounded by a gas. When
+the pseudorapidity range $|\eta| < 2.7$. The muon spectrometer is
+located on the outside of the detector as other particles will have been stopped earlier in the calorimeters. The muon spectrometer consists of tubes, much like the transition
+radiation tracker, that contains a wire which is surrounded by a gas. When
 muons go through these tubes they interact with the gas and leave behind a trail
-of ions and electrons which drift towards the gold wire in the centre. By
-detecting the starting point of these trails, and measuring the time it takes to
-reach the gold wire, it is possible to determine the position of the muon. The
-Muon Spectrometer can be seen in Figure~\ref{fig:detector} \cite{ATLAS-Muon}
+of ions and electrons which drift towards the wire in the centre. By
+detecting the starting point of these trails and measuring the time it takes to
+reach the wire, it is possible to determine the position of the muon. The
+Muon Spectrometer can be seen in Figure~\ref{fig:detector}. \cite{ATLAS-Muon}
 
 
 \subsubsection{Data Collection}
@@ -794,7 +793,9 @@ For measurements of angular asymmetries $A_{\pm}$ from equation
 \eqref{eq:asymmetries}, the $\cos\theta^{*}$ distribution was split into three
 non-uniform bins with events above and below $z_{\pm} = \pm(1-2^{\frac{2}{3}})$
 given by; $N_1 = N(\cos \theta^{*}<z_-)$, $N_3 = N(\cos \theta^{*}>z_+)$ and $N_2$ being
-the remaining events. The true $\cos\theta^*$ distribution has a constant selection ratio over all angles $\cos\theta^*$, and the simulated $\cos\theta^*$ distribution does not. Therefore the observed ATLAS $\cos\theta^*$ distribution is unfolded by calculating correction factors $c_1$ and $c_3$ for bin $N_1$ and $N_3$ respectively. The correction factors were calculated from the simulated distribution with eq.  \eqref{eq:asymmetries}.
+the remaining events. The true $\cos\theta^*$ distribution has a constant selection ratio over all angles $\cos\theta^*$, and the simulated $\cos\theta^*$ distribution does not. 
+
+Therefore, correction factors $c_1$ and $c_3$ for bin $N_1$ and $N_3$ respectively are calculated for the simulated $\cos\theta^*$ distribution to match the Standard Model values of $A_{\pm}.
 
 \begin{align}
 	A_{+}^{SM} &= \frac{(c_3N_3 + N_2) - c_1N_1}{c_1N_1 + N_2 + c_3N_3} \\
