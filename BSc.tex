@@ -46,9 +46,9 @@ DATE
   asymmetries is used as the primary method for measuring the polarization of
   the $W$ bosons, with a novel approach of fitting Delphes $W$ polarization
   simulations to data taken from the ATLAS detector. The measured helicity
-  fractions from Angular asymmetries are $F_0=0.695 \pm 0.015$,
-  $F_L=0.297 \pm 0.008$ and $F_R=0.007 \pm 0.009$, with only statistical
-  uncertainties considered, with angular asymmetries of $A_+ = 0.550 \pm 0.006$
+  fractions from Angular asymmetries are $F_0=0.678 \pm 0.015$,
+  $F_L=0.308 \pm 0.008$ and $F_R=0.014 \pm 0.009$, with only statistical
+  uncertainties considered, and angular asymmetries of $A_+ = 0.550 \pm 0.006$
   and $A_- = -0.834 \pm 0.007$, in agreement with the Standard Model.
 
 \end{abstract}
@@ -377,11 +377,44 @@ $m_t >> m_b$, always be considered left handed, which necessitates that the $W$
 boson is either longitudinal or right handed.
 
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{figures/w_polarization.png}
-	\caption{The figure illustrates W-boson with negative, zero and positive
-    helicity, corresponding to a left, longitudinal and right handed
-    polarization. The right handed polarization will be heavily suppressed
-    because of the (V-A) structure of the Wtb vertex.}\label{fig:polarization}
+	 \includegraphics[width=\linewidth]{figures/w_polarization.png}
+   \begin{tikzpicture}
+     %\draw[dashed, ->] (-6.6,0) -- (-2.4,0);
+     %\draw[-latex, line width=2,red] (-4.8,0) -- (-4,0);
+     %\draw[-latex, line width=2,red] (-3.3,0) -- (-2.5,0);
+     %\draw[-latex, line width=2,red] (-6,-0.3) -- (-6,0.4);
+     %\draw[-latex, line width=3,teal] (-6.4,0.7) -- (-5.3,0.7);
+     %\draw[-latex, line width=3,yellow!95!black] (-2.5,0.7) -- (-3.6,0.7);
+     %\filldraw[black] (-4.5,0) circle (0.05) node[anchor=north,black] {$t$};
+     %\filldraw[black] (-3,0) circle (0.05) node[anchor=north,black] {$b$};
+     %\filldraw[black] (-6,0) circle (0.05) node[anchor=north west,black] {$W$};
+     %
+     %\draw[dashed, ->] (-2.1,0) -- (2.1,0);
+     %\draw[-latex, line width=2,red] (-0.3,0) -- (0.5,0);
+     %\draw[-latex, line width=2,red] (1.8,0) -- (1,0);
+     %\draw[-latex, line width=2,red] (-1.8,0) -- (-1,0);
+     %\draw[-latex, line width=3,teal] (-1,0.7) -- (-2.1,0.7);
+     %\draw[-latex, line width=3,yellow!95!black] (1,0.7) -- (2.1,0.7);
+     %\filldraw[black] (0,0) circle (0.05) node[anchor=north,black] {$t$};
+     %\filldraw[black] (1.5,0) circle (0.05) node[anchor=north,black] {$b$};
+     %\filldraw[black] (-1.5,0) circle (0.05) node[anchor=north,black] {$W$};
+     %
+     %\draw[dashed, ->] (2.4,0) -- (6.6,0);
+     %\draw[-latex, line width=2,red] (4.2,0) -- (5,0);
+     %\draw[-latex, line width=2,red] (2.7,0) -- (3.5,0);
+     %\draw[-latex, line width=2,red] (6.3,0) -- (5.5,0);
+     %\draw[-latex, line width=3,teal] (2.6,0.7) -- (3.7,0.7);
+     %\draw[-latex, line width=3,yellow!95!black] (6.4,0.7) -- (5.3,0.7);
+     %\filldraw[black] (4.5,0) circle (0.05) node[anchor=north,black] {$t$};
+     %\filldraw[black] (3,0) circle (0.05) node[anchor=north,black] {$b$};
+     %\filldraw[black] (6,0) circle (0.05) node[anchor=north,black] {$W$};
+  \end{tikzpicture}
+  \caption{The figure illustrates W-boson with zero, negative and positive
+    helicity, corresponding to a longitudinal, left and right handed
+    polarization. The red arrows indicates the momentum direction of the
+    particles, while the teal and yellow arrows indicate the spin orientation,
+    The right handed polarization will be heavily suppressed because of the
+    (V-A) structure of the Wtb vertex.}\label{fig:polarization}
 \end{figure}
 
 The fraction of; longitudinally $F_0$, left $F_L$ or right $F_R$ polarized
@@ -935,8 +968,6 @@ CHI2 : 1963.72
 
 
 \section{Discussion}
-% TODO:
-% Error propagation
 The 13 TeV Open Datasets did not simulate polarizations of the $W$ boson,
 leading to the utilization of Delphes, in getting polarization distributions to
 fit to the reconstructed $\cos \theta^{*}$ data. However, perhaps the greatest source
@@ -948,13 +979,16 @@ uncertainties on the helicity fractions only take error associated with the
 statistical fluctuations of the Atlas data into consideration, therefore the
 uncertainties presented are greatly underestimated.\\ %noget om at forsøge at estimere højere usikkerheder
 
-From Fig. ??, it is illustrated that the efficiency is not flat as a function of
+Figure ?? illustrates that the efficiency is not flat as a function of
 $\cos \theta^{*}$, but has lower effeciency in $\cos \theta^{*} < z_+$. This possible
 originates from the criteria on lepton tagging, where it is required that they
 appear isolated in the detector. At $\cos \theta^{*} \rightarrow -1$, the $b$ quark and the
 lepton is moving in the same direction, making it impossible to detect the
-lepton, and erasing the event from the single lepton
-channel.\\ %skal også beskrive den anden figur med 2d smear
+lepton, and erasing the event from the single lepton channel. The 2D plot of
+Fig. ?? further reinforces this assertion, where the shift below the diagional
+line, represents the fact that the reconstructed values diverges more from
+the truth vlues, at lower $\cos \theta^{*}$, the reconstructed plot moves towards the
+left.\\
 
 Since Delphes runs a fast-simulation, it is not designed to be used in parallel
 with data taken from advanced detector studies. This analysis could consequently
@@ -1008,10 +1042,12 @@ allowed for a more confident evaluation of the $W$ boson's helicity fractions.\\
 A measurement of the polarization of $W$ bosons, from top quark pair events
 decay to single lepton channels, was presented using data collected from Open
 ATLAS $pp$ collision at $\sqrt s = 13$TeV, corresponding to an integrated
-luminosity of 10 fb$^{-1}$. The helicity fractions obtained from angular
-asymmetries are $F_0=0.695 \pm 0.015$, $F_L=0.297 \pm 0.008$ and
-$F_R=0.007 \pm 0.009$. These results are in agreement with the NNLO QCD
-predictions.
+luminosity of 10 fb$^{-1}$. Owed to the reason that the reconstructed $W$
+polarization data from Delphes had a small event sample, resulting in large
+statistical uncertainties, nothing instructive could be concluded from those
+data. Instead, the helicity fractions obtained from angular asymmetries are
+$F_0=0.678 \pm 0.015$, $F_L=0.308 \pm 0.008$ and $F_R=0.014 \pm 0.009$. These
+results are in agreement with the NNLO QCD predictions.
 
 
 \printbibliography
