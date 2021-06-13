@@ -107,6 +107,7 @@ public:
 
   Int_t N1;
   Int_t N3;
+  Int_t NTotal;
 
   // List of branches
   TBranch *b_runNumber;                 //!
