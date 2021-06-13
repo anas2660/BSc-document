@@ -826,27 +826,35 @@ For measurements of angular asymmetries $A_{\pm}$ from equation
 \eqref{eq:asymmetries}, the $\cos\theta^{*}$ distribution was split into three
 non-uniform bins with events above and below $z_{\pm} = \pm(1-2^{\frac{2}{3}})$
 given by; $N_1 = N(\cos \theta^{*}<z_-)$, $N_3 = N(\cos \theta^{*}>z_+)$ and $N_2$ being
-the remaining events. The true $\cos\theta^*$ distribution has a constant selection ratio over all angles $\cos\theta^*$, and the simulated $\cos\theta^*$ distribution does not. 
+the remaining events. The true $\cos\theta^*$ distribution has a constant selection ratio over all angles $\cos\theta^*$, and the simulated $\cos\theta^*$ distribution does not.  \\
 
 Therefore, correction factors $c_1$ and $c_3$ for bin $N_1$ and $N_3$ respectively are calculated for the simulated $\cos\theta^*$ distribution to match the Standard Model values of $A_{\pm}$.
-
 \begin{align}
 	A_{+}^{SM} &= \frac{(c_3N_3 + N_2) - c_1N_1}{c_1N_1 + N_2 + c_3N_3} \\
 	A_{-}^{SM} &= \frac{c_3N_3 - (c_1N_1 + N_2)}{c_1N_1 + N_2 + c_3N_3}
 \end{align}
 Solving for the correction factors the following values are obtained.
-\begin{align}
-	c_1 &=  \num{3.037 +- 0.043} \\ c_3 &= \num{2.720 +- 0.118}
+\begin{align} \label{eq:correction}
+	c_1 &= \frac{N_2(1-A_{+}^{SM})}{N_1(A_{+}^{SM} -A_{-}^{SM})} = \num{1.15 +- 0.01}  \\ 
+	c_3 &= \frac{N_2(A_{-}^{SM}+1)}{N_3(A_{+}^{SM}-A_{-}^{SM})} = \num{1.10 +- 0.05}
 \end{align}
+For measurements of angular asymmetries, the error was found, using first order
+error propagation.
+%\begin{align}
+%\sigma_{c_1} = \sqrt{\left(\pdv{c_1}{N_1}\right)^2\sigma_{N_1}^2 + %\left(\pdv{c_1}{N_2}\right)^2\sigma_{N_2}^2 + %\left(\pdv{c_1}{A_+}\right)^2\sigma_{A_+}^2 + %\left(\pdv{c_1}{A_-}\right)^2\sigma_{A_-}^2}
+%\end{align}
+\begin{align}
+	\sigma_{f} = \sqrt{\sum^{i}\left(\pdv{f}{x_i}\right)^2\sigma_{x_i}^2}
+\end{align}
+Due to limitations of the Open Atlas Data~\cite{oreach2020}, only statistical uncertainties were considered, leaving the possibility of larger systematic uncertainties. \\
 
-These correction factors obtained from simulation is then applied to the
-$\cos\theta^{*}$ distribution from the ATLAS data.
+The correction factors obtained from simulation is then applied to the
+$\cos\theta^{*}$ distribution from the ATLAS data, leading to the angular asymmetries $A_- = -0.831 \pm 0.006$ and
+$A_+ = 0.542 \pm 0.005$, resulting in the helicity fractions
+$F_0=0.678 \pm 0.01$, $F_L=0.308 \pm 0.008$ and $F_R=0.014 \pm 0.009$.
 
-Leading to the angular asymmetries $A_- = -0.828 \pm 0.006$ and
-$A_+ = 0.521 \pm 0.006$, resulting in the helicity fractions
-$F_0=0.634 \pm 0.016$, $F_L=0.339 \pm 0.009$ and $F_R=0.026 \pm 0.009$.
 
-%TODO Error
+
 
 \subsection{Template Method}
 Pythia was used to generate three files containing left, longitudinal and
