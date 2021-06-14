@@ -121,14 +121,7 @@ side 17: - Det virker ret ukonventionelt at kalde ef korrektionsfaktor for e, me
            Og deres usikkerheder. Det beskrevne virker ret overfladisk for en 
            bachelorrapport.
 
-side 19: - Jeg synes I skal droppe Eq. (4.5).
-           Det er jo slet ikke en 4-vektor I har der.
-           Det er korrekt, at man kan sætte en TLorentzVector med SetPtEtaPhiE,
-           men det betyder jo ikke, at den gemmes som det I beskriver (og hvordan
-           den gemmes af computeren er vi vel egentlig også ligeglade med).
-           Hvad der betyder noget er, at vi har adgang til 4-impulsen for alle partikler 
-           of jets (alle objekter, som vi siger).
-
+side 19:
          - Forresten synes jeg I bør kommentere mere kvalitativt på figurene 8 og 9.
            Niveauet af baggrund: lavt.
            Overensstemmelse af fordelingerne: gennemgående flot!
