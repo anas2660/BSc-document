@@ -889,9 +889,9 @@ $F_L$, $F_R$ and $F_0$.
 Before the criteria from Section~\ref{sec:results} were applied to the Delphes
 data, a sanity check was performed on the generated truth data, to assess
 whether it matches with the theoretical analytical function plotted in
-Figure~\ref{fig:distributions}. The three plots are displayed below for each of
-the three polarizations in Figures~\ref{fig:delphesdist}.\\
-
+Figure~\ref{fig:distributions}. The plot for each of the three polarizations is
+displayed in Figure~\ref{fig:delphesdist}. The fitting, in this case, is just a
+scaling factor, as the generated distributions are not normalised.
 \begin{figure*}[t!]
     \centering
     \begin{subfigure}[t]{0.5\textwidth}
@@ -909,16 +909,29 @@ the three polarizations in Figures~\ref{fig:delphesdist}.\\
         \includegraphics[width=1.0\textwidth]{figures/delphes_gen0}
         \caption{$F_0$ generated distribution.}
     \end{subfigure}
-    \caption{The figures shows the truth data of the generated $F_L$, $F_R$ and
+    \caption{The figures shows the truth values of the generated $F_L$, $F_R$ and
       $F_0$ distributions, with a sample of 20000 events, using Delphes fast
       simulations to generate.}\label{fig:delphesdist}
 \end{figure*}
+
+Using the generated distributions and the criteria described in
+Section~\ref{sec:results}, it is now possible to generate an efficiency
+distribution as a function of $\cos \theta^*$ for the specified criteria.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/efficiency}
+  \caption{\label{fig:efficiency}These efficiencies are obtained by dividing the
+    the sum of the three histograms of the generated values for the samples that
+    remained after the cuts by the sum of the three histograms of all the
+    generated values.}
+\end{figure}
 
 To reconstruct the helicity distributions which would be found from
 measurements, the criteria performed on the ATLAS data, from
 Section~\ref{sec:results}, were matched on the Delphes data, to isolate the
 equivalent usable data, gotten from the ATLAS detector. The
-Figures~\ref{fig:redelphesdist} shows the three helicity distributions after the
+Figure~\ref{fig:redelphesdist} shows the three helicity distributions after the
 cuts.
 \begin{figure*}[t!]
   \centering
@@ -943,6 +956,8 @@ cuts.
     the ones made on the Open ATLAS data.}\label{fig:redelphesdist}
 \end{figure*}
 
+
+% maybe move or remove this?
 \begin{figure}[ht]
   \centering
   \begin{tabular}[H]{|c|c|c|c|}
@@ -951,7 +966,7 @@ cuts.
     $3.457\%$ & $4.932\%$ & $4.754\%$ & $4.375\%$ \\\hline
   \end{tabular}
   \caption{\label{fig:delphesefficiency}Efficiency table calculated by dividing
-    the histogram entry count by its corresponding truth value histogram entry
+    the reconstructed $\cos \theta^*$ histogram entry count by its corresponding truth value histogram entry
     count.}
 \end{figure}
 
@@ -1006,8 +1021,8 @@ uncertainties on the helicity fractions only take error associated with the
 statistical fluctuations of the Atlas data into consideration, therefore the
 uncertainties presented are greatly underestimated.\\ %noget om at forsøge at estimere højere usikkerheder
 
-Figure ?? illustrates that the efficiency is not flat as a function of
-$\cos \theta^{*}$, but has lower effeciency in $\cos \theta^{*} < z_+$. This possible
+Figure~\ref{fig:efficiency}  illustrates that the efficiency is not flat as a function of
+$\cos \theta^{*}$, but has lower efficiency in $\cos \theta^{*} < z_+$. This possible
 originates from the criteria on lepton tagging, where it is required that they
 appear isolated in the detector. At $\cos \theta^{*} \rightarrow -1$, the $b$ quark and the
 lepton is moving in the same direction, making it impossible to detect the
