@@ -22,6 +22,7 @@
 %   - Titlepage
 %   - Update (maybe fix) fit to delphes data
 % 	- Langtool
+% 	- Chronological order of citations
 
 
 \addbibresource{References.bib}
@@ -642,11 +643,6 @@ analysis.\cite{ATLAS-trig}
 
 
 
-\subsection{ROOT}
-ROOT is a framework used for storing and processing data in high energy physics.
-ROOT is primarily written in the programming language c++. Data in ROOT files
-are stored in a tree format, the file itself is a compressed binary
-file.\cite{root}
 
 %?
 
@@ -700,9 +696,13 @@ maintaining most of the $b$-jet data.
 
 
 \section{Data Analysis}
-% TODO:
-% Add plot for top mass / W mass
-% Måske sæt overflow ind i costheta plot
+Primarily the ROOT framework was used to process the data from both Delphes and
+ATLAS, including detector data and Monte Carlo simulation data. ROOT is a
+framework used for storing and processing data in high energy physics. ROOT is
+written primarily in the programming language C++, keeping high performance in
+mind, such that many gigabytes, if not terabytes or beyond, can be processed in
+a reasonable amount of time. Data in ROOT files are stored in a tree format, the
+file-format itself being a highly compressed binary file.\cite{root}
 
 \subsection{Results}\label{sec:results}
 In order to identify the top-quark-pair production, as seen in
