@@ -17,11 +17,11 @@
 %	- Færdiggøre Abstract
 % 	- Omskrive Monte Carlo Måske?
 %   - Hyperref
-%   - Discussion 
+%   - Discussion
 %   - Conclusion
 %   - Titlepage
 %   - Update (maybe fix) fit to delphes data
-% 	- Langtool 
+% 	- Langtool
 
 
 \addbibresource{References.bib}
@@ -569,14 +569,14 @@ of muons. The subcomponents are described in more detail below.
 
 \subsubsection{The Inner Detector}
 The purpose of this component is to measure charge and momentum, including its
-direction, of the detected particle. It consists of three subcomponents. 
+direction, of the detected particle. It consists of three subcomponents.
 \paragraph{Pixel Detector}
 % https://iopscience.iop.org/article/10.1088/1748-0221/3/07/P07007
 The pixel detector consists of approximately 92 million electronic channels.
 It's used for identification and reconstruction of secondary vertices from decay
 of particles containing a b-quark or for b-tagging jets. The pixel detector
 covers pseudorapidity range $|\eta| < 2.5 $
-% Og mange flere kriterier relevant? 
+% Og mange flere kriterier relevant?
 
 \paragraph{Semiconductor Tracker}
 %https://cds.cern.ch/record/1019885/files/indet-pub-2007-007.pdf
@@ -601,7 +601,7 @@ subcomponents can be seen in Figure~\ref{fig:detector}.
 % Maybe Expand ECal
 Calorimeters measure the energy of particles by absorbing them. There are two
 types of calorimeters used in the ATLAS detector; the Electromagnetic
-Calorimeter (ECal) and Hadronic Calorimeter (HCal). ECal measures electrons and photons. 
+Calorimeter (ECal) and Hadronic Calorimeter (HCal). ECal measures electrons and photons.
 
 
 The HCal consist of scintillator plates that radiates light when exposed to a
@@ -650,7 +650,7 @@ file.\cite{root}
 %?
 
 \subsection{Monte Carlo Simulation}
-%TODO 
+%TODO
 %Omskriv til at inkludere pythia + POWHEG, delphes og ukendt opendata simuleringsværktøj
 Monte Carlo (MC) simulation is used in modelling the signal and background
 processes expected at the LHC.\@ For the 13 TeV Atlas Open Data used in this
@@ -844,14 +844,14 @@ not.\\
 
 Therefore, correction factors $c_1$ and $c_3$ for bin $N_1$ and $N_3$
 respectively are calculated for the simulated $\cos\theta^*$ distribution to match
-the Standard Model values of $A_{\pm}$.
+the Standard Model values of $A_{\pm}$, and thereby giving a constant selection ratio of $\cos\theta^*$.
 \begin{align}
 	A_{+}^{SM} &= \frac{(c_3N_3 + N_2) - c_1N_1}{c_1N_1 + N_2 + c_3N_3} \\
 	A_{-}^{SM} &= \frac{c_3N_3 - (c_1N_1 + N_2)}{c_1N_1 + N_2 + c_3N_3}
 \end{align}
 Solving for the correction factors the following values are obtained.
 \begin{align} \label{eq:correction}
-	c_1 &= \frac{N_2(1-A_{+}^{SM})}{N_1(A_{+}^{SM} -A_{-}^{SM})} = \num{1.15 +- 0.01}  \\ 
+	c_1 &= \frac{N_2(1-A_{+}^{SM})}{N_1(A_{+}^{SM} -A_{-}^{SM})} = \num{1.15 +- 0.01}  \\
 	c_3 &= \frac{N_2(A_{-}^{SM}+1)}{N_3(A_{+}^{SM}-A_{-}^{SM})} = \num{1.10 +- 0.05}
 \end{align}
 For measurements of angular asymmetries, the error was found, using first order
