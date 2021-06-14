@@ -13,8 +13,6 @@
 %\usepackage{tikz-feynman}
 
 % TODO:
-% 	- ROOT Måske?
-%	- Færdiggøre Abstract
 % 	- Omskrive Monte Carlo Måske?
 %   - Hyperref
 %   - Discussion
@@ -44,10 +42,10 @@ DATE
   two of those jets are tagged as $b$ jets. The ATLAS Open Data, used in this
   thesis, was taken from $pp$ collisions at a center-of-mass energy of $13$ TeV,
   which corresponds to a integrated luminosity of 10 $\mathrm{fb}^{-1}$. Angular
-  asymmetries is used as the primary method for measuring the polarization of
-  the $W$ bosons, with a secondary novel approach of fitting Delphes $W$
-  polarization simulations to data taken from the ATLAS detector. The measured
-  helicity fractions from Angular asymmetries are $F_0=0.678 \pm 0.015$,
+  asymmetries is used as the primary method for measuring the polarisation of
+  the $W$ bosons, with a secondary approach of fitting Delphes $W$ polarisation
+  simulations to data taken from the ATLAS detector. The measured helicity
+  fractions from Angular asymmetries are $F_0=0.678 \pm 0.015$,
   $F_L=0.308 \pm 0.008$ and $F_R=0.014 \pm 0.009$, with only statistical
   uncertainties considered, and angular asymmetries of $A_+ = 0.542 \pm 0.005$
   and $A_- = -0.831 \pm 0.007$, in agreement with the Standard Model.
@@ -152,16 +150,16 @@ binds the quarks together. In the year 1964, physicist Murray Gell-Mann and his
 PhD student George Zweig, proposed that baryons and mesons could be explained by
 the existence of smaller triplet particles\cite{GELLMANN1964214}. Since the
 Pauli exclusion principle forbids any fermions from inhabiting the same state,
-leading to the development of the concept of color in 1973\cite{FRITZSCH1973365}
+leading to the development of the concept of colour in 1973\cite{FRITZSCH1973365}
 by physicists Harald Fritzsh, Heinrich Leutwyler and Murray Gell-mann,
 suggesting that these quarks had additional conserved
-quantum numbers, later named color charge.\\
+quantum numbers, later named colour charge.\\
 
-In QCD, each quark is associated with a color charge that confines the quark via
-the strong interaction to other quarks to make up a total color charge that is
-neutral. While the color charge isn't physically related to actual colors, the
-way they mix together, is analogous to the way we mix the colors green, red and
-blue, as well as their anti colors, magenta, yellow and cyan. Because of these
+In QCD, each quark is associated with a colour charge that confines the quark via
+the strong interaction to other quarks to make up a total colour charge that is
+neutral. While the colour charge isn't physically related to actual colours, the
+way they mix together, is analogous to the way we mix the colours green, red and
+blue, as well as their anti colours, magenta, yellow and cyan. Because of these
 properties, quarks can bind together in groups of three to form baryons, or in
 groups of two to form mesons.\\
 
@@ -325,7 +323,7 @@ Cabbibo-Kaboyashi-Maskawa matrix (CKM). The diagonal part of the CKM matrix,
 shows quarks transition predominantly within their own family, with very little
 deviation from unity. This is especially true for the top quark, where top
 quarks decays into bottom quarks and $W$ bosons 99.8\% of the time. Because the
-top quark decays as a free quark, we can use the polarization as an observable,
+top quark decays as a free quark, we can use the polarisation as an observable,
 because its spin will be preserved in the decay product.\\
 
 There are two primary mechanisms for the production of top quarks at the LHC, a
@@ -371,9 +369,9 @@ The $W$-boson couples only to left-handed fermions, or right-handed
 anti-fermions, giving $Wtb$ vortex a (V-A) structure. In the Standard Model we
 expect that the $W$-boson and $b$-quark from top decay, arrange such that chiral
 structure of the coupled vertex is fulfilled. Because of parity violation, the
-events with positive helicity (right polarized) gets suppressed, while events
-with negative (left polarized) and longitudinal helicity dominates. The three
-polarizations are illustrated in Fig.~\ref{fig:polarization}, where, in this
+events with positive helicity (right polarised) gets suppressed, while events
+with negative (left polarised) and longitudinal helicity dominates. The three
+polarisations are illustrated in Fig.~\ref{fig:polarisation}, where, in this
 hyper relativistic limit the $b$ quark can, to a good approximaiton,
 $m_t >> m_b$, always be considered left handed, which necessitates that the $W$
 boson is either longitudinal or right handed.
@@ -419,13 +417,13 @@ boson is either longitudinal or right handed.
   \end{tikzpicture}
   \caption{The figure illustrates W-boson with zero, negative and positive
     helicity, corresponding to a longitudinal, left and right handed
-    polarization. The red arrows indicates the momentum direction of the
+    polarisation. The red arrows indicates the momentum direction of the
     particles, while the teal and yellow arrows indicate the spin orientation.
-    The right handed polarization will be heavily suppressed because of the
-    (V-A) structure of the Wtb vertex.}\label{fig:polarization}
+    The right handed polarisation will be heavily suppressed because of the
+    (V-A) structure of the Wtb vertex.}\label{fig:polarisation}
 \end{figure}
 
-The fraction of; longitudinally $F_0$, left $F_L$ or right $F_R$ polarized
+The fraction of; longitudinally $F_0$, left $F_L$ or right $F_R$ polarised
 $W$-bosons which are produced from top quark decay, is referred to as helicity
 fractions. In the Standard Model these fractions are calculated using quantum
 chromodynamics. In leading order calculations, using the $m_b = 0$ limit, the
@@ -480,7 +478,7 @@ SM, with the above-mentioned NNLO helicity fractions.
     fractions given according to SM predictions.}\label{fig:distributions}
 \end{figure}
 
-An approach to obtaining the polarization states the $W$-bosons, is done by
+An approach to obtaining the polarisation states the $W$-bosons, is done by
 counting the number of events with a specific $\cos \theta^*$, then use angular
 asymmetries, $A_-$, and $A_+$, defined as
 \begin{equation}\label{eq:asymmetries}
@@ -642,13 +640,7 @@ approximately 1000 events out of the initial 1.7 billion are saved for later
 analysis.\cite{ATLAS-trig}
 
 
-
-
-%?
-
 \subsection{Monte Carlo Simulation}
-%TODO
-%Omskriv til at inkludere pythia + POWHEG, delphes og ukendt opendata simuleringsværktøj
 Monte Carlo (MC) simulation is used in modelling the signal and background
 processes expected at the LHC.\@ For the 13 TeV Atlas Open Data used in this
 thesis, this process follows four steps; starting with an event generation which
@@ -664,9 +656,6 @@ In The 13 TeV ATLAS Open Data set, there are several SM processes which are
 modelled using MC simulations. For the purpose of this report, the MC
 simulations on top-quark-pair production was used alongside real data taken from
 the detector, to compare theory with real data~\cite{mcopenatlas}.
-%Skal måske omskrives en smule, håber at i kan læse det igennem og se om der
-%mangler noget.
-
 
 \subsubsection{B-tagging}
 To study the $Wtb$ structure, a mechanism to identify the $b$-jets from the
@@ -691,8 +680,6 @@ rate originates from samples of simulated $t\bar t$ events with a $c$- and
 light-jet rejection factor of nearly 400\cite{ATL-PHYS-PUB-2016-012}. At these
 cuts, most of the $c$-jets and light-flavoured jets gets rejected, while still
 maintaining most of the $b$-jet data.
-%Håber en kan læse det her igennem for at se om de forstår det fint, eller om
-%det har brug for rettelser
 
 
 \section{Data Analysis}
@@ -873,23 +860,41 @@ $A_- = -0.831 \pm 0.006$ and $A_+ = 0.542 \pm 0.005$, resulting in the helicity
 fractions $F_0=0.678 \pm 0.015$, $F_L=0.308 \pm 0.008$ and $F_R=0.014 \pm 0.009$.
 
 \subsection{Template Method}
-Pythia was used to generate three files containing left, longitudinal and
-right-handed polarizations of the W-boson separately. These files were then run
-through Delphes, which simulates the ATLAS detector response and uses that to
-reconstruct the particles. Cuts were applied in ROOT matching the event
-selection criteria defined in Section~\ref{sec:results} to filter out background
-data. The templates were then combined and fitted to the real $\cos \theta^{*}$
-distribution from the ATLAS detector, giving us the three helicity fractions
-$F_L$, $F_R$ and $F_0$.
+To use the Template Method, simulated events were needed with the
+spinorientations of the $W$ boson known. These simulations weren't available
+through the ATLAS Open Data, and without the time and access to a preferred full
+simulation, a fast simulation, which could emulate the response of the detector,
+was employed.\\
+
+Pythia was used to generate $t\bar t$-events, which produced four momentum
+vectors for all the final state particles in the $p-p$ collisions. This gave
+three files containing left, longitudinal and right-handed polarisations of the
+W-boson separately. These files were then run through Delphes, which emulates
+the ATLAS detector response and uses that to reconstruct the particles. Cuts
+were applied in ROOT matching the event selection criteria defined in
+Section~\ref{sec:results} to filter out background data. The templates were then
+combined and fitted to the real $\cos \theta^{*}$ distribution from the ATLAS
+detector, giving us the three helicity fractions $F_L$, $F_R$ and $F_0$.\\
+
+Because Pythia doesn't give the spinorientations of the $W$ boson, for each
+event, as it describes the SM, giving very few events produced at
+$\cos \theta^{*} \rightarrow 1$. This complication was resolved, using a work around, where the
+$W$ decay to lepton+neutrino was found. For half of the events, the identity
+lepton and neutrino was switched, so the neutrino travelled in the direction
+that the lepton did, and vice versa. $\cos \theta^{*}$ was calculated for each event
+using eq~\ref{eq:costheta}. Importance sampling was used to match the
+theoretical distribution, generating the three distributions given in
+Fig.~\ref{fig:delphesdist}. The size of these files, limited the number of
+generated events to 20,000 for each of the three distribution, resulting in even
+fewer surviving events after cuts.
 
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
 
-% do we differentiate between them by S_z value
 \subsection{Delphes data}
 Before the criteria from Section~\ref{sec:results} were applied to the Delphes
 data, a sanity check was performed on the generated truth data, to assess
 whether it matches with the theoretical analytical function plotted in
-Figure~\ref{fig:distributions}. The plot for each of the three polarizations is
+Figure~\ref{fig:distributions}. The plot for each of the three polarisations is
 displayed in Figure~\ref{fig:delphesdist}. The fitting, in this case, is just a
 scaling factor, as the generated distributions are not normalised.
 \begin{figure*}[t!]
@@ -1010,37 +1015,45 @@ CHI2 : 1963.72
 
 
 \section{Discussion}
-The 13 TeV Open Datasets did not simulate polarizations of the $W$ boson,
-leading to the utilization of Delphes, in getting polarization distributions to
-fit to the reconstructed $\cos \theta^{*}$ data. However, perhaps the greatest source
-of errors is a consequence of statistical errors, due to the small number of event samples
+The plots, constructed using the ATLAS data, was presented in the preceding
+section. The data given in Figures~\ref{fig:jetpt},~\ref{fig:leppt} and
+Figures~\ref{fig:etmiss},~\ref{fig:topmass}, are in good agreement with the
+simulated events, with low level of background events. The simulations of the
+top mass was completed using a $m_t = 172.5 \mathrm{GeV}$~\cite{oreach2020},
+which could account for the small deviation, if the data favours a different
+mass.
+
+The 13 TeV Open Datasets did not simulate polarisations of the $W$ boson,
+leading to the utilization of Delphes, in getting polarisation distributions to
+fit to the reconstructed $\cos \theta^{*}$ data. The greatest source of errors is a
+consequence of statistical errors, due to the small number of event samples
 surviving the cut on the given Delphes data, where less than 1/20 of the events
 survives the cuts from truth to reconstructed. This results in much more
 statistic from the ATLAS data, than from the Delphes simulations. The
 uncertainties on the helicity fractions only take error associated with the
 statistical fluctuations of the Atlas data into consideration, therefore the
-uncertainties presented are greatly underestimated.\\ %noget om at forsøge at estimere højere usikkerheder
+uncertainties presented are greatly
+underestimated.\\ %noget om at forsøge at estimere højere usikkerheder
 
-Figure~\ref{fig:efficiency}  illustrates that the efficiency is not flat as a function of
-$\cos \theta^{*}$, but has lower efficiency in $\cos \theta^{*} < z_+$. This possible
-originates from the criteria on lepton tagging, where it is required that they
-appear isolated in the detector. At $\cos \theta^{*} \rightarrow -1$, the $b$ quark and the
-lepton is moving in the same direction, making it impossible to detect the
-lepton, and erasing the event from the single lepton channel. The 2D plot of
+Figure~\ref{fig:efficiency} illustrates that the efficiency is not flat as a
+function of $\cos \theta^{*}$, but has lower efficiency in $\cos \theta^{*} < z_+$. This
+possible originates from the criteria on lepton tagging, where it is required
+that they appear isolated in the detector. At $\cos \theta^{*} \rightarrow -1$, the $b$ quark
+and the lepton is moving in the same direction, making it impossible to detect
+the lepton, and erasing the event from the single lepton channel. The 2D plot of
 Fig.~\ref{fig:2dhist}, further reinforces this assertion, where the shift below
 the diagional line, represents the fact that the reconstructed values diverges
 more from the truth vlues, at lower $\cos \theta^{*}$, the reconstructed plot moves
-towards the
-left.\\
+towards the left.\\
 
 Since Delphes runs a fast-simulation, it is not designed to be used in parallel
 with data taken from advanced detector studies. This analysis could consequently
-serve as a test for this novel approach of combining Delphes simulations with
-data taken from ATLAS detector, but the great statistical uncertainty, due to
-the low number of simulated events, makes any reasonable conclusion on this
-approach impossible. Instead, as a result of time constraints, and the large
-storage space required to simulate a sufficient number of Delphes events,
-information about the $W$ polarization was obtained by the method of angular
+serve as a test for this approach of combining Delphes simulations with data
+taken from ATLAS detector, but the great statistical uncertainty, due to the low
+number of simulated events, makes any reasonable conclusion on this approach
+impossible. Instead, as a result of time constraints, and the large storage
+space required to simulate a sufficient number of Delphes events, information
+about the $W$ polarisation was obtained by the method of angular
 asymmetries, described in Section~\ref{sec:coupling}.\\
 
 Measurements using angular asymmetries were more accurate with less statistical
@@ -1082,11 +1095,11 @@ allowed for a more confident evaluation of the $W$ boson's helicity fractions.\\
 %the possibility of larger systematic uncertainties.
 
 \section{Conclusion}
-A measurement of the polarization of $W$ bosons, from top quark pair events
+A measurement of the polarisation of $W$ bosons, from top quark pair events
 decay to single lepton channels, was presented using data collected from Open
 ATLAS $pp$ collision at $\sqrt s = 13$TeV, corresponding to an integrated
 luminosity of 10 fb$^{-1}$. Owed to the reason that the reconstructed $W$
-polarization data from Delphes had a small event sample, resulting in large
+polarisation data from Delphes had a small event sample, resulting in large
 statistical uncertainties, nothing instructive could be concluded from those
 data. Instead, the helicity fractions obtained from angular asymmetries are
 $F_0=0.678 \pm 0.015$, $F_L=0.308 \pm 0.008$ and $F_R=0.014 \pm 0.009$. These
