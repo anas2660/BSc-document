@@ -968,6 +968,30 @@ cuts.
 \end{figure*}
 
 
+To get an idea of how the shape of the $\cos \theta^*$ values change as they are
+reconstructed, the true values are plotted versus the reconstructed values in
+Figure~\ref{fig:2dhist}. The diagonal line in this plot is the expectation and
+indicates no change in $\cos \theta^*$ during reconstruction. Anything below this
+line is a shift towards lower values and anything above it is a shift towards
+higher values. In the plot there is clearly a higher number of events below the
+diagonal line than above it, which, as was just discussed, means a general shift
+towards lower $\cos \theta^*$ values.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{figures/2dhist}
+  \caption{\label{fig:2dhist} On the $x$-axis are the generated true $\cos \theta^*$ values for
+    the events which remained after the cuts, and on the $y$-axis are the
+    reconstructed $\cos \theta^*$ for the same events.}
+  % \includegraphics[width=\linewidth]{figures/scatterplot}
+  %\caption{\label{fig:scatterplot}Every point represents a bin. The $x$-value is
+  %  the normalized truth value, and the $y$-value is the normalized value after
+  %  the cuts in the data have been made. From this it is possible to see how the
+  %  shape of the histograms change after the cuts. The extremes are cut off and
+  %  histogram for $h=0$ is shifted to a side which can be seen by the symmetric
+  %  shape around the expectation line.}
+\end{figure}
+
+
 % maybe move or remove this?
 \begin{figure}[ht]
   \centering
@@ -981,19 +1005,6 @@ cuts.
     count.}
 \end{figure}
 
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\linewidth]{figures/2dhist}
-  \caption{\label{fig:2dhist} TODO}
-  % \includegraphics[width=\linewidth]{figures/scatterplot}
-  %\caption{\label{fig:scatterplot}Every point represents a bin. The $x$-value is
-  %  the normalized truth value, and the $y$-value is the normalized value after
-  %  the cuts in the data have been made. From this it is possible to see how the
-  %  shape of the histograms change after the cuts. The extremes are cut off and
-  %  histogram for $h=0$ is shifted to a side which can be seen by the symmetric
-  %  shape around the expectation line.}
-\end{figure}
 
 \subsection{Fitting to atlas data}
 The histograms shown in Fig.~\ref{fig:redelphesdist}, is fitted by a linear
