@@ -713,23 +713,23 @@ criteria are as follows~\cite{oreach2020}.
         exactly two of these being b-tagged
 \end{itemize}
 
-ROOT defines the function \texttt{SetPtEtaPhiE}, which is used in accordance to
-Section~\ref{sec:momentum} as seen in equation~\eqref{eq:TLorentz}.
-% The function, which ROOT uses to construct the Lorentz vector,
-% \texttt{SetPtEtaPhiE}, is defined as such,
-\begin{equation} \label{eq:TLorentz}
-p({\vb p_t}, \eta, \phi, E) =
-\begin{pmatrix}
-|{\vb p_t}| \cos(\phi)\\ |{\vb p_t}|\sin(\phi)\\ |{\vb p_t}| \sinh(\eta)\\ E
-\end{pmatrix}
-\end{equation}
-%To calculate the
-%transverse energy we are using the builtin ROOT \texttt{TLorentzVector} member
-%function \texttt{Et()}. That function is effectively defined as
-%\begin{equation}
-% {{{\it p\_t}\,\sqrt{{\it p\_y}^2+{\it p\_x}^2}}\over{\sqrt{ {\it p\_z}^2+{\it p\_y}^2+{\it p\_x}^2}}}
-%E_t = p_t \frac{\sqrt{p_y^2+p_x^2}}{\sqrt{p_z^2+p_y^2+p_x^2}}
-%\end{equation}
+%%%ROOT defines the function \texttt{SetPtEtaPhiE}, which is used in accordance to
+%%%Section~\ref{sec:momentum} as seen in equation~\eqref{eq:TLorentz}.
+%%%% The function, which ROOT uses to construct the Lorentz vector,
+%%%% \texttt{SetPtEtaPhiE}, is defined as such,
+%%%\begin{equation} \label{eq:TLorentz}
+%%%p({\vb p_t}, \eta, \phi, E) =
+%%%\begin{pmatrix}
+%%%|{\vb p_t}| \cos(\phi)\\ |{\vb p_t}|\sin(\phi)\\ |{\vb p_t}| \sinh(\eta)\\ E
+%%%\end{pmatrix}
+%%%\end{equation}
+%%%%To calculate the
+%%%%transverse energy we are using the builtin ROOT \texttt{TLorentzVector} member
+%%%%function \texttt{Et()}. That function is effectively defined as
+%%%%\begin{equation}
+%%%% {{{\it p\_t}\,\sqrt{{\it p\_y}^2+{\it p\_x}^2}}\over{\sqrt{ {\it p\_z}^2+{\it p\_y}^2+{\it p\_x}^2}}}
+%%%%E_t = p_t \frac{\sqrt{p_y^2+p_x^2}}{\sqrt{p_z^2+p_y^2+p_x^2}}
+%%%%\end{equation}
 
 Only a single lepton should be present in the events, after the identification
 of top-quark pair production. This allows the first lepton in the event to
