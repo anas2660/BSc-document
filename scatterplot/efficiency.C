@@ -71,7 +71,7 @@ void efficiency(){
     a->ShowBackground()->SetLineColor(kBlue);
     // ctstar_sum->Draw("e");
 
-    c1->SaveAs("../figures/Efficiency.png");
+    c1->SaveAs("../figures/Efficiency.pdf");
 
     TCanvas *c2 = new TCanvas("costheta0", "c2", 80, 80, 700, 500);
     c2->Divide(2);
