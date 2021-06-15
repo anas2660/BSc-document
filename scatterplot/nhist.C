@@ -27,7 +27,7 @@ void nhist() {
 
     TH1F* hist = new TH1F("a", "N distribution", bin_count, edges);
     TH1F* hist_expectation = new TH1F("b", "2nd dist", bin_count, edges);
-    TH1F* hist_correction = new TH1F("c", "3rd dist", bin_count, edges);
+    TH1F* hist_correction = new TH1F("c", "cos #theta*", bin_count, edges);
 
 
     //TF1* func1 = new TF1("costheta dist","124373.6816529382*((3*0.311*(1 - x)*(1 - x))/8 + (3*0.687*(1 - x*x))/4 + (3*0.0017*(1 + x)*(1 + x))/8)",-1,1);
@@ -44,22 +44,39 @@ void nhist() {
     for (int i = 0; i < N2a; i++) hist_correction->Fill( 0.0f);
     for (int i = 0; i < N3a; i++) hist_correction->Fill( 0.9f);
 
+    gStyle->SetErrorX(0);
+    gStyle->SetOptStat(0);
+
     hist_correction->GetYaxis()->SetRangeUser(0, 90000);
     
+    auto legend = new TLegend(0.775,0.7125,0.975,0.85);
+    legend->AddEntry(hist_expectation, "SM Expectation","l");
+    legend->AddEntry(hist_correction, "Corrected Distribution","ep");
+    legend->AddEntry(hist, "ATLAS Data","ep");
+    
+    hist_correction->GetXaxis()->SetTitle("cos#theta*");
+    hist_correction->GetYaxis()->SetTitle("Events / Bin");
+    
 
+    
+    
    
-    hist_expectation->SetLineColor(kGreen-3);
-    hist_correction->SetLineColor(kRed);
-    hist->SetLineWidth(4);
-    hist_correction->SetLineWidth(3);
-    hist_expectation->SetLineWidth(2);
+    hist_expectation->SetLineColor(kGreen+2);
     hist_expectation->SetLineStyle(2);
-    //hist_correction->SetLineStyle();
-
+    hist_expectation->SetLineWidth(2);
+    hist_correction->SetMarkerColor(kRed);
+    hist_correction->SetMarkerStyle(8);    
+    hist->SetMarkerStyle(8);
+    hist->SetMarkerColor(kBlue);
+    
+    TCanvas* canvas1  = new TCanvas("canvas1", "cfit", 80, 80, 1200, 700);
         
-    hist_correction->Draw("E");
-    hist->Draw("SAME");
+    hist_correction->Draw("E1");
+    hist->Draw("SAME E1");
     hist_expectation->Draw("SAME");
     //func1->Draw("SAME");
+    legend->Draw();
+  
+    canvas1->SaveAs("../figures/nhist.pdf");
 
 }
