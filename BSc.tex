@@ -1021,9 +1021,18 @@ error associated with the iterative approach to the fit.
 % TODO husk at opdatere errors når vi finder ud af det
 The fit in Figure~\ref{fig:delphesfit} gave the following helicity fractions,
 $F_0^{\mathrm{fit}} = 0.511 \pm 0.017,\ F_L^{\mathrm{fit}} = 0.441 \pm 0.009$,
-and $F_R^{\mathrm{fit}} = 0.031 \pm 0.009$, with a $\chi^2 = 1963.72$. The error
-here is the numerical error directly from the fit and should be adjusted
-to......................
+and $F_R^{\mathrm{fit}} = 0.031 \pm 0.009$, with a $\chi^2 = 1963.72$. The
+uncertainties on the helicity fractions only take errors associated with the
+statistical fluctuations of the Atlas data into consideration, therefore the
+uncertainties presented are greatly underestimated. A better estimate of the
+standard deviation errors, is found taking the square of the fraction between
+the number of events from data and the number of events in each of the three
+template destributions. The uncertainties are then factors of
+$\sqrt 131 \simeq 11.4$, $\sqrt 122 \simeq 11.1$ and $\sqrt 173 \simeq 13.2$ greater than the
+uncertainties on $F_R$, $F_0$ and $F_L$ respectively. The adjusted helicity
+fractions are $F_0 = 0.511 \pm 0.196,\ F_L = 0.441 \pm 0.103$,
+and $F_R = 0.031 \pm 0.121$.
+
 %% \begin{verbatim}
 %% FCN=1963.72 FROM MIGRAD  STATUS=CONVERGED  61 CALLS     62 TOTAL
 %%        EDM=2.23898e-18    STRATEGY= 1      ERROR MATRIX ACCURATE
@@ -1042,7 +1051,7 @@ Figures~\ref{fig:etmiss},~\ref{fig:topmass}, are in good agreement with the
 simulated events, with low level of background events. The simulations of the
 top mass was completed using a $m_t = 172.5 \mathrm{GeV}$~\cite{oreach2020},
 which could account for the small deviation, if the data favours a different
-mass.
+mass.\\
 
 The 13 TeV Open Datasets did not simulate polarisations of the $W$ boson,
 leading to the utilization of Delphes, in getting polarisation distributions to
@@ -1050,10 +1059,9 @@ fit to the reconstructed $\cos \theta^{*}$ data. The greatest source of errors i
 consequence of statistical errors, due to the small number of event samples
 surviving the cut on the given Delphes data, where less than 1/20 of the events
 survives the cuts from truth to reconstructed. This results in much more
-statistic from the ATLAS data, than from the Delphes simulations. The
-uncertainties on the helicity fractions only take error associated with the
-statistical fluctuations of the Atlas data into consideration, therefore the
-uncertainties presented are greatly underestimated.\\ %noget om at forsøge at estimere højere usikkerheder
+statistic from the ATLAS data, than from the Delphes simulations. The estimates
+on the fitted helicity fractions underscores the low accuracy, due to the lack
+of template events.\\
 
 Figure~\ref{fig:efficiency} illustrates that the efficiency is not flat as a
 function of $\cos \theta^{*}$, but has lower efficiency in $\cos \theta^{*} < z_+$. This
