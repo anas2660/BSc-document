@@ -37,6 +37,11 @@ TFile *out_file;
 
 TH2D  *ctRecVsTrue;
 
+TH1F  *ctstar_sum;
+TH1F  *ctstar_sum_truth;
+TH1F  *ctstar_sum_truth_after_cuts;
+
+
 ///////////////////////////////////////////////////////////////////////////////
 //                               Distributions                               //
 ///////////////////////////////////////////////////////////////////////////////
@@ -78,16 +83,17 @@ void ttbar(const char *inputFile, TH1 *hist) {
   TClonesArray *branchJet         = treeReader->UseBranch("Jet");
   TClonesArray *branchElectron    = treeReader->UseBranch("Electron");
   TClonesArray *branchMuon        = treeReader->UseBranch("Muon");
+  TClonesArray *branchWeight      = treeReader->UseBranch("HepMCEvent");
   //TClonesArray *branchPhoton      = treeReader->UseBranch("Photon");
 
   // Book histograms
-  TH1 *histMissET = new TH1F("missET",  "Missing E_{T}", 60, 0., 300.);
-  TH1 *histLeptPT = new TH1F("lept_pt", "lepton P_{T}",  60, 0., 300.);
-  TH1 *histJet0PT = new TH1F("jet0_pt", "jet0 P_{T}",    60, 0., 300.);
-  TH1 *histJet1PT = new TH1F("jet1_pt", "jet1 P_{T}",    60, 0., 300.);
-  TH1 *histJet2PT = new TH1F("jet2_pt", "jet2 P_{T}",    60, 0., 300.);
-  TH1 *histJet3PT = new TH1F("jet3_pt", "jet3 P_{T}",    60, 0., 300.);
-  TH1 *histNBTag  = new TH1F("NBTag",   "number BTag",   5,  0., 5.);
+  // TH1 *histMissET = new TH1F("missET",  "Missing E_{T}", 60, 0., 300.);
+  // TH1 *histLeptPT = new TH1F("lept_pt", "lepton P_{T}",  60, 0., 300.);
+  // TH1 *histJet0PT = new TH1F("jet0_pt", "jet0 P_{T}",    60, 0., 300.);
+  // TH1 *histJet1PT = new TH1F("jet1_pt", "jet1 P_{T}",    60, 0., 300.);
+  // TH1 *histJet2PT = new TH1F("jet2_pt", "jet2 P_{T}",    60, 0., 300.);
+  // TH1 *histJet3PT = new TH1F("jet3_pt", "jet3 P_{T}",    60, 0., 300.);
+  // TH1 *histNBTag  = new TH1F("NBTag",   "number BTag",   5,  0., 5.);
 
   // histCTStarGen=
   //     new TH1F("CTStarGen", "truth cos(theta*)", 15, -1., 1.);
@@ -95,13 +101,16 @@ void ttbar(const char *inputFile, TH1 *hist) {
 
   if (!strcmp(inputFile, "./delphes0.root"))
     histCTStarGen =
-      new TH1F("CTStarGen0", "truth cos(theta*)", 15, -1., 1.);
+      new TH1F("CTStarGen0", "Predicted #Gamma_{0} Fitted to Generated cos(theta*)", 15, -1., 1.);
   if (!strcmp(inputFile, "./delphesL.root"))
     histCTStarGen =
-      new TH1F("CTStarGenL", "truth cos(theta*)", 15, -1., 1.);
+      new TH1F("CTStarGenL", "Predicted #Gamma_{L} Fitted to Generated cos(theta*)", 15, -1., 1.);
   if (!strcmp(inputFile, "./delphesR.root"))
     histCTStarGen =
-      new TH1F("CTStarGenR", "truth cos(theta*)", 15, -1., 1.);
+      new TH1F("CTStarGenR", "Predicted #Gamma_{R} Fitted to Generated cos(theta*)", 15, -1., 1.);
+  histCTStarGen->GetXaxis()->SetTitle("cos #theta*");
+  histCTStarGen->GetYaxis()->SetTitle("Events");
+  //histCTStarGen->GetYaxis()->SetTitleOffset(1.);
 
   TH1 *histCTStar =
       new TH1F("CTStar", "new cos(theta*)", 15, -1., 1.);
@@ -111,9 +120,19 @@ void ttbar(const char *inputFile, TH1 *hist) {
     // Load selected branches with data from specified event
     treeReader->ReadEntry(entry);
 
+
+    // Load weight for event
+    //// {
+    ////   int count = branchWeight->GetEntries();
+    ////   if (count) printf("Weight count: %d\n", count);
+    //// }
+    //printf("Weight count: %d\n", branchWeight->GetEntries());
+    //float weight = ((Weight *)branchWeight->At(0))->Weight;
+    //float weight = ((Weight *)branchWeight->At(entry))->Weight;
+    //printf("Weight: %g\n", weight);
+
     // Treat truth information:
     // Cumbersome, since daughter pointers seem no to be set correctly
-
     int ibm  = -1;
     int ibp  = -1;
     int ilep = -1;
@@ -153,9 +172,11 @@ void ttbar(const char *inputFile, TH1 *hist) {
     double Meb2      = (GET_P4(ilep) + GET_P4(ib)).M2();
     double ctstarGen = 2. * Meb2 / (172.5 * 172.5 - 80.1 * 80.1) - 1.;
 
-    if (ctstarGen >= -1.0 && ctstarGen <= 1.0) 
+    if (ctstarGen >= -1.0 && ctstarGen <= 1.0){
       histCTStarGen->Fill(ctstarGen);
-      
+      ctstar_sum_truth->Fill(ctstarGen);
+    }
+
     
     //if (hist) hist->Fill(ctstarGen);
 
@@ -192,12 +213,12 @@ void ttbar(const char *inputFile, TH1 *hist) {
     if (nGoodEl == 1) plep = GET_ELECTRON(good_electron_id)->P4();
     if (nGoodMu == 1) plep = GET_MUON(good_muon_id)->P4();
 
-    histLeptPT->Fill(plep.Perp());
+    ///////histLeptPT->Fill(plep.Perp());
 
     // Missing ET
     MissingET *met = (MissingET *)branchMissingET->At(0);
 
-    histMissET->Fill(met->MET);
+    //////histMissET->Fill(met->MET);
 
     // AT least 30 GeV misisng ET
     if (met->MET < 30.) continue;
@@ -221,21 +242,13 @@ void ttbar(const char *inputFile, TH1 *hist) {
 
 
     // Plot jet transverse momentum
-    histJet0PT->Fill(jet[0]->PT);
-    histJet1PT->Fill(jet[1]->PT);
-    histJet2PT->Fill(jet[2]->PT);
-    histJet3PT->Fill(jet[3]->PT);
+    /////// histJet0PT->Fill(jet[0]->PT);
+    /////// histJet1PT->Fill(jet[1]->PT);
+    /////// histJet2PT->Fill(jet[2]->PT);
+    /////// histJet3PT->Fill(jet[3]->PT);
 
     // At least 4 jets with PT > 30 GeV
     if (jet[3]->PT < 30) continue;
-
-    //printf("ETAS: %f, %f, %f, %f... N: %d\n", jet[0]->Eta, jet[1]->Eta, jet[2]->Eta, jet[3]->Eta, branchJet->GetEntries());
-
-
-
-
-    // printf("BTAG: %d, %d, %d, %d\n", jet[0]->BTag, jet[1]->BTag,
-    // jet[2]->BTag, jet[3]->BTag );
 
     //int nBTag = jet[0]->BTag + jet[1]->BTag + jet[2]->BTag + jet[3]->BTag;
     int ngoodbjets = 0;
@@ -243,19 +256,48 @@ void ttbar(const char *inputFile, TH1 *hist) {
     for (int i = 0; i < 4; i++)
       if (jet[i]->BTag) goodbjet[ngoodbjets++] = i;
 
-    histNBTag->Fill(ngoodbjets);
+    ///// histNBTag->Fill(ngoodbjets);
 
     if (ngoodbjets != 2) continue;
     //if (met->MET <= 30000.) continue;
 
-    TLorentzVector MeT;
-    MeT.SetPtEtaPhiE(met->MET, 0, met->Phi, met->MET);
+    ///////TLorentzVector MeT;
+    ///////MeT.SetPtEtaPhiE(met->MET, 0, met->Phi, met->MET);
 
     // float mtw = sqrt(2.0f * plep.Pt() * MeT.Et() * (1.0f - cos(plep.DeltaPhi(MeT))));
     // if (mtw > 30000.0f) continue;
 
-    // how do we select bjet????????
     TLorentzVector bjet_1 = jet[goodbjet[1]]->P4();
+
+    // puts("========"); // (GenParticle *)
+    // printf("a: %d, b: %d, c: %d\n", jet[goodbjet[1]]->BTag, jet[goodbjet[1]]->BTagAlgo, jet[goodbjet[1]]->BTagPhys);
+
+    // printf("COUNT: %d\n", jet[goodbjet[1]]->Particles.GetEntries());
+    // for (int i = 0; i < jet[goodbjet[1]]->Particles.GetEntries(); i++) {
+    //   int type =  ((GenParticle*)jet[goodbjet[1]]->Particles.At(i))->PID;
+    //   printf("type: %d\n", type);
+    // }
+
+    // printf("COUNT2: %d\n", jet[goodbjet[0]]->Particles.GetEntries());
+    // for (int i = 0; i < jet[goodbjet[0]]->Particles.GetEntries(); i++) {
+    //   int type =  ((GenParticle*)jet[goodbjet[0]]->Particles.At(i))->PID;
+    //   printf("type2: %d\n", type);
+    // }
+
+    // printf("COUNT3: %d\n", jet[goodbjet[1]]->Constituents.GetEntries());
+    // for (int i = 0; i < jet[goodbjet[1]]->Constituents.GetEntries(); i++) {
+    //   int type =  ((GenParticle*)jet[goodbjet[1]]->Constituents.At(i))->PID;
+    //   printf("type3: %d\n", type);
+    // }
+
+    // puts(jet[goodbjet[0]]->Constituents.At(0)->GetName());
+    // printf("COUNT4: %d\n", jet[goodbjet[0]]->Constituents.GetEntries());
+    // for (int i = 0; i < jet[goodbjet[0]]->Constituents.GetEntries(); i++) {
+    //   int type =  ((GenParticle*)jet[goodbjet[0]]->Constituents.At(i))->PID;
+    //   printf("type4: %d\n", type);
+    // }
+
+    //puts("========");
 
     double m_t = 172.8f;
     double M_W = 80.4f;
@@ -265,6 +307,8 @@ void ttbar(const char *inputFile, TH1 *hist) {
     if (costheta >= -1.0f && costheta <= 1.0f) {
       histCTStar->Fill(costheta);
       ctRecVsTrue->Fill(ctstarGen, costheta);
+      ctstar_sum->Fill(costheta);
+      ctstar_sum_truth_after_cuts->Fill(ctstarGen);
       if (hist) hist->Fill(costheta);
     }
   }
@@ -272,7 +316,7 @@ void ttbar(const char *inputFile, TH1 *hist) {
   // Show histograms
   //if (histsum != NULL) {
   // TODO FIT distributions
-  TCanvas *ctruth = new TCanvas("ctruth", "ctruth", 80, 80, 700, 700);
+  TCanvas *ctruth = new TCanvas("ctruth", "ctruth", 80, 80, 900, 700);
 
 
   // TFitResultPtr fit_result_ptr = atlas_costheta->Fit(f, "S");
@@ -285,6 +329,7 @@ void ttbar(const char *inputFile, TH1 *hist) {
     f->SetLineColor(kRed);
     f->SetLineWidth(2);
     histCTStarGen->Fit(f);
+    histCTStarGen->GetYaxis()->SetRangeUser(0, 2100);
     histCTStarGen->Draw();
     histCTStarGen->Write();
     ctruth->SaveAs("out/delphes_gen0.png");
@@ -325,34 +370,34 @@ void ttbar(const char *inputFile, TH1 *hist) {
   //TCanvas *c4 = new TCanvas("c4", "c4", 80, 80, 700, 700);
   //histCTStarGen->Draw();
 
-  if (hist) return;
+  //if (hist) return;
 
-  TCanvas *c1 = new TCanvas("c1", "c1", 20, 20, 700, 700);
-  c1->Divide(2, 2);
-  c1->cd(1);
-  histJet0PT->Draw();
-  c1->cd(2);
-  histJet1PT->Draw();
-  c1->cd(3);
-  histJet2PT->Draw();
-  c1->cd(4);
-  histJet3PT->Draw();
+  // TCanvas *c1 = new TCanvas("c1", "c1", 20, 20, 700, 700);
+  // c1->Divide(2, 2);
+  // c1->cd(1);
+  // histJet0PT->Draw();
+  // c1->cd(2);
+  // histJet1PT->Draw();
+  // c1->cd(3);
+  // histJet2PT->Draw();
+  // c1->cd(4);
+  // histJet3PT->Draw();
 
-  TCanvas *c2 = new TCanvas("c2", "c2", 40, 40, 700, 700);
-  c2->Divide(2, 2);
-  c2->cd(1);
-  histMissET->Draw();
-  c2->cd(2);
-  histLeptPT->Draw();
+  // TCanvas *c2 = new TCanvas("c2", "c2", 40, 40, 700, 700);
+  // c2->Divide(2, 2);
+  // c2->cd(1);
+  // histMissET->Draw();
+  // c2->cd(2);
+  // histLeptPT->Draw();
 
-  TCanvas *c3 = new TCanvas("c3", "c3", 60, 60, 700, 700);
-  histNBTag->Draw();
+  // TCanvas *c3 = new TCanvas("c3", "c3", 60, 60, 700, 700);
+  // histNBTag->Draw();
 
-  TCanvas *c4 = new TCanvas("c4", "c4", 80, 80, 700, 700);
-  histCTStarGen->Draw();
+  // TCanvas *c4 = new TCanvas("c4", "c4", 80, 80, 700, 700);
+  // histCTStarGen->Draw();
 
-  TCanvas *c5 = new TCanvas("c5", "c5", 80, 80, 700, 700);
-  histCTStar->Draw();
+  // TCanvas *c5 = new TCanvas("c5", "c5", 80, 80, 700, 700);
+  // histCTStar->Draw();
 }
 
 
@@ -392,8 +437,15 @@ void costheta(){
   gSystem->Load("libDelphes");
 #endif
 
-  ctRecVsTrue = new TH2D("cthRecVsTrue", "cos(theta*) reconstructed vs true", 20, -1., 1., 20, -1., 1.);
-  
+  gStyle->SetOptStat(0);
+  ctRecVsTrue                 = new TH2D("cthRecVsTrue", "Reconstructed cos(#theta*) vs Generated cos(#theta*)", 15, -1., 1., 15, -1., 1.);
+  ctstar_sum                  = new TH1F("ctstar_sum", "sum cos(theta*)", 15, -1, 1);
+  ctstar_sum_truth            = new TH1F("ctstar_sum_truth", "sum cos(theta*) truth", 15, -1, 1);
+  ctstar_sum_truth_after_cuts = new TH1F("ctstar_sum_truth_cut", "sum truth cos(theta*) cut", 15, -1, 1);;
+
+  ctRecVsTrue->GetXaxis()->SetTitle("Generated cos #theta*");
+  ctRecVsTrue->GetYaxis()->SetTitle("Reconstructed cos #theta*");
+
   TFile* atlas_file     = new TFile("data.root");
   TH1F*  atlas_costheta = atlas_file->Get<TH1F>("hist_costheta");
   int    nbins  = atlas_costheta->GetNbinsX();
@@ -412,6 +464,10 @@ void costheta(){
   histCTStarGen0->Write();
   histCTStarGenL->Write();
   histCTStarGenR->Write();
+  ctstar_sum->Write();
+  ctstar_sum_truth->Write();
+  ctstar_sum_truth_after_cuts->Write();
+      
 
   histCTStarGen0->Scale(1.0/histCTStarGen0->GetEntries());
   histCTStarGenL->Scale(1.0/histCTStarGenL->GetEntries());
@@ -484,6 +540,7 @@ void costheta(){
   hist_fit->SetError(hist_fit_error);
 
   hist_fit->GetXaxis()->SetTitle("cos#theta*");
+  hist_fit->GetYaxis()->SetRangeUser(0, 0.13);
 
   hist_fit->SetLineWidth(3);
   hist_fit->SetLineColor(kRed);
@@ -505,32 +562,42 @@ void costheta(){
   cfit->SaveAs("out/delphes_fit.png");
 
   
-  TCanvas *c6 = new TCanvas("c6", "c6", 80, 80, 700, 700);
+  TCanvas *c6 = new TCanvas("c6", "c6", 80, 80, 900, 650);
+  histCTStarGen0->GetXaxis()->SetTitle("cos #theta*");
+  histCTStarGen0->GetYaxis()->SetTitle("Events");
+  histCTStarGen0->SetTitle("");
+  //histCTStarGen0->SetTitleSize(0);
+  histCTStarGen0->GetYaxis()->SetRangeUser(0, 0.125);
   histCTStarGen0->Draw("E1");
   histCTStarGen0->ShowBackground()->SetLineColor(kBlue);
   c6->SaveAs("out/delphes_ctstar0.png");
 
-  TCanvas *c7 = new TCanvas("c7", "c7", 80, 80, 700, 700);
+  TCanvas *c7 = new TCanvas("c7", "c7", 80, 80, 900, 650);
+  histCTStarGenR->GetYaxis()->SetTitle("Events");
+  histCTStarGenR->SetTitle("");
+  //histCTStarGenR->SetTitleSize(0);
+  histCTStarGenR->GetYaxis()->SetRangeUser(0, 0.12);
+  histCTStarGenR->GetXaxis()->SetTitle("cos #theta*");
   histCTStarGenR->Draw("E1"); //"SAME"
   histCTStarGenR->ShowBackground()->SetLineColor(kBlue);
   c7->SaveAs("out/delphes_ctstarR.png");
 
-  TCanvas *c8 = new TCanvas("c8", "c8", 80, 80, 700, 700);
+  TCanvas *c8 = new TCanvas("c8", "c8", 80, 80, 900, 650);
+  histCTStarGenL->GetXaxis()->SetTitle("cos #theta*");
+  histCTStarGenL->GetYaxis()->SetTitle("Events");
+  histCTStarGenL->SetTitle("");
+  //histCTStarGenL->SetTitleSize(0);
+  histCTStarGenL->GetYaxis()->SetRangeUser(0, 0.17);
   histCTStarGenL->Draw("E1"); //"SAME"
   histCTStarGenL->ShowBackground()->SetLineColor(kBlue);
   c8->SaveAs("out/delphes_ctstarL.png");
 
   gStyle->SetPalette(kRainBow);
-  TCanvas * c2d = new TCanvas("c2d","c2d",40,40,800,800);
+  TCanvas * c2d = new TCanvas("c2d","c2d",40,40,900,800);
+  ctRecVsTrue->GetYaxis()->SetTitleOffset(1.2f);
   ctRecVsTrue->Draw("colz");
+
   //ctRecVsTrue->Draw("cont4z");
-
-  assert(atlas_file);
-  assert(atlas_costheta);
-  assert(histCTStarGen0);
-  assert(histCTStarGenL);
-  assert(histCTStarGenR);
-
 }
 
 int main(int argc, char *argv[]) {
