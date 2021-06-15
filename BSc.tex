@@ -5,13 +5,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage[sorting=none]{biblatex}
-\usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{tikz}
 \usepackage[separate-uncertainty=true]{siunitx}
 \usepackage{tikz-feynman}
 \usepackage[hidelinks]{hyperref}
+\usepackage{float}
 
 % TODO:
 % 	- Omskrive Monte Carlo Måske?
@@ -26,14 +26,16 @@
 \nocite{*}
 
 \numberwithin{equation}{section}
+\setlength{\parindent}{0cm}
 
 \begin{document}
-
+\pagenumbering{roman}
 TITLE\\
 AUTHORS\\
 DATE
 
 \cleardoublepage{}
+\setcounter{page}{1}
 \begin{abstract}
   This thesis studies the $Wtb$ vertex structure, using ATLAS data from top
   quark decays, derived from $t\bar t$ events. The events are reconstructed with
@@ -53,6 +55,8 @@ DATE
 \cleardoublepage{}
 \tableofcontents{}
 \cleardoublepage{}
+\setcounter{page}{1}
+\pagenumbering{arabic}
 \section{Introduction}
 The Standard Model (SM) of particle physics is very successful at describing the
 fundamental constituents of matter in our universe. Through experiments with
@@ -740,7 +744,7 @@ lepton, from which the transverse momentum is plotted in Figure~\ref{fig:leppt}.
 
 
 
-\begin{figure*}[t!]
+\begin{figure}[t!]
   \centering
   \begin{subfigure}[t]{0.47\textwidth}
     \centering
@@ -756,7 +760,7 @@ lepton, from which the transverse momentum is plotted in Figure~\ref{fig:leppt}.
       single-electron and single-muon channel.}
   \end{subfigure}
   \caption{}
-\end{figure*}
+\end{figure}
 
 In the ATLAS Open Data, the reconstruction of the tracks, and calculation of the
 transverse momentum of jets, is already given. The jets in the event are
@@ -774,7 +778,7 @@ if the given event satisfies all the criteria given in
 Section~\ref{sec:results}. The energy was plotted in the appropriate units in
 Figure~\ref{fig:etmiss}.\\
 
-\begin{figure*}[t!]
+\begin{figure}[t!]
     \centering
     \begin{subfigure}[t]{0.47\textwidth}
       \centering
@@ -789,7 +793,7 @@ Figure~\ref{fig:etmiss}.\\
       \caption{\label{fig:topmass}Top quark mass from the ATLAS data.}
     \end{subfigure}
     \caption{}
-\end{figure*}
+\end{figure}
 
 % maybe explain why maxing Pt gives the lower three jets but seems a bit
 % obvious: if the b-jet in the upper part was in the combination it would
@@ -903,7 +907,7 @@ generated events to 20,000 for each of the three distribution, resulting in even
 fewer remaining events after cuts.
 
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
-
+\cleardoublepage
 \subsection{Delphes data}
 Before the criteria from Section~\ref{sec:results} were applied to the Delphes
 data, a sanity check was performed on the generated truth data, to assess
@@ -911,7 +915,7 @@ whether it matches with the theoretical analytical function plotted in
 Figure~\ref{fig:distributions}. The plot for each of the three polarisations is
 displayed in Figure~\ref{fig:delphesdist}. The fitting, in this case, is just a
 scaling factor, as the generated distributions are not normalised.
-\begin{figure*}[t!]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
@@ -931,7 +935,7 @@ scaling factor, as the generated distributions are not normalised.
     \caption{The figures shows the truth values of the generated $F_L$, $F_R$ and
       $F_0$ distributions, with a sample of 20000 events, using Delphes fast
       simulations to generate.}\label{fig:delphesdist}
-\end{figure*}
+\end{figure}
 
 Using the generated distributions and the criteria described in
 Section~\ref{sec:results}, it is now possible to generate an efficiency
@@ -952,7 +956,7 @@ Section~\ref{sec:results}, were matched on the Delphes data, to isolate the
 equivalent usable data provided by the ATLAS detector. The
 Figure~\ref{fig:redelphesdist} shows the three helicity distributions after the
 cuts.
-\begin{figure*}[t!]
+\begin{figure}[H]
   \centering
   \begin{subfigure}[t]{0.47\textwidth}
     \centering
@@ -972,7 +976,7 @@ cuts.
   \caption{The figures shows the normalised reconstructed Delphes $\cos \theta^*$ from the
     generated $F_L$, $F_R$ and $F_0$ distributions after the same cuts were made
     as the ones made on the Open ATLAS data.}\label{fig:redelphesdist}
-\end{figure*}
+\end{figure}
 
 
 To get an idea of how the shape of the $\cos \theta^*$ values change as they are
@@ -983,6 +987,7 @@ line is a shift towards lower values and anything above it is a shift towards
 higher values. In the plot there is clearly a higher number of events below the
 diagonal line than above it, which, as was just discussed, means a general shift
 towards lower $\cos \theta^*$ values.
+\cleardoublepage
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{figures/2dhist}
@@ -1013,7 +1018,7 @@ towards lower $\cos \theta^*$ values.
 \end{figure}
 
 
-\subsection{Fitting to atlas data}
+\subsection{Fitting to ATLAS data}
 The histograms shown in Figure~\ref{fig:redelphesdist}, is fitted by a linear
 combination of parameters, to the histogram containing the ATLAS data.
 Figure~\ref{fig:delphesfit} displays the fitted data, and below is listed the
@@ -1132,7 +1137,7 @@ allowed for a more confident evaluation of the $W$-boson's helicity fractions.\\
 %Due to the limitations of the Open Atlas
 %Data~\cite{oreach2020}, only statistical uncertainties were considered, leaving
 %the possibility of larger systematic uncertainties.
-
+\cleardoublepage
 \section{Conclusion}
 A measurement of the polarisation of $W$-bosons, from top quark pair events
 decay to single lepton channels, was presented using data collected from Open
