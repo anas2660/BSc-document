@@ -834,14 +834,16 @@ while the simulated $\cos\theta^*$ distribution does not.\\
 Correction factors $c_1$ and $c_3$ for bin $N_1$ and $N_3$ respectively are
 calculated for the simulated $\cos\theta^*$ distribution to match the Standard Model
 values of $A_{\pm}$, and thereby giving a constant selection ratio of $\cos\theta^*$.
+\newcommand{\MC}{\mathrm{MC}}
+\newcommand{\SM}{\mathrm{SM}}
 \begin{align}
-	A_{+}^{SM} &= \frac{(c_3N_3 + N_2) - c_1N_1}{c_1N_1 + N_2 + c_3N_3} \\
-	A_{-}^{SM} &= \frac{c_3N_3 - (c_1N_1 + N_2)}{c_1N_1 + N_2 + c_3N_3}
+	A_{+} &= \frac{(c_3N_3 + N_2) - c_1N_1}{c_1N_1 + N_2 + c_3N_3} \\
+	A_{-} &= \frac{c_3N_3 - (c_1N_1 + N_2)}{c_1N_1 + N_2 + c_3N_3}
 \end{align}
 Solving for the correction factors the following values are obtained.
 \begin{align} \label{eq:correction}
-	c_1 &= \frac{N_2(1-A_{+}^{SM})}{N_1(A_{+}^{SM} -A_{-}^{SM})} = \num{1.15 +- 0.01}  \\
-	c_3 &= \frac{N_2(A_{-}^{SM}+1)}{N_3(A_{+}^{SM}-A_{-}^{SM})} = \num{1.10 +- 0.05}
+	c_1 &= \frac{N_2^{\MC}(1-A_{+}^{\SM})}{N_1^{\MC}(A_{+}^{\SM} -A_{-}^{\SM})} = \num{1.153 +- 0.014}  \\
+	c_3 &= \frac{N_2^{\MC}(A_{-}^{\SM}+1)}{N_3^{\MC}(A_{+}^{\SM}-A_{-}^{\SM})} = \num{1.109 +- 0.047}
 \end{align}
 For measurements of angular asymmetries, correction factors and helicity
 fractions, the error was found using first order error propagation.
