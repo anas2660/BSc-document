@@ -1,39 +1,39 @@
 \documentclass[12pt,a4paper]{article}
 
+\title{Analysis of Top Quark Pair Production From ATLAS Open Data}
+\author{Anas Idiab, Julius Foverskov, Sune Forchhammer}
+
+
 \usepackage{amsmath}
 \usepackage{physics}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage[sorting=none]{biblatex}
-\usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{tikz}
 \usepackage[separate-uncertainty=true]{siunitx}
 \usepackage{tikz-feynman}
-\usepackage[hidelinks]{hyperref}
+\usepackage[pdftex,
+            pdfauthor={Anas Idiab, Julius Foverskov, Sune Forchhammer},
+            pdftitle={Analysis of top quark pair production from ATLAS Open Data},
+            hidelinks]{hyperref}
+\usepackage{pdfpages}
+\usepackage{float}
 
 % TODO:
-% 	- Omskrive Monte Carlo Måske?
-%   - Discussion
-%   - Conclusion
-%   - Titlepage
-%   - Update (maybe fix) fit to delphes data
 % 	- Langtool
-
 
 \addbibresource{References.bib}
 \nocite{*}
 
 \numberwithin{equation}{section}
+\setlength{\parindent}{0cm}
 
 \begin{document}
-
-TITLE\\
-AUTHORS\\
-DATE
-
-\cleardoublepage{}
+\pagenumbering{roman}
+\includepdf{front_page/main.pdf}
+\setcounter{page}{1}
 \begin{abstract}
   This thesis studies the $Wtb$ vertex structure, using ATLAS data from top
   quark decays, derived from $t\bar t$ events. The events are reconstructed with
@@ -53,6 +53,8 @@ DATE
 \cleardoublepage{}
 \tableofcontents{}
 \cleardoublepage{}
+\setcounter{page}{1}
+\pagenumbering{arabic}
 \section{Introduction}
 The Standard Model (SM) of particle physics is very successful at describing the
 fundamental constituents of matter in our universe. Through experiments with
@@ -179,7 +181,7 @@ independent of the time, the location and the orientation in space.\\
 
 Another symmetry, that is very important for quantum mechanics, is the
 reflection symmetry, called parity. A wave function can have positive or
-negative parity depending on whether or not it changes sign under parity
+negative parity depending on whether it changes sign under parity
 transformation. For the laws which are invariant under reflection in space, the
 parity quantum number $P$ is conserved, while in relativistic quantum mechanic,
 we need to ascribe an intrinsic parity to particles and antiparticles.\\
@@ -195,7 +197,7 @@ electric charge, as well as the conservation of lepton number. Lepton number
 conservation is, far as we know, conserved in all interactions. Certain
 particles behave practically identically with respect to the strong or the weak
 interactions, these properties are studied through irreducible representations
-of the group SU(3), and are characterized by strong and weak isospin, which are
+of the group SU(3), and are characterised by strong and weak isospin, which are
 also conserved.\\
 
 The Dirac equation extends the Schrödinger wave equations, to include the
@@ -291,7 +293,7 @@ respect to the $x$-axis in the $xy$-plane, as seen in Figure~\ref{fig:momentum}.
     \draw (5,0)+(45:2.5) node[anchor=east,black] {$\vb p_T$};
     \draw (8,1.5) node {$xy$-plane};
   \end{tikzpicture}
-  \caption{The figure shows the momentum traveling parallel to the beam axis, and
+  \caption{The figure shows the momentum travelling parallel to the beam axis, and
   the transverse momentum, each with their respective angles.\label{fig:momentum}}
 \end{figure}
 
@@ -328,7 +330,7 @@ because its spin will be preserved in the decay product.\\
 There are two primary mechanisms for the production of top quarks at the LHC, a
 single top via weak interactions, or the pair production via the strong force.
 The pair production of top quark is a QCD effect, which takes place by gluon
-fusion $gg \rightarrow t\bar t$ and quark-antiquark annihilation $q\bar q \rightarrow t\bar t$. The
+fusion $gg \rightarrow t\bar t$ and quark-anti quark annihilation $q\bar q \rightarrow t\bar t$. The
 branching fraction of each of the pair production processes, is related to the
 centre-of-mass energy, for which gluon fusion dominates at the LHC at about 86\%
 of the production\cite{dasilva2016quark}.
@@ -371,54 +373,54 @@ structure of the coupled vertex is fulfilled. Because of parity violation, the
 events with positive helicity (right polarised) gets suppressed, while events
 with negative (left polarised) and longitudinal helicity dominates. The three
 polarisations are illustrated in Figure~\ref{fig:polarisation}, where, in this
-hyper relativistic limit the $b$-quark can, to a good approximaiton,
-$m_t >> m_b$, always be considered left handed, which necessitates that the $W$
-boson is either longitudinal or right handed.
+hyper relativistic limit the $b$-quark can, to a good approximation,
+$m_t >> m_b$, always be considered left-handed, which necessitates that the $W$
+boson is either longitudinal or right-handed.
 
 \begin{figure}[H]
-  \includegraphics[width=\linewidth]{figures/w_polarization.png}
+  %\includegraphics[width=\linewidth]{figures/w_polarization.png}
   \begin{tikzpicture}
-    %\draw[dashed, ->] (-6.6,0) -- (-2.4,0);
-    %\draw[-latex, line width=2,red] (-4.8,0) -- (-4,0);
-    %\draw[-latex, line width=2,red] (-3.3,0) -- (-2.5,0);
-    %\draw[-latex, line width=2,red] (-6,-0.3) -- (-6,0.4);
-    %\draw[-latex, line width=3,teal!80!white] (-6.4,0.7) -- (-5.3,0.7);
-    %\draw[-latex, line width=3,yellow!95!black] (-2.5,0.7) -- (-3.6,0.7);
-    %\filldraw[black] (-4.5,0) circle (0.05) node[anchor=north,black] {$t$};
-    %\filldraw[black] (-3,0) circle (0.05) node[anchor=north,black] {$b$};
-    %\filldraw[black] (-6,0) circle (0.05) node[anchor=north west,black] {$W$};
-    %\draw (-4.5,1.5) node[anchor=south] {Longitudinal(0)};
-    %\draw (-4.5,-0.5) node[anchor=north] {\Large $h_W=0$};
-    %
-    %\draw[dashed, ->] (-2.1,0) -- (2.1,0);
-    %\draw[-latex, line width=2,red] (-0.3,0) -- (0.5,0);
-    %\draw[-latex, line width=2,red] (1.8,0) -- (1,0);
-    %\draw[-latex, line width=2,red] (-1.8,0) -- (-1,0);
-    %\draw[-latex, line width=3,teal!80!white] (-1,0.7) -- (-2.1,0.7);
-    %\draw[-latex, line width=3,yellow!95!black] (1,0.7) -- (2.1,0.7);
-    %\filldraw[black] (0,0) circle (0.05) node[anchor=north,black] {$t$};
-    %\filldraw[black] (1.5,0) circle (0.05) node[anchor=north,black] {$b$};
-    %\filldraw[black] (-1.5,0) circle (0.05) node[anchor=north,black] {$W$};
-    %\draw (0,1.5) node[anchor=south] {Left-handed(L)};
-    %\draw (0,-0.5) node[anchor=north] {\Large $h_W=-1$};
-    %
-    %\draw[dashed, ->] (2.4,0) -- (6.6,0);
-    %\draw[-latex, line width=2,red] (4.2,0) -- (5,0);
-    %\draw[-latex, line width=2,red] (2.7,0) -- (3.5,0);
-    %\draw[-latex, line width=2,red] (6.3,0) -- (5.5,0);
-    %\draw[-latex, line width=3,teal!80!white] (2.6,0.7) -- (3.7,0.7);
-    %\draw[-latex, line width=3,yellow!95!black] (6.4,0.7) -- (5.3,0.7);
-    %\filldraw[black] (4.5,0) circle (0.05) node[anchor=north,black] {$t$};
-    %\filldraw[black] (3,0) circle (0.05) node[anchor=north,black] {$b$};
-    %\filldraw[black] (6,0) circle (0.05) node[anchor=north,black] {$W$};
-    %\draw (4.5,1.5) node[anchor=south] {Right-handed(R)};
-    %\draw (4.5,-0.5) node[anchor=north] {\Large $h_W=+1$};
+    \draw[dashed, ->] (-6.6,0) -- (-2.4,0);
+    \draw[-latex, line width=2,red] (-4.8,0) -- (-4,0);
+    \draw[-latex, line width=2,red] (-3.3,0) -- (-2.5,0);
+    \draw[-latex, line width=2,red] (-6,-0.3) -- (-6,0.4);
+    \draw[-latex, line width=3,teal!80!white] (-6.4,0.7) -- (-5.3,0.7);
+    \draw[-latex, line width=3,yellow!95!black] (-2.5,0.7) -- (-3.6,0.7);
+    \filldraw[black] (-4.5,0) circle (0.05) node[anchor=north,black] {$t$};
+    \filldraw[black] (-3,0) circle (0.05) node[anchor=north,black] {$b$};
+    \filldraw[black] (-6,0) circle (0.05) node[anchor=north west,black] {$W$};
+    \draw (-4.5,1.5) node[anchor=south] {Longitudinal(0)};
+    \draw (-4.5,-0.5) node[anchor=north] {\Large $h_W=0$};
+
+    \draw[dashed, ->] (-2.1,0) -- (2.1,0);
+    \draw[-latex, line width=2,red] (-0.3,0) -- (0.5,0);
+    \draw[-latex, line width=2,red] (1.8,0) -- (1,0);
+    \draw[-latex, line width=2,red] (-1.8,0) -- (-1,0);
+    \draw[-latex, line width=3,teal!80!white] (-1,0.7) -- (-2.1,0.7);
+    \draw[-latex, line width=3,yellow!95!black] (1,0.7) -- (2.1,0.7);
+    \filldraw[black] (0,0) circle (0.05) node[anchor=north,black] {$t$};
+    \filldraw[black] (1.5,0) circle (0.05) node[anchor=north,black] {$b$};
+    \filldraw[black] (-1.5,0) circle (0.05) node[anchor=north,black] {$W$};
+    \draw (0,1.5) node[anchor=south] {Left-handed(L)};
+    \draw (0,-0.5) node[anchor=north] {\Large $h_W=-1$};
+
+    \draw[dashed, ->] (2.4,0) -- (6.6,0);
+    \draw[-latex, line width=2,red] (4.2,0) -- (5,0);
+    \draw[-latex, line width=2,red] (2.7,0) -- (3.5,0);
+    \draw[-latex, line width=2,red] (6.3,0) -- (5.5,0);
+    \draw[-latex, line width=3,teal!80!white] (2.6,0.7) -- (3.7,0.7);
+    \draw[-latex, line width=3,yellow!95!black] (6.4,0.7) -- (5.3,0.7);
+    \filldraw[black] (4.5,0) circle (0.05) node[anchor=north,black] {$t$};
+    \filldraw[black] (3,0) circle (0.05) node[anchor=north,black] {$b$};
+    \filldraw[black] (6,0) circle (0.05) node[anchor=north,black] {$W$};
+    \draw (4.5,1.5) node[anchor=south] {Right-handed(R)};
+    \draw (4.5,-0.5) node[anchor=north] {\Large $h_W=+1$};
   \end{tikzpicture}
   \caption{The figure illustrates W-boson with zero, negative and positive
-    helicity, corresponding to a longitudinal, left and right handed
-    polarisation. The red arrows indicates the momentum direction of the
+    helicity, corresponding to a longitudinal, left- and right-handed
+    polarisation. The red arrows indicate the momentum direction of the
     particles, while the teal and yellow arrows indicate the spin orientation.
-    The right handed polarisation will be heavily suppressed because of the
+    The right-handed polarisation will be heavily suppressed because of the
     (V-A) structure of the Wtb vertex.}\label{fig:polarisation}
 \end{figure}
 
@@ -426,7 +428,7 @@ The fraction of; longitudinally $F_0$, left $F_L$ or right $F_R$ polarised
 $W$-bosons which are produced from top quark decay, is referred to as helicity
 fractions. In the Standard Model these fractions are calculated using quantum
 chromodynamics. In leading order calculations, using the $m_b = 0$ limit, the
-fractions are determined by the folllowing relations; $F_0/F_L = (m_t/m_W)^2$
+fractions are determined by the following relations; $F_0/F_L = (m_t/m_W)^2$
 and $F_R = 0 \Rightarrow F_0 + F_L = 1$, corresponding to the helicity fractions;
 
 \begin{align}
@@ -472,7 +474,7 @@ SM, with the above-mentioned NNLO helicity fractions.
 	\includegraphics[width=0.7\linewidth]{figures/angular_dist.pdf}
 	\caption{The predicted $\cos \theta^{*}$ angular distribution for helicity
     fractions. The distributions for $F_{0}$, $F_{L}$ and $F_{R}$ are
-    normalized, and are given by the blue, red and green line respectively. The
+    normalised, and are given by the blue, red and green line respectively. The
     black line is the sum of the three contributions, but with helicity
     fractions given according to SM predictions.}\label{fig:distributions}
 \end{figure}
@@ -521,7 +523,7 @@ collisions in the ATLAS detector.\\
 This process starts, when protons are generated from an ion source in the linear
 accelerator, LINAC2, then gets injected into the LHC, through a series of
 smaller synchrotron accelerators, as Figure~\ref{fig:lhc} illustrates; Proton
-Synchrotron Booster (PSB), Proton Synchrotron (PS) and Super Proton Syncrotron
+Synchrotron Booster (PSB), Proton Synchrotron (PS) and Super Proton Synchrotron
 (SPS)~\cite[135]{Evans_2008}. The LHC receives bunches from SPS, containing many
 protons in each bunch, effectively increasing the cross-sectional area for
 collisions to occur. The LHC was built to be the largest particle accelerator in the
@@ -555,7 +557,7 @@ the events, and $\int L \dd t$ is the integrated luminosity.
 
 The ATLAS detector is cylindrical around the interaction point, and consists of
 four major components. The first part is the Inner Detector it tracks charged
-particles; it is very light to minimize interaction with the particles. The
+particles; it is very light to minimise interaction with the particles. The
 second part of the detector is the calorimeters, they stop all particles but
 muons and neutrinos and measure their energy. The magnet system bends the path
 of charged particles, allowing measurements of their momenta in accordance with
@@ -667,7 +669,7 @@ containing b-hadrons are then identified by a combination of three distinct
 algorithms. Hadrons containing $b$-quarks have a long enough lifetime to fly a
 measurable distance before it decays, and can be exploited to built
 lifetime-based tagging algorithms. The impact parameter based algorithm, IP3D,
-uses transverse and longitudinal impact parameter significances of each track
+uses transverse and longitudinal impact parameter significance of each track
 within a jet, the SV reconstructs the secondary vertex within the jet and decay
 chain multi-vertex algorithm (JetFitter) reconstructs the full b-hadron
 decay chain.\\
@@ -694,7 +696,7 @@ file-format itself being a highly compressed binary file.\cite{root}
 
 \subsection{Results}\label{sec:results}
 In order to identify the top-quark-pair production, as seen in
-figure~\ref{fig:feynmandiagram}, several cuts in the data were implemented. The
+Figure~\ref{fig:feynmandiagram}, several cuts in the data were implemented. The
 criteria are as follows~\cite{oreach2020}.
 \begin{itemize}
   \item Only one electron or muon in the final state with $p_{T} > 30 \mathrm{GeV}$
@@ -736,11 +738,11 @@ lepton, from which the transverse momentum is plotted in Figure~\ref{fig:leppt}.
 % splitter electron muon. det kan være vi bare skal plotte noget andet eller vi
 % kan jo selvfølgelig også bare gøre det samme som de gør ved at splitte
 % electron/muon. Vi kan endda også bare plotte histogrammet med partikel id for
-% at vise hvor mange af hver der er
+% at show hvor mange af hver der er
 
 
 
-\begin{figure*}[t!]
+\begin{figure}[t!]
   \centering
   \begin{subfigure}[t]{0.47\textwidth}
     \centering
@@ -756,7 +758,7 @@ lepton, from which the transverse momentum is plotted in Figure~\ref{fig:leppt}.
       single-electron and single-muon channel.}
   \end{subfigure}
   \caption{}
-\end{figure*}
+\end{figure}
 
 In the ATLAS Open Data, the reconstruction of the tracks, and calculation of the
 transverse momentum of jets, is already given. The jets in the event are
@@ -774,7 +776,7 @@ if the given event satisfies all the criteria given in
 Section~\ref{sec:results}. The energy was plotted in the appropriate units in
 Figure~\ref{fig:etmiss}.\\
 
-\begin{figure*}[t!]
+\begin{figure}[t!]
     \centering
     \begin{subfigure}[t]{0.47\textwidth}
       \centering
@@ -789,7 +791,7 @@ Figure~\ref{fig:etmiss}.\\
       \caption{\label{fig:topmass}Top quark mass from the ATLAS data.}
     \end{subfigure}
     \caption{}
-\end{figure*}
+\end{figure}
 
 % maybe explain why maxing Pt gives the lower three jets but seems a bit
 % obvious: if the b-jet in the upper part was in the combination it would
@@ -903,7 +905,7 @@ generated events to 20,000 for each of the three distribution, resulting in even
 fewer remaining events after cuts.
 
 % http://opendata.atlas.cern/release/2020/documentation/physics/SL3.html
-
+\cleardoublepage
 \subsection{Delphes data}
 Before the criteria from Section~\ref{sec:results} were applied to the Delphes
 data, a sanity check was performed on the generated truth data, to assess
@@ -911,7 +913,7 @@ whether it matches with the theoretical analytical function plotted in
 Figure~\ref{fig:distributions}. The plot for each of the three polarisations is
 displayed in Figure~\ref{fig:delphesdist}. The fitting, in this case, is just a
 scaling factor, as the generated distributions are not normalised.
-\begin{figure*}[t!]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
@@ -931,7 +933,7 @@ scaling factor, as the generated distributions are not normalised.
     \caption{The figures shows the truth values of the generated $F_L$, $F_R$ and
       $F_0$ distributions, with a sample of 20000 events, using Delphes fast
       simulations to generate.}\label{fig:delphesdist}
-\end{figure*}
+\end{figure}
 
 Using the generated distributions and the criteria described in
 Section~\ref{sec:results}, it is now possible to generate an efficiency
@@ -952,7 +954,7 @@ Section~\ref{sec:results}, were matched on the Delphes data, to isolate the
 equivalent usable data provided by the ATLAS detector. The
 Figure~\ref{fig:redelphesdist} shows the three helicity distributions after the
 cuts.
-\begin{figure*}[t!]
+\begin{figure}[H]
   \centering
   \begin{subfigure}[t]{0.47\textwidth}
     \centering
@@ -972,7 +974,7 @@ cuts.
   \caption{The figures shows the normalised reconstructed Delphes $\cos \theta^*$ from the
     generated $F_L$, $F_R$ and $F_0$ distributions after the same cuts were made
     as the ones made on the Open ATLAS data.}\label{fig:redelphesdist}
-\end{figure*}
+\end{figure}
 
 
 To get an idea of how the shape of the $\cos \theta^*$ values change as they are
@@ -983,6 +985,7 @@ line is a shift towards lower values and anything above it is a shift towards
 higher values. In the plot there is clearly a higher number of events below the
 diagonal line than above it, which, as was just discussed, means a general shift
 towards lower $\cos \theta^*$ values.
+\cleardoublepage
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\linewidth]{figures/2dhist}
@@ -1013,7 +1016,8 @@ towards lower $\cos \theta^*$ values.
 \end{figure}
 
 
-\subsection{Fitting to atlas data}
+
+\subsection{Fitting to ATLAS data}
 The histograms shown in Figure~\ref{fig:redelphesdist}, is fitted by a linear
 combination of parameters, to the histogram containing the ATLAS data.
 Figure~\ref{fig:delphesfit} displays the fitted data, and below is listed the
@@ -1037,7 +1041,7 @@ statistical fluctuations of the ATLAS data into consideration, therefore the
 uncertainties presented are greatly underestimated. A better estimate of the
 standard deviation errors, is found taking the square of the fraction between
 the number of events from data and the number of events in each of the three
-template destributions. The uncertainties are then factors of
+template distributions. The uncertainties are then factors of
 $\sqrt{131} \simeq 11.4$, $\sqrt{122} \simeq 11.1$ and $\sqrt{173} \simeq 13.2$ greater than
 the uncertainties on $F_R$, $F_0$ and $F_L$ respectively. The adjusted helicity
 fractions are
@@ -1132,7 +1136,7 @@ allowed for a more confident evaluation of the $W$-boson's helicity fractions.\\
 %Due to the limitations of the Open Atlas
 %Data~\cite{oreach2020}, only statistical uncertainties were considered, leaving
 %the possibility of larger systematic uncertainties.
-
+\cleardoublepage
 \section{Conclusion}
 A measurement of the polarisation of $W$-bosons, from top quark pair events
 decay to single lepton channels, was presented using data collected from Open
