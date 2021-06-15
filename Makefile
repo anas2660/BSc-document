@@ -7,7 +7,7 @@ BSc.pdf: BSc.tex BSc.bbl
 doc: pdf
 	cp -f BSc.pdf Doc.pdf
 
-BSc.bbl: BSc.tex References.bib
+BSc.bbl: References.bib
 	biber BSc
 
 clean:
