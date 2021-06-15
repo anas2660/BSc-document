@@ -1,5 +1,9 @@
 \documentclass[12pt,a4paper]{article}
 
+\title{Analysis of Top Quark Pair Production From ATLAS Open Data}
+\author{Anas Idiab, Julius Foverskov, Sune Forchhammer}
+
+
 \usepackage{amsmath}
 \usepackage{physics}
 \usepackage[utf8]{inputenc}
@@ -11,16 +15,15 @@
 \usepackage{tikz}
 \usepackage[separate-uncertainty=true]{siunitx}
 \usepackage{tikz-feynman}
-\usepackage[hidelinks]{hyperref}
+\usepackage[pdftex,
+            pdfauthor={Anas Idiab, Julius Foverskov, Sune Forchhammer},
+            pdftitle={Analysis of top quark pair production from ATLAS Open Data},
+            hidelinks]{hyperref}
+\usepackage{pdfpages}
+
 
 % TODO:
-% 	- Omskrive Monte Carlo Måske?
-%   - Discussion
-%   - Conclusion
-%   - Titlepage
-%   - Update (maybe fix) fit to delphes data
 % 	- Langtool
-
 
 \addbibresource{References.bib}
 \nocite{*}
@@ -28,12 +31,13 @@
 \numberwithin{equation}{section}
 
 \begin{document}
+\includepdf{front_page/main.pdf}
 
-TITLE\\
-AUTHORS\\
-DATE
-
-\cleardoublepage{}
+%TITLE\\
+%AUTHORS\\
+%DATE
+%
+%\cleardoublepage{}
 \begin{abstract}
   This thesis studies the $Wtb$ vertex structure, using ATLAS data from top
   quark decays, derived from $t\bar t$ events. The events are reconstructed with
@@ -1011,6 +1015,7 @@ towards lower $\cos \theta^*$ values.
     the reconstructed $\cos \theta^*$ histogram entry count by its corresponding truth value histogram entry
     count.}
 \end{figure}
+
 
 
 \subsection{Fitting to atlas data}
