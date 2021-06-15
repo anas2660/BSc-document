@@ -66,10 +66,12 @@ void nhist() {
     hist_expectation->SetLineWidth(2);
     hist_correction->SetMarkerColor(kRed);
     hist_correction->SetLineColor(kRed);
-    hist_correction->SetMarkerStyle(8);    
+    hist_correction->SetMarkerStyle(8);
+    hist_correction->SetMarkerSize(2);    
     hist->SetMarkerStyle(8);
     hist->SetMarkerColor(kBlue);
     hist->SetLineColor(kBlue);
+    hist->SetMarkerSize(2);
     hist_correction->SetBinError(1,401.4806632);
     hist_correction->SetBinError(3,458.8026947);
     hist_expectation->SetBinError(1,228.7668749);
