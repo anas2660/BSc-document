@@ -10,7 +10,7 @@
 \usepackage{subcaption}
 \usepackage{tikz}
 \usepackage[separate-uncertainty=true]{siunitx}
-%\usepackage{tikz-feynman}
+\usepackage{tikz-feynman}
 \usepackage[hidelinks]{hyperref}
 
 % TODO:
@@ -80,21 +80,21 @@ $W \rightarrow l + \nu_l$, or into a quark, anti-quark pair: $W \rightarrow q' +
 illustrated in the Feynman diagram Figure~\ref{fig:feynmandiagram}.\\
 
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{figures/placeholder_feynman_singlelep.png}
-  %\begin{center}
-  %  \feynmandiagram[horizontal=a to start, tree layout] {
-  %    a     -- [gluon] start -- [fermion, edge label=$t$] t,
-  %    t     -- [boson, edge label=$W^+$] Wp,
-  %    Wp    -- [fermion] v [particle=$\nu_e$],
-  %    Wp    -- [anti fermion] e [particle=$e^+$],
-  %    t     -- [fermion] b [particle=$b$],
-  %    start -- [anti fermion,edge label'=\(\overline{t}\)] tbar,
-  %    tbar  -- [boson, edge label=$W^-$] Wm,
-  %    Wm    -- [fermion] d [particle=$d$],
-  %    Wm    -- [anti fermion] u [particle=$\overline{u}$],
-  %    tbar  -- [anti fermion] bbar [particle=$\overline{b}$],
-  %    };
-  %\end{center}
+	%\includegraphics[width=\linewidth]{figures/placeholder_feynman_singlelep.png}
+  \begin{center}
+    \feynmandiagram[horizontal=a to start, tree layout] {
+      a     -- [gluon] start -- [fermion, edge label=$t$] t,
+      t     -- [boson, edge label=$W^+$] Wp,
+      Wp    -- [fermion] v [particle=$\nu_e$],
+      Wp    -- [anti fermion] e [particle=$e^+$],
+      t     -- [fermion] b [particle=$b$],
+      start -- [anti fermion,edge label'=\(\overline{t}\)] tbar,
+      tbar  -- [boson, edge label=$W^-$] Wm,
+      Wm    -- [fermion] d [particle=$d$],
+      Wm    -- [anti fermion] u [particle=$\overline{u}$],
+      tbar  -- [anti fermion] bbar [particle=$\overline{b}$],
+      };
+  \end{center}
 	\caption{The Feynman diagram shows the chain of decay, that results in single
     leptonic decay, for pair $t\bar t$. The diagram illustrates the final
     product of the reaction; at least four jets and a lepton neutrino
@@ -334,23 +334,23 @@ centre-of-mass energy, for which gluon fusion dominates at the LHC at about 86\%
 of the production\cite{dasilva2016quark}.
 \begin{figure}[H]
   \centering
-	\includegraphics[width=\linewidth]{figures/placeholder_feynman_ttproduction.png}\\
-  %\hfill{}
-  %\feynmandiagram[layered layout,horizontal=a to b] {
-  %  g1 [particle=$g$] -- [gluon] a [dot],
-  %  g2 [particle=$g$] -- [gluon] a,
-  %  a  -- [gluon] b[dot],
-  %  b  -- [fermion] t [particle=$t$],
-  %  b  -- [anti fermion] tbar [particle=$\overline{t}$],
-  %};\hfill{}
-  %\feynmandiagram[layered layout,horizontal=a to b] {
-  %  qbar [particle=$\overline{q}$] -- [anti fermion] a [dot],
-  %  q [particle=$q$] -- [fermion] a,
-  %  a  -- [gluon] b[dot],
-  %  b  -- [fermion] t [particle=$t$],
-  %  b  -- [anti fermion] tbar [particle=$\overline{t}$],
-  %};
-  %\hfill{}
+	%\includegraphics[width=\linewidth]{figures/placeholder_feynman_ttproduction.png}\\
+  \hfill{}
+  \feynmandiagram[layered layout,horizontal=a to b] {
+    g1 [particle=$g$] -- [gluon] a [dot],
+    g2 [particle=$g$] -- [gluon] a,
+    a  -- [gluon] b[dot],
+    b  -- [fermion] t [particle=$t$],
+    b  -- [anti fermion] tbar [particle=$\overline{t}$],
+  };\hfill{}
+  \feynmandiagram[layered layout,horizontal=a to b] {
+    qbar [particle=$\overline{q}$] -- [anti fermion] a [dot],
+    q [particle=$q$] -- [fermion] a,
+    a  -- [gluon] b[dot],
+    b  -- [fermion] t [particle=$t$],
+    b  -- [anti fermion] tbar [particle=$\overline{t}$],
+  };
+  \hfill{}
 	\caption{A Feynman diagram of the two main production processes $gg \rightarrow t\bar t$
     on the left, and $q\bar q \rightarrow t\bar t$ on the right. Both produciton
     mechanisms are results of strong interactions.}\label{fig:ttproduction}
@@ -856,6 +856,14 @@ fractions, the error was found using first order error propagation.
 Due to limitations of the Open Atlas Data~\cite{oreach2020}, only statistical
 uncertainties were considered, leaving the possibility of larger systematic
 uncertainties.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/nhist.pdf}
+	\caption{Reconstructed, SM-expectation and corrected $\cos\theta^{*}$ distribution with three bins, corresponding to $N_1$, $N_2$ and $N_3$}
+	\label{fig:cos3bin}
+\end{figure}
+Figure \ref{fig:cos3bin} shows the $\cos\theta^{*}$ distribution before and after correction factors $c_1$ and $c_3$ are applied. The SM expectation used to determine the correction factors are shown by the dashed green line. \\
 
 The correction factors obtained from simulation is then applied to the
 $\cos\theta^{*}$ distribution from the ATLAS data, leading to the angular asymmetries
