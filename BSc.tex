@@ -553,12 +553,14 @@ the events, and $\int L \dd t$ is the integrated luminosity.
 % potential figure https://commons.wikimedia.org/wiki/File:ATLAS_Drawing.jpg
 
 
-In short, the ATLAS detector consists of multiple components. The first part is
-the Inner Detector it tracks charged particles; it is very light to minimize
-interaction with the particles. The next part of the detector is the
-calorimeters, they stop all particles but muons and neutrinos and measure their
-energy. The last part is the muon chambers which serves as extra identification
-of muons. The subcomponents are described in more detail below.
+The ATLAS detector is cylindrical around the interaction point, and consists of
+four major components. The first part is the Inner Detector it tracks charged
+particles; it is very light to minimize interaction with the particles. The
+second part of the detector is the calorimeters, they stop all particles but
+muons and neutrinos and measure their energy. The magnet system bends the path
+of charged particles, allowing measurements of their momenta in accordance with
+the Lorentz force. The last part is the muon chambers which serves as extra
+identification of muons. The subcomponents are described in more detail below.
 
 \begin{figure}[H]
 	\centering
@@ -567,9 +569,10 @@ of muons. The subcomponents are described in more detail below.
 \end{figure}
 
 \subsubsection{The Inner Detector}
-The purpose of this component is to measure charge and momentum, including its
-direction, of the detected particle. It consists of three subcomponents.
-\paragraph{Pixel Detector}
+The purpose of this component is to measure charge and momentum, as well as the
+direction of the detected particle. It consists of three subcomponents,
+presented below.
+\paragraph{Pixel Detector;}
 % https://iopscience.iop.org/article/10.1088/1748-0221/3/07/P07007
 The pixel detector consists of approximately 92 million electronic channels.
 It's used for identification and reconstruction of secondary vertices from decay
@@ -577,22 +580,22 @@ of particles containing a b-quark or for b-tagging jets. The pixel detector
 covers pseudorapidity range $|\eta| < 2.5 $
 % Og mange flere kriterier relevant?
 
-\paragraph{Semiconductor Tracker}
+\paragraph{Semiconductor Tracker;}
 %https://cds.cern.ch/record/1019885/files/indet-pub-2007-007.pdf
 The Semiconductor tracker is a silicon microstrip tracker consisting of 4088
 two-sided modules and over 6 million readout strips. These readout strips are
 distributed every $80\mathrm{\mu m}$ which allows recording of the position of
-charged particles to an accuracy of $17\mathrm{\mu m}$
+charged particles to an accuracy of $17\mathrm{\mu m}$.
 
-\paragraph{Transition Radiation Tracker.}
-The transition radiation tracker is a drift tube tracker which consists of a
-straw with 4mm diameter and 0.03mm diameter tungsten wire, coated with 0.5--0.7mm
-gold. The tube is filled with a mixture of Xe, $\mathrm{CO_2}$ and
-$\mathrm{O_2}$ gasses. When charged particles travel through the tube the gas
-gets ionized, which frees electrons from the gas that move to the gold wire. The
-negative charge measured on the wire can be used to distinguish which charged
-particle ionized the gas~\cite{ATLAS-ID}. The Inner detector and its
-subcomponents can be seen in Figure~\ref{fig:detector}.
+\paragraph{Transition Radiation Tracker;}
+The transition radiation tracker is a drift tube tracker, consisting of a straw
+with 4mm diameter and 0.03mm diameter tungsten wire, coated with 0.5--0.7mm gold.
+The tube is filled with a mixture of Xe, $\mathrm{CO_2}$ and $\mathrm{O_2}$
+gasses. When charged particles travel through the tube the gas gets ionized,
+which frees electrons from the gas that move to the gold wire. The negative
+charge measured on the wire can be used to distinguish which charged particle
+ionized the gas~\cite{ATLAS-ID}. The Inner detector and its subcomponents can be
+seen in Figure~\ref{fig:detector}.
 
 
 \subsubsection{Calorimeter}
@@ -605,7 +608,7 @@ Calorimeter (ECal) and Hadronic Calorimeter (HCal). ECal measures electrons and 
 
 The HCal consist of scintillator plates that radiates light when exposed to a
 charged particle. When a hadron passes through a scintillator plate it produces
-a shower of particles which then makes the scintillator radiate light. The
+a shower of particles, which then makes the scintillator radiate light. The
 intensity of the radiated light can then be analysed to measure the energy of
 the hadron. The calorimeters can be seen in Figure~\ref{fig:detector}.\cite{detector-vid}
 
@@ -615,11 +618,11 @@ the hadron. The calorimeters can be seen in Figure~\ref{fig:detector}.\cite{dete
 % https://atlas.cern/discover/detector/muon-spectrometer
 % https://en.wikipedia.org/wiki/ATLAS_experiment#Muon_Spectrometer
 
-The muon spectrometer is on the outer part of the ATLAS detector it operates in
+The muon spectrometer is on the outer part of the ATLAS detector, it operates in
 the pseudorapidity range $|\eta| < 2.7$. The muon spectrometer is located on the
 outside of the detector as other particles will have been stopped earlier in the
 calorimeters. The muon spectrometer consists of tubes, much like the transition
-radiation tracker, that contains a wire which is surrounded by a gas. When muons
+radiation tracker that contains a wire which is surrounded by a gas. When muons
 go through these tubes they interact with the gas and leave behind a trail of
 ions and electrons which drift towards the wire in the centre. By detecting the
 starting point of these trails and measuring the time it takes to reach the
@@ -641,18 +644,17 @@ analysis.\cite{ATLAS-trig}
 
 \subsection{Monte Carlo Simulation}
 Monte Carlo (MC) simulation is used in modelling the signal and background
-processes expected at the LHC.\@ For the 13 TeV Atlas Open Data used in this
-thesis, this process follows four steps; starting with an event generation which
-uses an MC generator to mimic the initial pp collision. In the second step,
-detector simulation, the geometry of the ATLAS detector and its material
-properties gets simulated. The digitization step, follows the previous step by
-simulating the responding signals in read-out data, written in a format
+processes expected at the LHC.\@ This process follows four steps; starting with
+an event generation using an MC generator to mimic the initial pp collision. In
+the second step, detector simulation, the geometry of the ATLAS detector and its
+material properties gets simulated. The digitization step, follows the previous
+step by simulating the responding signals in read-out data, written in a format
 compatible with real output of the detector. Finally, these data can be used to
 reconstruct the collisions, particle trajectories and subsequent
 products.\\
 
 In The 13 TeV ATLAS Open Data set, there are several SM processes which are
-modelled using MC simulations. For the purpose of this report, the MC
+modelled using MC simulations. For the purpose of this thesis, the MC
 simulations on top-quark-pair production was used alongside real data taken from
 the detector, to compare theory with real data~\cite{mcopenatlas}.
 
@@ -795,22 +797,23 @@ Figure~\ref{fig:etmiss}.\\
 % quark which has opposite momentum from the anti top quark.
 The top quark mass can be calculated by finding the combination of three jets,
 of which one is a $b$-jet, with the highest transverse momentum, and taking the
-mass of the whole three jet system. This is a utilization of the hypothesis,
-that these three jets are the ones produced by the $\overline{t}$-quark in the
-lower part of the Feynman diagram seen in Figure~\ref{fig:feynmandiagram}. While
-this hypothesis would most likely hold for most events, it is unlikely to hold
-for all.
+mass of the whole three jet system. This is a utilization of the hypothesis that
+these three jets are the ones produced by the $\overline{t}$-quark in the lower
+part of the Feynman diagram, seen in Figure~\ref{fig:feynmandiagram}. This
+hypothsis works on a statistical ensemble, so while this hypothesis would most
+likely holds true for most events, it is unlikely to hold for all.
 % possible explanation why it works here (see comment above)
 Once the top quark mass is found it can be plotted, as seen in
 Figure~\ref{fig:topmass}. The peak of this histogram should then be compared to
-the value from the standard model, which is $172.76 \pm 0.30$ GeV\cite{pdg}.
+the value from the Standard Model, which is $172.76 \pm 0.30$ GeV\cite{pdg}.
 
 \subsection{$\cos \theta^{*}$ reconstruction}
-Reconstruction of $\cos \theta^{*}$ from the data given in the Lorentz four-vectors, was
-accomplished by equation~\eqref{eq:costheta}. Since only two $b$-jets is tagged,
-the $b$-jet associated with the leptonic decay was decided by the method of
-exclusion, once the $b$-jet associated with the other jets was identified. The
-reconstructed $\cos \theta^{*}$ is plotted in Figure~\ref{fig:costhetaatlas} below.
+Reconstruction of $\cos \theta^{*}$ from the data given in the Lorentz four-vectors,
+was accomplished using equation~\eqref{eq:costheta}. Since only two $b$-jets is
+tagged, the $b$-jet associated with the leptonic decay was decided by the method
+of exclusion, once the $b$-jet associated with the other jets was identified.
+The reconstructed $\cos \theta^{*}$ is plotted in Figure~\ref{fig:costhetaatlas}
+below.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{figures/hist_costheta_overflow}
@@ -824,14 +827,13 @@ For measurements of angular asymmetries $A_{\pm}$ from
 equation~\eqref{eq:asymmetries}, the $\cos\theta^{*}$ distribution was split into
 three non-uniform bins with events above and below
 $z_{\pm} = \pm(1-2^{\frac{2}{3}})$ given by; $N_1 = N(\cos \theta^{*}<z_-)$,
-$N_3 = N(\cos \theta^{*}>z_+)$ and $N_2$ being the remaining events. The true
+$N_3 = N(\cos \theta^{*}>z_+)$, and $N_2$ being the remaining events. The true
 $\cos\theta^*$ distribution has a constant selection ratio over all angles $\cos\theta^*$,
-and the simulated $\cos\theta^*$ distribution does
-not.\\
+while the simulated $\cos\theta^*$ distribution does not.\\
 
-Therefore, correction factors $c_1$ and $c_3$ for bin $N_1$ and $N_3$
-respectively are calculated for the simulated $\cos\theta^*$ distribution to match
-the Standard Model values of $A_{\pm}$, and thereby giving a constant selection ratio of $\cos\theta^*$.
+Correction factors $c_1$ and $c_3$ for bin $N_1$ and $N_3$ respectively are
+calculated for the simulated $\cos\theta^*$ distribution to match the Standard Model
+values of $A_{\pm}$, and thereby giving a constant selection ratio of $\cos\theta^*$.
 \begin{align}
 	A_{+}^{SM} &= \frac{(c_3N_3 + N_2) - c_1N_1}{c_1N_1 + N_2 + c_3N_3} \\
 	A_{-}^{SM} &= \frac{c_3N_3 - (c_1N_1 + N_2)}{c_1N_1 + N_2 + c_3N_3}
@@ -841,8 +843,8 @@ Solving for the correction factors the following values are obtained.
 	c_1 &= \frac{N_2(1-A_{+}^{SM})}{N_1(A_{+}^{SM} -A_{-}^{SM})} = \num{1.15 +- 0.01}  \\
 	c_3 &= \frac{N_2(A_{-}^{SM}+1)}{N_3(A_{+}^{SM}-A_{-}^{SM})} = \num{1.10 +- 0.05}
 \end{align}
-For measurements of angular asymmetries, correction factors and helicity fractions
-the error was found using first order error propagation.
+For measurements of angular asymmetries, correction factors and helicity
+fractions, the error was found using first order error propagation.
 %\begin{align}
 %\sigma_{c_1} = \sqrt{\left(\pdv{c_1}{N_1}\right)^2\sigma_{N_1}^2 + %\left(\pdv{c_1}{N_2}\right)^2\sigma_{N_2}^2 + %\left(\pdv{c_1}{A_+}\right)^2\sigma_{A_+}^2 + %\left(\pdv{c_1}{A_-}\right)^2\sigma_{A_-}^2}
 %\end{align}
@@ -937,7 +939,7 @@ distribution as a function of $\cos \theta^*$ for the specified criteria.
 To reconstruct the helicity distributions which would be found from
 measurements, the criteria performed on the ATLAS data, from
 Section~\ref{sec:results}, were matched on the Delphes data, to isolate the
-equivalent usable data, gotten from the ATLAS detector. The
+equivalent usable data provided by the ATLAS detector. The
 Figure~\ref{fig:redelphesdist} shows the three helicity distributions after the
 cuts.
 \begin{figure*}[t!]
